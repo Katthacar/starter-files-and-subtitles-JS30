@@ -1,0 +1,456 @@
+1
+00:00:00,000 --> 00:00:03,000
+♪ [música] ♪
+
+2
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+3
+00:00:07,000 --> 00:00:10,900
+Hoy vamos a aprender sobre la geolocalización y no solo a obtener la
+
+4
+00:00:10,900 --> 00:00:15,253
+Latitud y longitud con geolocalización, aunque podemos hacerlo si lo desea.
+
+5
+00:00:15,253 --> 00:00:20,190
+Pero también hay información que viene junto con la geolocalización, y esa es la
+
+6
+00:00:20,190 --> 00:00:23,810
+título, que es esencialmente como una brújula, o cómo
+
+7
+00:00:23,810 --> 00:00:28,130
+muchos grados del norte es la persona actualmente en. Y también nos dirá la
+
+8
+00:00:28,130 --> 00:00:32,240
+La velocidad a la que alguien está corriendo, lo cual es genial.
+
+9
+00:00:32,240 --> 00:00:36,770
+En Chrome, podemos falsificar las coordenadas, pero no podemos falsificar el título,
+
+10
+00:00:36,770 --> 00:00:42,030
+y no podemos falsificar la velocidad, así que realmente la única manera que encontré para hacer esto hasta ahora es
+
+11
+00:00:42,030 --> 00:00:45,900
+con el simulador de iOS. Y si no tienes una Mac, es posible que tengas que sentarte bien
+
+12
+00:00:45,900 --> 00:00:50,405
+éste, o puede ejecutarlo en su teléfono, y luego comenzar a correr por la calle para
+
+13
+00:00:50,405 --> 00:00:54,060
+en realidad probarlo, porque necesita algunos datos reales para que funcione.
+
+14
+00:00:54,060 --> 00:00:58,970
+Así que he descargado Xcode aquí, y si no tienes una Mac, quizás pueda hacer esto con
+
+15
+00:00:58,970 --> 00:01:04,920
+Android, no estoy totalmente seguro. Vas a Xcode, Open Developer Tool y luego
+
+16
+00:01:04,920 --> 00:01:11,644
+Simulador, y luego puede cambiar el hardware del dispositivo de hardware iOS 10, y
+
+17
+00:01:11,644 --> 00:01:14,118
+entonces es posible que tengas que descargar algunas de estas cosas primero, así que tengo
+
+18
+00:01:14,118 --> 00:01:16,167
+Se abre en un iPhone 7 Plus.
+
+19
+00:01:16,167 --> 00:01:22,350
+Ahora lo siguiente es que, como nuestros dos últimos, no puede ejecutar el acceso a sus usuarios.
+
+20
+00:01:22,350 --> 00:01:27,460
+webcam, a su micrófono y ahora no puede acceder a su geolocalización a menos que
+
+21
+00:01:27,460 --> 00:01:31,500
+estás en un origen seguro Y eso no ha sido un problema para nosotros hasta ahora, porque
+
+22
+00:01:31,500 --> 00:01:36,590
+Lo que hemos estado haciendo es que hicimos nuestra instalación de npm aquí, que instalará precisamente eso
+
+23
+00:01:36,590 --> 00:01:42,220
+BrowserSyncs, y hará un inicio npm para nosotros. Ahora eso nos dará un localhost.
+
+24
+00:01:42,220 --> 00:01:48,120
+que es un origen seguro, pero porque quiero abrirlo en un dispositivo diferente,
+
+25
+00:01:48,120 --> 00:01:54,160
+nos va a dar una dirección IP externa o una dirección IP interna, lo siento.
+
+26
+00:01:54,160 --> 00:02:00,945
+Dirá https://192.168.1.107, y esa es la dirección que debemos visitar en
+
+27
+00:02:00,945 --> 00:02:06,706
+nuestros dispositivos Ahora BrowserSync se envía con lo que se llama un certificado autofirmado,
+
+28
+00:02:06,706 --> 00:02:11,590
+lo que le permite tener https en su computadora. Todavía va a tirar esto
+
+29
+00:02:11,590 --> 00:02:16,570
+advertencia realmente aterradora, pero eso es porque es un certificado autofirmado, y
+
+30
+00:02:16,570 --> 00:02:21,080
+no confia en eso Así que tienes que ir a Avanzado, y tienes que proceder a la
+
+31
+00:02:21,080 --> 00:02:24,476
+localhost para que funcione, todavía nos va a tachar,
+
+32
+00:02:24,476 --> 00:02:28,690
+pero eso es estándar para que funcione en su computadora local.
+
+33
+00:02:28,690 --> 00:02:33,620
+Entonces, lo que queremos hacer es copiar este https aquí, abre tu Safari en
+
+34
+00:02:33,620 --> 00:02:38,560
+Tu simulador aquí y visita ese sitio web. Ahora te va a gritar
+
+35
+00:02:38,560 --> 00:02:42,280
+que esto no es de confianza ... no se puede verificar la identidad. Quieres hacer click en
+
+36
+00:02:42,280 --> 00:02:48,210
+continúa allí, y luego lo servirá en un origen seguro,
+
+37
+00:02:48,210 --> 00:02:51,930
+y luego vamos a nuestro índice-TERMINADO para ver dónde llegamos. Ahora
+
+38
+00:02:51,930 --> 00:02:55,980
+le preguntará: "¿Puede acceder a su ubicación?" Tu dices,
+
+39
+00:02:55,980 --> 00:03:00,160
+"Sí", quiero tener acceso a esa ubicación, pregúntame una segunda vez,
+
+40
+00:03:00,160 --> 00:03:02,550
+Ah, y allá vamos, así que qué pasa.
+
+41
+00:03:02,550 --> 00:03:07,490
+Aquí es que he ido a mi simulador aquí.
+
+42
+00:03:07,490 --> 00:03:13,670
+Usted va a Depurar, Ubicación y puede seleccionar un número de excursiones diferentes,
+
+43
+00:03:13,670 --> 00:03:18,360
+así que esto es simular a alguien corriendo, dando un paseo en bicicleta en el Campus de Apple,
+
+44
+00:03:18,360 --> 00:03:23,993
+Caminando por ahí, supongo, o un camino de autopista. Y va a simular la actualización.
+
+45
+00:03:23,993 --> 00:03:29,290
+La ubicación, así como la velocidad real. Es por eso que necesitamos usar este iOS
+
+46
+00:03:29,290 --> 00:03:33,387
+Simulador aquí, así es como funciona eso, pero queremos volver.
+
+47
+00:03:33,387 --> 00:03:36,950
+a nuestro índice-START.
+
+48
+00:03:36,950 --> 00:03:43,380
+Otra cosa que podrías querer hacer es abrir Safari, y la belleza de Safari
+
+49
+00:03:43,380 --> 00:03:49,200
+Es que puedes tomar Safari, puedes ir a Desarrollar. Usted puede encontrar, como, este es el
+
+50
+00:03:49,200 --> 00:03:53,750
+teléfono que estoy usando en este momento, pero también puedes tener tu simulador,
+
+51
+00:03:53,750 --> 00:04:00,279
+y puedes ver, puedes abrir Dev Tools para lo que sea que esté abierto actualmente
+
+52
+00:04:00,279 --> 00:04:03,300
+en su teléfono o en el simulador que es muy bueno. Así que eso va a ser
+
+53
+00:04:03,300 --> 00:04:07,056
+Es útil tener esa ventana de consola abierta para nosotros por si acaso.
+
+54
+00:04:07,056 --> 00:04:09,276
+Necesitamos ver si tenemos algún error ahora, entonces
+
+55
+00:04:09,276 --> 00:04:13,800
+Volvamos a nuestras etiquetas de script aquí, y comencemos a codificar esto. primero
+
+56
+00:04:13,800 --> 00:04:19,680
+Lo que hay que hacer es seleccionar la flecha, que es esta aquí,
+
+57
+00:04:19,680 --> 00:04:25,190
+y los kilómetros por hora que estamos ejecutando, así que vaya a nuestra etiqueta de script aquí
+
+58
+00:04:25,190 --> 00:04:29,330
+y diremos que la flecha constante es igual a document.querySelector. ('flecha').
+
+59
+00:04:31,600 --> 00:04:34,929
+Haz lo mismo con la velocidad. Ahora que tenemos eso,
+
+60
+00:04:34,929 --> 00:04:40,680
+Necesitamos escuchar la posición del usuario.
+
+61
+00:04:40,680 --> 00:04:46,480
+así que accedemos a eso en navigator.geolocation., y ahora hay
+
+62
+00:04:46,480 --> 00:04:52,350
+aquí hay dos que son watchPosition, y hay getCurrentPosition.
+
+63
+00:04:52,350 --> 00:04:55,306
+Queremos watchPosition porque getCurrentPosition solo nos dará la
+
+64
+00:04:55,306 --> 00:05:00,067
+uno, y watchPosition va a verlo con el tiempo, y va a
+
+65
+00:05:00,067 --> 00:05:03,974
+Danos los datos con la frecuencia que la necesitemos. La persona no se mueve demasiado,
+
+66
+00:05:03,974 --> 00:05:07,687
+Nos va a dar actualizaciones menos frecuentes. Si la persona está volando por la
+
+67
+00:05:07,687 --> 00:05:11,528
+carretera, nos va a dar actualizaciones mucho más frecuentes, por lo que
+
+68
+00:05:11,528 --> 00:05:16,220
+tenemos esos datos que vienen aquí, y se va a ejecutar una función, y vamos a
+
+69
+00:05:16,220 --> 00:05:20,110
+Solo consola.log los datos para ver lo que tenemos. Entonces dale a eso un salvamento,
+
+70
+00:05:20,110 --> 00:05:24,860
+va a preguntar la ubicación del usuario, y luego voy a abrir mi Safari Dev
+
+71
+00:05:24,860 --> 00:05:29,266
+Herramientas aquí, y aquí vamos a ver esto. Estos son datos que están transmitiendo, y esto
+
+72
+00:05:29,266 --> 00:05:34,940
+Nos está dando esta geoposición, voy a ir subiendo el tamaño hasta aquí.
+
+73
+00:05:34,940 --> 00:05:37,800
+Dentro de eso, tenemos una marca de tiempo de cuándo sucedió eso
+
+74
+00:05:37,800 --> 00:05:40,740
+así como las coordenadas de lo sucedido.
+
+75
+00:05:40,740 --> 00:05:46,820
+Entonces, aquí tenemos precisión, y creo que es la cantidad de medidores que es exacta
+
+76
+00:05:46,820 --> 00:05:52,120
+a. Tenemos rumbo, esto es realmente bueno, por lo que es el número de grados
+
+77
+00:05:52,120 --> 00:05:57,130
+en relación con el norte que somos, y luego tenemos la latitud y longitud para
+
+78
+00:05:57,130 --> 00:06:00,340
+donde estén, podrías poner eso en un mapa si lo deseas, y luego acelerar,
+
+79
+00:06:00,340 --> 00:06:05,717
+y eso está llegando a kilómetros por hora. Así que si eres un bicho raro de la
+
+80
+00:06:05,717 --> 00:06:10,283
+Estados que usan millas, tienes que hacer los cálculos, pero nosotros, el resto
+
+81
+00:06:10,283 --> 00:06:12,663
+Del mundo, utilizaremos kilómetros.
+
+82
+00:06:12,663 --> 00:06:19,170
+Ahora tenemos estos datos aquí, y lo que simplemente tenemos que hacer ahora es que podemos actualizarlos.
+
+83
+00:06:19,170 --> 00:06:29,368
+por eso decimos que speed.textContent es igual a data.coords.speed. Ahora cuando refresquemos
+
+84
+00:06:29,368 --> 00:06:33,430
+ese imbécil, ve que estamos viendo esto automáticamente, y si tú también quisieras,
+
+85
+00:06:33,430 --> 00:06:41,010
+podría colocarlo en un Math.round, y eso le daría 34.
+
+86
+00:06:41,010 --> 00:06:44,948
+Encuentro que no cambia muy a menudo, por lo que no está seguro de si está funcionando o no,
+
+87
+00:06:44,948 --> 00:06:50,180
+así que me gusta mantener los lugares decimales allí solo para que podamos ver exactamente cómo
+
+88
+00:06:50,180 --> 00:06:52,310
+rápido están cambiando. Eso es bueno.
+
+89
+00:06:52,310 --> 00:06:59,250
+Ahora, lo que tenemos que hacer es girar esta brújula aquí, que es nuestra flecha,
+
+90
+00:06:59,250 --> 00:07:04,600
+Dependiendo de donde estemos, y simplemente tomamos la flecha, y aplicamos la
+
+91
+00:07:04,600 --> 00:07:10,070
+style.transform, y esto es solo una transformación CSS, y eso va a rotar
+
+92
+00:07:10,070 --> 00:07:15,940
+y normalmente ser, como, 20 grados, vamos a intentarlo. Así que ya ves lo que pasó,
+
+93
+00:07:15,940 --> 00:07:19,738
+que lo giró 20 grados, pero no queremos girarlo 20 grados,
+
+94
+00:07:19,738 --> 00:07:24,048
+quiero rotarlo, los data.coords.heading,
+
+95
+00:07:24,048 --> 00:07:26,675
+y ese es el número de grados relativos del norte,
+
+96
+00:07:26,675 --> 00:07:30,750
+y ya está en la base 360, por lo que no tienes que hacer ningún cálculo al respecto.
+
+97
+00:07:30,750 --> 00:07:35,359
+Dale un ahorro, y ahora ves que esto está girando ligeramente dependiendo
+
+98
+00:07:35,359 --> 00:07:38,746
+en donde la persona actualmente está en su jog,
+
+99
+00:07:38,746 --> 00:07:41,435
+y simplemente se inclinará a medida que avanzamos.
+
+100
+00:07:41,435 --> 00:07:44,860
+Lo último que tenemos que hacer aquí es si alguien ... Esto aquí se llama el
+
+101
+00:07:44,860 --> 00:07:49,610
+devolución de llamada exitosa, así que cuando alguien te da acceso exitosamente a este,
+
+102
+00:07:49,610 --> 00:07:53,910
+correrá, pero qué pasa si dicen, "No." Entonces, lo que tenemos que hacer es ejecutar un nuevo
+
+103
+00:07:53,910 --> 00:08:00,908
+Funciona aquí, que es nuestro error, y solo tendremos console.log o console.err que
+
+104
+00:08:00,908 --> 00:08:08,330
+mensaje de error, y luego tal vez, como, alertar al usuario, "Oye, tienes que permitir que eso
+
+105
+00:08:08,330 --> 00:08:13,480
+sucede !!! "o lo que sea, y luego tienes que mostrar las instrucciones al usuario
+
+106
+00:08:13,480 --> 00:08:17,406
+sobre cómo volver a habilitarlo si lo han bloqueado.
+
+107
+00:08:17,406 --> 00:08:19,710
+Dale a eso un guardado, BrowserSync.
+
+108
+00:08:19,710 --> 00:08:23,690
+Podemos cambiarlo, cambiar nuestra ubicación, vamos a correr.
+
+109
+00:08:23,690 --> 00:08:28,090
+Vamos mucho más lento, y hay muchos más giros en algo así,
+
+110
+00:08:28,090 --> 00:08:32,290
+así que eso es muy bueno Puedes mirar la latitud y longitud dentro de este
+
+111
+00:08:32,290 --> 00:08:37,890
+data.coords si lo desea, tal vez si desea intentar hacer un mapa de Google, pero este es un
+
+112
+00:08:37,890 --> 00:08:41,688
+series libres de marcos, así que no hay mucho que podamos hacer con la latitud y
+
+113
+00:08:41,688 --> 00:08:44,285
+longitud. Espero que lo disfruten, y nos vemos mañana.
+
+114
+00:08:44,285 --> 00:08:47,200
+♪ [música] ♪
+

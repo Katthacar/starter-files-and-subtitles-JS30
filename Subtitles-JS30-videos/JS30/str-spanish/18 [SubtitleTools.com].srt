@@ -1,0 +1,588 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,102 --> 00:00:04,200
+♪ [música] ♪
+
+3
+00:00:07,230 --> 00:00:10,371
+Hoy vamos a resolver un problema con el que realmente me encuentro.
+
+4
+00:00:10,390 --> 00:00:16,840
+con bastante frecuencia, y eso es lo que quiero sumar el número total de minutos,
+
+5
+00:00:16,840 --> 00:00:22,470
+y segundos, y horas que son mis videos reales. Así que lo que suelo hacer es
+
+6
+00:00:22,470 --> 00:00:26,810
+exportar todos mis videos y los subiré a Youtube o lo que sea mi anfitrión y
+
+7
+00:00:26,810 --> 00:00:30,530
+Me darán una marca de tiempo aquí, 5 minutos y 23 segundos.
+
+8
+00:00:30,530 --> 00:00:35,380
+Y voy, "Uh eh. Necesito sumar eso todos juntos", ¿verdad?
+
+9
+00:00:35,380 --> 00:00:40,830
+Y es solo en HTML. Entonces, lo que he hecho, es una especie de replicación de lo que Youtube
+
+10
+00:00:40,830 --> 00:00:45,330
+en general me da Tienen como un elemento de lista o un div, o algo así.
+
+11
+00:00:45,330 --> 00:00:49,650
+Y va a haber algún tipo de nodo dom que sea como un tramo con un
+
+12
+00:00:49,650 --> 00:00:55,120
+clase de tiempo y dentro de eso dirá 2 minutos y 34 segundos o generalmente con
+
+13
+00:00:55,120 --> 00:01:00,200
+Youtube tienen un atributo de tiempo de datos que es una cadena que contiene los minutos
+
+14
+00:01:00,200 --> 00:01:04,410
+Y los segundos de ello. Así que lo que quería hacer es averiguar
+
+15
+00:01:04,410 --> 00:01:09,640
+¿Cómo saco estos de la dom, los convierto a números, los convierto en
+
+16
+00:01:09,640 --> 00:01:13,280
+minutos y segundos, súmalo todo, calcula cuántas horas,
+
+17
+00:01:13,280 --> 00:01:18,020
+minutos y segundos hay totalmente, entonces finalmente console.log esos reales
+
+18
+00:01:18,020 --> 00:01:24,630
+valores. Así que vamos a usar Reducir en este y te mostraré
+
+19
+00:01:24,630 --> 00:01:28,870
+cómo hacerlo primero con el mapa y reducir, y luego veremos cómo acabas de
+
+20
+00:01:28,870 --> 00:01:33,360
+Hazlo en una sola reducción. Así que vamos a nuestra etiqueta de script aquí y estoy
+
+21
+00:01:33,360 --> 00:01:36,360
+Sólo voy a abrir esto. No hay mucho que ver para este.
+
+22
+00:01:36,360 --> 00:01:41,780
+Es un poco feo, pero estamos realmente preocupados por estos atributos de tiempo de datos
+
+23
+00:01:41,780 --> 00:01:45,580
+aquí. Entonces, lo primero que queremos hacer es seleccionar todos esos nodos.
+
+24
+00:01:45,580 --> 00:01:50,350
+Así que vamos a decir que los nodos de tiempo constante son iguales a document.queryselectorall.
+
+25
+00:01:50,350 --> 00:01:54,450
+Vamos a ver no solo un elemento de la lista porque no sabes si es
+
+26
+00:01:54,450 --> 00:01:59,240
+sólo va a ser un elemento de la lista. Queremos decir cualquier cosa con un atributo de tiempo de datos en
+
+27
+00:01:59,240 --> 00:02:06,320
+eso. Ahora vamos a la consola de registro de esos nodos de tiempo. Está bien, tenemos un montón de
+
+28
+00:02:06,320 --> 00:02:08,640
+lista de artículos Ahora lo que quiero hacer es girar
+
+29
+00:02:08,640 --> 00:02:17,830
+esto desde una lista de nodos a una matriz de cadenas de tiempo reales. Digamos
+
+30
+00:02:17,830 --> 00:02:26,640
+segundos es igual a timenodes.map y para cada uno, vamos a tomar el nodo y
+
+31
+00:02:26,640 --> 00:02:32,025
+vamos a volver al node.dataset.time. Así que mira lo que está pasando
+
+32
+00:02:32,025 --> 00:02:38,680
+para ventilar aquí. Timenodes.map no es una función. Así que el mapa no es una función del tiempo.
+
+33
+00:02:38,680 --> 00:02:44,400
+nodos ¿Porqué es eso? Pensé que era una matriz. Vamos a verlo de nuevo.
+
+34
+00:02:44,400 --> 00:02:50,780
+Los nodos del tiempo se parecen a una matriz, caminan como una matriz, pero no lo es.
+
+35
+00:02:50,780 --> 00:02:54,280
+Es un nodeless y si abres el tipo de producto que no tenemos.
+
+36
+00:02:54,280 --> 00:02:58,010
+Lo tenemos para cada uno que podríamos usar, pero no está tan limpio. Entonces, ¿qué queremos hacer?
+
+37
+00:02:58,010 --> 00:03:01,450
+es convertir esta ventosa de un nodeless en una matriz.
+
+38
+00:03:01,450 --> 00:03:06,470
+Y hay dos maneras. Podrías propagarlo en una nueva matriz o puedes correr
+
+39
+00:03:06,470 --> 00:03:13,930
+array.from alrededor de toda la cosa. Y ahora, cuando lo pasamos,
+
+40
+00:03:13,930 --> 00:03:19,940
+deberíamos tener nuestra variable segundos, que ahora va a ser una matriz de todos los
+
+41
+00:03:19,940 --> 00:03:25,250
+veces. Bueno. Entonces, lo que hice allí es que tomé los nodos de tiempo y los asigné, lo que significa
+
+42
+00:03:25,250 --> 00:03:30,180
+Lo hice desde una matriz de elementos de lista y en una matriz de cadenas.
+
+43
+00:03:30,180 --> 00:03:35,460
+Bueno. Ahora lo que quiero hacer es convertir eso en
+
+44
+00:03:35,460 --> 00:03:43,200
+solo segundos, de acuerdo? Así que vamos a mapearlo en eso y eso va a
+
+45
+00:03:43,200 --> 00:03:50,220
+Danos el código de tiempo. Y a partir de eso vamos a dividirlo porque si tenemos un
+
+46
+00:03:50,220 --> 00:03:54,860
+cadena como esta, quiero dividir eso en minutos y segundos.
+
+47
+00:03:54,860 --> 00:04:00,700
+Déjame mostrarte un ejemplo aquí, ¿verdad? Podría decir algo como string.split
+
+48
+00:04:00,700 --> 00:04:04,580
+y lo partimos sobre el colon y eso nos dará,
+
+49
+00:04:04,580 --> 00:04:07,580
+Lo primero serán los minutos. Lo segundo será el
+
+50
+00:04:07,580 --> 00:04:11,050
+segundos. Entonces, lo que podemos hacer es usar la reestructuración de ES6 allí.
+
+51
+00:04:11,050 --> 00:04:22,720
+que dicen const, mins, secs es igual a timecode.split. Entonces lo dividiré en
+
+52
+00:04:22,720 --> 00:04:26,260
+ese. Bueno. A ver a dónde nos lleva eso. Queremos el registro de la consola,
+
+53
+00:04:26,260 --> 00:04:32,332
+El min, y los secs. Y ves que tenemos un 5, 43, 2, está bien.
+
+54
+00:04:32,332 --> 00:04:36,310
+Estamos bien. Los tenemos en sus propias variables sin embargo son
+
+55
+00:04:36,310 --> 00:04:41,210
+Negro, y lo que me dice es que son cuerdas. Y si queremos hacer cualquier tipo.
+
+56
+00:04:41,210 --> 00:04:45,170
+de matemáticas porque lo que vamos a hacer aquí es que vamos a devolver el
+
+57
+00:04:45,170 --> 00:04:52,880
+Minutos más los minutos por sesenta, más los segundos. Y si echamos un vistazo a nuestra
+
+58
+00:04:52,880 --> 00:04:57,480
+La matriz de segundos aquí, verá que estos son mucho más grandes de lo que deberían ser.
+
+59
+00:04:57,480 --> 00:05:01,780
+Cero, cuatro, siete. Eso no es un número. Y eso es porque cuando nos separamos.
+
+60
+00:05:01,780 --> 00:05:08,610
+esa cadena fuera de ella, todavía va a ser una cadena. Así que si tomo algo como un
+
+61
+00:05:08,610 --> 00:05:16,470
+Cadena de seis diez y lo partí, cada uno de los seis y los diez siguen siendo cadenas.
+
+62
+00:05:16,470 --> 00:05:21,350
+Entonces, ¿qué podemos hacer? Podríamos simplemente mapear esa matriz muy rápido y usted podría pasar
+
+63
+00:05:21,350 --> 00:05:26,790
+eso. Parse flotar. Y lo que hará es ejecutar la función de flotador de análisis
+
+64
+00:05:26,790 --> 00:05:31,280
+contra cada elemento en la matriz de resultados. Y eso va a volver a nosotros.
+
+65
+00:05:31,280 --> 00:05:37,390
+una matriz real de números. Así que vamos a dividir entonces enseguida mapear
+
+66
+00:05:37,390 --> 00:05:43,000
+en el flotador de análisis. Y eso es lo mismo que hacer esta función,
+
+67
+00:05:43,000 --> 00:05:50,430
+revuelve y luego regresa Parse float stir pero porque solo estamos ejecutando esto,
+
+68
+00:05:50,430 --> 00:05:54,850
+no tiene sentido ejecutar una función Puedes pasar directamente a la función
+
+69
+00:05:54,850 --> 00:05:59,170
+y llamará a esa función contra todos los elementos de esa matriz.
+
+70
+00:05:59,170 --> 00:06:03,581
+Bueno. Entonces, ¿qué tenemos aquí? Echemos un vistazo a nuestros segundos. Bueno.
+
+71
+00:06:03,581 --> 00:06:07,585
+Tenemos una serie de segundos. El primero es de 343 segundos.
+
+72
+00:06:07,585 --> 00:06:12,530
+El segundo es de 47 segundos. Vamos a revisar eso aquí mismo.
+
+73
+00:06:12,530 --> 00:06:17,960
+El primero es eso. Se ve bien. El cuarto es de 47 segundos.
+
+74
+00:06:17,960 --> 00:06:22,440
+Bueno. Así que todos nuestros números se están sumando. Ahora queremos sumarlos.
+
+75
+00:06:22,440 --> 00:06:26,840
+Entonces, ¿cómo haría eso? Bueno, reducir es una muy buena manera. Así que si el mapa toma en una
+
+76
+00:06:26,840 --> 00:06:32,640
+matriz y exporta una matriz, una reducción tomará una matriz y devolverá
+
+77
+00:06:32,640 --> 00:06:36,530
+todo lo que quieras. Podría ser un número, podría ser una cadena,
+
+78
+00:06:36,530 --> 00:06:40,080
+podría ser un objeto En nuestro caso, vamos a tomar todos estos números y
+
+79
+00:06:40,080 --> 00:06:46,380
+Reducirlos en un gran número. Así que llamaremos .reduce y eso nos dará.
+
+80
+00:06:46,380 --> 00:06:57,228
+Cada uno, lo llamaremos un total en segundos. Y a partir de eso, vamos a volver.
+
+81
+00:06:57,228 --> 00:07:02,648
+El total más los segundos. Y por supuesto podemos hacer eso.
+
+82
+00:07:02,648 --> 00:07:09,070
+Una bonita y pequeña función de flecha ordenada. Simplemente lo hacemos en una línea. Así que por cierto estos
+
+83
+00:07:09,070 --> 00:07:12,980
+Los segundos no son lo mismo que los segundos. Si quisieras cambiarle el nombre a algo
+
+84
+00:07:12,980 --> 00:07:18,700
+como vidseconds solo para que no te confundas, ve por ello.
+
+85
+00:07:18,700 --> 00:07:22,430
+Bueno. Ahora veamos cuáles son nuestras principales variables de segundos en. Bien bueno
+
+86
+00:07:22,430 --> 00:07:27,200
+Tenemos el número total de segundos para cada video que se suman.
+
+87
+00:07:27,200 --> 00:07:30,790
+Bien, estoy bien y feliz con eso. Ahora que tenemos que hacer con esto.
+
+88
+00:07:30,790 --> 00:07:34,760
+La variable de segundos aquí es que necesitamos cortarla en horas, minutos,
+
+89
+00:07:34,760 --> 00:07:38,219
+y segundos. Así que voy a crear una variable que va a ser una especie de
+
+90
+00:07:38,219 --> 00:07:42,140
+Ejecutando el conteo de segundos restantes. Porque estamos empezando a saltar
+
+91
+00:07:42,140 --> 00:07:46,049
+A las horas y minutos y segundos. Así que vamos a decir que queden segundos
+
+92
+00:07:46,049 --> 00:07:54,112
+es igual a segundos. Entonces hacemos nuestras horas, va a ser igual a ...
+
+93
+00:07:54,112 --> 00:08:04,355
+Normalmente hacemos algo como esto segundos divididos por 3600 y lo que eso hará
+
+94
+00:08:04,355 --> 00:08:10,235
+Si lo guardo, mira cuántas horas tenemos. Tenemos 4.9 horas. Pero no nos importa
+
+95
+00:08:10,235 --> 00:08:13,954
+sobre el punto nueve, así que lo que podemos hacer es que podemos simplemente tomar el límite inferior
+
+96
+00:08:13,954 --> 00:08:17,416
+de eso. Sólo nos preocupamos por horas enteras. El punto nueve lo va a hacer.
+
+97
+00:08:17,416 --> 00:08:24,960
+Se convierte en segundos y minutos. Envuélvelo en math.floor y eso nos lo dirá.
+
+98
+00:08:24,960 --> 00:08:33,324
+que tenemos cuatro horas enteras. Ahora segundos a la izquierda es igual a, ¿cómo podemos
+
+99
+00:08:33,324 --> 00:08:37,430
+¿darse cuenta de eso? Era como el punto 9, así que eso significa que hubo como 90 segundos.
+
+100
+00:08:37,430 --> 00:08:43,370
+¿izquierda? No, no es así ... porque las matemáticas están basadas en 100 y los minutos están basados ​​en 60,
+
+101
+00:08:43,370 --> 00:08:48,731
+Entonces, ¿cómo podemos resolver eso? Bueno, lo que podemos hacer es tomar los segundos que nos quedan y
+
+102
+00:08:48,731 --> 00:08:57,084
+usa mod 3600. Ahora que hace mod? Vamos a hacer una pequeña lección de lado.
+
+103
+00:08:57,084 --> 00:09:01,406
+Tengo una caja de Smarties y en esa caja tengo 10 smarties.
+
+104
+00:09:01,406 --> 00:09:06,532
+Ahora tengo cinco hijos, así que voy a dividir eso por cinco.
+
+105
+00:09:06,532 --> 00:09:10,705
+¿Cuántos Smarties tiene cada niño? Dos. Cada niño recibe dos Smarties.
+
+106
+00:09:10,705 --> 00:09:16,689
+Bueno. Pero ¿qué pasa si abro una caja y he aquí que había 11 Smarties?
+
+107
+00:09:16,689 --> 00:09:20,549
+Bueno, solo hay cinco niños, ¿cuántos Smarties recibe cada niño?
+
+108
+00:09:20,549 --> 00:09:24,939
+Dos puntos dos smarties? No hay forma de que vayas a ... ah, por cierto,
+
+109
+00:09:24,939 --> 00:09:30,078
+si no eres canadiense, un Smartie es como un M & amp; M. Es un poco de chocolate.
+
+110
+00:09:30,078 --> 00:09:34,539
+Así que no hay forma de cortar un poco de Smartie.
+
+111
+00:09:34,539 --> 00:09:39,711
+apuntar dos piezas Entonces, lo que solo nos interesa es cuántos Smarties enteros
+
+112
+00:09:39,711 --> 00:09:45,572
+es cada niño va a obtener math.floor Así que cada niño va a tener dos enteros
+
+113
+00:09:45,572 --> 00:09:48,978
+inteligentes, bien, pero ahora lo que queremos saber y eso es lo que hemos hecho aquí
+
+114
+00:09:48,978 --> 00:09:53,182
+pero ahora lo que queremos hacer es averiguar cuántos Smarties quedan para
+
+115
+00:09:53,182 --> 00:09:58,546
+Papá porque puedo comer lo que no se puede distribuir equitativamente entre todos los niños
+
+116
+00:09:58,546 --> 00:10:05,600
+Entonces, lo que tenemos es 11 Smarties mod 5, y eso nos lo devolverá uno.
+
+117
+00:10:05,600 --> 00:10:11,299
+Por que uno Porque lo que hace el mod es que dice, "¿Cuántos quedan después?
+
+118
+00:10:11,299 --> 00:10:15,962
+¿Han sido distribuidos uniformemente? "Así que después de que cada niño recibe dos,
+
+119
+00:10:15,962 --> 00:10:21,836
+va a haber uno dejado Lo mismo si tengo cinco naranjas y las divido.
+
+120
+00:10:21,836 --> 00:10:28,285
+por dos niños Ya quedará uno porque no nos dice,
+
+121
+00:10:28,285 --> 00:10:36,394
+Y hagamos un ejemplo de segundos, si tengo 73 segundos y lo divido por
+
+122
+00:10:36,394 --> 00:10:44,387
+60 segundos, claramente tenemos 1 minuto entero en math.floor nos muestra 1 minuto entero pero
+
+123
+00:10:44,387 --> 00:10:49,776
+¿Qué significa eso dos segundos? Eso no es veinte segundos porque eso es un
+
+124
+00:10:49,776 --> 00:10:59,793
+porcentaje. Entonces, el mod 60 nos dirá que después de dividirlo en 1 minuto entero,
+
+125
+00:10:59,793 --> 00:11:03,371
+Nos quedan 13 segundos. Eso es exactamente lo que estamos haciendo aquí.
+
+126
+00:11:03,371 --> 00:11:08,224
+Después de dividirlo en las horas, nos quedarán muchos segundos.
+
+127
+00:11:08,224 --> 00:11:15,393
+Así que vamos a la consola de los segundos de la izquierda. Segundos, ahí vamos.
+
+128
+00:11:15,393 --> 00:11:22,091
+Así que nos quedan 3538 segundos. Así que podemos seguir adelante y hacer minutos ahora, constantes.
+
+129
+00:11:22,091 --> 00:11:28,009
+es igual, haremos lo mismo math.floor tomar los segundos que quedan y dividiremos
+
+130
+00:11:28,009 --> 00:11:32,580
+eso por 60 porque hay 60 segundos en un minuto, luego actualizamos nuestros segundos restantes
+
+131
+00:11:32,580 --> 00:11:37,688
+variable al igual que hicimos aquí, pero en lugar de eso usamos 60. Y es por eso que utilicé
+
+132
+00:11:37,688 --> 00:11:42,281
+Aquí porque necesitamos reasignar este valor una y otra vez. Horas de registro de la consola
+
+133
+00:11:42,281 --> 00:11:48,809
+y minutos. 4 horas, 58 minutos y luego podemos usar los segundos restantes porque
+
+134
+00:11:48,809 --> 00:11:51,669
+eso es lo que queda al final del día. No hay necesidad de convertirlo.
+
+135
+00:11:51,669 --> 00:11:56,598
+Así que tenemos nuestros segundos a la izquierda. Tan 4 horas, 58 minutos, y 58 segundos.
+
+136
+00:11:56,598 --> 00:12:00,804
+Puedes probar eso. Puedes tomar este que es 404 y cambiarlo a 406.
+
+137
+00:12:00,804 --> 00:12:06,549
+Y si actualiza, le mostrará 4 horas, 59 minutos y 0 segundos restantes.
+
+138
+00:12:06,549 --> 00:12:12,857
+Así es como lo haría. También he hecho esto en el mapa y reducir.
+
+139
+00:12:12,857 --> 00:12:17,334
+Solo para que pueda mostrarle lo que estamos haciendo en cada paso del tiempo, pero si usted
+
+140
+00:12:17,334 --> 00:12:21,518
+Entiendo realmente lo que está sucediendo aquí, todo esto se podría hacer en una sola reducción.
+
+141
+00:12:21,518 --> 00:12:29,208
+Has tomado esta matriz de nodos. Convierte el dataset.time en minutos y
+
+142
+00:12:29,208 --> 00:12:34,215
+segundos. Usted convierte eso, luego en segundos y luego lo convierte en
+
+143
+00:12:34,215 --> 00:12:37,494
+número entero de segundos donde tienen el número, y luego finalmente sumarlo todo
+
+144
+00:12:37,494 --> 00:12:41,521
+juntos. Así que depende de ti si lo haces de una sola vez o si lo haces un poco.
+
+145
+00:12:41,521 --> 00:12:45,411
+Más legible y troceado en partes separadas. Y eso te permite escribir poco.
+
+146
+00:12:45,411 --> 00:12:49,765
+Comentarios sobre cada uno de ellos. Espero que hayas disfrutado eso. Te veo mañana.
+
+147
+00:12:50,527 --> 00:12:53,786
+♪ [música] ♪
+

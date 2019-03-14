@@ -1,0 +1,1225 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:00,309 --> 00:00:03,309
+♪ [music] ♪
+
+3
+00:00:08,200 --> 00:00:10,118
+A couple of videos ago, we looked at this
+
+4
+00:00:10,118 --> 00:00:15,680
+really slick nav that Stripe has on its
+pricing page and when you hover over top
+
+5
+00:00:15,680 --> 00:00:20,310
+of it, of course, it shows the dropdown.
+But the really cool part about it is that
+
+6
+00:00:20,310 --> 00:00:25,880
+the background of the dropdown seems to be
+able to transform itself from the width
+
+7
+00:00:25,880 --> 00:00:30,570
+and the height as well as wherever it is
+on the page. So its x and its y
+
+8
+00:00:30,570 --> 00:00:34,210
+coordinates. And when I first saw that, I
+was like, "How did they do that?
+
+9
+00:00:34,210 --> 00:00:39,950
+That's incredible." And what I found out
+is that the dropdowns themselves like the
+
+10
+00:00:39,950 --> 00:00:45,570
+content, the texture, those are separate
+elements, but there's this sort of like
+
+11
+00:00:45,570 --> 00:00:51,020
+little puppy div that follows each of
+those dropdowns around and will resize
+
+12
+00:00:51,020 --> 00:00:56,550
+itself based on wherever it is on the
+page. So this white thing that you see
+
+13
+00:00:56,550 --> 00:01:01,380
+moving, that's the actual background
+that's just moving itself around and it's
+
+14
+00:01:01,380 --> 00:01:06,100
+just sort of absolutely positioned behind
+those elements. And we did a really simple
+
+15
+00:01:06,100 --> 00:01:10,370
+example like that a couple days ago when
+we hovered over a link,
+
+16
+00:01:10,370 --> 00:01:14,330
+we had a little div that would sort of
+resize itself and go behind where that
+
+17
+00:01:14,330 --> 00:01:18,340
+element is. So today, we're going to step
+it up a little bit and build something
+
+18
+00:01:18,340 --> 00:01:22,450
+like this, which is the proof of concept
+Stripe navigation. It looks a little bit
+
+19
+00:01:22,450 --> 00:01:27,350
+different, but it has the same idea where
+when you hover over top of one of these
+
+20
+00:01:27,350 --> 00:01:31,370
+navigation links, it's going to resize
+itself, it's going to match the width and
+
+21
+00:01:31,370 --> 00:01:35,400
+the height of actual content and animate
+itself wherever it's going to go or
+
+22
+00:01:35,400 --> 00:01:40,510
+transition itself wherever it's going to
+go. Let's jump in to looking at our html
+
+23
+00:01:40,510 --> 00:01:45,720
+real quick. We have a nav element right
+here and you could give that a class of
+
+24
+00:01:45,720 --> 00:01:52,000
+top if you like, then you've got a
+dropdown background. That's what the white
+
+25
+00:01:52,000 --> 00:01:54,920
+is going to follow around. You see this
+little white dip part?
+
+26
+00:01:54,920 --> 00:01:59,700
+That's not three separate divs, that's
+just one and it's going to follow along
+
+27
+00:01:59,700 --> 00:02:02,940
+with the content as we go. So that's what
+you have and then we have a span with a
+
+28
+00:02:02,940 --> 00:02:08,060
+class or arrow, which is going to be that
+little notch that we have there.
+
+29
+00:02:08,060 --> 00:02:12,050
+Okay, good, and you noticed that I put
+this inside of this nav.
+
+30
+00:02:12,050 --> 00:02:15,290
+In the last one, we just put it straight
+in the body so that we didn't have to
+
+31
+00:02:15,290 --> 00:02:19,320
+worry about any, like, margin or padding
+on top of our nav here.
+
+32
+00:02:19,320 --> 00:02:23,570
+But in this one, I want to show you how do
+you actually deal with this if you're
+
+33
+00:02:23,570 --> 00:02:29,960
+trying to get the actual position of an
+element inside of a nav.
+
+34
+00:02:29,960 --> 00:02:34,480
+Because it's not always your job to pick
+the html, sometimes you have a CMS and
+
+35
+00:02:34,480 --> 00:02:38,270
+it's going to generate that html for you
+and I want to make sure that we're not
+
+36
+00:02:38,270 --> 00:02:41,410
+just making this as easy as possible and
+then you go to implement it in your own
+
+37
+00:02:41,410 --> 00:02:44,770
+and you're like, "Oh, this is actually a
+little bit harder than we actually thought
+
+38
+00:02:44,770 --> 00:02:48,460
+it was." So we've put it in here just to
+show you a different way to do it.
+
+39
+00:02:48,460 --> 00:02:53,040
+Then we have unordered class with a class
+of cool. We have our list items.
+
+40
+00:02:53,040 --> 00:02:57,600
+These are our lis. We have three of them.
+We've got our link and then what's called
+
+41
+00:02:57,600 --> 00:03:00,430
+the dropdown, and the dropdown can be any
+element. In this case,
+
+42
+00:03:00,430 --> 00:03:04,210
+it's a div that has some info on me. In
+this case, it's an unordered list that has
+
+43
+00:03:04,210 --> 00:03:08,090
+more list items inside of it. But the
+important thing is that these lis,
+
+44
+00:03:08,090 --> 00:03:13,320
+the top level lis, they will be our
+triggers. They are the things that are
+
+45
+00:03:13,320 --> 00:03:17,160
+going to be hovered on them. And the
+reason why these lis are going to be the
+
+46
+00:03:17,160 --> 00:03:24,310
+things that we hover is because if you
+hover onto this A link and then you try to
+
+47
+00:03:24,310 --> 00:03:27,800
+hover into something inside of it like
+Twitter, Facebook or blog,
+
+48
+00:03:27,800 --> 00:03:32,590
+you're technically hovering off the anchor
+link and then it would trigger the off and
+
+49
+00:03:32,590 --> 00:03:37,120
+it would fade itself out. Here what we're
+doing is even though my mouse is right
+
+50
+00:03:37,120 --> 00:03:42,690
+here, I'm still inside of this parent li,
+then we've got the second one as well as
+
+51
+00:03:42,690 --> 00:03:46,760
+the third one. In terms of CSS, there's
+not a whole lot going on here.
+
+52
+00:03:46,760 --> 00:03:51,090
+Most of this is just so it looks half
+decent. None of it really has anything to
+
+53
+00:03:51,090 --> 00:03:57,580
+do with the positioning on the page other
+than this position relative right here
+
+54
+00:03:57,580 --> 00:04:03,100
+that we have. We are going to be writing
+the CSS, that is important for ourselves.
+
+55
+00:04:03,100 --> 00:04:06,040
+First, we need the triggers and those are
+those three lis. So let's say,
+
+56
+00:04:06,040 --> 00:04:11,800
+"const triggers =
+document.querySelectorAll" and we'll say
+
+57
+00:04:11,800 --> 00:04:16,890
+"cool li." And that's going to be all the
+direct descendants of that cool,
+
+58
+00:04:16,890 --> 00:04:21,130
+that are our list item. Then we also need
+to grab the dropdown background which is
+
+59
+00:04:21,130 --> 00:04:26,790
+that white div. We'll call that
+"background." Make sure that you use only
+
+60
+00:04:26,790 --> 00:04:31,550
+query selector here because we don't need
+a node list. We need just one element.
+
+61
+00:04:31,550 --> 00:04:36,730
+And then we'll also do that for our nav
+which we put a class of top on.
+
+62
+00:04:36,730 --> 00:04:41,690
+Then what we want to do is listen for a
+hover in and a hover out or a mouse enter
+
+63
+00:04:41,690 --> 00:04:45,420
+and a mouse leave on each of those list
+items. So we're going to make two
+
+64
+00:04:45,420 --> 00:04:50,150
+functions here called "handle enter" and
+we're going to make one called "handle
+
+65
+00:04:50,150 --> 00:04:56,330
+leave." Then we'll listen for the mouse
+enter and the mouse leave and trigger each
+
+66
+00:04:56,330 --> 00:05:01,620
+of those functions.
+[silence]
+
+67
+00:05:01,620 --> 00:05:05,790
+I'll handle enter on that one then we'll
+just duplicate it over and we'll listen
+
+68
+00:05:05,790 --> 00:05:10,670
+for the mouse leave event, which is going
+to trigger our handle leave.
+
+69
+00:05:10,670 --> 00:05:14,000
+All right, so we just wrote a bit of code
+there. Let's make sure that these all
+
+70
+00:05:14,000 --> 00:05:22,730
+work. So ENTER and LEAVE. Make sure we
+didn't get anything wrong here.
+
+71
+00:05:22,730 --> 00:05:26,670
+Any syntax errors in our console, no, then
+you go to your console,
+
+72
+00:05:26,670 --> 00:05:29,990
+hover over top of them, good. You should
+be getting ENTER and LEAVE console logs
+
+73
+00:05:29,990 --> 00:05:36,790
+whenever you hover in and out of any of
+those elements. Good. So next what we need
+
+74
+00:05:36,790 --> 00:05:41,570
+to do is we need to break this down into
+two parts. First part is I just want to
+
+75
+00:05:41,570 --> 00:05:47,100
+get the contents of the dropdown showing,
+meaning that if I hover over this last
+
+76
+00:05:47,100 --> 00:05:52,240
+one, this ul here, it should show itself.
+I'll take the opacity off,
+
+77
+00:05:52,240 --> 00:05:56,470
+the display none off. You see, there's the
+content for each of them.
+
+78
+00:05:56,470 --> 00:06:01,330
+I want to show whenever I hover over li, I
+want to find the dropdown inside of it and
+
+79
+00:06:01,330 --> 00:06:06,920
+then display it. And the way that's going
+to work is we're going to be adding and
+
+80
+00:06:06,920 --> 00:06:13,330
+removing classes and then leaning on our
+CSS to actually do that for us.
+
+81
+00:06:13,330 --> 00:06:18,980
+So we'll go into our handle enter function
+here, and we will grab this.
+
+82
+00:06:18,980 --> 00:06:22,650
+What is this? This is the list item. I'm
+going to put the class on the list item
+
+83
+00:06:22,650 --> 00:06:30,810
+.classlist.add and we'll say,
+trigger-enter. And then what we want to do
+
+84
+00:06:30,810 --> 00:06:36,090
+is also add a class of
+trigger-enter-active after 150
+
+85
+00:06:36,090 --> 00:06:40,210
+milliseconds. And this is going to become
+more clear as to why I've done this when
+
+86
+00:06:40,210 --> 00:06:44,220
+we get into the second part, which is
+.follow along div. So I'm going to say set
+
+87
+00:06:44,220 --> 00:06:48,870
+timeout. We are going to... I'm going to
+show a little trick here with arrow
+
+88
+00:06:48,870 --> 00:06:52,060
+functions, I'm going to use a normal
+function here and then I'm going to say,
+
+89
+00:06:52,060 --> 00:07:01,670
+after 150 milliseconds, this.classList.add
+trigger-enter-active.
+
+90
+00:07:01,670 --> 00:07:06,930
+Now this isn't going to work. Why not?
+Cannot read property add of undefined.
+
+91
+00:07:06,930 --> 00:07:15,300
+So it cannot find class list of this and
+why is that? If you console log this,
+
+92
+00:07:15,300 --> 00:07:20,590
+it gives you window and you probably have
+like, "Yeah, Wes, you showed me this in
+
+93
+00:07:20,590 --> 00:07:23,470
+your ES6 course, I understand it now."
+When you enter into a function,
+
+94
+00:07:23,470 --> 00:07:27,240
+the value of this changes. However, if you
+change that into an arrow function,
+
+95
+00:07:27,240 --> 00:07:31,540
+the value of this is inherited from the
+parent function, which is going to be
+
+96
+00:07:31,540 --> 00:07:37,820
+exactly what we want. Good. So we can make
+this into a nice little short one-liner
+
+97
+00:07:37,820 --> 00:07:48,210
+arrow function here. There we go. Does
+this still work? Good, got it.
+
+98
+00:07:48,210 --> 00:07:52,770
+So we've got this.classList.add
+trigger-enter-active. Then we want to go
+
+99
+00:07:52,770 --> 00:07:57,930
+into our CSS, so scroll up and this is why
+I've included the CSS in the file for you
+
+100
+00:07:57,930 --> 00:08:01,930
+here because it's actually a bit long.
+It'd be better suited towards a separate
+
+101
+00:08:01,930 --> 00:08:06,710
+CSS file, and we'll find our dropdown
+which is here, and you'll notice that the
+
+102
+00:08:06,710 --> 00:08:13,000
+way that I show the dropdown is with both
+I hit it with opacity zero and displayed
+
+103
+00:08:13,000 --> 00:08:18,450
+none. And the reason why I've done that is
+because you cannot go from opacity zero to
+
+104
+00:08:18,450 --> 00:08:23,160
+one as well as display none to display
+block. That's a bit of a pain,
+
+105
+00:08:23,160 --> 00:08:28,770
+but what we're going to do is we're sort
+of going to step it where when we have
+
+106
+00:08:28,770 --> 00:08:35,000
+trigger-enter, our dropdown is going to be
+display block, but it's still going to be
+
+107
+00:08:35,000 --> 00:08:40,920
+opacity one. And I'll show you opacity
+one. See, that will just immediately show
+
+108
+00:08:40,920 --> 00:08:46,370
+it, but I want it to sort of transition
+itself in, which is why we have this here.
+
+109
+00:08:46,370 --> 00:08:51,500
+So, what I want to do is not put the
+opacity there but after a second,
+
+110
+00:08:51,500 --> 00:08:56,720
+we're going to have this class of
+trigger-enter-active. So watch this.
+
+111
+00:08:56,720 --> 00:09:01,800
+See how they after 150 milliseconds, we
+get that second one and then when it has a
+
+112
+00:09:01,800 --> 00:09:07,710
+class of trigger-enter-active, because it
+was already shown with the display block
+
+113
+00:09:07,710 --> 00:09:14,800
+just a split second earlier, then we go
+into our opacity and set it to be one.
+
+114
+00:09:14,800 --> 00:09:19,090
+And this is how, if you've ever used
+animations in either react or angular,
+
+115
+00:09:19,090 --> 00:09:23,500
+this is how animations or transitions work
+inside of those frameworks.
+
+116
+00:09:23,500 --> 00:09:27,880
+They just apply two separate classes when
+something enters or leaves and then you
+
+117
+00:09:27,880 --> 00:09:34,050
+can use your CSS just to do that sort of
+staged move there. So now if we give it a
+
+118
+00:09:34,050 --> 00:09:40,560
+save and refresh, it looks like it's not
+showing opacity one, because I need to say
+
+119
+00:09:40,560 --> 00:09:44,780
+.dropdown. Ah, there we go. See how they
+animate themselves in or transition
+
+120
+00:09:44,780 --> 00:09:48,250
+themselves in? And then, of course, on the
+other side of things,
+
+121
+00:09:48,250 --> 00:09:53,370
+we can go into our LEAVE and we simply
+just need to duplicate that one and we
+
+122
+00:09:53,370 --> 00:09:57,890
+will just remove the class of
+trigger-enter and then I'm going to do it
+
+123
+00:09:57,890 --> 00:10:03,310
+all in one shot. I'm not going to animate
+it out. We'll say, "trigger-enter-active."
+
+124
+00:10:03,310 --> 00:10:08,890
+Good. You see these things are nice fading
+in. So that's a lot of JavaScript just to
+
+125
+00:10:08,890 --> 00:10:13,620
+do something that CSS can do out of the
+box, but the next piece and the reason why
+
+126
+00:10:13,620 --> 00:10:17,770
+we need to do this with JavaScript, is
+because the next piece is that we're going
+
+127
+00:10:17,770 --> 00:10:24,520
+to figure out how big is this ul with a
+class of dropdown and then can that little
+
+128
+00:10:24,520 --> 00:10:29,930
+white div go behind it so we get this
+little animation that we have here?
+
+129
+00:10:29,930 --> 00:10:34,800
+So let's go here. The first thing we need
+to do is get that white thing on the page
+
+130
+00:10:34,800 --> 00:10:38,790
+and that white thing is our background.
+It's what we have right here.
+
+131
+00:10:38,790 --> 00:10:44,290
+So we'll say "background.classList.add"
+and it's going to have a class of open and
+
+132
+00:10:44,290 --> 00:10:52,210
+then just duplicate that and remove it on
+our LEAVE. So now we should look at our
+
+133
+00:10:52,210 --> 00:10:57,240
+dropdown background here and then when you
+hover over top of one of them,
+
+134
+00:10:57,240 --> 00:11:04,090
+you should also add a class of open. So if
+we go into our CSS,
+
+135
+00:11:04,090 --> 00:11:10,090
+we see it here. When our dropdown
+background also has a class of open let's
+
+136
+00:11:10,090 --> 00:11:16,510
+say, opacity one. Ah, you see? See that
+the little white guy in the corner is
+
+137
+00:11:16,510 --> 00:11:21,930
+showing itself? Makes sense. So now we
+need to do, which is really the heavy
+
+138
+00:11:21,930 --> 00:11:28,210
+lifting, is to figure out, okay, we have
+this dropdown, just Twitter or Facebook
+
+139
+00:11:28,210 --> 00:11:35,070
+blog course catalog, how wide, how high
+and where on the page do you live so that
+
+140
+00:11:35,070 --> 00:11:39,890
+we can take this white thing and move it
+on over to where that exists.
+
+141
+00:11:39,890 --> 00:11:44,490
+So we're going to go down here below where
+we did all those class lists and first
+
+142
+00:11:44,490 --> 00:11:49,640
+thing that we need to do is figure out
+what that dropdown actually is.
+
+143
+00:11:49,640 --> 00:11:57,200
+So we'll say, "const dropdown =
+this.querySelector." Now we're going to be
+
+144
+00:11:57,200 --> 00:12:01,080
+looking for a dropdown. You might be
+asking yourself, like, "Why didn't we do
+
+145
+00:12:01,080 --> 00:12:04,880
+that up here [[00:012:01]] with our nav?"
+Well, you can't do that here because
+
+146
+00:12:04,880 --> 00:12:07,410
+there'ss three different dropdowns and it
+needs to be dynamic.
+
+147
+00:12:07,410 --> 00:12:12,210
+You need to find the one dropdown that
+exists inside of the thing that got
+
+148
+00:12:12,210 --> 00:12:19,960
+hovered. So if we console.log that
+dropdown, go to our console here.
+
+149
+00:12:19,960 --> 00:12:26,870
+You should now see that we get a different
+dropdown in the console whenever we hover.
+
+150
+00:12:26,870 --> 00:12:32,090
+Good. So we can then take the coordinates
+from that just like we did in the previous
+
+151
+00:12:32,090 --> 00:12:39,900
+one. We'll say, "const dropdownCoords =
+dropdown.getBoundingClientRect" Put those
+
+152
+00:12:39,900 --> 00:12:52,530
+together. Let's just console.log
+dropdownCoords, we're going to save.
+
+153
+00:12:52,530 --> 00:12:58,980
+So you see what's happening here is that
+we get information about where on the page
+
+154
+00:12:58,980 --> 00:13:03,680
+from the bottom, the left, the top, the
+right and the width is that actual item.
+
+155
+00:13:03,680 --> 00:13:08,710
+Now the other thing is that we need to get
+information about where the nav is because
+
+156
+00:13:08,710 --> 00:13:13,230
+you cannot assume that this nav tag is
+always going to be the first thing on the
+
+157
+00:13:13,230 --> 00:13:17,300
+page. You might have an h2 that says
+"hello" and when that happens,
+
+158
+00:13:17,300 --> 00:13:23,020
+you bump everything down. And this
+information, it gives you information
+
+159
+00:13:23,020 --> 00:13:28,880
+relative to where on the page it is,
+absolutely on the page, and it doesn't
+
+160
+00:13:28,880 --> 00:13:32,580
+take these things into account. So what
+we'll need to do is then grab the
+
+161
+00:13:32,580 --> 00:13:41,560
+coordinates for the nav as well. So go
+down, down, down "const navCoords =
+
+162
+00:13:41,560 --> 00:13:47,380
+nav.getBoundingClientRect." We should also
+have the coordinates for the nav and the
+
+163
+00:13:47,380 --> 00:13:50,240
+reason why I do that on every single time,
+something might change,
+
+164
+00:13:50,240 --> 00:13:53,310
+sometimes you have a banner that opens and
+closes. We can't assume that it's always
+
+165
+00:13:53,310 --> 00:13:57,790
+going to be the same on page load as it is
+when you hover. You got these nav coords
+
+166
+00:13:57,790 --> 00:14:02,630
+as well, let's console log those. Good.
+We've got that. And then what we need to
+
+167
+00:14:02,630 --> 00:14:06,740
+do is figure out where are the coords for
+everything, so we're going to put those
+
+168
+00:14:06,740 --> 00:14:12,810
+two coordinates that we just got together
+"const coords =" and then the height is
+
+169
+00:14:12,810 --> 00:14:20,600
+just going to be equal to the
+dropdownCoords.height and the width is
+
+170
+00:14:20,600 --> 00:14:25,080
+also going to be "dropdownCoords.width."
+Let's just stop it there and work with the
+
+171
+00:14:25,080 --> 00:14:29,320
+width and the height before we get any
+further. Now that we have the width and
+
+172
+00:14:29,320 --> 00:14:33,090
+the height here, we can just take our
+background which is that white thing.
+
+173
+00:14:33,090 --> 00:14:38,900
+We can set the style and we'll say,
+".setProperty" and we're going to set the
+
+174
+00:14:38,900 --> 00:14:45,090
+property, the width to be, coords.width
+and we're also going to do that with the
+
+175
+00:14:45,090 --> 00:14:50,550
+height. And that doesn't seem to be
+working, how come? Because you need to
+
+176
+00:14:50,550 --> 00:14:58,570
+give it pixels, so you could just wrap
+these suckers in a template string and add
+
+177
+00:14:58,570 --> 00:15:06,040
+px to the end and that should do it for
+us. Ah, look at this. So when you hover
+
+178
+00:15:06,040 --> 00:15:12,810
+it, it will know how big and how wide that
+actual element is and that's another
+
+179
+00:15:12,810 --> 00:15:17,140
+reason why we do that sort of two stage
+adding trigger-enter and
+
+180
+00:15:17,140 --> 00:15:20,500
+trigger-enter-active so that when you
+enter it, even though it's not shown on
+
+181
+00:15:20,500 --> 00:15:25,250
+the page, it's display block and we're
+able to get these bounding client rects
+
+182
+00:15:25,250 --> 00:15:28,900
+from it. Because otherwise if it was
+hidden, you can't tell the width and the
+
+183
+00:15:28,900 --> 00:15:33,330
+height of a hidden element, so it needs to
+be on the page even if it's visibly not
+
+184
+00:15:33,330 --> 00:15:38,070
+there with opacity. So we've got our width
+and our height and the reason why that is
+
+185
+00:15:38,070 --> 00:15:44,200
+animating itself if we go up to our CSS
+here, you see this dropdown background?
+
+186
+00:15:44,200 --> 00:15:51,520
+I have a transition of the opacity is half
+a second and then everything else is 0.3
+
+187
+00:15:51,520 --> 00:15:56,230
+seconds that translates to 0.2 seconds. So
+if I make that two seconds and make this
+
+188
+00:15:56,230 --> 00:16:02,990
+one three seconds, the width and the
+height will just take two seconds to
+
+189
+00:16:02,990 --> 00:16:07,440
+actually grow, but you want that to be
+nice and short and you can kind of play
+
+190
+00:16:07,440 --> 00:16:12,300
+around with how nicely that goes. Good.
+That's working. And the last piece of the
+
+191
+00:16:12,300 --> 00:16:19,850
+puzzle is actually working with the top
+and the left values. So if we go back down
+
+192
+00:16:19,850 --> 00:16:26,970
+here, let's say the top is going to be
+let's just say "dropdownCoords.top" and
+
+193
+00:16:26,970 --> 00:16:33,450
+the left is going to be the same thing and
+then we are to go down here and set our
+
+194
+00:16:33,450 --> 00:16:38,270
+transform because this is a CSS property.
+It's going to be...normally,
+
+195
+00:16:38,270 --> 00:16:44,680
+it would be a translate and we will give
+it our x and our y, but in our case,
+
+196
+00:16:44,680 --> 00:16:54,770
+it's going to be "coords.left.px,
+coordsTop" then give that a save.
+
+197
+00:16:54,770 --> 00:17:01,000
+Seems to be working, but if I were to go
+up here, again, just do what we did before
+
+198
+00:17:01,000 --> 00:17:09,700
+and maybe put like "h2," say like "cool."
+Now see how everything is messed up?
+
+199
+00:17:09,700 --> 00:17:12,520
+And that's because the coordinates that we
+get are off a little bit because that
+
+200
+00:17:12,520 --> 00:17:16,150
+navigation is pushed down. So you can't
+always assume that everything is going to
+
+201
+00:17:16,150 --> 00:17:23,530
+be anchored to the top of the actual page.
+And that's why we went ahead and grabbed
+
+202
+00:17:23,530 --> 00:17:28,380
+this nav coordinates right here because we
+need to take our dropdown coords and then
+
+203
+00:17:28,380 --> 00:17:35,210
+offset them with the top nav. So if the
+top nav is 30 pixels, we know it's been
+
+204
+00:17:35,210 --> 00:17:41,060
+bumped down 30 pixels, so the value the
+top of this white box needs to be moved up
+
+205
+00:17:41,060 --> 00:17:47,150
+30 pixels and same for the left
+navCoords.left. And those two values are
+
+206
+00:17:47,150 --> 00:17:52,850
+just going to offset them and it's going
+to perfectly put itself...a-ha,
+
+207
+00:17:52,850 --> 00:17:57,010
+buttery smooth you've got it going on.
+This is probably the hardest part.
+
+208
+00:17:57,010 --> 00:18:00,780
+That took me a while to figure out, when
+you have something nested inside of it,
+
+209
+00:18:00,780 --> 00:18:05,640
+these values don't care and you need to do
+the math yourself. That's one that jQuery
+
+210
+00:18:05,640 --> 00:18:09,890
+did really nice for you. If you ever use
+.offset inside of jQuery,
+
+211
+00:18:09,890 --> 00:18:12,850
+you didn't have to worry about it because
+it did all the math behind the scenes for
+
+212
+00:18:12,850 --> 00:18:17,270
+you there. Other than that, working really
+nicely for us, there is one little thing
+
+213
+00:18:17,270 --> 00:18:23,370
+where if you sort of go bananas on it,
+take the nav, the ul, open this up.
+
+214
+00:18:23,370 --> 00:18:26,590
+You see, like why is there
+trigger-enter-active here? And if you,
+
+215
+00:18:26,590 --> 00:18:30,570
+like, really mess with it, like, go really
+quickly, you'll see like okay sometimes
+
+216
+00:18:30,570 --> 00:18:36,070
+you see the content before you actually
+get to it. And then if you mess with it,
+
+217
+00:18:36,070 --> 00:18:41,040
+sometimes you're going to end up with
+active here and what's happening is that
+
+218
+00:18:41,040 --> 00:18:45,250
+it's the set time up here. Immediately
+when we enter, we're going to add a class
+
+219
+00:18:45,250 --> 00:18:49,590
+of trigger-enter and then 150 milliseconds
+later, we're going to enter
+
+220
+00:18:49,590 --> 00:18:56,380
+trigger-enter-active. But sometimes I'm
+already hovering off before this is even
+
+221
+00:18:56,380 --> 00:19:01,000
+added. So there's a bit of problem here
+where you try to remove the active one
+
+222
+00:19:01,000 --> 00:19:05,570
+before it's ever been added, so you run
+the remove and then a little bit later,
+
+223
+00:19:05,570 --> 00:19:10,970
+you actually add it on. That's a bit of a
+pain. So what we want to do is take this
+
+224
+00:19:10,970 --> 00:19:17,470
+function that we're running here, put that
+into its own and we'll say if
+
+225
+00:19:17,470 --> 00:19:30,410
+this.classList contains trigger-enter,
+then we want to add a class of active and
+
+226
+00:19:30,410 --> 00:19:34,090
+then you can see it. You can just go crazy
+with it and you'll see that you're never
+
+227
+00:19:34,090 --> 00:19:38,620
+seeing the content too early because that
+active one is never being added and you
+
+228
+00:19:38,620 --> 00:19:44,830
+never see them on here. Another way that I
+like to write it is it's a little bit
+
+229
+00:19:44,830 --> 00:19:49,460
+shorter where I'm going to take it back to
+what we have here, take that,
+
+230
+00:19:49,460 --> 00:19:54,100
+take the statement out, take this block
+out that we had here, bring it back to
+
+231
+00:19:54,100 --> 00:19:58,360
+that arrow function and what you can do is
+you say, this.classList that contains
+
+232
+00:19:58,360 --> 00:20:04,610
+trigger-enter and this class.add. And
+that's sort of short circuiting this where
+
+233
+00:20:04,610 --> 00:20:11,920
+if this is true, then this will run. If
+this is false, then it doesn't bother
+
+234
+00:20:11,920 --> 00:20:16,010
+checking the second one. So it's a bit of
+a hack there where you take advantage of
+
+235
+00:20:16,010 --> 00:20:21,230
+this Boolean and. But that means that the
+add will never run unless it actually
+
+236
+00:20:21,230 --> 00:20:26,050
+contains trigger enter. It's just like the
+if statement that we have there in things.
+
+237
+00:20:26,050 --> 00:20:31,600
+Oh no, I broke it! Token, we got too many
+tokens. Is it that one?
+
+238
+00:20:31,600 --> 00:20:37,260
+Maybe, yes, there we go,
+working nicely for us. So hopefully,
+
+239
+00:20:37,260 --> 00:20:40,620
+you enjoyed that one. I really liked it. I
+think that the people that work at Stripe
+
+240
+00:20:40,620 --> 00:20:44,460
+they have...if you look into it, if you
+noticed like when just hover into it,
+
+241
+00:20:44,460 --> 00:20:48,700
+they have this, like, really cool sort of
+fold down effect that they have going on
+
+242
+00:20:48,700 --> 00:20:52,680
+and I think that their code is probably
+six or seven times as large as this.
+
+243
+00:20:52,680 --> 00:20:56,930
+But if this is something that you love
+working with, which is coordinates and
+
+244
+00:20:56,930 --> 00:21:00,850
+timing and all of that, I would definitely
+encourage you to try and make that little
+
+245
+00:21:00,850 --> 00:21:06,080
+fold down animation work as well. Thanks
+so much and I will see you tomorrow.
+
+246
+00:21:06,080 --> 00:21:08,080
+♪ [music] ♪

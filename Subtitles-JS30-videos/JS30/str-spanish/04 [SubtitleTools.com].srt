@@ -1,0 +1,1036 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,584 --> 00:00:03,846
+♪ [música] ♪
+
+3
+00:00:07,714 --> 00:00:11,995
+Espero que estés listo para sudar porque hoy no estamos haciendo nada bonito,
+
+4
+00:00:11,995 --> 00:00:16,060
+no estamos tratando con CSS, no estamos tratando con elementos DOM, realmente.
+
+5
+00:00:16,060 --> 00:00:19,862
+Estamos tratando con los fundamentos de JavaScript y eso es trabajar con
+
+6
+00:00:19,862 --> 00:00:24,051
+métodos de matriz. Encontré que cuando me obligué a ser realmente bueno en
+
+7
+00:00:24,051 --> 00:00:29,149
+Filtrar, mapear, ordenar, reducir, todos esos métodos de matriz,
+
+8
+00:00:29,149 --> 00:00:33,612
+Encontré que mi programación de JavaScript ha mejorado mucho. Y esto es realmente lo que
+
+9
+00:00:33,612 --> 00:00:37,529
+Quiero conducir a casa hoy, es solo un montón de ejemplos para ti y
+
+10
+00:00:37,529 --> 00:00:42,206
+realmente te ayuda a trabajar mejor con estos métodos de matriz. A mucha gente le gusta
+
+11
+00:00:42,206 --> 00:00:48,287
+Llamar a estos filtros, mapear, ordenar, reducir. Estos son algo así como la droga de entrada a
+
+12
+00:00:48,287 --> 00:00:53,210
+Programación funcional. Así que lo que tenemos aquí es algunos datos, const inventores y
+
+13
+00:00:53,210 --> 00:00:58,460
+Cada inventor es un objeto. Y luego tengo también una matriz de personas aquí que solo
+
+14
+00:00:58,460 --> 00:01:03,100
+tiene cuerdas. Pero dentro de esa cadena, el apellido, la coma, el espacio,
+
+15
+00:01:03,100 --> 00:01:08,310
+El primer nombre. En primer lugar, vamos a empezar aquí y si crees que puedes hacer
+
+16
+00:01:08,310 --> 00:01:12,480
+propios, por favor pause el video y al menos pruébelos usted mismo.
+
+17
+00:01:12,480 --> 00:01:17,050
+Pero si eres bastante nuevo en estas cosas, entonces quédate conmigo. Así que lo primero que queremos
+
+18
+00:01:17,050 --> 00:01:23,020
+hacer es conseguir personas que nacieron en el 1500s. Así que voy a decir, "const la quince
+
+19
+00:01:23,020 --> 00:01:25,800
+es igual "y tomaremos a los inventores y vamos a filtrarlos.
+
+20
+00:01:25,800 --> 00:01:30,570
+Ahora, la forma en que funciona un filtro es que se le pasa una función y esa función es
+
+21
+00:01:30,570 --> 00:01:35,300
+va a recorrer cada elemento de nuestra matriz, así que Albert, Isaac,
+
+22
+00:01:35,300 --> 00:01:46,111
+Galileo y nos va a dar el inventor. Entonces, lo que hace es tomar la
+
+23
+00:01:46,111 --> 00:01:50,725
+inventores, pasamos por encima y, para cada inventor, podemos decidir si queremos
+
+24
+00:01:50,725 --> 00:01:57,601
+Guárdalo o no. Entonces, ve aquí tendremos la declaración "si". Decimos, si el inventor.
+
+25
+00:01:57,601 --> 00:02:03,870
+punto, y el año punto, así fue como nacieron. Si el año inventor punto es
+
+26
+00:02:03,870 --> 00:02:14,550
+1500 o mayor y el año del punto inventor es menos de 1600, o podemos hacerlo
+
+27
+00:02:14,550 --> 00:02:20,430
+menor o igual a 1599, lo que prefieras, lo que te sea más fácil de leer,
+
+28
+00:02:20,430 --> 00:02:25,200
+Entonces vamos a devolver la verdad. Y volviendo verdad, eso significa que lo guardamos.
+
+29
+00:02:25,200 --> 00:02:30,340
+Y luego no tienes que hacerlo, muchas veces veo otra cosa. La gente tiene otra cosa aquí.
+
+30
+00:02:30,340 --> 00:02:36,147
+y devuelve falso. Si no devuelve nada más que verdadero, o algo así.
+
+31
+00:02:36,147 --> 00:02:41,950
+eso es verdad, simplemente lo tirará a la basura. Así que no hay necesidad de volver.
+
+32
+00:02:41,950 --> 00:02:45,910
+falso aquí Solo regresas verdadero si quieres mantenerlo. Así que echemos un vistazo a
+
+33
+00:02:45,910 --> 00:02:52,424
+Nuestra variable aquí, la consola de puntos de registro quince. Tenemos dos personas. Esto es
+
+34
+00:02:52,424 --> 00:02:56,439
+un poco de dolor Así que les voy a mostrar un pequeño consejo, mesa de consola,
+
+35
+00:02:57,383 --> 00:03:02,300
+ah-ha, muy bonito Así que estas son las personas que nacieron en el 1500 que tenemos
+
+36
+00:03:02,300 --> 00:03:07,910
+aquí. Ahora, esto se puede reducir enormemente. En primer lugar, podemos convertir esto en un
+
+37
+00:03:07,910 --> 00:03:11,180
+función de flecha, así que elimine la función de palabra y luego puede eliminar la
+
+38
+00:03:11,180 --> 00:03:16,200
+paréntesis alrededor del inventor si lo prefiere y haremos que sea una función de flecha.
+
+39
+00:03:16,200 --> 00:03:21,500
+Bien, eso todavía funciona. Y luego, aquí mismo, esto es retorno verdadero o
+
+40
+00:03:21,500 --> 00:03:27,000
+falso retorno. Entonces, lo que realmente podemos hacer es hacerlo todo en línea donde simplemente
+
+41
+00:03:27,000 --> 00:03:35,840
+devuelve estas dos cosas. Así que nos va a dar el inventor y vamos a
+
+42
+00:03:35,840 --> 00:03:40,290
+devuelve los resultados de estas dos cosas que si ambas son verdaderas,
+
+43
+00:03:40,290 --> 00:03:43,530
+Se va a devolver un booleano de verdad. Y si eso te hace un poco
+
+44
+00:03:43,530 --> 00:03:47,220
+incómodo al leer eso, puedes lanzar un par de paréntesis adicionales alrededor de él
+
+45
+00:03:47,220 --> 00:03:52,390
+y borra esto. Lo hemos hecho todo en una línea, todavía funciona igual que nosotros.
+
+46
+00:03:52,390 --> 00:03:57,670
+planificado. Bueno, el siguiente. Danos una serie de nombres y apellidos de los inventores.
+
+47
+00:03:57,670 --> 00:04:02,570
+¿Qué hace el mapa? El mapa toma una matriz, hace algo con esa matriz y luego
+
+48
+00:04:02,570 --> 00:04:08,260
+Devuelve una nueva matriz pero de la misma longitud. Me gusta pensar en el mapa como una especie de
+
+49
+00:04:08,260 --> 00:04:14,860
+como una máquina de fábrica donde toma una materia prima y la estampará de alguna manera y
+
+50
+00:04:14,860 --> 00:04:19,730
+luego echa ese artículo en el otro extremo. Mientras que el filtro, puedes traer 10 cosas
+
+51
+00:04:19,730 --> 00:04:25,090
+y devuelve 2. El mapa siempre devolverá la misma cantidad de elementos que le das.
+
+52
+00:04:25,090 --> 00:04:34,490
+Así que esto es lo que vamos a hacer. Diremos "const los nombres completos es igual a inventores dot
+
+53
+00:04:34,490 --> 00:04:43,600
+mapa "y tenemos nuestro inventor. Y a partir de eso, vamos a devolver el inventor
+
+54
+00:04:43,600 --> 00:04:52,090
+punto primero, porque ese es su primer nombre. Podemos devolver el último inventor y
+
+55
+00:04:52,090 --> 00:04:57,219
+consola de registro con nombres completos. Funciona, pero todavía tenemos un problema con el
+
+56
+00:04:57,219 --> 00:05:02,886
+espacio aquí Por lo tanto, puedes concatenar en un espacio que funcione.
+
+57
+00:05:02,886 --> 00:05:12,080
+O puede devolver una comilla invertida y usar cadenas de plantilla.
+
+58
+00:05:12,080 --> 00:05:18,050
+Trabajando muy bien para nosotros. Pasar. Bueno. A continuación, el género. Ordenar los inventores por
+
+59
+00:05:18,050 --> 00:05:21,980
+Fecha de nacimiento, de mayor a menor. Así que si nunca has usado el género, la forma en que
+
+60
+00:05:21,980 --> 00:05:25,778
+funciona es que obtienes dos artículos y tienes estos dos artículos
+
+61
+00:05:25,778 --> 00:05:30,112
+en tu mano y te piden que ordenes solo esos dos artículos.
+
+62
+00:05:30,112 --> 00:05:34,630
+Entonces, dices, ¿es la persona A mayor que la persona B? Y de ser así,
+
+63
+00:05:34,630 --> 00:05:39,030
+Usted pone a la persona mayor en la parte superior. Y la forma en que lo hacemos es devolviendo uno.
+
+64
+00:05:39,030 --> 00:05:42,940
+y uno negativo. Y eso va a burbujear estos artículos arriba y abajo en el
+
+65
+00:05:42,940 --> 00:05:50,953
+formación. Así que decimos, "const orden es igual a inventores, orden de punto"
+
+66
+00:05:50,953 --> 00:05:56,750
+y tenemos una función que, esa función nos va a dar como la
+
+67
+00:05:56,750 --> 00:06:02,232
+Primera persona y la segunda persona. O a mucha gente le gusta usar
+
+68
+00:06:02,232 --> 00:06:08,240
+A y B, así que lo que prefieras. Así que la primera persona será A,
+
+69
+00:06:08,240 --> 00:06:14,890
+la segunda persona va a ser B. Y luego diremos "if A dot" y necesitamos
+
+70
+00:06:14,890 --> 00:06:21,690
+hágalo en función de su fecha de nacimiento aquí, por lo que "Un año de puntos es mayor que un año de B puntos"
+
+71
+00:06:21,690 --> 00:06:27,970
+luego devolvemos uno, de lo contrario, devuelve uno negativo. Y eso va a
+
+72
+00:06:27,970 --> 00:06:33,010
+mueve a estas personas hacia arriba y hacia abajo en el ... Puedes imaginarte burbujeando y
+
+73
+00:06:33,010 --> 00:06:37,382
+Abajo dentro de la matriz que tenemos. Ahora, echemos un vistazo aquí.
+
+74
+00:06:37,382 --> 00:06:44,727
+Oh, tenemos un error aquí en la línea 39. ¿Qué hicimos? Deberiamos poder
+
+75
+00:06:44,727 --> 00:06:50,984
+función de hechizo a la derecha. Aquí vamos. Y ahora tenemos a las personas más viejas aquí, así como
+
+76
+00:06:50,984 --> 00:06:56,245
+Las personas más jóvenes. Ahora, esto es muy, muy largo. Realmente podríamos reducir eso
+
+77
+00:06:56,245 --> 00:07:04,003
+Al hacer algo como esto, "ordenado es igual a inventores".
+
+78
+00:07:04,003 --> 00:07:09,086
+y tienes A y tienes B. Y a partir de eso, vamos a hacer
+
+79
+00:07:09,086 --> 00:07:12,872
+lo que se llama un ternario. Un ternario. No puedo decir eso correctamente.
+
+80
+00:07:12,872 --> 00:07:19,237
+Operador ternario, lo que sea. Alguien me envió un mensaje después de una charla y me dijo:
+
+81
+00:07:19,237 --> 00:07:24,875
+usted dijo "ternario" mal y ahora estoy consciente de mí mismo cada vez que lo digo.
+
+82
+00:07:24,875 --> 00:07:29,050
+Así que a partir de eso, queremos tener un ternario que es como una taquigrafía "si",
+
+83
+00:07:29,050 --> 00:07:32,620
+con "Un año de puntos es mayor que un año de B puntos" y si eso es cierto,
+
+84
+00:07:32,620 --> 00:07:37,417
+devuelve uno, de lo contrario, devuelve uno negativo. Y eso es exactamente lo mismo que
+
+85
+00:07:37,417 --> 00:07:41,939
+Lo que estábamos haciendo aquí, solo haciéndolo una línea con una función de flecha e implícita
+
+86
+00:07:41,939 --> 00:07:45,963
+Regreso en un operador ternario. Vamos a revisar eso.
+
+87
+00:07:45,963 --> 00:07:47,879
+¿Todavía funciona? Funciona genial.
+
+88
+00:07:47,879 --> 00:07:54,091
+El proximo. ¿Cuántos años vivieron todos los inventores? Entonces, ¿qué hará una reducción
+
+89
+00:07:54,091 --> 00:07:59,900
+es decir, donde, al igual que una clasificación en un mapa, solo tomarán los elementos y los ordenarán o
+
+90
+00:07:59,900 --> 00:08:03,510
+Los convertirán en otra cosa, o los filtrarán.
+
+91
+00:08:03,510 --> 00:08:10,141
+Lo que hará una reducción es permitirte construir algo en cada una.
+
+92
+00:08:10,141 --> 00:08:15,917
+Así que si alguna vez has hecho un código como este donde haces "var total years es igual a cero"
+
+93
+00:08:15,917 --> 00:08:21,375
+y luego sacas el viejo "for" loop ... ¿Cuál es ese? Aquí.
+
+94
+00:08:21,375 --> 00:08:30,020
+Entonces tienes inventores. Y luego haces "total años más iguales inventores dot ...
+
+95
+00:08:30,020 --> 00:08:33,180
+Has hecho esto antes, ¿verdad? Donde tienes una variable antes y luego
+
+96
+00:08:33,180 --> 00:08:36,310
+haces este bucle loco y finalmente, cuando hayas terminado, puedes iniciar la consola
+
+97
+00:08:36,310 --> 00:08:42,430
+Total años, ¿verdad? Una reducción es solo una forma mucho más limpia de hacerlo y tú
+
+98
+00:08:42,430 --> 00:08:46,377
+no tengo que hacer este loco corchete i que he visto un montón de personas que tienen
+
+99
+00:08:46,377 --> 00:08:49,520
+problemas de aprendizaje Así que esto es lo que vamos a hacer, es lo que vamos a decir.
+
+100
+00:08:49,520 --> 00:08:58,022
+"Const total años es igual a los inventores dot reducir". Y la forma de reducir las obras es.
+
+101
+00:08:58,022 --> 00:09:01,873
+Te va a dar una especie de total acumulado,
+
+102
+00:09:01,873 --> 00:09:05,206
+o lo que has devuelto de esta función la última vez.
+
+103
+00:09:05,206 --> 00:09:09,509
+Así que vamos a llamar a eso total. Y entonces también te va a dar.
+
+104
+00:09:09,509 --> 00:09:14,860
+el inventor. Y a partir de eso ... necesito envolverlos entre paréntesis.
+
+105
+00:09:14,860 --> 00:09:19,390
+Tienes una función de flecha aquí. Y a partir de eso, vamos a devolver el total.
+
+106
+00:09:19,390 --> 00:09:23,310
+que es lo que el total fue la última vez. De nuevo, todas estas funciones,
+
+107
+00:09:23,310 --> 00:09:29,080
+reducen, clasifican, filtran, simplemente recorren cada uno de ellos. Y luego vamos a
+
+108
+00:09:29,080 --> 00:09:32,970
+Devuelve el número de años que vivió ese inventor. Así que vamos a decir
+
+109
+00:09:32,970 --> 00:09:43,040
+"inventor dot pasado menos inventor dot año".
+
+110
+00:09:43,040 --> 00:09:50,470
+Ahora vamos a intentarlo. No va a funcionar totalmente para nosotros, "registro de consola, años totales"
+
+111
+00:09:50,470 --> 00:09:54,405
+¿Y tenemos este "objeto, objeto 7" como qué? ¿Qué está pasando aquí?
+
+112
+00:09:54,405 --> 00:09:59,020
+Y el problema es que, la primera vez, no tenemos un total y es
+
+113
+00:09:59,020 --> 00:10:05,950
+igual a indefinido. Entonces, lo que tenemos que hacer es simplemente hacer que este cero y eso será entonces
+
+114
+00:10:05,950 --> 00:10:12,150
+Permítanos sumarlo, 523 años. ¿Como estas? Tal vez necesito ir a tomar algo?
+
+115
+00:10:12,150 --> 00:10:16,680
+¿Conseguir una bebida deportiva, algo así? Tenemos otro que viene aquí,
+
+116
+00:10:16,680 --> 00:10:25,840
+Géneros inventores por años vividos. Bien, entonces "const más antiguo es igual a inventores dot". Ahora
+
+117
+00:10:25,840 --> 00:10:31,880
+los vamos a ordenar y vamos a obtener A y B. Y antes de hacer el
+
+118
+00:10:31,880 --> 00:10:37,050
+devolviendo uno o uno negativo, vamos a crear una variable para que podamos usar eso
+
+119
+00:10:37,050 --> 00:10:41,010
+en nuestras declaraciones "si". Así que es como, "const last guy, ¿cuántos años ha vivido A?
+
+120
+00:10:41,010 --> 00:10:51,370
+punto pasado menos A punto año "y luego diremos," el siguiente tipo es igual a B punto año ".
+
+121
+00:10:51,370 --> 00:10:59,510
+Entonces a partir de eso, vamos a decir "si el último jugador es mayor que el siguiente", somos
+
+122
+00:10:59,510 --> 00:11:05,360
+va a volver uno negativo. Y luego, vamos a
+
+123
+00:11:05,360 --> 00:11:10,100
+devuelve uno Ahora, eso parece un poco largo. Realmente podemos limpiar eso y nosotros
+
+124
+00:11:10,100 --> 00:11:16,670
+Simplemente podemos decir "retorno", podemos usar nuestro operador ternario. Vuelve el siguiente chico si eso
+
+125
+00:11:16,670 --> 00:11:20,750
+es cierto, uno negativo. De lo contrario, si eso es falso, devuelva uno.
+
+126
+00:11:20,750 --> 00:11:25,180
+Y eso es exactamente lo mismo que hacer esta declaración "si". Simplemente lo hacemos en uno
+
+127
+00:11:25,180 --> 00:11:31,030
+cayó de golpe. Vamos a la consola de registro la más antigua, la consola de la tabla de puntos, hermosa.
+
+128
+00:11:31,030 --> 00:11:35,640
+Este chico vivió un montón de años. Este chico no vivió tanto.
+
+129
+00:11:35,640 --> 00:11:41,640
+Luciendo bien. A continuación, crea una lista de bulevares en París que contengan "de"
+
+130
+00:11:41,640 --> 00:11:45,640
+En cualquier parte del nombre, de acuerdo. Tengo este enlace aquí y este que vamos a
+
+131
+00:11:45,640 --> 00:11:50,800
+Tengo que hacerlo desde la consola, solo lo voy a abrir. Ahora tenemos todos
+
+132
+00:11:50,800 --> 00:11:58,150
+estos bulevares aquí y necesito primero sacar los elementos DOM de la página.
+
+133
+00:11:58,150 --> 00:12:03,440
+Entonces, ¿cómo haríamos eso? Bueno, podríamos decir, "selector de consulta de punto de documento" pero nosotros
+
+134
+00:12:03,440 --> 00:12:10,370
+No sé qué seleccionar. Entonces, lo que tenemos que hacer es sacar nuestras herramientas div,
+
+135
+00:12:10,370 --> 00:12:15,160
+inspecciona lo que contenga esto. A ver, ¿qué contiene todo esto?
+
+136
+00:12:15,160 --> 00:12:20,100
+Ahí vamos, "mw-category", "const category = document.querySelector dot
+
+137
+00:12:20,100 --> 00:12:31,665
+Categoría mw. Así que vamos a ver lo que tenemos aquí. Ahí vamos, categoría es igual a
+
+138
+00:12:31,665 --> 00:12:35,664
+que div y luego queremos encontrar los enlaces dentro de ella, así que voy a hacer
+
+139
+00:12:35,664 --> 00:12:41,830
+otro, "const links es igual a", podemos decir, "categoría punto consulta todo".
+
+140
+00:12:41,830 --> 00:12:45,750
+Nuevamente, puede llamar al selector de consultas en cualquier elemento DOM existente.
+
+141
+00:12:45,750 --> 00:12:50,000
+No siempre tiene que ser documento. Podría mirar dentro de un elemento existente.
+
+142
+00:12:50,000 --> 00:12:53,440
+Y es realmente por eso que estoy haciendo esto en dos pasos. Podría haber dicho
+
+143
+00:12:53,440 --> 00:12:57,250
+"mw-category A" y encontré todos los enlaces, pero realmente quería mostrarte que
+
+144
+00:12:57,250 --> 00:13:02,350
+puede llamar al selector de consultas en contra de cualquier elemento DOM existente para buscar dentro de
+
+145
+00:13:02,350 --> 00:13:06,630
+ese elemento DOM Así que va a buscar enlaces dentro de eso.
+
+146
+00:13:06,630 --> 00:13:12,160
+Oh, vamos a ver lo que tenemos. Enlaces, ah-ha, así que esta es una lista de enlaces.
+
+147
+00:13:12,160 --> 00:13:16,270
+Es cada enlace en la página real. Ahora, lo que quiero hacer es primero,
+
+148
+00:13:16,270 --> 00:13:21,280
+vamos a convertir esa lista de enlaces en una lista de nombres y luego vamos a
+
+149
+00:13:21,280 --> 00:13:25,280
+filtre esa lista de nombres solo para los que incluyen los nombres reales.
+
+150
+00:13:25,280 --> 00:13:31,470
+Así que digamos "const de equals links dot map". Recuerda, si tomamos en la lista de
+
+151
+00:13:31,470 --> 00:13:37,680
+Enlaza y echa una lista de nombres. Así que vamos a mapear sobre cada uno.
+
+152
+00:13:37,680 --> 00:13:40,680
+Va a ser un enlace. Y a partir de ese enlace, vamos a devolver sólo el
+
+153
+00:13:40,680 --> 00:13:47,716
+"enlazar el contenido del texto del punto" y eso nos dará lo que sea el texto dentro de ese
+
+154
+00:13:47,716 --> 00:13:50,875
+en lugar de todo el enlace porque realmente no nos importa el resto de la
+
+155
+00:13:50,875 --> 00:13:56,273
+enlazar. Así que veamos que tenemos aquí. Uh oh, enlaces que mapearon ... oh, perfecto.
+
+156
+00:13:56,273 --> 00:13:59,180
+Me alegro de que nos encontramos con esto. ¿Qué te dije en nuestro video anterior?
+
+157
+00:13:59,180 --> 00:14:04,760
+El selector de consultas volverá a ti, una lista de nodos. Y si abrimos el prototipo,
+
+158
+00:14:04,760 --> 00:14:10,340
+no ve el mapa, ve para cada uno pero no un mapa. Entonces, lo que tenemos que hacer es cambiar
+
+159
+00:14:10,340 --> 00:14:16,772
+esto en una matriz. Porque en este momento, es sólo una lista de nodos. Hay dos maneras
+
+160
+00:14:16,772 --> 00:14:20,740
+podríamos hacer eso Primero, puedes envolver todo en "array dot from" y
+
+161
+00:14:20,740 --> 00:14:25,510
+Eso lo convertirá en una matriz. O también puede ver gente haciendo algo como
+
+162
+00:14:25,510 --> 00:14:33,540
+Esto, donde creas una matriz y luego usas la extensión ES6 para propagar cada
+
+163
+00:14:33,540 --> 00:14:38,400
+único elemento en la matriz. Y de nuevo, si has visto los videos ES6 que he hecho en
+
+164
+00:14:38,400 --> 00:14:42,540
+spreads, sabrás que un spread quitará cada elemento de algo
+
+165
+00:14:42,540 --> 00:14:46,272
+iniciable, que en este caso va a ser una lista de nodos, y ponerla en el
+
+166
+00:14:46,272 --> 00:14:51,167
+conteniendo matriz. Así que creo que la matriz de puntos es probablemente un poco más
+
+167
+00:14:51,167 --> 00:14:56,207
+legible en este caso, así que vamos con eso. Y luego necesitamos, esto debería
+
+168
+00:14:56,207 --> 00:15:00,824
+trabajo. Ahora, no puedo ejecutar este código aquí porque he usado const. Esa es una de las
+
+169
+00:15:00,824 --> 00:15:04,436
+Dolores de usar const. Te va a decir que ya ha sido declarado.
+
+170
+00:15:04,436 --> 00:15:10,830
+Así que solo necesito actualizar y volver a ejecutar este código aquí. Así que, ahí vamos,
+
+171
+00:15:10,830 --> 00:15:17,380
+de es una gran variedad de cada uno. Entonces voy a filtrar inmediatamente
+
+172
+00:15:17,380 --> 00:15:21,490
+ese. Entonces, lo que me gusta hacer con el mío es ponerlos en su propia línea.
+
+173
+00:15:21,490 --> 00:15:25,260
+El primero, lo mapearemos y luego el segundo, lo filtraremos.
+
+174
+00:15:25,260 --> 00:15:32,630
+Así que digamos "nombre de la calle" y vamos a regresar solo si el nombre de la calle
+
+175
+00:15:32,630 --> 00:15:40,660
+incluye de. Así que vamos a ver lo que tenemos aquí. Tengo que refrescarme de nuevo y volver a ejecutar
+
+176
+00:15:40,660 --> 00:15:47,480
+esta. Ahora "de es igual a" ahí vamos. Ahora tenemos un subconjunto de esa matriz inicial
+
+177
+00:15:47,480 --> 00:15:53,690
+Sólo contiene de dentro de él. Lo siento por mis usuarios franceses, tenemos francés canadiense.
+
+178
+00:15:53,690 --> 00:16:00,190
+que no es lo mismo que el francés europeo. A continuación, tenemos un ejercicio de tipo que
+
+179
+00:16:00,190 --> 00:16:05,670
+Está ordenando a las personas alfabéticamente por apellido. Así que no estamos tratando con el
+
+180
+00:16:05,670 --> 00:16:09,080
+los inventores más. Hemos terminado con esos chicos. Ahora realmente queremos trabajar con
+
+181
+00:16:09,080 --> 00:16:15,320
+gente. De acuerdo, bueno, no hay ningún objeto bonito aquí, entonces, ¿cómo haría eso?
+
+182
+00:16:15,320 --> 00:16:23,730
+Bueno, vamos al ejercicio de ordenación y voy a decir "const alpha
+
+183
+00:16:23,730 --> 00:16:32,860
+es igual a. "Tomas a la gente y la vamos a ordenar, así que salta ordenada. Y vamos a
+
+184
+00:16:32,860 --> 00:16:39,010
+Simplemente use una función regular aquí y repasamos el ES6 y vamos a obtener el
+
+185
+00:16:39,010 --> 00:16:46,000
+el último y el siguiente. Ahora, no me importa devolver nada
+
+186
+00:16:46,000 --> 00:16:51,280
+todavía. Lo que quiero hacer es solo consolar el último para ver que
+
+187
+00:16:51,280 --> 00:16:56,230
+estamos trabajando con Recibimos un error porque escribí este código aquí que
+
+188
+00:16:56,230 --> 00:17:01,130
+esto estaba destinado a ejecutarse en la página de Wikipedia y aquí, estás tratando de llamar a consulta
+
+189
+00:17:01,130 --> 00:17:05,430
+Selector contra categoría y si esta categoría vuelve con nada,
+
+190
+00:17:05,430 --> 00:17:09,970
+No puedes llamar al selector de consultas contra él. Así que tienes que comprobar si no estabas seguro.
+
+191
+00:17:09,970 --> 00:17:13,940
+Eso estaba llegando. Vamos a comentar eso por ahora y tratar con lo que
+
+192
+00:17:13,940 --> 00:17:17,080
+tenemos aqui Aquí vamos. Así que mira, Beck, Glenn, Blake,
+
+193
+00:17:17,080 --> 00:17:23,530
+William. Así que ese es el último, pero lo que realmente quiero es convertir eso en un
+
+194
+00:17:23,530 --> 00:17:28,540
+Nombre y apellido. Entonces, lo que podemos hacer es decir "constas partes iguales".
+
+195
+00:17:28,540 --> 00:17:35,452
+último punto dividido. "¿Y en qué vamos a dividirlo? Bueno, una cosa
+
+196
+00:17:35,452 --> 00:17:39,140
+Que todas estas personas tienen en común es que hay una coma y un espacio.
+
+197
+00:17:39,140 --> 00:17:42,740
+Así que vamos a dividirlo en una coma y un espacio y veamos las partes que
+
+198
+00:17:42,740 --> 00:17:46,110
+tenemos aqui. Bien, ahora obtenemos una matriz donde la primera
+
+199
+00:17:46,110 --> 00:17:49,200
+cosa es el apellido y la segunda cosa es el primer nombre.
+
+200
+00:17:49,200 --> 00:17:53,340
+Es un poco hacia atrás. Entonces, lo que podríamos hacer es desestructurar eso.
+
+201
+00:17:53,340 --> 00:17:57,720
+Lo que significa que en lugar de devolver la matriz, podemos colocarlos en sus propias variables
+
+202
+00:17:57,720 --> 00:18:03,240
+inmediatamente. Así que decimos "corchete la última coma primero" y ahora si solo consolamos
+
+203
+00:18:03,240 --> 00:18:08,120
+registra la última y la primera como sus propias variables separadas. Aquí vamos,
+
+204
+00:18:08,120 --> 00:18:15,520
+Blake William, Nick Beddoes, todo lo que tenemos allí, genial. Ahora tenemos algunos apropiados
+
+205
+00:18:15,520 --> 00:18:21,890
+variables con las que trabajar y luego tenemos que hacer eso con la siguiente también.
+
+206
+00:18:21,890 --> 00:18:26,290
+Y probablemente queremos cambiar el nombre de estos tontos por algo que obviamente nosotros
+
+207
+00:18:26,290 --> 00:18:32,820
+no se puede usar el último y el primero. Así que digamos "A last A first" y este va a ser
+
+208
+00:18:32,820 --> 00:18:39,840
+"B último y B primero". Esa va a ser la última persona y la siguiente persona.
+
+209
+00:18:39,840 --> 00:18:45,560
+Mira lo que tenemos aquí, bien. Entonces hacemos nuestro apellido simple aquí,
+
+210
+00:18:45,560 --> 00:18:51,510
+eso es realmente todo lo que nos preocupa en este caso, por lo que el turno A es mayor que
+
+211
+00:18:51,510 --> 00:18:56,860
+B último si eso es verdad, devuelva uno negativo, de lo contrario, devuelva uno y vamos a consola de registro
+
+212
+00:18:56,860 --> 00:19:06,540
+alfa. Allá vamos, ordenados. Blake William es el primero, el último es Beck Glenn.
+
+213
+00:19:06,540 --> 00:19:13,130
+Estamos al revés, necesitamos devolver uno y uno negativo en su lugar.
+
+214
+00:19:13,130 --> 00:19:17,810
+Allá vamos, Beck es el primero, Blake es el último. Así que ya ves que estamos
+
+215
+00:19:17,810 --> 00:19:21,520
+En realidad no utilizo estos datos que acabamos de hacer aquí. Eso es simplemente para el
+
+216
+00:19:21,520 --> 00:19:26,300
+conversión, pero todavía estamos aferrados a la cadena original que estábamos trabajando
+
+217
+00:19:26,300 --> 00:19:30,260
+con. Si desea devolver una matriz o un objeto o algo así,
+
+218
+00:19:30,260 --> 00:19:34,400
+Ahí es donde entraría Reducir. Mi editor me grita aquí y es
+
+219
+00:19:34,400 --> 00:19:38,290
+diciéndome que no debería usar una función adecuada, debería usar una flecha
+
+220
+00:19:38,290 --> 00:19:43,600
+Funcionar en este caso. Todavía funciona bien.
+
+221
+00:19:43,600 --> 00:19:48,900
+Una más, aquí vamos. Éste va a reducir, resumir las instancias de estos.
+
+222
+00:19:48,900 --> 00:19:54,210
+Así que tenemos coche, coche, camión, camión, bicicleta, caminar, coche. Y quiero contar al final.
+
+223
+00:19:54,210 --> 00:19:59,120
+del día en orden con lo que trabajar. Reducir es como una de las más flexibles.
+
+224
+00:19:59,120 --> 00:20:03,630
+Métodos que tenemos en una matriz y esta es solo otra forma en que podemos usarla.
+
+225
+00:20:03,630 --> 00:20:15,650
+Así que digamos, "el transporte constante es igual al punto de datos reducido" y luego vamos a
+
+226
+00:20:15,650 --> 00:20:23,610
+démonos una función que va a ser el objeto u "obj" y luego el,
+
+227
+00:20:23,610 --> 00:20:27,720
+Llamémoslo artículo, que será automóvil, automóvil, camión, camión,
+
+228
+00:20:27,720 --> 00:20:34,670
+Bicicleta y todos y cada uno. Ahora necesitamos comenzar con un objeto que tiene que tener
+
+229
+00:20:34,670 --> 00:20:42,900
+algo como un coche cero, camina cero, camión cero. Y si me estas mirando
+
+230
+00:20:42,900 --> 00:20:45,770
+como, "Wes, no sé cuáles son todos los posibles".
+
+231
+00:20:45,770 --> 00:20:48,030
+No puedes simplemente codificar el código duro allí y eso es correcto.
+
+232
+00:20:48,030 --> 00:20:53,100
+Vamos a comenzar con un objeto en blanco aquí y lo haremos por
+
+233
+00:20:53,100 --> 00:20:56,860
+Nosotros mismos. Así que volvamos y vamos a comenzar con el objeto en blanco.
+
+234
+00:20:56,860 --> 00:21:00,640
+ese es el comienzo y vamos a recorrer cada uno de ellos.
+
+235
+00:21:00,640 --> 00:21:09,250
+Entonces, lo que haremos es solo un elemento de registro de la consola y luego devolver el objeto.
+
+236
+00:21:09,250 --> 00:21:12,480
+Y solo quiero mostrarles aquí que vamos a obtener todos los elementos a medida que
+
+237
+00:21:12,480 --> 00:21:18,620
+bucle sobre él, bueno. Automóvil, coche, camión, bicicleta, paseo, etc., etc.
+
+238
+00:21:18,620 --> 00:21:31,120
+Ahora, lo que queremos hacer es decir si, hagamos esto, digamos "objeto de
+
+239
+00:21:31,120 --> 00:21:38,210
+artículo más, más "y, por lo general, qué haría si tuviéramos una caminata cero aquí,
+
+240
+00:21:38,210 --> 00:21:42,830
+simplemente lo incrementaría a uno. Pero porque no sabemos si existe esa clave.
+
+241
+00:21:42,830 --> 00:21:50,860
+por el momento, lo que tenemos que hacer es verificarlo al final aquí. Así que tenemos que decir "si
+
+242
+00:21:50,860 --> 00:22:02,730
+no hay ningún elemento de objeto, entonces el elemento de objeto es igual a cero ". Eso solo establecerá el
+
+243
+00:22:02,730 --> 00:22:07,110
+inicial de uno a cero y luego podemos avanzar e incrementarlo y devolver ese
+
+244
+00:22:07,110 --> 00:22:15,430
+objeto. Así que si eso ha funcionado aquí, consolar el registro de puntos de transporte.
+
+245
+00:22:15,430 --> 00:22:20,410
+Aquí vamos, objeto, bicicleta, carro, camioneta, furgoneta. Así que ya ves lo que son ...
+
+246
+00:22:20,410 --> 00:22:24,910
+Me parece que reducir es probablemente el más difícil de conseguir para las personas. Pero empezamos con una
+
+247
+00:22:24,910 --> 00:22:29,010
+objeto en blanco y luego cada vez que hacemos un bucle sobre uno, primero vemos si hay incluso un
+
+248
+00:22:29,010 --> 00:22:35,530
+¿Hay cero para trabajar en absoluto? Si no, necesitamos hacer una entrada para eso y luego
+
+249
+00:22:35,530 --> 00:22:39,070
+seguir adelante e incrementarlo. Y eso es muy bueno porque entonces puedo venir
+
+250
+00:22:39,070 --> 00:22:46,180
+Aquí y agregue como un pogo stick y cuando refresco la clave de pogo stick va a
+
+251
+00:22:46,180 --> 00:22:50,953
+Ser añadido, no hay problema para eso. En realidad, probablemente no debería poner espacios ahí.
+
+252
+00:22:50,953 --> 00:22:55,740
+Pero no hay problema, agrégalo. Así que sé que eso fue mucho.
+
+253
+00:22:55,740 --> 00:22:58,409
+Es solo mucho ejercicio. Tenemos otro
+
+254
+00:22:58,409 --> 00:23:01,344
+viene en un par de días que vamos a repasar también.
+
+255
+00:23:01,344 --> 00:23:06,160
+Pero si te sientes en absoluto, un poco tembloroso en esto, solo sigue repitiéndolos y
+
+256
+00:23:06,160 --> 00:23:11,147
+hasta que entiendas totalmente lo que está pasando, y te sientas cómodo
+
+257
+00:23:11,147 --> 00:23:16,764
+acaba de entrar en un sitio web y hacer uno de estos bulevares o París o tomar algo
+
+258
+00:23:16,764 --> 00:23:21,341
+Datos y poder filtrar y ordenar sobre ellos. Nos vemos en la siguiente.
+
+259
+00:23:21,341 --> 00:23:24,633
+♪ [música] ♪
+

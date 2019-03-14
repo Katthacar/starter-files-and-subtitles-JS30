@@ -1,0 +1,428 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,421 --> 00:00:03,400
+♪ [música] ♪
+
+3
+00:00:06,978 --> 00:00:10,130
+Hoy vamos a tomar dos de las cosas que hemos hecho en el pasado,
+
+4
+00:00:10,130 --> 00:00:14,630
+que está trabajando con eventos de movimiento del mouse y segundo con video HTML5.
+
+5
+00:00:14,630 --> 00:00:17,320
+Y vamos a ponerlos juntos. Vamos a juntarlos en
+
+6
+00:00:17,320 --> 00:00:21,950
+nuestro colab. Así que esta es solo una idea que he tenido. No se si es totalmente una
+
+7
+00:00:21,950 --> 00:00:25,030
+Gran idea, pero sé que fue algo divertido de construir independientemente.
+
+8
+00:00:25,030 --> 00:00:27,990
+Así que dirijo un sitio de videos donde tengo a mucha gente viendo mis videos,
+
+9
+00:00:27,990 --> 00:00:31,720
+y siempre estoy pensando en cómo hacer que la experiencia de visualización sea un poco
+
+10
+00:00:31,720 --> 00:00:35,180
+¿mejor? Así que una cosa que a muchos desarrolladores les gusta hacer es que no ven
+
+11
+00:00:35,180 --> 00:00:40,310
+sus videos en 1x. Los miran a 1.5 o 2 o les gusta acelerar.
+
+12
+00:00:40,310 --> 00:00:43,160
+sube y disminuye la velocidad dependiendo de qué tan rápido o aburrido,
+
+13
+00:00:43,160 --> 00:00:46,200
+o lo emocionante que es algo, o lo importante que es algo.
+
+14
+00:00:46,200 --> 00:00:51,860
+Entonces, lo que realmente quería hacer aquí es simplemente experimentar con un nuevo tipo de entrada que
+
+15
+00:00:51,860 --> 00:00:55,910
+controlaría qué tan rápido va el video para que en lugar de tener que hacer clic en
+
+16
+00:00:55,910 --> 00:00:59,970
+y hacia abajo para cambiar la velocidad del video, puedes hacer una especie de DJ aquí ya que estás
+
+17
+00:00:59,970 --> 00:01:04,810
+Viendo el video para ir más lento y más rápido. Así que solo voy a darte una
+
+18
+00:01:04,810 --> 00:01:11,615
+pequeño juego aquí. Y luego la ardilla, y luego la ralentizas.
+
+19
+00:01:20,869 --> 00:01:26,157
+Así que ya ves lo que está pasando aquí. Mientras muevo esto, como el más bajo va a ser 0.5x
+
+20
+00:01:26,157 --> 00:01:31,657
+o 0.4x y luego el más alto será hasta 4x.
+
+21
+00:01:31,657 --> 00:01:35,020
+Y luego a medida que pasas el mouse sobre o cuando haces clic y arrastras, dependiendo de cómo te gusta hacer
+
+22
+00:01:35,020 --> 00:01:40,110
+su interfaz, solo estamos cambiando ese valor y luego indirectamente va a ser
+
+23
+00:01:40,110 --> 00:01:44,270
+Configuración de la tasa de reproducción en este video. Así que vamos a saltar en él.
+
+24
+00:01:44,270 --> 00:01:49,200
+Esto no será demasiado grande. Hasta ahora lo que he hecho es seleccionar la velocidad.
+
+25
+00:01:49,200 --> 00:01:55,280
+que es la barra blanca completa aquí, y luego tenemos la barra de velocidad que va
+
+26
+00:01:55,280 --> 00:02:00,270
+para ser el campo aquí o con ese tipo de degradado azul aquí.
+
+27
+00:02:00,270 --> 00:02:05,010
+Y luego acabo de tener un video que se reproduce aquí y se transmite desde Dropbox.
+
+28
+00:02:05,010 --> 00:02:07,860
+Esperemos que no se cierre. Así que es mucho ancho de banda.
+
+29
+00:02:07,860 --> 00:02:12,670
+Y luego tengo un elemento de video aquí, que es el video real aquí.
+
+30
+00:02:12,670 --> 00:02:18,230
+Ahora, voy a quitar el juego automático solo por nuestra salud mental, para que no se mantenga.
+
+31
+00:02:18,230 --> 00:02:22,710
+jugando cada vez sola. Y luego lo que pasa es cuando pasas el ratón por encima de esto.
+
+32
+00:02:22,710 --> 00:02:27,000
+Vamos a cambiar la velocidad de reproducción, así como a actualizar la imagen visual real.
+
+33
+00:02:27,000 --> 00:02:31,130
+Así que primero hagamos la parte visual y luego trabajaremos en la velocidad de reproducción.
+
+34
+00:02:31,130 --> 00:02:36,590
+Lo primero que debemos hacer es tomar nuestra velocidad y agregar el detector de eventos del mouse
+
+35
+00:02:36,590 --> 00:02:42,340
+movimiento. Y cuando eso suceda tendremos una función. Estoy usando una función adecuada aquí
+
+36
+00:02:42,340 --> 00:02:46,840
+Porque necesito que esto sea igual al video en sí. Lo siento, no el video,
+
+37
+00:02:46,840 --> 00:02:52,060
+la barra de velocidad real cuando pasas el mouse sobre ella. Y fresco. En esa funcion pasa
+
+38
+00:02:52,060 --> 00:02:57,280
+usted mismo el evento y luego vamos a la consola de registro del evento cuando pasa el mouse sobre
+
+39
+00:02:57,280 --> 00:03:02,100
+eso. Abra esa ventosa en su navegador y debería ver este video que hemos visto.
+
+40
+00:03:02,100 --> 00:03:06,990
+Se puso en marcha y lo nuestro. Ahora cuando empiezo a flotar por encima de ella,
+
+41
+00:03:06,990 --> 00:03:11,560
+Ahora verás todos los diferentes eventos que tenemos en marcha.
+
+42
+00:03:11,560 --> 00:03:15,050
+Así que en primer lugar tenemos que llegar a un lugar como este que va a ser cero píxeles y esto
+
+43
+00:03:15,050 --> 00:03:20,120
+va a ser sin embargo alta es. Hablemos, mira, mira, mira, 410,
+
+44
+00:03:20,120 --> 00:03:22,620
+Así que eso va a ser de 410 píxeles. Entonces, ¿cómo conseguimos eso?
+
+45
+00:03:22,620 --> 00:03:26,510
+Diremos que cons y es igual y haremos lo mismo que hicimos en el último video,
+
+46
+00:03:26,510 --> 00:03:31,790
+En la página de puntos y y vamos a tomar el desplazamiento de esto, punto de compensación superior.
+
+47
+00:03:31,790 --> 00:03:35,980
+¿Por qué? Porque no podemos asumir que esta barra estará en la parte superior de la misma.
+
+48
+00:03:35,980 --> 00:03:40,480
+Puede haber relleno, fusión o cualquier cosa u otro elemento intermedio.
+
+49
+00:03:40,480 --> 00:03:44,620
+Así que vamos a la consola y veremos lo que tenemos allí. Aquí vamos.
+
+50
+00:03:44,620 --> 00:03:47,990
+Lo ves en la parte superior, estás obteniendo cero. Todo el camino en la parte inferior que estamos recibiendo
+
+51
+00:03:47,990 --> 00:03:53,520
+Alrededor de 410. Eso nos muestra lo lejos que estamos. Queremos convertir eso en una
+
+52
+00:03:53,520 --> 00:04:00,170
+porcentaje. Así que si esto es un 410 píxeles, si voy a 205 píxeles, por aquí,
+
+53
+00:04:00,170 --> 00:04:09,000
+Eso debería ser el 50%. Digamos que el porcentaje de const es igual a tomemos y divididos
+
+54
+00:04:09,000 --> 00:04:14,260
+por este punto la altura de desplazamiento. Esa es una manera de obtener la altura de la real que nosotros
+
+55
+00:04:14,260 --> 00:04:21,720
+tener ahi Así que vamos a la consola de registro del porcentaje. Aquí vamos. Así que eso es uno.
+
+56
+00:04:21,720 --> 00:04:26,987
+Eso es cero. Y podríamos subirlos para llegar a lo que queremos.
+
+57
+00:04:27,280 --> 00:04:33,250
+Entonces también necesitamos un mínimo y un máximo porque queremos que sea 0.4 y que sea 4,
+
+58
+00:04:33,250 --> 00:04:39,323
+¿Correcto? ¿Entonces cómo hacemos eso? Yo diría que const min es igual a 0.4 y const.
+
+59
+00:04:39,323 --> 00:04:43,400
+Max es igual a, no sé, max es igual a 4x o lo que creas
+
+60
+00:04:43,400 --> 00:04:49,120
+límite superior loco. Entonces lo que hacemos es hacer una variable de altura y estamos
+
+61
+00:04:49,120 --> 00:04:54,300
+vamos a establecer eso en ... el porcentaje en este momento es como 0.99 y queremos activar
+
+62
+00:04:54,300 --> 00:05:00,910
+que en el 99%. Toma nuestra variable porcentual, multiplícala por cien y luego vamos a
+
+63
+00:05:00,910 --> 00:05:12,370
+envolver esa ventosa, pensé, redondo. Y luego agrega el porcentaje al final y la consola.
+
+64
+00:05:12,370 --> 00:05:17,680
+registrar la altura. Mira lo que tenemos aquí. Todo bien. Así que ahora estamos recibiendo
+
+65
+00:05:17,680 --> 00:05:22,860
+un porcentaje completo que estamos buscando en lugar de un punto cero algo
+
+66
+00:05:22,860 --> 00:05:28,070
+lo que sea, y luego tomaremos nuestro bar, que es la barra de velocidad, un bar,
+
+67
+00:05:28,070 --> 00:05:39,000
+ese estilo La altura es igual a la altura. Mira esto. Hasta ahora
+
+68
+00:05:39,000 --> 00:05:43,570
+Lo tenemos en marcha. Se ve bien. Lo siguiente que tenemos que hacer es actualizar ese
+
+69
+00:05:43,570 --> 00:05:50,380
+el número que está dentro de allí, y la forma en que lo hacemos es entonces calcularemos
+
+70
+00:05:50,380 --> 00:05:57,160
+cuál es la velocidad de reproducción Digamos que la tasa de reproducción de const será igual a.
+
+71
+00:05:57,160 --> 00:06:01,630
+Esto va a ser un poco extraño porque no queremos que el mínimo sea
+
+72
+00:06:01,630 --> 00:06:08,129
+Cero y el máximo para ser uno. Esa no es la tasa de reproducción. A una altura del 0%,
+
+73
+00:06:08,129 --> 00:06:14,940
+debe ser 0.4x y en una altura del 100% debe ser 4x. Así que tenemos que hacer una especie de
+
+74
+00:06:14,940 --> 00:06:19,010
+Un poco de matemáticas para obtener los límites inferiores y superiores. Y la forma en que haces eso.
+
+75
+00:06:19,010 --> 00:06:24,780
+es que tomas tu porcentaje y lo multiplicas por el máximo menos el mínimo más el
+
+76
+00:06:24,780 --> 00:06:28,350
+min. Y así es como puedes compensar tu altura. Lo hicimos en un par de
+
+77
+00:06:28,350 --> 00:06:31,600
+Hace videos cuando estábamos haciendo la foto tecnológica en uno cuando
+
+78
+00:06:31,600 --> 00:06:37,320
+necesario para mantener el mouse negativo 50 y más 50, no de 0 a 100. Y eso es solo una buena manera
+
+79
+00:06:37,320 --> 00:06:41,540
+que podemos hacer eso Tenemos esa tasa de reproducción y podemos tomar
+
+80
+00:06:41,540 --> 00:06:48,590
+nuestra barra y establecer el contenido del texto para que sea la tasa de reproducción. Mira aquí.
+
+81
+00:06:50,035 --> 00:06:56,400
+Así que ya ves que es como un número loco. Así que podemos tomar eso y simplemente correr punto dos
+
+82
+00:06:56,400 --> 00:07:02,710
+Fija en él y danos dos decimales. Allá vamos y luego puedes abordar.
+
+83
+00:07:02,710 --> 00:07:08,720
+en tu pequeña xo algo al final. Así que más x o podrías usar una plantilla
+
+84
+00:07:08,720 --> 00:07:16,350
+cadena para que aparezca en. Se ve bastante elegante. Lo último que tenemos que hacer es
+
+85
+00:07:16,350 --> 00:07:20,070
+en realidad para tomar esa tasa de reproducción que tenemos aquí, el registro de la consola,
+
+86
+00:07:20,070 --> 00:07:23,810
+tasa de reproducción. Veamos que tenemos aquí. Tres punto cinco.
+
+87
+00:07:23,810 --> 00:07:29,120
+Tenemos que tomar ese valor y aplicarlo a nuestro video. Así que digamos video punto
+
+88
+00:07:29,120 --> 00:07:34,730
+tasa de reproducción. Y qué tasa de reproducción es, échale un vistazo en nuestra consola aquí,
+
+89
+00:07:34,730 --> 00:07:41,170
+tasa de reproducción de puntos de video. Una es la velocidad normal. Así que dos es igual a
+
+90
+00:07:41,170 --> 00:07:51,240
+Si fuéramos a jugarlo nosotros mismos ... diez. El audio se detiene en algún momento.
+
+91
+00:07:52,700 --> 00:07:58,470
+Cuatro, cero punto dos. El audio se detiene en una cantidad muy lenta también.
+
+92
+00:07:58,470 --> 00:08:06,770
+Como 0.5 es tan bajo como puedes conseguirlo. Suena como que estoy desperdiciado tratando de
+
+93
+00:08:06,770 --> 00:08:12,820
+enseñarte flexbox. Así que la tasa de reproducción de puntos de video es igual a la tasa de reproducción.
+
+94
+00:08:12,820 --> 00:08:16,590
+Y no te preocupes por ese largo porcentaje. Sé que algunas personas están molestas
+
+95
+00:08:16,590 --> 00:08:21,360
+cuando tengas como decimales muy largos pero no habrá problema allí.
+
+96
+00:08:21,360 --> 00:08:35,113
+Ahora vamos a darle una jugada. Se ve bien. Agradable y rápido. Lento. Fantástico.
+
+97
+00:08:35,113 --> 00:08:40,472
+Así que eso fue genial. Lo hicimos allí es que ambos calculamos la altura, así como
+
+98
+00:08:40,472 --> 00:08:45,173
+adjunta la tasa de reproducción. Si no te gusta hacer tanto tu presentación como tu
+
+99
+00:08:45,173 --> 00:08:48,990
+Funcionalidad en una sola función, se podría combinar con dos
+
+100
+00:08:48,990 --> 00:08:52,860
+Las funciones que acaba de llamar desde su evento de movimiento masivo aquí y
+
+101
+00:08:52,860 --> 00:08:58,540
+entonces también podríamos tomar esta función y llamarlo manejar manejar y luego hasta aquí
+
+102
+00:08:58,540 --> 00:09:03,784
+Haremos una función o reemplazaremos esa función. Lo llamaremos un movimiento de palanca.
+
+103
+00:09:04,020 --> 00:09:07,340
+Entonces solo vas a conectar eso al movimiento del mouse, pero quizás también quieras
+
+104
+00:09:07,340 --> 00:09:12,770
+conéctalo al touch move o a cualquier otro evento que desees. Lo tengo.
+
+105
+00:09:12,770 --> 00:09:17,477
+Todavía funciona maravillosamente. Excelente.
+
+106
+00:09:17,477 --> 00:09:19,819
+Así que espero que hayan disfrutado eso y nos veremos mañana.
+
+107
+00:09:20,078 --> 00:09:23,000
+♪ [música] ♪
+

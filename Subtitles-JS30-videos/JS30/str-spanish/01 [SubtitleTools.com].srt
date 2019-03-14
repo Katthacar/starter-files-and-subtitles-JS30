@@ -1,0 +1,904 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,446 --> 00:00:03,520
+♪ [música] ♪
+
+3
+00:00:12,979 --> 00:00:14,948
+En este ejercicio, vamos a hacer esto.
+
+4
+00:00:14,948 --> 00:00:20,360
+Kit de batería de JavaScript muy dulce. No estoy muy seguro de lo que es pero es
+
+5
+00:00:20,360 --> 00:00:23,870
+realmente divertido de jugar y cuando presionas la tecla correspondiente en tu teclado,
+
+6
+00:00:23,870 --> 00:00:26,770
+va a hacer dos cosas En primer lugar, va a reproducir el sonido que es
+
+7
+00:00:26,770 --> 00:00:30,980
+asociado a esa clave y, en segundo lugar, va a hacer esto poco a poco
+
+8
+00:00:30,980 --> 00:00:36,690
+Animación donde aparece el botón hasta ser un poco más grande de lo que queremos.
+
+9
+00:00:36,690 --> 00:00:42,090
+Y luego también, se aplicará ese borde amarillo y ese pequeño fondo allí.
+
+10
+00:00:42,090 --> 00:00:45,290
+Es realmente muy sutil y te mostraré cómo está funcionando aquí.
+
+11
+00:00:45,290 --> 00:00:49,070
+Inspeccionamos en esta patada uno aquí mismo. Usted ve que tenemos esta clave de guión de datos y
+
+12
+00:00:49,070 --> 00:00:53,190
+Lo veremos en solo un segundo, pero cuando lo presiono, ni siquiera puedes verlo agregando
+
+13
+00:00:53,190 --> 00:00:57,140
+porque va muy rápido Pero lo que está haciendo es agregar una clase de
+
+14
+00:00:57,140 --> 00:01:02,807
+jugar a ese elemento que luego pateará en el CSS si abro hoy
+
+15
+00:01:02,807 --> 00:01:07,458
+Ejercicio y veremos estancados en CSS. Usted ve que tenemos clase de juego que es
+
+16
+00:01:07,458 --> 00:01:12,070
+Vamos a ampliarlo por 1.1 en nuestro CSS. Va a cambiar el color del borde.
+
+17
+00:01:12,070 --> 00:01:15,680
+Va a cambiar la sombra trasera. Ahora porque si miramos nuestra llave regular
+
+18
+00:01:15,680 --> 00:01:21,190
+Aquí, ves que tenemos una transición que dura 0.07 segundos,
+
+19
+00:01:21,190 --> 00:01:26,260
+realmente rápido. Y eso va a escalarlo y cambiar el color de fondo detrás.
+
+20
+00:01:26,260 --> 00:01:30,910
+eso. Así que realmente son las dos cosas que tenemos aquí y si te gustaría ordenar
+
+21
+00:01:30,910 --> 00:01:36,200
+Para hacer esto por su cuenta, detenga el video aquí, trate de hacer que esto funcione.
+
+22
+00:01:36,200 --> 00:01:40,010
+De lo contrario, sigamos adelante y echemos un vistazo a lo que estamos trabajando.
+
+23
+00:01:40,010 --> 00:01:43,650
+aquí. Así que tenemos un div con clase de llaves y dentro de eso,
+
+24
+00:01:43,650 --> 00:01:48,250
+tenemos un montón de divs con una clase de clave. Ahora, cada una de estas claves aquí.
+
+25
+00:01:48,250 --> 00:01:52,490
+obviamente tiene como el aplauso, qué sonido va a hacer tan bien como la clave que
+
+26
+00:01:52,490 --> 00:01:57,140
+Deberías golpear en tu teclado. Pero lo importante aquí es que cada clave en
+
+27
+00:01:57,140 --> 00:02:02,510
+su teclado cuando presiona arriba o abajo, cuando presiona arriba o abajo,
+
+28
+00:02:02,510 --> 00:02:07,662
+va a haber algo llamado el código clave que está asociado con esa clave.
+
+29
+00:02:07,662 --> 00:02:11,387
+Ahora, tengo un pequeño sitio web aquí que saqué hace un par de años porque
+
+30
+00:02:11,387 --> 00:02:14,853
+Siempre me encuentro buscándolo y se llama keycode.info y cuando
+
+31
+00:02:14,853 --> 00:02:20,389
+presiona una tecla en tu teclado como escape o espacio o A, va a tener un número
+
+32
+00:02:20,389 --> 00:02:24,686
+asociado con esa tecla específica en su teclado y esta es la más consistente
+
+33
+00:02:25,230 --> 00:02:29,166
+De la forma que encontré en el navegador, cruzé idiomas. No es absolutamente perfecto
+
+34
+00:02:29,166 --> 00:02:35,044
+pero le proporciona la mayor parte del camino para la mayoría de las teclas estándar. Cuando haces clic
+
+35
+00:02:35,044 --> 00:02:40,780
+o cuando llegas a 65 como cuando pulsas y vamos a comprobar si esa fue la A
+
+36
+00:02:40,780 --> 00:02:46,623
+clave, entonces vamos a reproducir el elemento de audio correspondiente que también tiene
+
+37
+00:02:46,623 --> 00:02:50,833
+la clave de datos. Ahora, ¿qué es esta clave de guión de datos? Si nunca has usado un dato.
+
+38
+00:02:50,833 --> 00:02:55,922
+atributos antes, esto no es un estándar. No encontrarás nada en Google,
+
+39
+00:02:55,922 --> 00:03:01,560
+donde quieras. Y, esencialmente, los atributos de datos se produjeron en HTML cuando
+
+40
+00:03:01,560 --> 00:03:05,890
+La gente estaba inventando sus propios atributos. Tenemos cosas como fuente y
+
+41
+00:03:05,890 --> 00:03:10,080
+Clase, y esos son los estándares. Y luego la gente acaba de empezar a hacer sus propios
+
+42
+00:03:10,080 --> 00:03:13,000
+y la gente que hizo HTML era como "whoa, whoa, whoa, chill out,
+
+43
+00:03:13,000 --> 00:03:17,360
+no puedes simplemente comenzar a agregar mierda como para lo que quieras ". Así que se nos ocurrió
+
+44
+00:03:17,360 --> 00:03:21,880
+esta idea de atributos de datos donde, si quieres inventar algo como una clave,
+
+45
+00:03:21,880 --> 00:03:26,250
+tienes que ponerlo detrás de un dato algo Entonces, lo que estoy haciendo aquí es que estoy
+
+46
+00:03:26,250 --> 00:03:34,290
+utilizando atributos de datos para conectar esto, la clave de datos 65 junto con la clave de datos de audio.
+
+47
+00:03:34,290 --> 00:03:37,450
+Para que cuando alguien toque la tecla en su teclado, encontremos el audio.
+
+48
+00:03:37,450 --> 00:03:42,810
+elemento y jugar y vamos a encontrar la clave div y vamos a agregar una
+
+49
+00:03:42,810 --> 00:03:47,010
+clase de juego, así que se animará a sí mismo. Así que vamos a empezar,
+
+50
+00:03:47,010 --> 00:03:50,940
+ir a nuestra etiqueta de script aquí y lo primero que tenemos que hacer es simplemente ser
+
+51
+00:03:50,940 --> 00:03:57,520
+Enfocado en escuchar un evento clave. Ahora, la forma en que lo hacemos es tu primero.
+
+52
+00:03:57,520 --> 00:04:00,850
+Obtén cualquier elemento que estés escuchando y en nuestro caso,
+
+53
+00:04:00,850 --> 00:04:03,950
+Voy a escuchar en la ventana. A veces, es posible que desee escuchar en la
+
+54
+00:04:03,950 --> 00:04:08,440
+entrada o un div o un área de texto o algo así. Y vamos a añadir un evento.
+
+55
+00:04:08,440 --> 00:04:13,860
+oyente. El evento que estamos escuchando aquí se llama clave abajo.
+
+56
+00:04:13,860 --> 00:04:20,850
+Y luego, tenemos una función que nos dará el evento y dentro de eso,
+
+57
+00:04:20,850 --> 00:04:25,060
+no tenemos nada. Y luego voy a deshacerme del resto de estas cosas aquí.
+
+58
+00:04:25,060 --> 00:04:30,830
+Así que vamos a escuchar el evento clave y cuando eso suceda,
+
+59
+00:04:30,830 --> 00:04:34,360
+Vamos a ejecutar esta función que nos dará el evento y solo voy
+
+60
+00:04:34,360 --> 00:04:38,820
+para consolar el registro de ese evento. Abre mi consola, ahora cada vez que presiono uno de estos
+
+61
+00:04:38,820 --> 00:04:43,000
+Teclas en el teclado, verás que tenemos este evento de teclado, eso es E.
+
+62
+00:04:43,000 --> 00:04:48,664
+El evento es solo el objeto lleno de datos que describen lo que sucedió y nos dirá
+
+63
+00:04:48,664 --> 00:04:53,841
+todo tipo de información como qué clave fue en realidad golpeó. Pero lo que estamos
+
+64
+00:04:53,841 --> 00:04:59,431
+preocupado por aquí el código clave, que es el número que está asociado con ese
+
+65
+00:04:59,431 --> 00:05:02,980
+Clave, y eso es esencialmente lo que es todo este sitio web. Cuando alguien pulsa la tecla arriba,
+
+66
+00:05:02,980 --> 00:05:07,490
+Solo vamos a mostrar el número correspondiente que tienes.
+
+67
+00:05:07,490 --> 00:05:13,570
+Así que bajamos aquí, podemos registrar e.keyCode y ver lo que tenemos.
+
+68
+00:05:13,570 --> 00:05:16,870
+Bien, ahora tenemos todos estos diferentes ... Si presionas la barra espaciadora, puedes obtener 32.
+
+69
+00:05:16,870 --> 00:05:21,843
+Si golpeas escapar, obtendrás 27. Ahora lo que tenemos que hacer es decir,
+
+70
+00:05:21,843 --> 00:05:29,386
+"¿hay un elemento de audio en la página que tenga una clave de guión de datos de 65?" Y eran
+
+71
+00:05:29,480 --> 00:05:33,130
+vamos a usar document.querySelector porque solo estamos buscando uno.
+
+72
+00:05:33,130 --> 00:05:36,630
+Si estuviera buscando muchos, diría que el selector de consulta es todo, pero en nuestro caso es
+
+73
+00:05:36,630 --> 00:05:41,190
+solo consulta el selector. Y vamos a escuchar un audio, vamos a tratar de
+
+74
+00:05:41,190 --> 00:05:46,110
+seleccione un elemento de audio pero queremos seleccionarlo donde tenga una clave de datos,
+
+75
+00:05:46,110 --> 00:05:49,450
+Como si no hubiera clase aquí. Y a veces veo a la gente decir como,
+
+76
+00:05:49,450 --> 00:05:56,000
+"class = key-65" y lo dividirán y seleccionarán algo con una clase de clave 65.
+
+77
+00:05:56,000 --> 00:06:00,290
+Eso es un poco desordenado para mí. Prefiero usar su propio atributo de datos aquí.
+
+78
+00:06:00,290 --> 00:06:04,070
+Así que podemos usar un selector de atributos si alguna vez has usado esto en CSS,
+
+79
+00:06:04,070 --> 00:06:09,000
+Funciona igual en JavaScript. Selector de atributos decir algo como esto,
+
+80
+00:06:09,000 --> 00:06:16,260
+"data-key =" y normalmente diría 65, ¿verdad? Pero eso va a ser una variable.
+
+81
+00:06:16,260 --> 00:06:19,200
+Que vive dentro de este evento. Así que lo que voy a hacer es cambiarme
+
+82
+00:06:19,200 --> 00:06:24,820
+estos para respaldar el texto y vamos a utilizar cadenas de plantillas ES6, que es un signo de dólar
+
+83
+00:06:24,820 --> 00:06:32,230
+los corchetes dicen "e.keyCode". Ahora, podemos consolar el audio de registro y ver si tenemos
+
+84
+00:06:32,230 --> 00:06:36,140
+Seleccionó un elemento de audio real. Así que voy a refrescarme, voy a golpear mi A
+
+85
+00:06:36,140 --> 00:06:42,120
+botón. No, recibimos un error, el audio (clave de datos = 65) no es válido
+
+86
+00:06:42,120 --> 00:06:47,720
+selector. ¿Qué hicimos aquí? Creo que necesitamos hacer un conjunto de citas alrededor de este
+
+87
+00:06:47,720 --> 00:06:54,426
+clave actual aquí. A ver si eso funciona para nosotros. Hit A. Ahí vamos.
+
+88
+00:06:54,426 --> 00:07:00,628
+Así que parece que necesitas citas con tu número real aquí. Ahora cuando golpeo
+
+89
+00:07:00,628 --> 00:07:05,380
+la clave, y pulsa S, voy a golpear D. Ves que estamos recibiendo la
+
+90
+00:07:05,380 --> 00:07:10,010
+Elemento de audio correspondiente para esa clave específica. Ahora a veces vamos a
+
+91
+00:07:10,010 --> 00:07:14,680
+golpe, voy por delante y pulso Q. Nos quedamos nulos. ¿Por qué nos quedamos nulos?
+
+92
+00:07:14,680 --> 00:07:19,750
+Eso es porque no hay ningún elemento de audio asociado con 81. Así que de inmediato,
+
+93
+00:07:19,750 --> 00:07:24,140
+Justo allí lo que podemos hacer es decir si no hay audio, si bang audio,
+
+94
+00:07:24,140 --> 00:07:30,900
+Entonces solo vamos a volver. Y eso solo detendría la función de ejecutar
+
+95
+00:07:30,900 --> 00:07:35,920
+en total. Bien, bien, y eso simplemente lo detendría. Ahora lo que podemos hacer ya que nosotros
+
+96
+00:07:35,920 --> 00:07:46,820
+Ten este elemento de audio, podemos reproducirlo. Vamos a intentar eso. S, D, F.
+
+97
+00:07:46,820 --> 00:07:52,390
+Ahora funciona, pero aquí, pulsa F una y otra vez, F, F, F, F.
+
+98
+00:07:52,390 --> 00:07:59,610
+Lo golpeo varias veces, pero en realidad solo se reproduce una vez de vez en cuando.
+
+99
+00:07:59,610 --> 00:08:04,170
+Y eso es porque el sombrero abierto F, juega y toma como dos o tres.
+
+100
+00:08:04,170 --> 00:08:09,430
+segundos para llegar al final. Y si llamas a .play en un elemento de audio.
+
+101
+00:08:09,430 --> 00:08:13,000
+eso ya está jugando, no lo volverá a reproducir porque es como,
+
+102
+00:08:13,000 --> 00:08:17,450
+"oh, ¿por qué haría eso? Claramente ya estoy jugando con eso". Así que lo que nosotros
+
+103
+00:08:17,450 --> 00:08:21,770
+quiero hacer antes de que hagamos eso es una especie de rebobinado hasta el inicio del elemento para
+
+104
+00:08:21,770 --> 00:08:24,570
+que si lo golpeas en sucesión una y otra vez y otra vez,
+
+105
+00:08:24,570 --> 00:08:30,300
+simplemente lo rebobinará al comienzo. Así que digamos "audio.currenTime = 0". Ahora esto
+
+106
+00:08:30,300 --> 00:08:38,310
+Va a rebobinar hasta el principio. Y ahora si solo martillo en F,
+
+107
+00:08:38,310 --> 00:08:43,860
+Usted ve que lo obtenemos una y otra vez, AAAA, SSS, DDD, FFF.
+
+108
+00:08:43,860 --> 00:08:46,880
+Bien, jugando una y otra vez. Voy a probar algunas de las otras teclas en el
+
+109
+00:08:46,880 --> 00:08:50,670
+teclado, no pasa nada porque estamos haciendo esta comprobación si no hay audio
+
+110
+00:08:50,670 --> 00:08:56,100
+elemento. Ahora, lo que también necesitamos hacer es seleccionar la clave correspondiente que está con
+
+111
+00:08:56,100 --> 00:08:59,340
+Es porque queremos añadir esa pequeña animación que tenemos aquí.
+
+112
+00:08:59,340 --> 00:09:04,820
+Así que digamos "const = key" y voy a tomar todo esto y cambiarlo
+
+113
+00:09:04,820 --> 00:09:09,930
+con una tecla de punto. Así que en lugar de seleccionar un elemento de audio con la tecla de guión de datos,
+
+114
+00:09:09,930 --> 00:09:14,560
+Podríamos seleccionar un div o en nuestro caso, algo con la clase de clave pero también
+
+115
+00:09:14,560 --> 00:09:20,740
+la clave del tablero de datos. Ahora, vamos a la parte inferior aquí y la consola registra la clave real
+
+116
+00:09:20,740 --> 00:09:29,170
+elemento. Bien, mira estos son los elementos clave correspondientes que tenemos,
+
+117
+00:09:29,170 --> 00:09:34,440
+¿Y cómo conseguimos que hagan esa pequeña y genial animación? Bien,
+
+118
+00:09:34,440 --> 00:09:39,460
+de nuevo, si volvemos a nuestro estilo. CSS que tenemos aquí, ya ves que ya he
+
+119
+00:09:39,460 --> 00:09:44,790
+diseñó el estilo CSS y la mayoría de esto no importa excepto la única línea que tenemos
+
+120
+00:09:44,790 --> 00:09:51,960
+Aquí eso es transición todos los 0.07 segundos. Y cuando añades una clase de juego a
+
+121
+00:09:51,960 --> 00:09:56,140
+Eso, lo vamos a escalar, vamos a cambiar el color del borde y estamos
+
+122
+00:09:56,140 --> 00:10:02,030
+Va a cambiar el cuadro de color de la sombra. Entonces, lo que podemos hacer es decir,
+
+123
+00:10:02,030 --> 00:10:08,500
+"key.classList.add" y luego diremos "jugando". Si nunca has usado esto,
+
+124
+00:10:08,500 --> 00:10:12,229
+Si solo estás acostumbrado a usar jQuery, eso es lo mismo que decir como
+
+125
+00:10:12,229 --> 00:10:18,179
+"key.addClass (jugando)." Excepto que no estamos usando jQuery aquí, solo estamos usando
+
+126
+00:10:18,179 --> 00:10:21,460
+Vanilla JavaScript, así es como lo haces en Vanilla JavaScript.
+
+127
+00:10:21,460 --> 00:10:26,195
+Llama a .classList y luego agrega. Del mismo modo, también tenemos .remove y nos
+
+128
+00:10:26,195 --> 00:10:31,270
+tener .toggle que le permitirá agregar y eliminar las diferentes clases que
+
+129
+00:10:31,270 --> 00:10:40,150
+usted quiere. Así que veamos cómo funciona S, D, F. ¿Ves cómo se están agregando?
+
+130
+00:10:40,150 --> 00:10:45,410
+Si quieres ver cómo funciona un poco más lento, lo que puedes hacer es ir a
+
+131
+00:10:45,410 --> 00:10:51,220
+tu CSS y cambia esto, tal vez hagamos la escala dos y hagamos la
+
+132
+00:10:51,220 --> 00:11:01,815
+Transición 1.07 segundos. Ahora cuando golpeo D, ves más de un segundo, F, G.
+
+133
+00:11:01,815 --> 00:11:06,460
+Eso es lo que está sucediendo, pero porque lo hicimos en tan poco tiempo,
+
+134
+00:11:06,460 --> 00:11:13,070
+0.07 segundos, lo hace realmente, muy rápido y también,
+
+135
+00:11:13,070 --> 00:11:22,160
+No queremos escalarlo exactamente tanto. Ahora, eso funciona pero ¿por qué no?
+
+136
+00:11:22,160 --> 00:11:29,210
+¿va a desaparecer? Eso es porque estamos agregando la clase pero aún no hemos eliminado la
+
+137
+00:11:29,210 --> 00:11:33,470
+clase. Podría pensar, "oh, eso no es un problema, haremos un tiempo de espera establecido aquí,
+
+138
+00:11:33,470 --> 00:11:42,890
+ejecutaremos una función aquí y después de 0.07 segundos. "Bueno, está bien, pero lo que tiende
+
+139
+00:11:42,890 --> 00:11:49,160
+sucederá si tiene un tiempo de espera aquí así como un tiempo de espera en su CSS
+
+140
+00:11:49,160 --> 00:11:53,910
+JavaScript, que está justo aquí, comienza a desincronizarse porque tal vez como un
+
+141
+00:11:53,910 --> 00:11:57,630
+el diseñador dice "no está bien, cambiemos eso por 0,9,
+
+142
+00:11:57,630 --> 00:12:02,080
+eso se siente un poco mejor para mí ". Y luego tienes que entrar en el JavaScript para
+
+143
+00:12:02,080 --> 00:12:07,860
+haz que eso se alinee también. Así que en lugar de simplemente configurar un temporizador para hacerlo,
+
+144
+00:12:07,860 --> 00:12:17,350
+lo que podemos hacer es usar un evento final de transición que se activará cuando la cosa tenga
+
+145
+00:12:17,350 --> 00:12:21,540
+dejó de animarse a sí mismo en. Ahora, ¿cuál es el evento final de transición?
+
+146
+00:12:21,540 --> 00:12:26,590
+Bueno, vamos a retroceder un segundo, ¿qué es un evento de clic? El evento click es cuando
+
+147
+00:12:26,590 --> 00:12:30,800
+haga clic en algo y se activará el evento y diga "alguien me hizo clic". Nosotros
+
+148
+00:12:30,800 --> 00:12:36,080
+También tengo eventos en JavaScript que dirán, "No me hicieron clic pero estaba
+
+149
+00:12:36,080 --> 00:12:42,450
+Transicioné, yo mismo hice la transición del borde negro de escala 1 al límite de escala 1.1.
+
+150
+00:12:42,450 --> 00:12:47,910
+amarillo. "Eso es lo que vamos desde aquí, que es el borde negro hasta aquí, que
+
+151
+00:12:47,910 --> 00:12:55,170
+El borde es ese amarillo específico. Entonces, lo que podemos hacer es escuchar en cada
+
+152
+00:12:55,170 --> 00:12:59,630
+clave para cuando ocurre el evento final de transición. Así que vamos a hacer eso.
+
+153
+00:12:59,630 --> 00:13:06,520
+Primero, bajemos aquí y diremos "tecla const = =" ahora necesito seleccionar cada
+
+154
+00:13:06,520 --> 00:13:09,820
+Tecla única en la página porque queremos escucharla en cada una.
+
+155
+00:13:09,820 --> 00:13:15,580
+Así que digamos "document.querySelector" y queremos que el selector de consultas sea todo, y diremos
+
+156
+00:13:15,580 --> 00:13:19,500
+tecla de punto Ahora vamos a ver si ejecuto eso en mi consola aquí,
+
+157
+00:13:19,500 --> 00:13:24,590
+Veamos que nos da eso. Eso nos da una serie de cada elemento que
+
+158
+00:13:24,590 --> 00:13:28,740
+es emparejado Bien, bien, entonces lo que queremos hacer es escuchar.
+
+159
+00:13:28,740 --> 00:13:35,530
+un evento llamado transición termina en cada uno. Así que es como "keys.forEach" y estamos
+
+160
+00:13:35,530 --> 00:13:39,670
+Voy a conseguir cada llave. Si te preguntas por qué tenemos que hacer esto,
+
+161
+00:13:39,670 --> 00:13:44,890
+como por qué no podemos simplemente hacer "keys.addEventListener" y escuchar
+
+162
+00:13:44,890 --> 00:13:50,410
+final de transición? Y eso es porque si estás acostumbrado a jQuery o algo así,
+
+163
+00:13:50,410 --> 00:13:56,560
+el problema es que cuando tienes una serie de elementos, no puedes escuchar en todos
+
+164
+00:13:56,560 --> 00:14:01,940
+ellos. Debe hacer un bucle explícito sobre cada elemento individual y adjuntar un evento
+
+165
+00:14:01,940 --> 00:14:05,636
+oyente. Entonces, la forma en que me gusta que parece ser la forma más simple para mí es
+
+166
+00:14:05,636 --> 00:14:09,451
+se puede decir clave Usamos una pequeña función de flecha aquí, si has seguido adelante
+
+167
+00:14:09,451 --> 00:14:15,572
+mi serie ES6, es "key.addEventListener" y luego el oyente que estamos escuchando
+
+168
+00:14:15,572 --> 00:14:20,860
+Porque es el final de la transición, y cuando eso termine, vamos a ejecutar una función llamada
+
+169
+00:14:20,860 --> 00:14:27,771
+"eliminar la transición". Ahora tenemos que hacer eso. Ahora, echemos un vistazo rápido
+
+170
+00:14:27,771 --> 00:14:32,956
+aquí. Así que cada tecla recibe un detector de eventos, que es la transición.
+
+171
+00:14:32,956 --> 00:14:38,760
+fin. Y luego, cuando una transición está terminando, la eliminaremos. Ahora necesitamos en realidad
+
+172
+00:14:38,760 --> 00:14:45,210
+Haz que funcione aquí. Así que digamos "function removeTransition" y que vamos a
+
+173
+00:14:45,210 --> 00:14:53,600
+Danos el evento. Dentro de eso, solo tendremos que iniciar sesión en la consola para ver
+
+174
+00:14:53,600 --> 00:14:59,792
+Lo que estamos trabajando aquí. Entonces, voy a presionar A. Whoa, que paso
+
+175
+00:14:59,792 --> 00:15:05,520
+¿aquí? Bien, entonces tenemos uno, dos, tres, cuatro, cinco, seis eventos finales de transición para
+
+176
+00:15:05,520 --> 00:15:09,910
+ese pequeño se desvanece en donde se hizo un poco más grande. Y eso es porque un
+
+177
+00:15:09,910 --> 00:15:13,060
+todo un montón de cosas transicionaron aquí. El borde derecho de transición de color,
+
+178
+00:15:13,060 --> 00:15:20,210
+Todas las fronteras han transicionado. La sombra de la caja que es ese pequeño amarillo.
+
+179
+00:15:20,210 --> 00:15:25,430
+el resplandor ha cambiado. Y luego también, la transformación ha terminado.
+
+180
+00:15:25,430 --> 00:15:29,530
+Ahora, realmente no nos preocupamos por todo esto. Realmente solo lo queremos cuando uno
+
+181
+00:15:29,530 --> 00:15:34,540
+La cosa ha terminado, generalmente la más larga. Por lo tanto, vamos a recoger la transformación.
+
+182
+00:15:34,540 --> 00:15:40,630
+Entonces, digamos "si E." ¿Y cuál fue el evento que estábamos buscando aquí?
+
+183
+00:15:40,630 --> 00:15:48,530
+"event.propertyName". Si no es igual a la transición, entonces volveremos.
+
+184
+00:15:48,530 --> 00:15:54,050
+Y ahora diremos "omítelo si no es una transformación". Transformar,
+
+185
+00:15:54,050 --> 00:15:58,320
+No la transición, siempre los estropeo. Gracias por gritarme a través del
+
+186
+00:15:58,320 --> 00:16:03,500
+pantalla del ordenador Ahora, ¿qué pasa después? Solo consolaremos log e.propertyName.
+
+187
+00:16:03,500 --> 00:16:09,920
+Veamos con qué estamos trabajando aquí. Así que tenemos esta función que se ejecutará cuando un
+
+188
+00:16:09,920 --> 00:16:18,590
+la transición ha terminado ¿Ves lo que está pasando? Es la consola que registra la palabra.
+
+189
+00:16:18,590 --> 00:16:23,650
+Transformar porque esa es la propiedad que se está terminando. Ahora,
+
+190
+00:16:23,650 --> 00:16:28,210
+eso lo hace realmente rápido, pero si volviera a cambiar esta transformación a 2.07
+
+191
+00:16:28,210 --> 00:16:36,860
+Segundos y presiona A, uno, dos allá vamos. Tomó segundos y luego fue cuando
+
+192
+00:16:36,860 --> 00:16:39,960
+terminado Y casualmente, ¿por qué casualmente? Por eso queremos hacer.
+
+193
+00:16:39,960 --> 00:16:45,710
+eso. Cuando eso sucede, cuando se termina de mover, solo queremos revertir
+
+194
+00:16:45,710 --> 00:16:50,540
+Todo lo que sabemos sobre eso. Así que podemos dirigirnos a nuestra función de transición eliminar
+
+195
+00:16:50,540 --> 00:16:54,220
+Aquí y antes que nada, salvaremos esto. Ahora, ¿a qué va a ser igual esto?
+
+196
+00:16:54,220 --> 00:16:58,440
+Bueno, si está teniendo dificultades para entender a qué se refiere esto
+
+197
+00:16:58,440 --> 00:17:02,956
+una manera realmente barata y sucia de entender a qué se refiere esto, bueno, primero simplemente
+
+198
+00:17:02,956 --> 00:17:07,600
+Iniciar sesión en la consola y ver qué es. Esa es una buena manera de averiguarlo.
+
+199
+00:17:07,600 --> 00:17:13,840
+Entonces, déjame presionar A y luego de dos segundos, todavía lo tengo en dos segundos.
+
+200
+00:17:13,840 --> 00:17:18,670
+Esto es igual a la clave, y ¿por qué es eso? Porque esto es siempre igual a la
+
+201
+00:17:18,670 --> 00:17:22,410
+Lo que sea que sea llamado en contra. Así que el detector de eventos se llamó,
+
+202
+00:17:22,410 --> 00:17:27,090
+Lo que se llamó contra eso, clave. Así que esto es igual a la clave real.
+
+203
+00:17:27,090 --> 00:17:34,260
+Entonces, .classlist.remove eliminaremos la clase de juego. Dale eso a una salvación.
+
+204
+00:17:34,260 --> 00:17:37,630
+Ahora son dos segundos, así que voy a golpearlo. Dos segundos después,
+
+205
+00:17:37,630 --> 00:17:42,620
+El final de la transición va a disparar, lo que eliminará la transición del juego.
+
+206
+00:17:42,620 --> 00:17:52,570
+y debería desvanecerse. Entonces, voy a golpear D, está dentro y está hecho.
+
+207
+00:17:52,570 --> 00:17:59,530
+y te quitará la clase. Si lo inspeccionamos, véalo aquí.
+
+208
+00:17:59,530 --> 00:18:03,310
+Mira, tiene una clase de juego y luego, dos segundos después, lo eliminará.
+
+209
+00:18:03,310 --> 00:18:09,880
+Ahora, si vamos a nuestro CSS y cambiamos eso de nuevo a 0.07 segundos,
+
+210
+00:18:09,880 --> 00:18:14,630
+Es simplemente agradable y rápido, agradable y rápido, agradable y rápido para todos esos,
+
+211
+00:18:14,630 --> 00:18:18,260
+Se fue de inmediato. Y lo mismo sucede allí si tuviera que agregar una clase
+
+212
+00:18:18,260 --> 00:18:23,110
+de jugar en div herramientas. Todavía lo eliminará porque el JavaScript es
+
+213
+00:18:23,110 --> 00:18:28,380
+escuchando en ese elemento para cuando lo elimines. Una última cosa que quiero hacer es
+
+214
+00:18:28,380 --> 00:18:34,420
+Entramos en nuestro HTML. Nunca soy un gran fan de adjuntar estas funciones directamente a la
+
+215
+00:18:34,420 --> 00:18:39,590
+Tecla aquí abajo, así que lo que quiero hacer es poner esto en su propia función y llamará
+
+216
+00:18:39,590 --> 00:18:48,670
+ese sonido de juego Digamos "function playSound" y pongamos toda esta lógica dentro
+
+217
+00:18:48,670 --> 00:18:56,860
+aquí y eso va a tomar en el evento que luego derribar mi evento
+
+218
+00:18:56,860 --> 00:19:01,210
+oyente hasta el final aquí y vamos a decir cuando alguien teclea
+
+219
+00:19:01,210 --> 00:19:08,054
+Vamos a reproducir el sonido, eso debería quedárnoslo. Todavía funciona bien
+
+220
+00:19:08,054 --> 00:19:11,427
+y que los tenemos bien y separados, de modo que si alguna vez quisiera reproducir el sonido
+
+221
+00:19:11,427 --> 00:19:15,986
+Basándome en otra cosa, podría totalmente. Así que eso es un JavaScript básico
+
+222
+00:19:15,986 --> 00:19:20,681
+Kit de batería. Una vez más, las cosas que aprendimos fueron los eventos clave, así como jugar
+
+223
+00:19:20,681 --> 00:19:25,439
+Audio y escucha el evento final de transición. Del mismo modo, si también eres
+
+224
+00:19:25,439 --> 00:19:29,747
+tratar con animaciones, puede escuchar el evento final de animación, que funciona
+
+225
+00:19:29,747 --> 00:19:32,765
+exactamente de la misma manera Muchas gracias y nos vemos en la próxima.
+
+226
+00:19:32,863 --> 00:19:36,058
+♪ [música] ♪
+

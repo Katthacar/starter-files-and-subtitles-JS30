@@ -1,0 +1,232 @@
+1
+00:00:00,000 --> 00:00:02,768
+♪ [música] ♪
+
+2
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+3
+00:00:08,000 --> 00:00:13,070
+Todos, de acuerdo, empecemos. Espero que estés realmente emocionado por
+
+4
+00:00:13,070 --> 00:00:16,560
+JavaScript 30. Un par de cosas de las que necesito hablarles antes de que nos pongamos en marcha.
+
+5
+00:00:16,560 --> 00:00:19,710
+Primero, necesitas descargar los archivos de inicio. Puedes conseguirlos en tu cuenta.
+
+6
+00:00:19,710 --> 00:00:25,360
+Panel de control, así es como llegaste a estos videos en la cuenta de javascript30.com ...
+
+7
+00:00:25,360 --> 00:00:30,680
+Y luego, también necesitamos un navegador moderno. Chrome, Safari, Firefox.
+
+8
+00:00:30,680 --> 00:00:34,600
+Cualquiera de esos va a soportar todo el código que escribimos en esto.
+
+9
+00:00:34,600 --> 00:00:39,230
+Vamos a escribir muchas cosas de ES6, así que asegúrate de que estén actualizadas.
+
+10
+00:00:39,230 --> 00:00:42,100
+Aparte de eso, no hay compiladores ni nada que necesitemos para obtener
+
+11
+00:00:42,100 --> 00:00:45,230
+preparar. No hay cadena de herramientas involucrada. Todo lo que necesitas hacer es hacer clic derecho,
+
+12
+00:00:45,230 --> 00:00:48,400
+Abrir en el navegador para la mayoría de estos. Un par de ellas, como la webcam y la
+
+13
+00:00:48,400 --> 00:00:51,620
+Micrófono, tienen seguridad. No puedes abrirlos en un archivo,
+
+14
+00:00:51,620 --> 00:00:54,450
+necesita un servidor host local. Cubriremos eso en esos videos,
+
+15
+00:00:54,450 --> 00:00:55,750
+no es un gran trato.
+
+16
+00:00:55,750 --> 00:01:00,900
+Vamos a ver qué más tenemos aquí. Cosas de pareja Te invitamos a tomar el curso.
+
+17
+00:01:00,900 --> 00:01:07,170
+A cualquier ritmo que te guste. Los videos van desde 10 minutos hasta media hora,
+
+18
+00:01:07,170 --> 00:01:12,220
+y realmente, lo que quiero que hagas es tratar de sacar algo de tiempo cada vez
+
+19
+00:01:12,220 --> 00:01:15,350
+día. Puede hacer más en un día si tiene un montón de tiempo disponible,
+
+20
+00:01:15,350 --> 00:01:19,600
+pero ese tipo de hábito de "Oh, tengo el almuerzo" o "Tengo 20 minutos", "Tengo
+
+21
+00:01:19,600 --> 00:01:22,650
+tengo media hora aquí "o" estoy en el metro, debería ver un video realmente
+
+22
+00:01:22,650 --> 00:01:26,940
+rápidamente ", ese es el hábito en el que quiero que adquieras, donde puedes abordar
+
+23
+00:01:26,940 --> 00:01:31,270
+algo y terminarlo dentro de una hora más o menos, o media hora,
+
+24
+00:01:31,270 --> 00:01:33,860
+Dependiendo de cuánto tiempo es el video real.
+
+25
+00:01:33,860 --> 00:01:38,110
+En segundo lugar, las personas aprenden de diferentes maneras, por lo que hay tres formas principales en las que podrías
+
+26
+00:01:38,110 --> 00:01:41,810
+Quiero ver estos videos. En primer lugar, es posible que desee verlos por completo y
+
+27
+00:01:41,810 --> 00:01:45,990
+Luego trata de construir las cosas que se hicieron. Algunas personas prefieren simplemente sentarse,
+
+28
+00:01:45,990 --> 00:01:50,900
+Míralo en el metro, algo así. A otras personas les gusta ver lo que somos.
+
+29
+00:01:50,900 --> 00:01:54,670
+vamos a construir, pausar, y luego tratar de construir lo que somos sin ver el video
+
+30
+00:01:54,670 --> 00:01:57,870
+en absoluto, y luego volver al video si necesitan ayuda o ver cómo lo he hecho
+
+31
+00:01:57,870 --> 00:02:00,650
+eso. Y luego tercero, otras personas, y así es como me gusta aprender,
+
+32
+00:02:00,650 --> 00:02:04,530
+Me gusta construir al mismo tiempo que estamos viendo un video.
+
+33
+00:02:04,530 --> 00:02:08,420
+Así que construimos una pequeña pieza, la pausamos, intentamos construirla tú mismo,
+
+34
+00:02:08,420 --> 00:02:12,580
+Intenta hacerlo al mismo ritmo que lo estoy haciendo. Averiguar de qué manera usted
+
+35
+00:02:12,580 --> 00:02:15,539
+aprende mejor, porque eso realmente te va a ayudar.
+
+36
+00:02:15,539 --> 00:02:22,090
+En segundo lugar, hay 1001 formas de completar estos. La forma en que lo hago no es necesariamente
+
+37
+00:02:22,090 --> 00:02:26,010
+La mejor manera, es solo una forma. Así que si lo haces de otra manera,
+
+38
+00:02:26,010 --> 00:02:30,790
+totalmente bien. No te preocupes por eso. Intencionalmente me he mantenido alejado de ... ¿qué?
+
+39
+00:02:30,790 --> 00:02:37,010
+Diseña patrones, clases, cierres, por supuesto, cualquier tipo de framework.
+
+40
+00:02:37,010 --> 00:02:42,590
+Estas cosas son realmente buenas, pero solo quiero mantenerme alejado de cualquier opinión.
+
+41
+00:02:42,590 --> 00:02:46,760
+cosas así y realmente solo llegar a entender lo que está pasando.
+
+42
+00:02:46,760 --> 00:02:51,940
+Le invitamos a implementarlo en cualquier forma que desee.
+
+43
+00:02:51,940 --> 00:02:57,070
+Tercero, no busques jQuery, Lodash, Underscore, boppity boop.
+
+44
+00:02:57,070 --> 00:02:59,640
+Cualquier marco al que estés acostumbrado, aunque pienses,
+
+45
+00:02:59,640 --> 00:03:02,500
+"Oh, Lodash tiene un pequeño y práctico método". Esas cosas son geniales,
+
+46
+00:03:02,500 --> 00:03:08,050
+Pero todo en este curso se puede hacer simplemente con JavaScript.
+
+47
+00:03:08,050 --> 00:03:10,160
+No se necesita nada más para eso.
+
+48
+00:03:10,160 --> 00:03:15,800
+Finalmente, tome un amigo, accountabilibuddy, alguien con quien pueda hacer este curso.
+
+49
+00:03:15,800 --> 00:03:19,870
+Va a ser útil si tiene un amigo al que pueda rechazar preguntas,
+
+50
+00:03:19,870 --> 00:03:23,940
+charla sobre lo que está pasando en el curso, todas esas cosas buenas.
+
+51
+00:03:23,940 --> 00:03:26,930
+Si no tiene un amigo, no tiene a alguien cercano a usted o alguien en línea
+
+52
+00:03:26,930 --> 00:03:33,210
+con los que puedes chatear, accede a Twitter y # javascript30. Pregunta por alguien que sea
+
+53
+00:03:33,210 --> 00:03:36,720
+dispuesto tipo de equipo con usted. Creo que sacarás el máximo provecho de esto.
+
+54
+00:03:36,720 --> 00:03:40,360
+Claro que si tienes un amigo que lo va a hacer. Personas que han tomado una
+
+55
+00:03:40,360 --> 00:03:43,950
+De mis cursos premium pagados anteriormente, tenemos un chat de Slack para ti.
+
+56
+00:03:43,950 --> 00:03:48,470
+Puedes unirte a eso. Aparte de eso, eso es todo. Ve a golpear los videos,
+
+57
+00:03:48,470 --> 00:03:49,320
+disfruta el primer dia
+
+58
+00:03:49,320 --> 00:03:52,146
+♪ [música] ♪
+

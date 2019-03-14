@@ -1,0 +1,488 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,361 --> 00:00:03,361
+♪ [música] ♪
+
+3
+00:00:07,546 --> 00:00:11,020
+Hace un par de semanas, Stripe lanzó esta nueva página y estuve sobre el
+
+4
+00:00:11,020 --> 00:00:16,560
+Navegación y yo estaba como, "Whoa. ¿Cómo están haciendo eso?"
+
+5
+00:00:16,560 --> 00:00:20,790
+Porque sabes si tienes un menú desplegable y ocultas uno y muestras el otro,
+
+6
+00:00:20,790 --> 00:00:24,930
+No puedes simplemente hacer la transición al fondo. No puedes simplemente mover la lista desordenada
+
+7
+00:00:24,930 --> 00:00:29,510
+De uno a otro, porque son dos elementos diferentes. Entonces, me di cuenta de cómo
+
+8
+00:00:29,510 --> 00:00:33,710
+para hacerlo, y vamos a construir una réplica de esto en un video que viene.
+
+9
+00:00:33,710 --> 00:00:37,260
+Pero lo que quería hacer era comenzar con algo simple, solo para que podamos obtener el
+
+10
+00:00:37,260 --> 00:00:41,020
+ideas Porque es un poco bochornoso. Obviamente tienen algunos desarrolladores muy buenos.
+
+11
+00:00:41,020 --> 00:00:44,410
+en la raya para construir esta cosa. Pero realmente quiero entender, una especie de
+
+12
+00:00:44,410 --> 00:00:47,920
+Los fundamentos de lo que está pasando. Entonces, esto es con lo que vamos a empezar,
+
+13
+00:00:47,920 --> 00:00:52,100
+Y luego, en un par de videos en el camino, vamos a replicar este tipo de
+
+14
+00:00:52,100 --> 00:00:54,320
+cosa con la navegación de la raya.
+
+15
+00:00:54,320 --> 00:00:57,600
+Entonces, esto es lo que estamos haciendo. Tenemos estos enlaces en la página,
+
+16
+00:00:57,600 --> 00:01:01,850
+y cuando se desplaza sobre uno de los enlaces, tenemos esta pequeña píldora que va a
+
+17
+00:01:01,850 --> 00:01:07,690
+ambos se redimensionan por sí mismos, por lo que es corto y largo, además de seguirte por el
+
+18
+00:01:07,690 --> 00:01:13,400
+Página donde quiera que vaya eso. Así que vamos a abrir nuestro inicio de índice y empezar.
+
+19
+00:01:13,400 --> 00:01:17,130
+Baje a nuestra etiqueta de script aquí. Entonces, lo primero que tenemos que hacer,
+
+20
+00:01:17,130 --> 00:01:21,830
+Es conseguir todo lo que me gusta llamar disparadores. Cosas que serán flotadas,
+
+21
+00:01:21,830 --> 00:01:26,810
+Eso necesita un trasfondo detrás de él. Así que voy a hacer cada enlace que es
+
+22
+00:01:26,810 --> 00:01:27,580
+en la pagina.
+
+23
+00:01:27,580 --> 00:01:33,310
+Así que es "const triggers = document.query selector all A."
+
+24
+00:01:33,310 --> 00:01:37,320
+Cada enlace en la página actual. Entonces lo que tenemos que hacer es crear lo que se llama
+
+25
+00:01:37,320 --> 00:01:41,160
+un punto culminante Porque si aún no lo has descubierto, ¿cómo funciona esto?
+
+26
+00:01:41,160 --> 00:01:46,870
+¿trabajo? Si lo inspeccionamos aquí, y observamos nuestro DOM, veremos que
+
+27
+00:01:46,870 --> 00:01:51,350
+tengo el lapso con una clase de resaltado, que acabo de agregar al DOM aquí.
+
+28
+00:01:51,350 --> 00:01:57,010
+Y cuando resaltas sobre algo, averiguará el ancho,
+
+29
+00:01:57,010 --> 00:02:02,120
+la altura y en qué parte de la página está el elemento real. Y porque hay CSS
+
+30
+00:02:02,120 --> 00:02:07,110
+transiciones en este elemento, solo va a hacer una transición desde el lugar,
+
+31
+00:02:07,110 --> 00:02:12,230
+colocar, colocar. Y el ancho, la altura y la transformación se traducen en X,
+
+32
+00:02:12,230 --> 00:02:17,680
+y traducir los valores de Y, son gong para moverse sobre.
+
+33
+00:02:17,680 --> 00:02:21,800
+Así que primero haremos que resaltarnos, en lugar de tener que ir a nuestro
+
+34
+00:02:21,800 --> 00:02:27,400
+HTML y hazlo vamos a hacerlo allí. Por lo tanto, vamos a decir "const destacar
+
+35
+00:02:27,400 --> 00:02:30,120
+= document.create element. "Y vamos a hacer un lapso.
+
+36
+00:02:30,120 --> 00:02:37,910
+Vamos a agregar una clase de resaltado, y luego vamos a ponerlo en el
+
+37
+00:02:37,910 --> 00:02:40,210
+DOM.
+
+38
+00:02:40,210 --> 00:02:44,330
+Cuando abramos esto en nuestro navegador aquí, en realidad no verás ese punto destacado.
+
+39
+00:02:44,330 --> 00:02:47,440
+en cualquier lugar, y es porque no tiene un ancho o una altura ni nada parecido
+
+40
+00:02:47,440 --> 00:02:52,270
+ese. Pero si inspeccionamos, deberías ver que realmente tenemos este punto culminante
+
+41
+00:02:52,270 --> 00:02:59,340
+Elemento aquí. Bueno. Ahora lo que tenemos que hacer es escuchar a alguien que entre en un
+
+42
+00:02:59,340 --> 00:03:05,245
+enlazar. Entonces haremos una función llamada, llamémosla enlace de resaltado.
+
+43
+00:03:05,590 --> 00:03:11,010
+Y solo tendremos consola.logro destacado. Y luego escucharemos el mouse para entrar.
+
+44
+00:03:11,010 --> 00:03:13,630
+Evento en cada uno de nuestros disparadores.
+
+45
+00:03:13,630 --> 00:03:18,720
+Disparadores. Para cada uno y luego tome nuestro enlace, y vamos a tomar el enlace y estamos
+
+46
+00:03:18,720 --> 00:03:24,160
+va a agregar el detector de eventos para el mouse enter. Y cuando eso sucede somos gong.
+
+47
+00:03:24,160 --> 00:03:29,890
+para ejecutar la función resaltar enlace. Bueno. Ahora vamos a probarlo.
+
+48
+00:03:29,890 --> 00:03:35,160
+Consola resaltada sobre ella, ahí vamos. Tenemos puntos culminantes en todos
+
+49
+00:03:35,160 --> 00:03:39,220
+Los enlaces en la página. Y eso se puede ver en la consola logueando esto.
+
+50
+00:03:39,220 --> 00:03:43,470
+Y verá que registrará el enlace real que estamos buscando.
+
+51
+00:03:43,470 --> 00:03:48,850
+Bueno. Por lo tanto, tenemos que trabajar hasta ahora. Pero ahora, lo que debe suceder es que necesitamos
+
+52
+00:03:48,850 --> 00:03:53,410
+para averiguar el ancho, la altura, la X y la Y. Tenemos que averiguar qué tan grande
+
+53
+00:03:53,410 --> 00:03:59,470
+¿Es el elemento que flotamos? ¿Y dónde en la página está ese elemento real?
+
+54
+00:03:59,470 --> 00:04:04,820
+Por lo tanto, vamos a utilizar un método llamado "obtener el cliente delimitador rect"
+
+55
+00:04:04,820 --> 00:04:09,900
+que es un poco de un bocado para decir. Pero vamos a decir const coords,
+
+56
+00:04:09,900 --> 00:04:14,100
+esto nos va a dar las coordenadas, y esto, esto va a ser igual a la
+
+57
+00:04:14,100 --> 00:04:17,170
+Lo que se activó, que va a ser cada uno de los enlaces.
+
+58
+00:04:17,170 --> 00:04:23,820
+Dot get, cliente delimitador rect. Y luego solo la consola registra esos enlaces para ver
+
+59
+00:04:23,820 --> 00:04:26,450
+Lo que tenemos aquí.
+
+60
+00:04:26,450 --> 00:04:30,607
+Así que voy a flotar sobre este lechón. Ah y mira lo que tenemos aquí.
+
+61
+00:04:30,607 --> 00:04:35,280
+Conseguimos al cliente rect. Tenemos el fondo, la altura, la izquierda,
+
+62
+00:04:35,280 --> 00:04:39,500
+El derecho, el superior y el ancho. Así que nos da toda la información sobre dónde.
+
+63
+00:04:39,500 --> 00:04:44,940
+en la página realmente vive esa cosa. Ahora que tenemos esas coordenadas aquí,
+
+64
+00:04:44,940 --> 00:04:50,472
+simplemente podemos tomar nuestro elemento resaltado, y podemos aplicar el estilo.width
+
+65
+00:04:50,472 --> 00:04:57,410
+gong es igual a, y tomaremos el enlace coords.width y usted necesita
+
+66
+00:04:57,410 --> 00:05:02,320
+ponga PX en el extremo, de lo contrario será 399 o 409 o algo así
+
+67
+00:05:02,320 --> 00:05:07,820
+nosotros no sabemos Y lo haremos también con la altura. A ver donde estamos
+
+68
+00:05:07,820 --> 00:05:11,960
+ese. Sitúa uno de estos. Está bien, para que coincida. Y luego cuando vas de una
+
+69
+00:05:11,960 --> 00:05:16,030
+A otro, le está aplicando dinámicamente el estilo.
+
+70
+00:05:16,030 --> 00:05:20,090
+Y si va a nuestro style.css y busca el selector de resaltado,
+
+71
+00:05:20,090 --> 00:05:26,180
+Resaltamos, ahí vamos. Tenemos esta transición aquí de 0.2 segundos.
+
+72
+00:05:26,180 --> 00:05:32,310
+Así que para cambiar eso a dos segundos, verás que simplemente cambiará a sí mismo.
+
+73
+00:05:32,310 --> 00:05:36,860
+durante esa cantidad de tiempo Y como, estos enlaces son un poco más cortos que estos
+
+74
+00:05:36,860 --> 00:05:40,680
+campo de golf. Así crecerá tanto en anchura como en altura. Así que por eso.
+
+75
+00:05:40,680 --> 00:05:44,220
+Si no tuviéramos esa transición allí, solo serían instantáneas instantáneas,
+
+76
+00:05:44,220 --> 00:05:49,270
+Y eso no es lo que queremos. Queremos que se anime. Entonces, ¿dónde está la parte divertida?
+
+77
+00:05:49,270 --> 00:05:52,630
+entra es donde empezamos a animar los valores de la izquierda y la derecha.
+
+78
+00:05:52,630 --> 00:05:58,610
+Y vamos a estar haciendo eso. En lugar de hacerlo con CSS.left y .right,
+
+79
+00:05:58,610 --> 00:06:04,100
+o arriba y abajo, lo que haremos es usar la propiedad de transformación
+
+80
+00:06:04,100 --> 00:06:07,843
+para aplicarlo y eso puede tener algunos beneficios cuando buscas algo.
+
+81
+00:06:07,843 --> 00:06:09,300
+Animación muy suave.
+
+82
+00:06:09,300 --> 00:06:13,250
+Por lo tanto, vamos a tomar nuestro punto culminante. Aplicaremos el estilo de transformación.
+
+83
+00:06:13,250 --> 00:06:19,150
+Y normalmente, cómo funciona es que decimos algo así como traducir y luego das
+
+84
+00:06:19,150 --> 00:06:24,460
+es una X y una Y. Entonces, 100 y 100. ¿Ves cómo se anima a 100 100?
+
+85
+00:06:24,460 --> 00:06:28,860
+Bueno, queremos que estos 100 y 100 sean dinámicos. Pero tomamos nuestros 100,
+
+86
+00:06:28,860 --> 00:06:35,750
+y reemplazarlo con nuestra variable aquí. Así que diremos linkcoords.left,
+
+87
+00:06:35,750 --> 00:06:40,440
+y este va a ser linkcoords.top. Y eso nos dará la
+
+88
+00:06:40,440 --> 00:06:44,300
+valor desde la parte superior. Ahora si nos movemos sobre cualquiera de estos artículos aquí,
+
+89
+00:06:44,300 --> 00:06:49,750
+todo se ve bien También puedes subir a uno de tus propios y tal vez poner
+
+90
+00:06:49,750 --> 00:06:53,040
+una etiqueta de rotura o algo para hacerla más grande. Puedes ver que va a
+
+91
+00:06:53,040 --> 00:06:56,330
+transición tanto la altura, el ancho y la X y la Y.
+
+92
+00:06:56,330 --> 00:06:59,370
+Ahora, puedes pensar que has terminado, y mucha gente hace esto,
+
+93
+00:06:59,370 --> 00:07:04,530
+pero no intentan ... como abrir sus herramientas DEV y desplazarse un poco hacia abajo.
+
+94
+00:07:04,530 --> 00:07:12,150
+Ahora pasa sobre uno de ellos. Oh. ¿Qué diablos está pasando? Son como un poco
+
+95
+00:07:12,150 --> 00:07:19,490
+poco en mal estado Si me desplazo hacia abajo un poco, verás cómo se descompone por la cantidad
+
+96
+00:07:19,490 --> 00:07:23,470
+que me he desplazado hacia abajo? Hmm Eso es un poco de dolor aquí.
+
+97
+00:07:23,470 --> 00:07:26,970
+Y cómo compensamos eso, puedes hacerlo de varias maneras.
+
+98
+00:07:26,970 --> 00:07:31,000
+Primero, podemos averiguar cuál es el desplazamiento del padre real.
+
+99
+00:07:31,000 --> 00:07:33,880
+Y vamos a hacer eso en el siguiente. Pero en este caso, creo que podemos
+
+100
+00:07:33,880 --> 00:07:39,600
+simplemente tome la distancia que la persona ha desplazado hacia abajo y luego retírela
+
+101
+00:07:39,600 --> 00:07:44,860
+de nuestro artículo real. ¿Entonces cómo hacemos eso? Bueno, vamos a entrar por nuestra ventana aquí.
+
+102
+00:07:44,860 --> 00:07:50,390
+Window.scroll Y nos va a dar cero. Desplácese hacia abajo un poco y vuelva a ejecutar eso.
+
+103
+00:07:50,390 --> 00:07:54,300
+Te va a dar 67. Eso es lo lejos que estamos. Asi que,
+
+104
+00:07:54,300 --> 00:07:57,320
+Volvamos atrás y refactorizamos un poco este código.
+
+105
+00:07:57,320 --> 00:07:59,570
+Lo que voy a hacer es hacer nuestras propias coordenadas aquí.
+
+106
+00:07:59,570 --> 00:08:05,240
+Así que diremos "const.coords =". Va a tener un ancho, que va a
+
+107
+00:08:05,240 --> 00:08:09,940
+ser igual al linkcoords.width. El ancho y la altura están bien.
+
+108
+00:08:09,940 --> 00:08:16,000
+Derecha. Pero el problema es con nuestra X y nuestra Y, o nuestra parte superior y nuestra izquierda.
+
+109
+00:08:16,000 --> 00:08:26,620
+Así que la parte superior ahora será linkcoords.top minus wondow.scroll Y.
+
+110
+00:08:26,620 --> 00:08:31,711
+Y luego lo haremos por nuestra izquierda, que es link.left, y también podemos hacer scroll X
+
+111
+00:08:31,711 --> 00:08:36,080
+Por si acaso tenemos algún desplazamiento horizontal allí. Entonces lo que haremos es cambiar
+
+112
+00:08:36,080 --> 00:08:40,400
+la referencia para enlazar coords, con solo coords. Objeto,
+
+113
+00:08:40,400 --> 00:08:43,230
+Lo que hemos hecho aquí. Hemos hecho un poco de matemáticas allí.
+
+114
+00:08:43,230 --> 00:08:48,430
+Ahora cuando refresco y me desplazo un poco, todavía no funciona,
+
+115
+00:08:48,430 --> 00:08:54,010
+y eso es porque los utilicé, deberíamos agregarlos, no quitarlos.
+
+116
+00:08:54,010 --> 00:08:58,690
+Aquí vamos. Ahora, si me desplazo hacia cualquier parte de la página, siempre nos seguirá.
+
+117
+00:08:58,690 --> 00:09:03,360
+a lo largo independientemente de donde estamos en la página. Entonces, eso es lo más básico.
+
+118
+00:09:03,360 --> 00:09:07,250
+Realmente, lo que quería bajar es este concepto del cliente delimitador de obtención.
+
+119
+00:09:07,250 --> 00:09:13,120
+rect, y luego aplicarlo al estilo en línea. En un par de videos más,
+
+120
+00:09:13,120 --> 00:09:17,750
+Vamos a seguir adelante y construir todo el desplegable, que es mucho más
+
+121
+00:09:17,750 --> 00:09:19,622
+involucrado. Te veré luego.
+
+122
+00:09:19,622 --> 00:09:21,622
+♪ [música] ♪
+

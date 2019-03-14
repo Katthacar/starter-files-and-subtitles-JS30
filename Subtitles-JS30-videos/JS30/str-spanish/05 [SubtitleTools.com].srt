@@ -1,0 +1,624 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,721 --> 00:00:04,611
+♪ [música] ♪
+
+3
+00:00:07,500 --> 00:00:11,950
+Hoy vamos a hacer este súper elegante, lo que me gusta llamar un flex
+
+4
+00:00:11,950 --> 00:00:17,370
+Galería, y realmente me gusta este porque no incluye tanto
+
+5
+00:00:17,370 --> 00:00:24,410
+JavaScript, y se apoya fuertemente en CSS para flexbox, para transiciones,
+
+6
+00:00:24,410 --> 00:00:28,890
+y para algunos eventos que CSS nos va a emitir. Entonces, esto es realmente genial,
+
+7
+00:00:28,890 --> 00:00:32,780
+Vamos a apoyarnos bastante en CSS. Echemos un vistazo a lo que estamos empezando.
+
+8
+00:00:32,780 --> 00:00:33,730
+con Aquí.
+
+9
+00:00:33,730 --> 00:00:37,550
+Tenemos esta cosa que me gusta llamar paneles flexibles, y si nos desplazamos hacia el HTML,
+
+10
+00:00:37,550 --> 00:00:42,570
+tenemos un div con una clase de paneles, y cada uno de estos paneles va a ser
+
+11
+00:00:42,570 --> 00:00:47,840
+Llamado panel, singular. Y luego dentro de cada uno de esos paneles va a estar,
+
+12
+00:00:47,840 --> 00:00:51,490
+"Oye", "Vamos a bailar", "Dar", "Tomar", "Recibir". Y estas van a ser palabras
+
+13
+00:00:51,490 --> 00:00:55,320
+que, cuando se hace clic, van a crecer en tamaño, así como a caer
+
+14
+00:00:55,320 --> 00:00:57,414
+Desde la parte superior y suben desde la parte inferior.
+
+15
+00:00:57,414 --> 00:01:01,550
+Entonces, lo que quiero comenzar es hacerte un poco de CSS si lo abrimos en
+
+16
+00:01:01,550 --> 00:01:05,810
+El navegador ahora. Ya ves, empezamos con un poco de CSS que parece, pero no funciona
+
+17
+00:01:05,810 --> 00:01:09,230
+Nada y en realidad no está en el lugar correcto. Entonces, quería escribir el
+
+18
+00:01:09,230 --> 00:01:12,270
+parte importante real, que es la pieza de flexbox con usted, también.
+
+19
+00:01:12,270 --> 00:01:18,170
+Vayamos a nuestro CSS y, en primer lugar, necesitamos que nuestros paneles estén al lado.
+
+20
+00:01:18,170 --> 00:01:22,370
+lado. Así que si vamos a los paneles div, usted muestra: flexión sobre ellos,
+
+21
+00:01:22,370 --> 00:01:27,300
+y, por cierto, si eres nuevo en flexbox, tengo una serie completa en flexbox.io
+
+22
+00:01:27,300 --> 00:01:31,210
+que puedes visitar, y que te guiará a través de, similar a este,
+
+23
+00:01:31,210 --> 00:01:35,950
+también. Y cuando haga esas flexiones van a ir de lado a lado
+
+24
+00:01:35,950 --> 00:01:39,010
+Por el lado, y solo pegarlos a todos allí.
+
+25
+00:01:39,010 --> 00:01:43,110
+A continuación, lo que debemos hacer es ir a cada uno de los paneles individuales y decirles
+
+26
+00:01:43,110 --> 00:01:49,790
+ellos, "está bien, esto es tanto espacio como el flex-child necesita". Es tan grande como el
+
+27
+00:01:49,790 --> 00:01:52,560
+las palabras son, por lo que este es el más grande porque tiene la palabra más grande,
+
+28
+00:01:52,560 --> 00:01:56,560
+"experiencia." Pero lo que queremos decirle que haga es que tenemos todo este extra
+
+29
+00:01:56,560 --> 00:02:01,350
+espacio aquí, "¿Por qué no lo dividen entre ustedes, niños?"
+
+30
+00:02:01,350 --> 00:02:06,670
+Así que vamos a nuestro panel y simplemente decimos flex: 1, y eso significa que
+
+31
+00:02:06,670 --> 00:02:11,690
+Cada uno de ellos distribuirá uniformemente el espacio extra entre cada uno.
+
+32
+00:02:11,690 --> 00:02:15,350
+otro. Y eso podría no tener sentido, pero vamos a volver a eso en
+
+33
+00:02:15,350 --> 00:02:21,820
+Sólo un segundo, así que créeme. Aquí vamos. Bien, así que flex de 1 los hará uniformemente.
+
+34
+00:02:21,820 --> 00:02:27,330
+Distribuye el espacio extra entre ellos, así que estoy muy feliz con eso.
+
+35
+00:02:27,330 --> 00:02:33,160
+Ahora, pasemos a cada uno de los paneles y hagamos que se vean así,
+
+36
+00:02:33,160 --> 00:02:38,950
+Donde los elementos van a estar centrados en tercios. Así que vamos a ir a nuestro
+
+37
+00:02:38,950 --> 00:02:44,200
+el panel aquí, y en primer lugar, simplemente coloque un borde: 1px de color rojo sólido en él,
+
+38
+00:02:44,200 --> 00:02:47,670
+sólo para que podamos ver lo que está pasando aquí. Visualmente, creo que esto realmente
+
+39
+00:02:47,670 --> 00:02:51,720
+Ayúdanos. Entonces, ¿qué está pasando aquí? Tenemos cada uno de estos paneles ... oh,
+
+40
+00:02:51,720 --> 00:02:57,240
+no queremos poner el borde en cada uno de los paneles, lo siento. Queremos poner el
+
+41
+00:02:57,240 --> 00:03:03,350
+borde en cada uno de los elementos flexibles o los niños flexibles, que está aquí .panel> *.
+
+42
+00:03:03,350 --> 00:03:07,180
+Pongamos un borde allí solo para que podamos ver lo que está pasando aquí.
+
+43
+00:03:09,491 --> 00:03:13,900
+Bien, entonces estos son nuestros tres artículos. Ahora, quiero que ... otra vez,
+
+44
+00:03:13,900 --> 00:03:19,970
+Tengo todo el trabajo adicional verticalmente, ¿cómo puedo hacer que suban y bajen?
+
+45
+00:03:19,970 --> 00:03:27,760
+Así que volveremos a nuestro panel aquí y diremos justify-content: center.
+
+46
+00:03:27,760 --> 00:03:32,900
+¿A dónde nos lleva eso? Eso los pone centrados de izquierda a derecha. quiero decir
+
+47
+00:03:32,900 --> 00:03:40,660
+align-items: center, que aún no nos dará mucho, pero también necesitamos hacer esto
+
+48
+00:03:40,660 --> 00:03:47,230
+panel aquí mostrar: flex. Y este es un muy buen ejemplo de cuándo anidarás.
+
+49
+00:03:47,230 --> 00:03:52,730
+flexbox, porque ... Vamos a hacer una pausa por un segundo. ¿Qué es el contenedor flexible aquí?
+
+50
+00:03:52,730 --> 00:03:59,210
+Los paneles ¿Qué es el artículo flexible? Panel. Pero también vamos a hacer un panel flex
+
+51
+00:03:59,210 --> 00:04:05,310
+envase. Un elemento en CSS puede ser tanto un elemento flexible, como aquí.
+
+52
+00:04:05,310 --> 00:04:11,350
+así como un contenedor flexible, lo que vamos a hacer haciendo que muestre: flex.
+
+53
+00:04:11,350 --> 00:04:15,840
+Así que haciendo eso, los apilamos de izquierda a derecha, porque ese es el valor predeterminado de
+
+54
+00:04:15,840 --> 00:04:21,960
+flexbox Queremos cambiar eso y vamos a decir flex-direction: column,
+
+55
+00:04:21,960 --> 00:04:26,270
+y eso los centrará verticalmente en el medio, pero luego también quiero que cada uno de ellos
+
+56
+00:04:26,270 --> 00:04:30,800
+Estos artículos ocupan un tercio, y eso es exactamente lo que hemos hecho.
+
+57
+00:04:30,800 --> 00:04:35,901
+Así que vamos a desplazarnos a nuestros niños flexibles, nuestros elementos flexibles, y ya hemos puesto un
+
+58
+00:04:35,901 --> 00:04:45,930
+Al borde y aquí vamos a flexionar: 1 0 automático, y eso nos dará estos
+
+59
+00:04:45,930 --> 00:04:52,340
+aquí. Y queremos mostrar: flexión en eso, también, que no hace demasiado
+
+60
+00:04:52,340 --> 00:04:56,157
+excepto traer el texto a la izquierda. Pero si lo hacemos justificamos-contenido: centro y
+
+61
+00:04:56,157 --> 00:05:03,370
+alinear-elementos: centro. Ahora tenemos todo perfectamente centrado.
+
+62
+00:05:03,370 --> 00:05:07,970
+Esto es solo un montón de flexbox anidado y anidado y anidado, lo que nos permite obtener
+
+63
+00:05:07,970 --> 00:05:09,786
+este diseño realmente genial.
+
+64
+00:05:09,786 --> 00:05:15,330
+Está bien, me veo bastante bien hasta ahora. Ahora, lo que quiero hacer es ocultarme
+
+65
+00:05:15,330 --> 00:05:20,910
+"dar" hasta el final y quiero tomar "puedes" y "hoy" y "recibir" y
+
+66
+00:05:20,910 --> 00:05:26,890
+Escóndelos hasta el fondo. Así que lo que vamos a usar es traducir para eso.
+
+67
+00:05:26,890 --> 00:05:34,940
+Bajemos aquí mismo. Voy a decir .panel> *: el primer hijo será
+
+68
+00:05:34,940 --> 00:05:46,343
+transformar: traducirY (-100%). Así que cada uno de los primeros niños va a ser -100%.
+
+69
+00:05:46,343 --> 00:05:54,817
+Bien, eso los pone fuera de la pantalla, y luego el último hijo va a estar al 100%.
+
+70
+00:05:54,817 --> 00:06:00,351
+La idea que vamos a hacer aquí es que cuando se quita esta traducción,
+
+71
+00:06:00,351 --> 00:06:03,370
+Se va a animar. ¿Ves lo que está haciendo? Va a transicion
+
+72
+00:06:03,370 --> 00:06:09,120
+sí dentro y fuera, dentro y fuera, dentro y fuera. Y la forma en que eso va a funcionar es
+
+73
+00:06:09,120 --> 00:06:17,800
+que cuando el panel tiene una clase de abierto-activo, vamos a
+
+74
+00:06:17,800 --> 00:06:26,370
+traducirY (0). Y cuando el panel tenga una clase de abierto-activo, vamos a tomar
+
+75
+00:06:26,370 --> 00:06:33,640
+El último hijo y traducirY (0), también. Entonces, lo que eso significa es que si tomamos cualquier
+
+76
+00:06:33,640 --> 00:06:39,236
+Uno de estos paneles, y agregar una clase de abierto-activo, se animará en
+
+77
+00:06:39,236 --> 00:06:45,910
+quítatelo, y se van. Así que puedes quitar la frontera si
+
+78
+00:06:45,910 --> 00:06:50,390
+Consíguelo ahora, donde están los elementos en la página. Creo que tenemos una buena idea
+
+79
+00:06:50,390 --> 00:06:54,810
+de visualizarlo. Así que eso es lo que tenemos hasta ahora.
+
+80
+00:06:54,810 --> 00:06:59,280
+La última parte del rompecabezas es que cuando estos paneles también tienen una clase de abierto,
+
+81
+00:07:00,051 --> 00:07:04,140
+Lo que va a pasar es que necesita crecer más. Usted ve que el tamaño de la fuente
+
+82
+00:07:04,140 --> 00:07:09,510
+ya ha cambiado, pero cuando el panel tiene una clase de abierto, desplácese hacia abajo hasta la línea 85 o
+
+83
+00:07:09,510 --> 00:07:13,860
+Entonces, queremos darle una flexión de 5. Y, ahora, ¿qué significa eso?
+
+84
+00:07:13,860 --> 00:07:19,020
+Bueno, antes dijimos que una flexión de 1 significa que cada uno de ellos va a
+
+85
+00:07:19,020 --> 00:07:23,350
+Distribuir uniformemente la habitación extra. Así que dándole una flexión de 5,
+
+86
+00:07:23,350 --> 00:07:28,370
+lo que significa es que cuando tiene una clase de abierto, va a tomar 5 veces
+
+87
+00:07:28,370 --> 00:07:34,540
+La cantidad de espacio extra como el resto de ellos, ya que son flex regulares de 1.
+
+88
+00:07:34,540 --> 00:07:39,590
+Y ahora tenemos una flexión de 5, y eso significa que debería crecer un poco
+
+89
+00:07:39,590 --> 00:07:44,940
+un poco más grande. Así que si voy a uno de mis paneles aquí, dale una clase de abierto,
+
+90
+00:07:44,940 --> 00:07:50,700
+Usted ve que se animará a sí mismo, se lo quitará, se animará a sí mismo.
+
+91
+00:07:50,890 --> 00:07:55,380
+Sigo diciendo "animar", me refiero a "transición", y por qué sucede eso es
+
+92
+00:07:55,380 --> 00:08:00,000
+Debido a esto. El panel tiene una transición en la que estamos en transición.
+
+93
+00:08:00,000 --> 00:08:05,959
+el tamaño de la fuente durante 0.7 segundos, y estamos usando estos cubic-beziers que hemos hecho
+
+94
+00:08:05,959 --> 00:08:10,180
+en clases anteriores. Y lo que eso hace es permitirnos obtener este genial,
+
+95
+00:08:10,180 --> 00:08:13,352
+Me gusta, abrir y cerrar donde va un poco más grande y un poco más pequeño
+
+96
+00:08:13,352 --> 00:08:19,120
+de lo que debería, luego vuelve a encajar en su lugar. Ahora que tenemos todo el CSS
+
+97
+00:08:19,120 --> 00:08:21,890
+En realidad, solo tenemos que escribir un poco de JavaScript para que cuando
+
+98
+00:08:21,890 --> 00:08:25,760
+Haga clic en ellos, lo hará añadiendo y eliminando clases. Así que primero queremos
+
+99
+00:08:25,760 --> 00:08:31,410
+Agarra todos los paneles. Asegúrese de que es querySelectorAll, no querySelector,
+
+100
+00:08:31,410 --> 00:08:35,820
+y eso nos dará una lista de nodos de todos los diferentes que tenemos.
+
+101
+00:08:35,820 --> 00:08:40,900
+Y luego queremos escribir una función que va a cambiar esa clase de o
+
+102
+00:08:40,900 --> 00:08:48,740
+abierto. Así que la función toggleOpen (). Así que this.classList.toggle ('abrir').
+
+103
+00:08:48,740 --> 00:08:52,761
+Y luego en cada uno de los paneles vamos a escuchar un clic.
+
+104
+00:08:53,647 --> 00:08:57,870
+Bueno. Así que vamos a tomar cada uno de los paneles, bucle sobre cada uno de ellos,
+
+105
+00:08:57,870 --> 00:09:02,710
+escuche un clic en cada uno de ellos, y luego ejecute la función de alternar cuando
+
+106
+00:09:02,710 --> 00:09:06,680
+se ejecuta A menudo tengo personas que me preguntan: "¿Por qué no se puede abrir de esta manera?" Porque
+
+107
+00:09:06,680 --> 00:09:10,830
+que se ejecutaría en la carga de la página. Lo que queremos hacer aquí es que no queremos ejecutar el
+
+108
+00:09:10,830 --> 00:09:13,750
+función. Solo queremos darle una referencia a la función y decir,
+
+109
+00:09:13,750 --> 00:09:17,800
+"Oye, cuando alguien haga clic en mí, asegúrate de ir a buscar esta función y ejecutar
+
+110
+00:09:17,800 --> 00:09:23,740
+"Entonces, veamos dónde estamos ahora. Oh, tenemos un pequeño error aquí.
+
+111
+00:09:23,740 --> 00:09:29,450
+Falta un paréntesis en la línea 133, lo tengo. No parece estar funcionando,
+
+112
+00:09:29,450 --> 00:09:37,150
+vamos a depurar este verdadero quick.console.log ('Hola'). Aquí vamos.
+
+113
+00:09:37,150 --> 00:09:42,110
+Hola hola hola. ¿Por qué no está cambiando la clase de abierto?
+
+114
+00:09:42,110 --> 00:09:49,480
+Oh, veo el error aquí. Es porque estamos escuchando en cada panel individual,
+
+115
+00:09:49,480 --> 00:09:55,540
+Singular, no todos los paneles. Ahora, cuando hago clic en él, agregará una clase de
+
+116
+00:09:55,540 --> 00:10:00,392
+abrir a ese panel específico, y eliminar esa clase. Agrega esa clase
+
+117
+00:10:00,392 --> 00:10:01,559
+y quitar esa clase.
+
+118
+00:10:01,559 --> 00:10:07,540
+Ahora, el segundo paso es que una vez que esto haya finalizado la transición, se abrirá,
+
+119
+00:10:07,540 --> 00:10:11,670
+ahí es cuando quiero traer la palabra desde la parte superior y traer la palabra desde
+
+120
+00:10:11,670 --> 00:10:15,410
+El fondo. Entonces, en un ejercicio anterior, lo que hicimos fue escuchar la
+
+121
+00:10:15,410 --> 00:10:18,950
+evento final de transición, que es exactamente lo que vamos a hacer aquí.
+
+122
+00:10:18,950 --> 00:10:22,360
+Baja a tus paneles y simplemente duplica esa línea. Vamos a escuchar el
+
+123
+00:10:22,360 --> 00:10:28,010
+evento final de transición, y vamos a alternar la clase de abierto-activo con una
+
+124
+00:10:28,010 --> 00:10:31,620
+función llamada toggleActive. Así que subamos aquí y escribamos eso,
+
+125
+00:10:31,620 --> 00:10:36,300
+y diremos ... normalmente, lo que haríamos es decir
+
+126
+00:10:36,300 --> 00:10:43,570
+this.classList.toggle ('abrir-activo'), sin embargo, va a haber múltiples
+
+127
+00:10:43,570 --> 00:10:48,340
+se desencadenan los eventos finales de transición, y les mostraré cómo resolverlos.
+
+128
+00:10:48,340 --> 00:10:51,780
+Pasamos el evento a esto, lo comentamos por ahora, y
+
+129
+00:10:51,780 --> 00:10:59,502
+console.log (e.propertyName). A ver que tenemos aqui.
+
+130
+00:11:00,380 --> 00:11:04,650
+Así que voy a hacer clic en uno de estos, lo que activará una transición.
+
+131
+00:11:04,650 --> 00:11:08,223
+Cuando esa transición haya finalizado, nos dirá qué transición.
+
+132
+00:11:09,710 --> 00:11:15,120
+Oh, tamaño de letra y flex-grow. Así que dos cosas están siendo transicionadas aquí.
+
+133
+00:11:15,120 --> 00:11:20,300
+¿Por qué? Porque si miras nuestro CSS, cuando el panel está abierto, estamos en transición.
+
+134
+00:11:20,300 --> 00:11:24,490
+La flexión y el tamaño de letra. Ambas cosas son cada vez más grandes cuando la clase
+
+135
+00:11:24,490 --> 00:11:29,970
+de abierto. Y realmente, solo nos importa el crecimiento flexible aquí, así que lo que podemos hacer es
+
+136
+00:11:29,970 --> 00:11:36,480
+decimos si (e.propertyName). Y normalmente diríamos flex-grow, sin embargo,
+
+137
+00:11:36,480 --> 00:11:42,320
+Encontré algunos errores en Safari, donde en Safari es solo flex y en el resto de
+
+138
+00:11:42,320 --> 00:11:47,840
+Los navegadores son flex-grow. Así que a pesar de que si se desplaza hasta aquí,
+
+139
+00:11:47,840 --> 00:11:53,450
+Hemos declarado explícitamente que estamos trabajando con flex aquí, algunas de las
+
+140
+00:11:53,450 --> 00:11:57,630
+los navegadores dicen que es flex-grow, algunos de ellos lo dicen como flex. Entonces, ¿qué necesitamos para
+
+141
+00:11:57,630 --> 00:12:02,300
+hacer es solo cubrir nuestras dos bases, y en lugar de verificar si está explícitamente
+
+142
+00:12:02,300 --> 00:12:08,820
+flex-grow, veremos si incluye la palabra flex, y si eso es verdad,
+
+143
+00:12:08,820 --> 00:12:12,651
+entonces cambiaremos la clase de abierto-activo.
+
+144
+00:12:13,570 --> 00:12:19,460
+Entonces, de nuevo, ¿qué está pasando aquí? Estamos escuchando un click en cada panel.
+
+145
+00:12:19,460 --> 00:12:22,730
+Cuando alguien haga clic vamos a abrirlo. Eso va a entonces,
+
+146
+00:12:22,730 --> 00:12:28,180
+a su vez, activa un CSS abierto y cuando eso termina, el segundo,
+
+147
+00:12:28,180 --> 00:12:31,910
+el final de la transición se activará, y ahí es cuando vamos a alternar abierto-activo.
+
+148
+00:12:31,910 --> 00:12:35,980
+Y luego solo irá al otro lado cuando lo desactives, también.
+
+149
+00:12:35,980 --> 00:12:41,170
+Aquí vamos, lo abrimos y se animan desde el cielo y desde el cielo.
+
+150
+00:12:41,170 --> 00:12:46,420
+Abajo y luego lo cierras y se abren, y se cierran.
+
+151
+00:12:46,420 --> 00:12:50,090
+Así que esto es genial cuando abres múltiples ... Lo que realmente me gusta de esto
+
+152
+00:12:50,090 --> 00:12:53,810
+es que no tiene que especificar un ancho para esta galería específica,
+
+153
+00:12:53,810 --> 00:12:58,140
+porque si cada uno de ellos tiene una flexibilidad de 5, simplemente tomarán un poco cada uno
+
+154
+00:12:58,140 --> 00:13:02,200
+Menos de la habitación extra. Si uno de ellos, va a tomar mucho más.
+
+155
+00:13:02,200 --> 00:13:04,229
+Con suerte, te ha gustado eso. Te veré en la siguiente.
+
+156
+00:13:05,009 --> 00:13:08,672
+♪ [música] ♪
+

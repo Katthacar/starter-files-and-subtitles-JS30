@@ -1,0 +1,468 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,404 --> 00:00:03,558
+♪ [música] ♪
+
+3
+00:00:07,698 --> 00:00:12,755
+Lección rápida, breve y dulce hoy, y será sobre .addEventListener.
+
+4
+00:00:12,755 --> 00:00:16,220
+No vamos a construir nada enorme aquí, pero hay un par de conceptos
+
+5
+00:00:16,220 --> 00:00:20,210
+que necesito asegurarme de que todos nos demos de baja, porque hemos estado usando estos
+
+6
+00:00:20,210 --> 00:00:24,120
+.addEventListeners en todos estos videos, pero habrá casos extremos
+
+7
+00:00:24,120 --> 00:00:29,220
+que te encuentres donde estas cosas van a ser útiles. Así que lo que tengo aquí
+
+8
+00:00:29,220 --> 00:00:33,915
+es que tengo tres divs. Tengo un div con una clase de uno, dos y tres.
+
+9
+00:00:33,915 --> 00:00:38,186
+y todos están anidados uno dentro del otro. Lo que quiero hacer es
+
+10
+00:00:38,186 --> 00:00:44,592
+Explicarle un par de cosas sobre propagación, propagación, captura de eventos,
+
+11
+00:00:44,592 --> 00:00:50,813
+así como usar esta nueva propiedad llamada una vez. Así que entra en tu etiqueta de script aquí,
+
+12
+00:00:50,813 --> 00:00:54,317
+y solo quiero escuchar un clic en todos estos divs, así que vamos a
+
+13
+00:00:54,317 --> 00:00:59,628
+Selecciona todos esos divs, y vamos a hacer una función llamada logText.
+
+14
+00:00:59,628 --> 00:01:05,735
+Corrija en el evento y solo vamos a console.log (this.classList.value).
+
+15
+00:01:05,735 --> 00:01:07,274
+Cuando alguien hace clic en un div,
+
+16
+00:01:07,274 --> 00:01:11,079
+vamos a registrarlo, así que diremos que tomen todos los divs, repasen cada uno de ellos,
+
+17
+00:01:11,079 --> 00:01:16,516
+vamos a tomar el div, y vamos a agregar. Haga clic en Evento escuchar,
+
+18
+00:01:16,516 --> 00:01:20,890
+y cuando eso suceda, llamaremos LogText. Éste es el indicado...
+
+19
+00:01:20,890 --> 00:01:24,960
+Puedes verme autocompletando esto, y tenemos esta captura ?: boolean aquí mismo.
+
+20
+00:01:24,960 --> 00:01:27,834
+Eso es realmente lo que vamos a estar viendo aquí hoy, lo dejaremos
+
+21
+00:01:27,834 --> 00:01:30,491
+ahi por ahora Así que dale una salvación.
+
+22
+00:01:31,230 --> 00:01:36,660
+Ahora, voy a hacer clic en, y obviamente este púrpura es div con una clase de
+
+23
+00:01:36,660 --> 00:01:43,560
+uno, la rosa brumosa es dos y la coral tres. Así que cuando hago clic en el
+
+24
+00:01:43,560 --> 00:01:47,420
+coral uno, que se va a registrar? No hagas trampa, solo díete lo que harás
+
+25
+00:01:47,420 --> 00:01:53,750
+consola que registro? Haga clic en él, tres, dos y uno. Espera, acabo de hacer clic en el tercero
+
+26
+00:01:53,750 --> 00:01:59,608
+uno, que es el más interno, pero también console.logged dos y uno.
+
+27
+00:02:00,384 --> 00:02:03,610
+Eso es raro. Bueno, también si consola.log esto, verá el real
+
+28
+00:02:03,610 --> 00:02:09,028
+Elementos mismos, tres, dos, y uno. Entonces, ¿qué está pasando aquí?
+
+29
+00:02:09,190 --> 00:02:12,510
+Bueno, lo que está sucediendo es si vamos a nuestro panel de Elementos aquí,
+
+30
+00:02:12,510 --> 00:02:17,079
+y nos dirigimos a la div en la que hicimos clic, hicimos clic en tres, pero realmente también
+
+31
+00:02:17,079 --> 00:02:20,373
+Hicimos clic en dos, porque se envuelve alrededor de él, y también hicimos clic en uno,
+
+32
+00:02:20,373 --> 00:02:25,150
+También hicimos clic en el cuerpo, también hicimos clic en la etiqueta html, también hicimos clic
+
+33
+00:02:25,150 --> 00:02:29,600
+en la pestaña actual, y también hicimos clic en Google Chrome, y también hicimos clic en nuestro
+
+34
+00:02:29,600 --> 00:02:33,520
+Sistema operativo OS X, y también hicimos clic en el mundo, y simplemente sigue haciendo zoom
+
+35
+00:02:33,520 --> 00:02:38,182
+fuera y fuera y fuera Así que ese es el concepto de algo llamado burbujeo,
+
+36
+00:02:38,182 --> 00:02:43,358
+donde el navegador descubrirá en qué hizo clic, pero también se activará
+
+37
+00:02:43,358 --> 00:02:48,970
+hace clic en cada ... y se ondularán todo el camino. Así que el caso en cuestión,
+
+38
+00:02:48,970 --> 00:02:58,460
+Si tomo document.body y agrego el EventListener de clic, y cuando eso
+
+39
+00:02:58,460 --> 00:03:03,634
+sucede, voy a ingresar el texto, y tenemos que dar una clase a nuestro cuerpo aquí,
+
+40
+00:03:03,634 --> 00:03:07,745
+entonces class = "bod". Ahora mira, voy a hacer clic en el coral,
+
+41
+00:03:07,745 --> 00:03:13,700
+tres, dos, uno, y cuerpo. Entonces, lo que está sucediendo es que cuando haces un clic,
+
+42
+00:03:13,700 --> 00:03:19,010
+ondulará todo el camino hasta la parte superior del documento y activará clics
+
+43
+00:03:19,010 --> 00:03:22,690
+esos elementos también. Ahora, no siempre los ves, porque no eres
+
+44
+00:03:22,690 --> 00:03:26,408
+necesariamente escuchando un clic en esos elementos, pero si estás escuchando
+
+45
+00:03:26,408 --> 00:03:30,555
+Un clic en múltiples elementos anidados, en este caso, estamos escuchando un clic en
+
+46
+00:03:30,555 --> 00:03:35,486
+tres, dos, uno y cuerpo, luego disparará un clic
+
+47
+00:03:35,486 --> 00:03:37,800
+en todos esos, justo allí.
+
+48
+00:03:37,800 --> 00:03:41,724
+Así que quiero explicarles cómo funciona esto en JavaScript.
+
+49
+00:03:41,724 --> 00:03:47,552
+La forma en que funciona en los navegadores modernos es que el navegador primero
+
+50
+00:03:47,552 --> 00:03:51,407
+hacer algo llamado captura, lo que significa que al hacer clic en el elemento,
+
+51
+00:03:51,407 --> 00:03:56,029
+va a ondular hacia abajo Va a decir: "De acuerdo, hiciste clic en el cuerpo,
+
+52
+00:03:56,029 --> 00:04:00,400
+hizo clic en uno, hizo clic en dos y en tres. "Así que en realidad
+
+53
+00:04:00,400 --> 00:04:04,964
+va de arriba hacia abajo, y luego captura todos esos eventos,
+
+54
+00:04:04,964 --> 00:04:09,732
+y luego comienza en la parte inferior, y luego comienza a hacer algo que se llama una burbuja.
+
+55
+00:04:09,732 --> 00:04:14,594
+Así que la captura va de arriba hacia abajo, y luego los eventos ... los eventos no se han disparado
+
+56
+00:04:14,594 --> 00:04:19,019
+todavía. Simplemente captura el lugar donde hizo clic y los almacena. Entonces empezará a
+
+57
+00:04:19,019 --> 00:04:23,510
+burbuja, lo que significa que está activando los eventos a medida que avanza.
+
+58
+00:04:23,510 --> 00:04:27,363
+Así que dice: "Bien, hemos terminado de averiguar en qué has hecho clic hasta el fondo,
+
+59
+00:04:27,363 --> 00:04:31,684
+ahora voy a comenzar a disparar esos eventos de clic, "en tres,
+
+60
+00:04:31,684 --> 00:04:36,960
+luego dos, luego uno, luego cuerpo, y cualquier otra cosa que estés escuchando.
+
+61
+00:04:36,960 --> 00:04:41,630
+Entonces, si vamos a nuestro .addEventListener aquí, y eliminemos este documento.
+
+62
+00:04:41,630 --> 00:04:44,620
+aquí, después de nuestra función [inaudible 00:04:43] un tercer argumento,
+
+63
+00:04:44,620 --> 00:04:50,707
+que es un objeto de opciones, y decimos que la captura va a ser igual a verdadera,
+
+64
+00:04:50,707 --> 00:04:55,817
+lo que haré entonces es cuando hago clic, vamos uno, dos, tres y lo que está pasando
+
+65
+00:04:55,817 --> 00:05:01,277
+es que esta función, logText, no se ejecutará en la burbuja,
+
+66
+00:05:01,277 --> 00:05:05,437
+Se va a ejecutar en la captura hacia abajo. Así que vamos a los elementos aquí,
+
+67
+00:05:05,437 --> 00:05:09,181
+va a decir, "Oh, hicieron clic en uno, dispararlo. Hicieron clic en dos,
+
+68
+00:05:09,181 --> 00:05:13,909
+despedirlo Hicieron clic en tres, dispararon ". Así que eso es lo que significa captura
+
+69
+00:05:13,909 --> 00:05:20,127
+es que ejecutaremos la función en el camino hacia abajo en lugar de en el camino hacia arriba.
+
+70
+00:05:20,127 --> 00:05:24,947
+Ahora déjame poner eso de nuevo en falso. Por defecto, es falso, así que eso es lo normal.
+
+71
+00:05:24,947 --> 00:05:26,416
+Versión que tenemos aquí.
+
+72
+00:05:26,416 --> 00:05:30,435
+Otra cosa que tenemos es que se llama stop propagation. Así que acabamos de hablar
+
+73
+00:05:30,435 --> 00:05:34,751
+los eventos burbujean, lo que significa que si hace clic en el más interno,
+
+74
+00:05:34,751 --> 00:05:40,407
+también activará un evento en el padre y ese padre también.
+
+75
+00:05:40,407 --> 00:05:44,591
+Sin embargo, lo que podría hacer es tomar su evento en su función,
+
+76
+00:05:44,591 --> 00:05:50,960
+y llamas a e.stopPropagation (), y lo que harás es decir,
+
+77
+00:05:50,960 --> 00:05:56,135
+"Deja de animar este evento. Hice clic en el que realmente quería".
+
+78
+00:05:56,135 --> 00:06:01,432
+Así que ahora, si entro aquí y hago clic en el del medio, solo veo tres,
+
+79
+00:06:01,432 --> 00:06:07,990
+luego dos, y luego uno. ¿Porqué es eso? Porque corremos ... lo que pasa es el
+
+80
+00:06:07,990 --> 00:06:13,778
+el navegador comienza en el más bajo, ejecuta esa función y luego decimos
+
+81
+00:06:13,778 --> 00:06:20,952
+StopPropagation, que esencialmente significa dejar de burbujear! y ya no lo hará
+
+82
+00:06:20,952 --> 00:06:25,680
+Activar eventos en los padres en el camino hacia arriba. Así que eso es stopPropagation. Usted puede
+
+83
+00:06:25,680 --> 00:06:28,607
+envuelve eso en una declaración if si necesitas obtener el medio,
+
+84
+00:06:28,607 --> 00:06:33,060
+o algo así, pero eso es lo que hace stopPropagation. También puedes usar
+
+85
+00:06:33,060 --> 00:06:38,280
+eso junto con su camino hacia abajo, aquí mismo, si tuviera que hacer clic en
+
+86
+00:06:38,280 --> 00:06:44,314
+el medio, o lo siento, si tuviera que hacer clic en tres, ¿qué vamos a obtener
+
+87
+00:06:44,314 --> 00:06:51,257
+con capture: true y stopPropagation? Solo uno. ¿Por qué? Porque la captura lo hace ir
+
+88
+00:06:51,257 --> 00:06:56,757
+en el camino hacia abajo, uno, y luego ejecutamos stopPropagation, que lo detiene
+
+89
+00:06:56,757 --> 00:06:59,013
+bajando aún más.
+
+90
+00:06:59,013 --> 00:07:02,844
+Lo último que quería mostrarte era algo que se llamaba una vez, y esto es muy
+
+91
+00:07:02,844 --> 00:07:06,505
+Nuevo en el navegador que tenemos aquí. Así que solo voy a console.log esa propagación
+
+92
+00:07:06,505 --> 00:07:11,952
+y devuelva esta captura a falso, solo para que podamos recuperar nuestros valores predeterminados
+
+93
+00:07:11,952 --> 00:07:16,926
+Aquí, tres, dos, uno. También tenemos una opción llamada una vez. Si lo configuras en
+
+94
+00:07:16,926 --> 00:07:22,390
+cierto, lo que sucederá es que escuchará un clic y luego se desenredará,
+
+95
+00:07:22,390 --> 00:07:25,814
+y desencadenarse es lo mismo que decir
+
+96
+00:07:25,814 --> 00:07:33,119
+div.removeEvent.Listener ('clic', logText.
+
+97
+00:07:33,119 --> 00:07:37,909
+Así que escuchará un clic una vez y luego se desatará.
+
+98
+00:07:37,909 --> 00:07:42,126
+por lo que no hay futuros clics en él. Ahora si hago clic en uno de estos aquí,
+
+99
+00:07:42,126 --> 00:07:48,027
+Aquí vamos, estoy haciendo clic en tantos como puedo. Corrió una vez, disparó todos esos eventos,
+
+100
+00:07:48,027 --> 00:07:53,278
+pero nunca se ejecutará de nuevo, hasta que vuelva a ejecutar la página. Así que eso podría ser útil si
+
+101
+00:07:53,278 --> 00:07:56,685
+tienes un boton Vamos a hacer un botón rápido aquí,
+
+102
+00:07:56,685 --> 00:08:03,792
+y lo haremos, y solo quisiste que alguien hiciera clic en ese botón una vez,
+
+103
+00:08:03,792 --> 00:08:09,545
+simplemente decimos que button.addEventListener haga clic, y luego, cuando eso suceda, ejecutaremos
+
+104
+00:08:09,545 --> 00:08:13,639
+Una función rápida aquí que solo con console.logs haga clic, mira esto.
+
+105
+00:08:13,639 --> 00:08:17,000
+Así que tenemos este botón, si lo presiono una y otra y otra y otra vez,
+
+106
+00:08:17,000 --> 00:08:18,030
+vamos a conseguirlo,
+
+107
+00:08:18,030 --> 00:08:23,410
+pero si tuviera que agregar ese tercer argumento de opciones aquí, donde tenemos una vez
+
+108
+00:08:23,410 --> 00:08:29,174
+es igual a verdadero, solo debería poder hacer clic una vez y nunca más.
+
+109
+00:08:29,174 --> 00:08:34,066
+Y donde lo he usado específicamente es en las cajas, donde no deseas
+
+110
+00:08:34,066 --> 00:08:40,174
+Para que alguien haga clic en ese botón más de una vez, puede desenlazarlo y detenerlo.
+
+111
+00:08:40,174 --> 00:08:41,920
+haciendo clic varias veces.
+
+112
+00:08:41,920 --> 00:08:45,738
+Así que espero que hayas aprendido algunas cosas allí. Sé que la propagación y
+
+113
+00:08:45,738 --> 00:08:51,058
+burbujeando y capturando, todas esas palabras solían ser muy, muy confusas para mí.
+
+114
+00:08:51,058 --> 00:08:55,580
+No es algo que usas todos los días, así que es una de esas cosas en las que simplemente
+
+115
+00:08:55,580 --> 00:08:58,977
+tipo de dejar de aprender, así que espero que hayas pasado un par de minutos
+
+116
+00:08:58,977 --> 00:09:02,790
+y acabo de aprender exactamente lo que hace la propagación y el burbujeo y todo eso.
+
+117
+00:09:02,790 --> 00:09:04,382
+Gracias, y te veré mañana.
+

@@ -1,0 +1,800 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,078 --> 00:00:04,708
+♪ [música] ♪
+
+3
+00:00:07,770 --> 00:00:11,990
+Hoy lo que estaremos construyendo es este dulce lienzo HTML5 donde,
+
+4
+00:00:11,990 --> 00:00:17,900
+Cuando hago clic hacia abajo, arrastro mi dedo y lo suelto, va a dibujar algo en el
+
+5
+00:00:17,900 --> 00:00:21,090
+lienzo real aquí. Ahora, esto puede parecer un poco tonto, pero en realidad vamos
+
+6
+00:00:21,090 --> 00:00:24,650
+aprender mucho sobre cómo funcionan realmente los fundamentos de Canvas,
+
+7
+00:00:24,650 --> 00:00:27,660
+así como un par de otros trucos aseados en el camino.
+
+8
+00:00:27,660 --> 00:00:31,300
+Así que vamos a nuestro archivo JavaScript aquí, y realmente,
+
+9
+00:00:31,300 --> 00:00:36,000
+todo lo que tenemos es este elemento de lienzo que necesitamos para dibujar. Así que lo primero que nosotros
+
+10
+00:00:36,000 --> 00:00:41,470
+Lo que quiero hacer es agarrar ese lienzo, y lo segundo que necesitamos es algo
+
+11
+00:00:41,470 --> 00:00:45,430
+llamado un contexto. Lienzo en la web es algo así como Microsoft Paint,
+
+12
+00:00:45,430 --> 00:00:50,790
+donde solo obtienes un bloque de píxeles reales y necesitas dibujar sobre eso.
+
+13
+00:00:50,790 --> 00:00:55,710
+Ahora, no dibuja directamente en el elemento de lienzo en HTML, sino que dibuja en algo
+
+14
+00:00:55,710 --> 00:00:59,350
+llamado el contexto. Y el contexto puede ser 2D, que es lo que seremos
+
+15
+00:00:59,350 --> 00:01:04,910
+trabajando con, aunque también puedes usarlo con 3D para cosas como videojuegos y
+
+16
+00:01:04,910 --> 00:01:11,590
+Representación 3D. Así que vamos a agarrar el contexto, const ctx = lienzo.
+
+17
+00:01:11,590 --> 00:01:18,030
+Getcontext. Pregúntale por el contexto 2D. Lo siguiente que tenemos que hacer es evaluar nuestro
+
+18
+00:01:18,030 --> 00:01:21,860
+lienzo para ser el ancho exacto de la ventana. Por defecto, tu lienzo va
+
+19
+00:01:21,860 --> 00:01:27,110
+para ser 800px por 800px, como lo he hecho aquí. Sin embargo, queremos redimensionarlo antes.
+
+20
+00:01:27,110 --> 00:01:33,860
+Hacemos cualquiera de nuestros dibujos. Así que di canvas.width = window.innerWidth y nosotros
+
+21
+00:01:33,860 --> 00:01:39,970
+También hacerlo con la altura. Entonces, cuando actualice esta página, debería ser tan grande como
+
+22
+00:01:39,970 --> 00:01:44,190
+la ventana real es Si inspecciono el elemento en mi lienzo, no deberías verlo.
+
+23
+00:01:44,190 --> 00:01:49,185
+cualquier cosa, pero si pasas el ratón sobre él, verás que el mío es de aproximadamente 1700px por 1100px.
+
+24
+00:01:50,270 --> 00:01:53,652
+Luego tenemos que hacer un par de ajustes básicos con el estilo de estilo,
+
+25
+00:01:53,652 --> 00:01:58,290
+El lineCap y el lineJoin, y explicaré esto en solo un segundo.
+
+26
+00:01:58,290 --> 00:02:08,130
+# BADA55. Y necesitamos que lineJoin sea redondo y que lineCap también va a ser
+
+27
+00:02:08,130 --> 00:02:12,710
+ser redondo Y cuando se basa en algo, lo que va a suceder es que hay que
+
+28
+00:02:12,710 --> 00:02:15,650
+Sé un color, en primer lugar, y vamos a empezar con # BADA55,
+
+29
+00:02:15,650 --> 00:02:20,130
+y luego también el final de la línea, ¿debería ser cuadrada? Y cuando una linea se encuentra
+
+30
+00:02:20,130 --> 00:02:24,310
+en otra línea, ¿debería cuadrarse o redondearse alrededor de la esquina?
+
+31
+00:02:24,310 --> 00:02:29,066
+Así lo hemos hecho redondeado. Puede subir a MDN y ver todas las diferentes opciones
+
+32
+00:02:29,066 --> 00:02:31,570
+para lineJoin y lineCap, y jugar con ellos.
+
+33
+00:02:31,570 --> 00:02:38,300
+A continuación, necesitamos un par de variables ficticias, por lo que vamos a decir let isDrawing =
+
+34
+00:02:38,300 --> 00:02:44,850
+falso, y lo que esto va a hacer es cuando hago clic en este elemento ...
+
+35
+00:02:45,030 --> 00:02:48,740
+Estoy haciendo clic hacia abajo, lo acabo de hacer, muevo el mouse y luego lo suelto.
+
+36
+00:02:48,740 --> 00:02:52,630
+Y luego muevo mi ratón de nuevo. No pasa nada cuando muevo el mouse hacia abajo,
+
+37
+00:02:52,630 --> 00:02:57,080
+sólo dibuja cuando mi cursor está realmente hacia abajo. Entonces, lo que vamos a hacer es que estamos
+
+38
+00:02:57,080 --> 00:03:02,200
+creando una especie de bandera aquí, donde la configuramos como falsa,
+
+39
+00:03:02,200 --> 00:03:06,830
+y luego, cuando haces clic hacia abajo, lo configuramos en verdadero, y cuando haces clic arriba,
+
+40
+00:03:06,830 --> 00:03:09,660
+Si sueltas el botón, lo estableceremos en falso. Y eso es una especie de
+
+41
+00:03:09,660 --> 00:03:13,630
+Vamos a ser nuestra bandera para decirnos si realmente dibujamos en este lienzo,
+
+42
+00:03:13,630 --> 00:03:17,560
+¿O alguien está moviendo su ratón sin hacer nada?
+
+43
+00:03:17,560 --> 00:03:24,340
+Entonces necesitamos un par de variables, vamos a lastX = 0 y lastY = 0.
+
+44
+00:03:24,340 --> 00:03:30,880
+Y lastX y lastY nos ayudarán, porque cuando dibujamos en un lienzo,
+
+45
+00:03:30,880 --> 00:03:34,437
+digamos que tengo mi ratón aquí y quiero moverlo aquí.
+
+46
+00:03:34,437 --> 00:03:38,715
+Imaginemos que era solo una línea recta. ¿Qué tiene que pasar para que dibujes?
+
+47
+00:03:38,715 --> 00:03:44,330
+una línea es que necesitas una X e Y iniciales y una X e Y finales. No puedes simplemente decirlo
+
+48
+00:03:44,330 --> 00:03:51,340
+"Dibuja una línea en las coordenadas (100,100)," porque una línea necesita un inicio y una parada,
+
+49
+00:03:51,340 --> 00:03:56,910
+no solo un comienzo Entonces, lo que hemos hecho es crear un último X y una última variable
+
+50
+00:03:56,910 --> 00:04:00,960
+eso va a ser "¿De dónde empiezas la línea?" Y luego cuando terminemos
+
+51
+00:04:00,960 --> 00:04:04,820
+Dibujo, que va a ser "¿Dónde terminas?" A continuación, necesitamos una función llamada
+
+52
+00:04:04,820 --> 00:04:08,740
+Sorteo, y eso va a tener en un evento. Esa función de sorteo va a ser
+
+53
+00:04:08,740 --> 00:04:12,540
+Llamo cada vez que muevo mi ratón encima del lienzo. Solo consola.log que
+
+54
+00:04:12,540 --> 00:04:16,967
+evento, y escucharemos nuestro evento mousemove en el lienzo.
+
+55
+00:04:19,441 --> 00:04:25,100
+Así que ahora, cuando muevo mi mouse en el lienzo, se va a console.log draw,
+
+56
+00:04:25,100 --> 00:04:29,890
+y cuando me muevo alrededor de nuestro mouse ahora, vas a ver que estos eventos,
+
+57
+00:04:29,890 --> 00:04:34,020
+MouseEvents, se registran cada vez que muevo el mouse. Y en esos
+
+58
+00:04:34,020 --> 00:04:38,470
+MouseEvents, vamos a ver offsetX, offsetY, movementX, movementY,
+
+59
+00:04:38,470 --> 00:04:44,770
+X e Y. Toda esta información sobre lo que sucedió, dónde estaba el mouse cuando esto
+
+60
+00:04:44,770 --> 00:04:49,880
+La cosa fue despedida. Pero, una vez más, no queremos que este sorteo, este registro de la consola ejecute todos los
+
+61
+00:04:49,880 --> 00:04:55,060
+tiempo, solo queremos hacerlo cuando la persona ha hecho clic hacia abajo. Así que lo que podemos hacer
+
+62
+00:04:55,060 --> 00:05:04,849
+Aquí está, diremos si no están dibujando, entonces regresen. Y esto detendrá la
+
+63
+00:05:14,635 --> 00:05:14,635
+La función se ejecuta cuando no están apagados. Y luego, ¿cómo cambiamos?
+
+64
+00:05:14,635 --> 00:05:20,422
+que es dibujar? Bueno, tendremos otro oyente de eventos aquí, así que mousedown.
+
+65
+00:05:20,422 --> 00:05:24,293
+Y cuando el mouse está abajo, solo vamos a ejecutar una función de flecha rápida en línea
+
+66
+00:05:24,293 --> 00:05:34,800
+aquí que dice isDrawing = true, y cuando el mouse está arriba isDrawing = false,
+
+67
+00:05:34,800 --> 00:05:39,870
+y finalmente uno, queremos escuchar el mouseout isDrawing también va a ser
+
+68
+00:05:39,870 --> 00:05:44,390
+falso. Porque lo que puede suceder es que puede hacer clic hacia abajo, deje que su mouse salga del
+
+69
+00:05:44,390 --> 00:05:49,850
+ventana real aquí y dejar ir y volver, y todavía va a pensar que
+
+70
+00:05:49,850 --> 00:05:52,610
+el mouse está abajo porque nunca activó un mouseup en ese evento.
+
+71
+00:05:52,610 --> 00:05:55,645
+Así que cuando salgas el mouse, se dirá automáticamente: "Oh, ya no estás
+
+72
+00:05:55,645 --> 00:06:01,599
+dibujo. "Así que con estas variables definidas aquí, solo deberíamos console.log el
+
+73
+00:06:01,599 --> 00:06:06,170
+evento cuando mi mouse está abajo. Así que refresca, aquí vamos, muevo mi ratón,
+
+74
+00:06:06,170 --> 00:06:10,190
+nada esta pasando. Voy a hacer click y seguir moviendo mi mouse,
+
+75
+00:06:10,190 --> 00:06:14,480
+mire todos estos números se están moviendo y voy a soltar y mover mi mouse
+
+76
+00:06:14,480 --> 00:06:18,840
+alrededor, no pasa nada. Bueno. Así que eso significa esta función, todo debajo de esto.
+
+77
+00:06:18,840 --> 00:06:23,970
+Una línea, solo se ejecutará cuando el mouse del usuario esté realmente abajo.
+
+78
+00:06:23,970 --> 00:06:30,630
+Así que ese es nuestro tipo de funcionalidad de clic y arrastre hacia abajo, ahora vamos a trabajar en
+
+79
+00:06:30,630 --> 00:06:32,770
+En realidad haciendo el dibujo.
+
+80
+00:06:32,770 --> 00:06:37,250
+Así que lo primero que queremos hacer aquí es comenzar un camino, por lo que decimos ctx,
+
+81
+00:06:37,250 --> 00:06:40,870
+y recuerde, ctx es donde hacemos todos nuestros dibujos para nuestro lienzo.
+
+82
+00:06:40,870 --> 00:06:49,420
+Así que beginPath () entonces necesitamos comenzar con una X y una Y, moverlo a una X e Y,
+
+83
+00:06:49,420 --> 00:06:55,920
+y eso completará nuestro dibujo de X. Así que decimos ctx.moveTo (lastX,
+
+84
+00:06:55,920 --> 00:07:07,060
+lastY), y luego vamos a lineTo (e.offsetX, e.offsetY).
+
+85
+00:07:07,060 --> 00:07:13,100
+Y de nuevo, esos e.offsetX y offsetY, esos valores provienen de lo real
+
+86
+00:07:13,100 --> 00:07:20,230
+evento que sucedió aquí. Y luego finalmente llamamos ctx.stroke ().
+
+87
+00:07:20,230 --> 00:07:23,980
+Así que todas estas líneas aquí, han estado empezando nuestra línea,
+
+88
+00:07:23,980 --> 00:07:27,540
+pero no vamos a ver realmente nada en la página hasta que llamemos el trazo.
+
+89
+00:07:27,540 --> 00:07:30,188
+Ahora, eso no nos llevará allí, pero veamos dónde estamos hasta ahora.
+
+90
+00:07:31,840 --> 00:07:40,260
+Whoa! ¿Que esta pasando aqui? Tal vez puedas entender lo que está pasando aquí.
+
+91
+00:07:40,260 --> 00:07:45,230
+En realidad es algo genial. Estamos dibujando todas estas líneas, pero lo que está pasando
+
+92
+00:07:45,230 --> 00:07:51,860
+es que siempre estamos empezando desde ... y pondremos un comentario, "Comenzar desde" y "Ir a".
+
+93
+00:07:51,860 --> 00:07:56,940
+Siempre comenzaremos desde 0 e iremos a donde sea que esté el mouse del usuario.
+
+94
+00:07:56,940 --> 00:08:01,570
+en movimiento, ¿verdad? Entonces, lo que queremos hacer es cuando hayamos terminado, esta función de dibujo,
+
+95
+00:08:01,570 --> 00:08:07,530
+queremos actualizar las variables lastX y lastY para que estén donde estén.
+
+96
+00:08:07,530 --> 00:08:17,447
+Entonces podríamos decir lastX = e.offsetX y lastY = e.offsetY. A ver si eso hace
+
+97
+00:08:17,447 --> 00:08:26,920
+para nosotros Ah, trabajando hasta ahora. Arrastra ... oh, no. Un par de cosas que suceden aquí.
+
+98
+00:08:26,920 --> 00:08:30,920
+En primer lugar, permítame mostrarle un truco rápido de ES6. Podríamos establecer ambos
+
+99
+00:08:30,920 --> 00:08:41,146
+variables en una línea donde decimos [lastX, lastY] = [e.offsetX, e.offsetY].
+
+100
+00:08:41,146 --> 00:08:45,230
+Eso solo nos permite hacerlo en una sola línea. Eso se llama "desestructuración
+
+101
+00:08:45,230 --> 00:08:49,050
+array, "pero todavía tenemos este problema. Tenemos un par de problemas aquí.
+
+102
+00:08:49,050 --> 00:08:56,543
+En primer lugar, cuando hago clic hacia abajo, mi primer dibujo siempre comenzará en
+
+103
+00:08:56,543 --> 00:09:01,910
+(0,0), y eso realmente no tiene mucho sentido. Y luego la otra cosa es,
+
+104
+00:09:01,910 --> 00:09:06,270
+Al igual que, cuando sigo dibujando, simplemente comienza desde donde estaba.
+
+105
+00:09:06,270 --> 00:09:11,050
+Así que solo soy capaz de dibujar una línea continua y en ningún punto intermedio.
+
+106
+00:09:11,050 --> 00:09:16,860
+Lo que podemos hacer es volver a este mousedown, aquí, esta función,
+
+107
+00:09:16,860 --> 00:09:20,910
+y tal vez moveré esto a la parte superior aquí, solo sacarlo. Y en lugar de hacer
+
+108
+00:09:20,910 --> 00:09:25,210
+esta es solo una función rápida en línea, voy a convertir eso en un bloque para que pueda
+
+109
+00:09:25,210 --> 00:09:31,010
+hacer multiples cosas Así que isDrawing = true, pero también tenemos que actualizar nuestro lastX y
+
+110
+00:09:31,010 --> 00:09:39,090
+nuestro últimoY, lo mismo que hemos hecho aquí y pasar el evento. Entonces, ¿qué vamos a hacer?
+
+111
+00:09:39,090 --> 00:09:44,089
+es tan pronto como la persona hace clic con el mouse hacia abajo para iniciarlo, antes de que hagamos una
+
+112
+00:09:44,089 --> 00:09:48,580
+mousemove, porque mousedown ocurrirá antes de mover el mouse,
+
+113
+00:09:48,580 --> 00:09:53,250
+entonces vamos a actualizar el último X y el último Y, y eso nos va a poner donde estamos
+
+114
+00:09:53,250 --> 00:09:58,200
+quiero ir en lugar de comenzar en (0,0). Así que dale una salvación.
+
+115
+00:09:58,200 --> 00:10:01,980
+Ahora, voy a empezar aquí. Hacer clic. Ah, parece que en realidad está funcionando.
+
+116
+00:10:01,980 --> 00:10:06,220
+¿Puedo empezar otro? Bueno. Dibuja otra línea. Dibuja otra línea.
+
+117
+00:10:06,220 --> 00:10:10,940
+Dibuja otra línea. Bueno. Estoy muy feliz con eso. Ahora, un par de otras cosas.
+
+118
+00:10:10,940 --> 00:10:15,480
+Estas líneas son realmente muy pequeñas, por lo que podríamos subir a nuestro contexto aquí y decir:
+
+119
+00:10:15,480 --> 00:10:24,080
+ctx.lineWidth = 100, y eso nos dará mucho ... Ya ves cómo el final de las mayúsculas
+
+120
+00:10:24,080 --> 00:10:29,970
+son redondos? Si tuviera que quitarme esta línea, Joo y lineCap, solo obtendríamos eso,
+
+121
+00:10:29,970 --> 00:10:36,290
+¡cortejar! Este tipo de diversión aquí, y además del lineCap va a
+
+122
+00:10:36,290 --> 00:10:42,070
+Danos este bonito, suave y redondo. Así que eso es lo más básico del dibujo en una
+
+123
+00:10:42,070 --> 00:10:46,540
+Lienzo, pero vamos a tener un poco de diversión y hacer algo como esto.
+
+124
+00:10:46,540 --> 00:10:51,630
+Primero hagamos el color. Si no ha oído hablar de HSL, necesito detenerme por solo
+
+125
+00:10:51,630 --> 00:10:56,730
+segundo y explicalo Dirígete al sitio web mothereffinghsl.com,
+
+126
+00:10:56,730 --> 00:11:02,710
+y lo que es HSL, es esencialmente el arco iris, pero se puede programar
+
+127
+00:11:02,710 --> 00:11:09,850
+Selecciona las piezas del arcoiris. Así que la parte de tono de HSL es del rojo hasta el final
+
+128
+00:11:09,850 --> 00:11:14,440
+a rojo en el arco iris, la S que es la saturación, que es algo así como,
+
+129
+00:11:14,440 --> 00:11:19,360
+que tan brillante es Y L va a ser la ligereza y eso es lo que puedes cambiar.
+
+130
+00:11:19,360 --> 00:11:25,350
+aquí. La luminosidad todo el camino es blanca, la ausencia de luminosidad va
+
+131
+00:11:25,350 --> 00:11:28,270
+ser negro Así que en algún lugar del medio es probablemente lo que estás buscando,
+
+132
+00:11:28,270 --> 00:11:33,290
+tal vez un poco más alto y eso nos va a permitir elegir el programáticamente
+
+133
+00:11:33,290 --> 00:11:39,740
+Diferentes piezas de esto. Ahora, eso es realmente genial porque lo que podemos hacer es si 0
+
+134
+00:11:39,740 --> 00:11:49,210
+es rojo, y 360 es el otro espectro, eso significa que por cada 360 sorteos que hacemos,
+
+135
+00:11:49,210 --> 00:11:53,820
+solo podemos elegir e incrementar un color y luego voltearlo hacia atrás.
+
+136
+00:11:53,820 --> 00:11:56,740
+Entonces, lo que vamos a hacer es volver a nuestras variables iniciales,
+
+137
+00:11:56,740 --> 00:12:03,440
+y vamos a decir let hue = 0 y mientras dibujamos, antes de comenzar el camino,
+
+138
+00:12:03,440 --> 00:12:09,170
+diremos ctx.strokeStyle, y recordamos que comenzamos con # BADA55,
+
+139
+00:12:09,170 --> 00:12:17,400
+pero ahora vamos a configurarlo para que sea 'hsl ()', y el tono será el
+
+140
+00:12:17,400 --> 00:12:24,820
+tono variable, y luego vamos a darle 100% de saturación y 50% de luminosidad.
+
+141
+00:12:24,820 --> 00:12:29,660
+Así que vamos a empezar, vamos a ver dónde llegamos tan lejos. Sí, por lo que está empezando en 0,
+
+142
+00:12:29,660 --> 00:12:35,260
+que es rojo Bien, pero también podríamos, una vez que hayamos hecho ese estilo de golpe,
+
+143
+00:12:35,260 --> 00:12:42,050
+o tal vez al final de esto aquí, decimos hue ++, y eso lo incrementará tan
+
+144
+00:12:42,050 --> 00:12:48,290
+La segunda vez que dibujemos será 1. La tercera vez será 2. ¡Woo!
+
+145
+00:12:48,290 --> 00:12:56,540
+Está bien, se ve bien. Luciendo bien. Y eventualmente, vamos a conseguir todo
+
+146
+00:12:56,540 --> 00:13:01,720
+la forma y el tipo de parte interesante de HSL es si pasas de 360,
+
+147
+00:13:01,720 --> 00:13:07,619
+solo va a ... como si lo metiéramos aquí y veamos qué matiz es ese,
+
+148
+00:13:09,300 --> 00:13:14,260
+hue es 906 pero simplemente va a seguir dando vueltas y vueltas y vueltas.
+
+149
+00:13:14,260 --> 00:13:26,650
+Lo que también podríamos hacer es decir si (hue> = 360) entonces hue = 0 y luego solo una especie de
+
+150
+00:13:26,650 --> 00:13:31,880
+Como, restablézcalo en ese punto y eso funcionará igual de bien.
+
+151
+00:13:31,880 --> 00:13:36,370
+Y luego, la otra cosa que podemos hacer es que también podemos cambiar el ancho de línea de lo que
+
+152
+00:13:36,370 --> 00:13:41,270
+hemos hecho aquí, ctx.lineWidth. Podemos usar esa variable también.
+
+153
+00:13:41,270 --> 00:13:52,770
+Entonces, strokeStyle ... ctx.lineWidth va a ser igual al tono. A ver que tenemos
+
+154
+00:13:52,770 --> 00:13:56,480
+ahí. Así que comienza ... ooh, sube todo el camino, todo el camino,
+
+155
+00:13:56,480 --> 00:14:01,050
+todo el camino, y luego, en cierto punto, simplemente comienza de nuevo.
+
+156
+00:14:01,050 --> 00:14:06,000
+Y eso es genial, pero lo que he hecho aquí es una vez que alcanzas ese máximo
+
+157
+00:14:06,000 --> 00:14:12,070
+Dibujarlo simplemente se desvanecerá. Entonces lo que podemos hacer es crear otro.
+
+158
+00:14:12,070 --> 00:14:18,870
+Variable aquí llamada let direction = true. Eso significa que se va a construir,
+
+159
+00:14:18,870 --> 00:14:22,430
+así que hemos dejado direction = true, ahora tenemos esta líneaWidth = hue.
+
+160
+00:14:22,430 --> 00:14:26,540
+No queremos esto, borre esa línea y diríjase a la parte inferior debajo de donde hacemos
+
+161
+00:14:26,540 --> 00:14:31,780
+nuestra tonalidad, y vamos a, para cada bucle, vamos a incrementar el
+
+162
+00:14:31,780 --> 00:14:38,320
+grosor de línea. Así que ctx.lineWidth ++. Lo que hará es que incrementará el ancho de línea.
+
+163
+00:14:38,320 --> 00:14:42,450
+Una vez por cada vez que tengo, por lo que cada vez más grande, más grande, más grande y simplemente
+
+164
+00:14:42,450 --> 00:14:46,820
+sigue haciéndose cada vez más grande y más grande infinitamente, y eso no es realmente lo que nosotros
+
+165
+00:14:46,820 --> 00:15:00,160
+querer. Entonces, lo que puede decir es que diremos si (ctx.lineWidth> = 100 | | ctx.lineWidth <=
+
+166
+00:15:00,160 --> 00:15:04,484
+1) Entonces queremos voltear la dirección.
+
+167
+00:15:11,096 --> 00:15:15,293
+Entonces decimos aquí abajo si (dirección = verdadera)
+
+168
+00:15:15,293 --> 00:15:23,122
+entonces el lineWidth sube, de lo contrario el lineWidth baja.
+
+169
+00:15:23,122 --> 00:15:26,560
+Ahora, eso podría haber roto tu cerebro por un segundo, así que tomemos un segundo
+
+170
+00:15:26,560 --> 00:15:32,530
+para ver qué está pasando aquí, si (ctx. lineWidth) es mayor que 100,
+
+171
+00:15:32,530 --> 00:15:36,180
+así que esencialmente lo que estamos haciendo aquí es que lo estamos incrementando de 0 todo el
+
+172
+00:15:36,180 --> 00:15:42,400
+camino a 100, pero una vez que lleguemos a 100, vamos de 100 a 99 a 98,
+
+173
+00:15:42,400 --> 00:15:48,690
+toda la calle abajo. Así que estamos diciendo que, si es mayor que 100, entonces gire la dirección,
+
+174
+00:15:48,690 --> 00:15:54,910
+o si es menos de 1, también voltea la dirección. Y luego, dependiendo de que
+
+175
+00:15:54,910 --> 00:15:59,740
+esa dirección es, o bien aumentamos el ancho de línea, o si la dirección va
+
+176
+00:15:59,740 --> 00:16:04,220
+de otra manera, disminuimos el ancho de línea en 1. Así que vamos a ver qué está pasando
+
+177
+00:16:04,220 --> 00:16:07,670
+aquí. Dibuja, dibuja, dibuja, y se vuelve más pequeño, más grande, más grande,
+
+178
+00:16:07,670 --> 00:16:11,140
+más grande. Más pequeño, más pequeño, más pequeño. Más grande, más grande, más grande. Y puedes jugar con
+
+179
+00:16:11,140 --> 00:16:15,833
+estos valores también, se podría hacer algo así como 500 donde se vuelve súper grande
+
+180
+00:16:15,833 --> 00:16:22,270
+y luego bajará lentamente una vez que lleguemos a 500.
+
+181
+00:16:22,270 --> 00:16:26,890
+Allá vamos, se está haciendo mucho más pequeño. Puedes jugar con eso
+
+182
+00:16:26,890 --> 00:16:33,370
+exactamente. Otra cosa que podemos hacer es jugar con algo llamado Global Composite
+
+183
+00:16:33,370 --> 00:16:37,900
+Operador, y si ha trabajado con los modos de mezcla de Photoshop, puede usar la mezcla
+
+184
+00:16:37,900 --> 00:16:43,987
+Modos dentro del contexto. Así que digamos ctx. globalCompositeOperation = 'multiplicar'.
+
+185
+00:16:44,890 --> 00:16:50,559
+Esto es genial cuando, cuando lo dibujas ... Déjame actualizar esto aquí.
+
+186
+00:16:52,250 --> 00:16:57,470
+Se mezclarán entre sí a medida que se dibujan uno encima del otro.
+
+187
+00:16:57,470 --> 00:17:01,660
+Eventualmente, todo será negro, pero puedes jugar con los diferentes
+
+188
+00:17:01,660 --> 00:17:05,060
+modos de mezcla que tenemos aquí, la resta y aligerar y todo lo bueno
+
+189
+00:17:05,060 --> 00:17:12,310
+cosas. Así que ve y busca el Operador Global Compuesto en Google y toma un
+
+190
+00:17:12,310 --> 00:17:16,924
+Mira los diferentes tipos que tenemos aquí. Tienen una buena fuente,
+
+191
+00:17:16,924 --> 00:17:20,900
+source-in, source-out, source-atop, destino-sobre. Solo juega con todos
+
+192
+00:17:20,900 --> 00:17:25,350
+ellos y usted puede tener una idea de cómo están funcionando realmente.
+
+193
+00:17:25,350 --> 00:17:30,160
+Así que ese es el ejercicio de hoy. Nos divertimos con Canvas. Entendimos cosas de pareja
+
+194
+00:17:30,160 --> 00:17:34,680
+sobre eventos y cuando suceden eventos. Entendemos esta cosa de la bandera,
+
+195
+00:17:34,680 --> 00:17:39,890
+donde lo pones en isDrawing = true y isDrawing = false, eso es una especie de común
+
+196
+00:17:39,890 --> 00:17:44,330
+cosa que hacemos mucho en JavaScript, donde tienes una bandera donde quieres probar si
+
+197
+00:17:44,330 --> 00:17:50,440
+es cierto o no y luego, cuando mueves el mouse, usamos la información del evento para
+
+198
+00:17:50,440 --> 00:17:53,719
+dibujar en nuestro contexto lienzo. Esperemos que hayas disfrutado eso.
+
+199
+00:17:53,719 --> 00:17:55,171
+Te veré en la siguiente.
+
+200
+00:17:55,764 --> 00:17:59,456
+♪ [música] ♪
+

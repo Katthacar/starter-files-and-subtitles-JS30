@@ -1,0 +1,611 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:01,670 --> 00:00:04,852
+♪ [music] ♪
+
+3
+00:00:07,506 --> 00:00:11,129
+Today we are going to talk all
+about Javascript reference versus copy.
+
+4
+00:00:11,129 --> 00:00:15,190
+And I found this to be a sticking point
+and while it's not necessarily going to be
+
+5
+00:00:15,190 --> 00:00:17,730
+something that you're going to build
+that's going to be sweet and your clients
+
+6
+00:00:17,730 --> 00:00:20,840
+are going to see it, but this is something
+that is fundamental to understanding how
+
+7
+00:00:20,840 --> 00:00:25,321
+Javascript works. And more often than not,
+this is a source of a lot of bugs because
+
+8
+00:00:25,321 --> 00:00:28,690
+people don't understand what the
+difference between a reference and a copy
+
+9
+00:00:28,690 --> 00:00:33,350
+is especially when you get into
+nested data. So let's take a look at some
+
+10
+00:00:33,350 --> 00:00:38,040
+strings, numbers, and booleans right here.
+If I have a variable or let's use let
+
+11
+00:00:38,040 --> 00:00:43,370
+here, and age is set to 100 and then I
+make another variable called age 2 and set
+
+12
+00:00:43,370 --> 00:00:46,970
+that to age, if I console log age and
+age 2, what are we going to get?
+
+13
+00:00:46,970 --> 00:00:51,106
+100 and 100, right? Well, what
+happens if age is equal to 200?
+
+14
+00:00:51,106 --> 00:00:54,490
+And then I also console log age and
+age 2, what are we going to get?
+
+15
+00:00:54,490 --> 00:01:01,112
+Are we going to get 200, 200 or 200, 100?
+Okay good. No we get 200, 100.
+
+16
+00:01:01,112 --> 00:01:06,511
+Why? Because the value of age goes
+into the variable at the same time.
+
+17
+00:01:06,511 --> 00:01:14,013
+That works the same way with strings.
+If I do const name or let,
+
+18
+00:01:14,013 --> 00:01:20,245
+I'm going to be reassigning these so I
+need to use let Wes and let name two is
+
+19
+00:01:20,245 --> 00:01:29,305
+equal to pool. No let name two is equal to
+name. Console log name and name two.
+
+20
+00:01:29,305 --> 00:01:34,760
+You probably will see Wes Wes
+but if name is equal to Wesley,
+
+21
+00:01:34,760 --> 00:01:39,010
+and we also console log that, what
+are we going to get? Wesley Wes.
+
+22
+00:01:39,010 --> 00:01:43,582
+Okay good. So the value of strings,
+numbers, and booleans go into it and if
+
+23
+00:01:43,582 --> 00:01:48,346
+you change the original one, it's okay.
+It's not going to update the other one.
+
+24
+00:01:48,346 --> 00:01:52,229
+Makes sense.
+Now let's actually work with an array.
+
+25
+00:01:52,229 --> 00:01:57,511
+Let's say we've got some data here and we
+want to make a copy of the array so we
+
+26
+00:01:57,511 --> 00:02:01,555
+say, const team equals players.
+And that should make sense.
+
+27
+00:02:01,555 --> 00:02:06,606
+Console log players and team, just to
+make sure we got both of them here,
+
+28
+00:02:06,606 --> 00:02:10,616
+okay good. That's the same array here. So
+you might think that we could do something
+
+29
+00:02:10,616 --> 00:02:21,129
+like this where we changed team three
+is equal to locks. Now if I look at team,
+
+30
+00:02:21,129 --> 00:02:27,083
+you'll see locks is the last one but if I
+look at the original one which is players,
+
+31
+00:02:27,083 --> 00:02:31,470
+which should the last one be? Should it
+poppy as it was, or is it going to be
+
+32
+00:02:31,470 --> 00:02:37,076
+updated to locks? It's locks again.
+So what happened there?
+
+33
+00:02:37,076 --> 00:02:44,428
+Because we updated team but team is not
+the array. Team is just a reference to the
+
+34
+00:02:44,428 --> 00:02:49,506
+original array which is players. So when
+you edit that original array or when you
+
+35
+00:02:49,506 --> 00:02:54,729
+update any of the arrays, it's always
+going to go back to the reference where it
+
+36
+00:02:54,729 --> 00:02:59,844
+was which is not the same as what
+we did here with numbers, strings,
+
+37
+00:02:59,844 --> 00:03:04,069
+and booleans. So that's interesting.
+If you update an array,
+
+38
+00:03:04,069 --> 00:03:07,537
+it will always reference back.
+And that is what I find people do is
+
+39
+00:03:07,537 --> 00:03:13,417
+say, "I just want to make a copy of the
+array and update it." So what we then need
+
+40
+00:03:13,417 --> 00:03:18,981
+to do is make a copy rather than a actual
+reference. And there's a couple of ways
+
+41
+00:03:18,981 --> 00:03:26,236
+that you can make a copy of an array. Say
+const team two equals and you can take the
+
+42
+00:03:26,236 --> 00:03:32,599
+players and just call slice against it.
+And if you call slice, players.slice
+
+43
+00:03:32,599 --> 00:03:36,495
+that's just going to return the
+entire array because generally
+
+44
+00:03:36,495 --> 00:03:40,745
+what slice does is you ask for two
+and three and that will give you one
+
+45
+00:03:40,745 --> 00:03:46,845
+of them whereas the original array is
+untouched, right? But what slice will do
+
+46
+00:03:46,845 --> 00:03:50,927
+if you pass at nothing is it will take a
+copy of the actual array here.
+
+47
+00:03:50,927 --> 00:03:54,733
+Let me just comment out this changing
+up here. So let's take a look.
+
+48
+00:03:54,733 --> 00:04:01,691
+We got players, and we have team two,
+and if I were to change team two to
+
+49
+00:04:01,691 --> 00:04:09,954
+locks, team two has locks in it but
+players still has poppy because we made a
+
+50
+00:04:09,954 --> 00:04:15,842
+copy of it with our array. Another way you
+can see people do it is if we make a team
+
+51
+00:04:15,842 --> 00:04:23,726
+three, you take a blank array and you can
+concatenate in the existing array and that
+
+52
+00:04:23,726 --> 00:04:27,231
+will just concatenate all of the
+items from that player's array into the
+
+53
+00:04:27,231 --> 00:04:31,236
+emptier right here. That will work the
+exact same way. And then finally
+
+54
+00:04:31,236 --> 00:04:36,606
+we can do is the ES6 spread way
+which looks like this, const team
+
+55
+00:04:36,606 --> 00:04:44,328
+three or four equals, you create a
+new array, and you spread into that
+
+56
+00:04:44,328 --> 00:04:49,366
+array with the players. And what a spread
+will do is it will take every item out of
+
+57
+00:04:49,366 --> 00:04:55,752
+your iterable and put it into, in this
+case it's the containing array although we
+
+58
+00:04:55,752 --> 00:04:59,881
+have also used spread to spread into a
+function as well. So that will take
+
+59
+00:04:59,881 --> 00:05:09,444
+a copy of it just as well. Team four,
+the last one equal to E and console
+
+60
+00:05:09,444 --> 00:05:16,148
+log team four. The last one but if I go
+back to my player's array, it's untouched
+
+61
+00:05:16,148 --> 00:05:23,458
+Then finally you could say const
+team five is equal to array.from and then
+
+62
+00:05:23,458 --> 00:05:29,360
+you pass it, your player's array. And if
+we were to look at team five,
+
+63
+00:05:29,360 --> 00:05:32,440
+that's our array, and we were
+to change one of them,
+
+64
+00:05:36,306 --> 00:05:42,390
+then player's array untouched whereas
+team five has been updated.
+
+65
+00:05:42,390 --> 00:05:46,908
+So a whole bunch of different ways.
+Array.from and the spread is probably my
+
+66
+00:05:46,908 --> 00:05:52,014
+favorite way but any of these ways will
+work just fine. Now, the same thing
+
+67
+00:05:52,014 --> 00:05:57,976
+happens for objects as well. If I have a
+person object here and I want to make a
+
+68
+00:05:57,976 --> 00:06:03,221
+copy of it, you cannot do this const
+captain equals person because
+
+69
+00:06:03,221 --> 00:06:13,339
+if you change the captain's number to 99,
+so person is now 99 even though person
+
+70
+00:06:13,339 --> 00:06:21,411
+should be 80, we just update the number to
+99, we made a reference to the original
+
+71
+00:06:21,411 --> 00:06:25,146
+one. So how do you take a copy instead,
+that is with something called
+
+72
+00:06:25,146 --> 00:06:30,099
+object.assigns. Object.assign, the way
+that it works, is you start with a blank
+
+73
+00:06:30,099 --> 00:06:35,717
+object. You pass it the object
+you wish to copy all the properties from
+
+74
+00:06:35,717 --> 00:06:42,466
+which is person, and then you sort of fold
+in your new properties that you wish to
+
+75
+00:06:42,466 --> 00:06:47,050
+overwrite which is number is going to be
+99. And then you stick that entire thing
+
+76
+00:06:47,050 --> 00:06:53,536
+in your own const cap two equals,
+stick it into its own variable.
+
+77
+00:06:53,536 --> 00:06:59,644
+Now when you console log cap two, you'll
+see we have... I've got to comment these
+
+78
+00:06:59,644 --> 00:07:07,924
+ones out here, 99. However if I go back
+to person, the number has not been
+
+79
+00:07:07,924 --> 00:07:12,041
+added to that one at all. So if we just
+added them in...same goes if I wanted to
+
+80
+00:07:12,041 --> 00:07:20,047
+have a number of 99 in age of 12. The
+captain is now 12 but the person is 80.
+
+81
+00:07:20,047 --> 00:07:24,947
+So what happened there is we'd take a
+blank object, we overwrite or we sort of
+
+82
+00:07:24,947 --> 00:07:29,531
+fold in all of the properties and values
+from our object, and then we use the third
+
+83
+00:07:29,531 --> 00:07:34,447
+argument to fold in our own ones.
+We are going to be getting or
+
+84
+00:07:34,447 --> 00:07:40,134
+hopefully, it's not confirmed yet, but we
+will be getting a cap three which is
+
+85
+00:07:40,134 --> 00:07:44,825
+called an object spread. And you may be
+used to this if you've ever done any react
+
+86
+00:07:44,825 --> 00:07:49,922
+before and it's dot dot dot person. And
+that works exactly the same way as we
+
+87
+00:07:49,922 --> 00:07:55,335
+spread into an array but you can spread
+into an object. Now one thing that we do
+
+88
+00:07:55,335 --> 00:08:00,451
+need to know is this is very shallow,
+meaning that it will only ever go one
+
+89
+00:08:00,451 --> 00:08:04,827
+level deep. So if we create
+a new object here, const
+
+90
+00:08:04,827 --> 00:08:13,639
+Wes equals name is Wes, age is 100,
+and maybe it will say social and Twitter
+
+91
+00:08:13,639 --> 00:08:24,104
+is equal to @wesbos, Facebook is equal to
+Wesbos...okay good then I've got this
+
+92
+00:08:24,104 --> 00:08:32,118
+object here, Wes. Pop a quick
+console.clear above it so it
+
+93
+00:08:32,118 --> 00:08:36,331
+will clear out whatever is in here.
+Obviously this is not going to work dot
+
+94
+00:08:36,331 --> 00:08:40,305
+dot dot why? Because object's spread is
+not in Javascript yet so we have to
+
+95
+00:08:40,305 --> 00:08:43,615
+comment that out. There we go. So we've
+got this object here. That's the person.
+
+96
+00:08:43,615 --> 00:08:49,082
+You open up social and we have the object
+there. Now if I want to make a copy of
+
+97
+00:08:49,082 --> 00:08:58,046
+Wes, we would say const div equals object
+dot assign. We take a blank object and you
+
+98
+00:08:58,046 --> 00:09:02,510
+pass in Wes we have here.
+Good. So now I have div, that's good,
+
+99
+00:09:02,510 --> 00:09:12,581
+div.name equals Wesley. Now Wes is still
+Wes and dev is Wesley.
+
+100
+00:09:12,581 --> 00:09:16,861
+So you see how we took a copy of that
+object and when we update it,
+
+101
+00:09:16,861 --> 00:09:20,313
+it's not going to update the original one
+so it's not a reference.
+
+102
+00:09:20,313 --> 00:09:29,306
+However what if we do this,
+div.social.twitter is equal to
+
+103
+00:09:29,306 --> 00:09:37,803
+@poolman. Now div.social, the
+Twitter is there but what if I look at
+
+104
+00:09:37,803 --> 00:09:45,190
+Wes.social now? Shit. Look what happen.
+Because when you use object.assign,
+
+105
+00:09:45,190 --> 00:09:52,292
+it only does one level deep. If you need
+to do a clone, you have to get out a
+
+106
+00:09:52,292 --> 00:09:57,102
+function and go online and find it where
+it's called clone deep and that will clone
+
+107
+00:09:57,102 --> 00:10:00,195
+every level as deep as you want. Although
+before you do that, you should
+
+108
+00:10:00,195 --> 00:10:04,384
+ask yourself, "Do I really actually need
+to do this? Maybe I could be doing it in a
+
+109
+00:10:04,384 --> 00:10:08,235
+better spot because very rarely do you
+actually need to clone an object that
+
+110
+00:10:08,235 --> 00:10:12,194
+deep." So we have that.
+And then another sort of cheating way,
+
+111
+00:10:12,194 --> 00:10:16,543
+the poor man's deep clone, and I'm not
+recommending this but you could say const
+
+112
+00:10:16,543 --> 00:10:24,996
+div two equals Jason.parse,
+Jason.stringify then you pass it your
+
+113
+00:10:24,996 --> 00:10:35,507
+person. Now we have div two and
+then we say divtwo.social.twitter equals
+
+114
+00:10:35,507 --> 00:10:43,485
+@poolman. And now if we look at
+Wes.social, it has not been touched.
+
+115
+00:10:43,485 --> 00:10:50,928
+Why? Because what you can do is you can
+take Jason.stringify and pass it an
+
+116
+00:10:50,928 --> 00:10:55,113
+object, and that will return to you a
+string. That's no longer an object.
+
+117
+00:10:55,113 --> 00:10:59,392
+And then you immediately Jason.parse it to
+turn it back into an object,
+
+118
+00:10:59,392 --> 00:11:04,382
+and then you get a full copy of
+it rather than and you shake all the
+
+119
+00:11:04,382 --> 00:11:07,631
+references. I have no idea about
+performance with that. You might want to
+
+120
+00:11:07,631 --> 00:11:12,325
+look it up before you use it but that's
+often referred to as the poor man's deep
+
+121
+00:11:12,325 --> 00:11:17,593
+clone. Other than that, hopefully you
+learned a thing or two about object
+
+122
+00:11:17,593 --> 00:11:22,205
+references and array references versus
+actually copying them. See you tomorrow.
+
+123
+00:11:22,599 --> 00:11:25,756
+♪ [music] ♪

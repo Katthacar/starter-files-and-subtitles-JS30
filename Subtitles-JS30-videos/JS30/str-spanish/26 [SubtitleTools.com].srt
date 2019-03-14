@@ -1,0 +1,984 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,309 --> 00:00:03,309
+♪ [música] ♪
+
+3
+00:00:08,200 --> 00:00:10,118
+Hace un par de videos, nos fijamos en esto.
+
+4
+00:00:10,118 --> 00:00:15,680
+la navegación realmente elegante que Stripe tiene en su página de precios y cuando se desplaza sobre la parte superior
+
+5
+00:00:15,680 --> 00:00:20,310
+De ello, por supuesto, muestra el desplegable. Pero la parte realmente genial de esto es que
+
+6
+00:00:20,310 --> 00:00:25,880
+El fondo del desplegable parece ser capaz de transformarse desde el ancho.
+
+7
+00:00:25,880 --> 00:00:30,570
+y la altura, así como donde sea que esté en la página. Así que su x y su y
+
+8
+00:00:30,570 --> 00:00:34,210
+coordenadas Y cuando lo vi por primera vez, dije: "¿Cómo hicieron eso?
+
+9
+00:00:34,210 --> 00:00:39,950
+Eso es increíble ". Y lo que descubrí es que los menús desplegables como el
+
+10
+00:00:39,950 --> 00:00:45,570
+contenido, la textura, esos son elementos separados, pero hay algo así como
+
+11
+00:00:45,570 --> 00:00:51,020
+El pequeño cachorro div que sigue cada uno de esos desplegables alrededor y cambiará de tamaño
+
+12
+00:00:51,020 --> 00:00:56,550
+Se basa en donde sea que esté en la página. Así que esta cosa blanca que ves.
+
+13
+00:00:56,550 --> 00:01:01,380
+en movimiento, ese es el fondo real que se está moviendo alrededor y es
+
+14
+00:01:01,380 --> 00:01:06,100
+Simplemente posicionado absolutamente detrás de esos elementos. Y lo hicimos de una manera muy sencilla.
+
+15
+00:01:06,100 --> 00:01:10,370
+ejemplo como ese hace un par de días cuando pasamos el mouse sobre un enlace,
+
+16
+00:01:10,370 --> 00:01:14,330
+teníamos un pequeño div que se redimensionaría y se iría detrás de donde
+
+17
+00:01:14,330 --> 00:01:18,340
+el elemento es. Así que hoy, vamos a intensificarlo un poco y construir algo.
+
+18
+00:01:18,340 --> 00:01:22,450
+Así, que es la prueba de concepto de navegación a rayas. Se ve un poco
+
+19
+00:01:22,450 --> 00:01:27,350
+diferente, pero tiene la misma idea en la que cuando se pasa sobre uno de estos
+
+20
+00:01:27,350 --> 00:01:31,370
+enlaces de navegación, se va a redimensionar a sí mismo, va a coincidir con el ancho y
+
+21
+00:01:31,370 --> 00:01:35,400
+la altura del contenido real y animarse a donde sea que vaya o
+
+22
+00:01:35,400 --> 00:01:40,510
+Transición en sí a donde sea que vaya. Vamos a ver nuestro html
+
+23
+00:01:40,510 --> 00:01:45,720
+Muy rápido. Tenemos un elemento de navegación aquí y usted podría dar a esa clase de
+
+24
+00:01:45,720 --> 00:01:52,000
+arriba si quieres, entonces tienes un fondo desplegable. Eso es lo que el blanco.
+
+25
+00:01:52,000 --> 00:01:54,920
+va a seguir alrededor ¿Ves esta pequeña parte blanca de inmersión?
+
+26
+00:01:54,920 --> 00:01:59,700
+Eso no son tres divs separados, eso es solo uno y va a seguirlo
+
+27
+00:01:59,700 --> 00:02:02,940
+Con el contenido a medida que avanzamos. Así que eso es lo que tienes y luego tenemos un lapso con un
+
+28
+00:02:02,940 --> 00:02:08,060
+Clase o flecha, que va a ser esa pequeña muesca que tenemos allí.
+
+29
+00:02:08,060 --> 00:02:12,050
+Bien, bien, y notaste que puse esto dentro de esta navegación.
+
+30
+00:02:12,050 --> 00:02:15,290
+En el último, lo colocamos directamente en el cuerpo para que no tuviéramos que
+
+31
+00:02:15,290 --> 00:02:19,320
+preocuparse por cualquier, como, margen o relleno en la parte superior de nuestra navegación aquí.
+
+32
+00:02:19,320 --> 00:02:23,570
+Pero en este caso, quiero mostrarte cómo lidias realmente con esto si estás
+
+33
+00:02:23,570 --> 00:02:29,960
+tratando de obtener la posición real de un elemento dentro de un navegador.
+
+34
+00:02:29,960 --> 00:02:34,480
+Debido a que no siempre es su trabajo elegir el html, a veces tiene un CMS y
+
+35
+00:02:34,480 --> 00:02:38,270
+va a generar ese html para usted y quiero asegurarme de que no estamos
+
+36
+00:02:38,270 --> 00:02:41,410
+simplemente haciendo esto lo más fácil posible y luego vas a implementarlo en tu propio
+
+37
+00:02:41,410 --> 00:02:44,770
+y tú estás como, "Oh, esto es en realidad un poco más difícil de lo que realmente pensamos
+
+38
+00:02:44,770 --> 00:02:48,460
+fue ". Así que lo hemos puesto aquí solo para mostrarte una manera diferente de hacerlo.
+
+39
+00:02:48,460 --> 00:02:53,040
+Entonces tenemos clase desordenada con una clase de cool. Tenemos nuestros artículos de la lista.
+
+40
+00:02:53,040 --> 00:02:57,600
+Estos son nuestros lis. Tenemos tres de ellos. Tenemos nuestro enlace y luego lo que se llama
+
+41
+00:02:57,600 --> 00:03:00,430
+El desplegable, y el desplegable puede ser cualquier elemento. En este caso,
+
+42
+00:03:00,430 --> 00:03:04,210
+Es un div que tiene alguna información sobre mí. En este caso, es una lista desordenada que tiene
+
+43
+00:03:04,210 --> 00:03:08,090
+más elementos de la lista dentro de ella. Pero lo importante es que estas lis,
+
+44
+00:03:08,090 --> 00:03:13,320
+El nivel superior de lis, serán nuestros detonadores. Son las cosas que son
+
+45
+00:03:13,320 --> 00:03:17,160
+Va a ser suspendido en ellos. Y la razón por la que estas lis serán las
+
+46
+00:03:17,160 --> 00:03:24,310
+Las cosas que nos desplazamos se deben a que si usted se desplaza a este enlace A y luego intenta
+
+47
+00:03:24,310 --> 00:03:27,800
+navega en algo dentro de él como Twitter, Facebook o blog,
+
+48
+00:03:27,800 --> 00:03:32,590
+Usted está técnicamente flotando fuera del enlace de anclaje y luego dispararía el apagado y
+
+49
+00:03:32,590 --> 00:03:37,120
+se desvanecería a sí mismo. Aquí lo que estamos haciendo es que mi ratón está bien.
+
+50
+00:03:37,120 --> 00:03:42,690
+Aquí, todavía estoy dentro de este padre, entonces tenemos el segundo, así como
+
+51
+00:03:42,690 --> 00:03:46,760
+el tercero. En términos de CSS, no hay mucho que hacer aquí.
+
+52
+00:03:46,760 --> 00:03:51,090
+La mayor parte de esto es solo para que parezca medio decente. Nada de eso tiene realmente nada que
+
+53
+00:03:51,090 --> 00:03:57,580
+ver con el posicionamiento en la página que no sea esta posición relativa aquí
+
+54
+00:03:57,580 --> 00:04:03,100
+eso tenemos. Vamos a escribir el CSS, eso es importante para nosotros mismos.
+
+55
+00:04:03,100 --> 00:04:06,040
+Primero, necesitamos los desencadenantes y esos son esos tres lis. Así que digamos,
+
+56
+00:04:06,040 --> 00:04:11,800
+"const dispgers = document.querySelectorAll" y diremos
+
+57
+00:04:11,800 --> 00:04:16,890
+"cool li". Y esos serán todos los descendientes directos de ese frío.
+
+58
+00:04:16,890 --> 00:04:21,130
+Ese es nuestro ítem de la lista. Entonces también tenemos que agarrar el fondo desplegable que es
+
+59
+00:04:21,130 --> 00:04:26,790
+ese div blanco Llamaremos a eso "fondo". Asegúrate de usar solo
+
+60
+00:04:26,790 --> 00:04:31,550
+Consulta el selector aquí porque no necesitamos una lista de nodos. Necesitamos un solo elemento.
+
+61
+00:04:31,550 --> 00:04:36,730
+Y luego también lo haremos para nuestra navegación, en la que ponemos una clase de top.
+
+62
+00:04:36,730 --> 00:04:41,690
+Entonces, lo que queremos hacer es escuchar el movimiento hacia adentro y hacia afuera o el mouse para ingresar
+
+63
+00:04:41,690 --> 00:04:45,420
+y un mouse deja en cada uno de esos elementos de la lista. Así que vamos a hacer dos
+
+64
+00:04:45,420 --> 00:04:50,150
+Las funciones aquí se denominan "manejar entrar" y vamos a hacer una llamada "manejar
+
+65
+00:04:50,150 --> 00:04:56,330
+dejar ". Luego escucharemos el mouse, entrar y el mouse salir y disparar cada uno
+
+66
+00:04:56,330 --> 00:05:01,620
+de esas funciones. [silencio]
+
+67
+00:05:01,620 --> 00:05:05,790
+Me encargaré de entrar en eso, luego lo duplicaremos y escucharemos
+
+68
+00:05:05,790 --> 00:05:10,670
+para el evento de dejar el ratón, que va a activar nuestro permiso de manejar.
+
+69
+00:05:10,670 --> 00:05:14,000
+De acuerdo, entonces escribimos un poco de código allí. Vamos a asegurarnos de que estos todos
+
+70
+00:05:14,000 --> 00:05:22,730
+trabajo. Así que entra y deja. Asegúrate de que no hayamos hecho nada malo aquí.
+
+71
+00:05:22,730 --> 00:05:26,670
+Cualquier error de sintaxis en nuestra consola, no, entonces usted va a su consola,
+
+72
+00:05:26,670 --> 00:05:29,990
+encima de ellos, bien. Deberías obtener los registros de consola ENTER y LEAVE
+
+73
+00:05:29,990 --> 00:05:36,790
+siempre que se desplace dentro y fuera de cualquiera de esos elementos. Bueno. A continuación, lo que necesitamos
+
+74
+00:05:36,790 --> 00:05:41,570
+Lo que debemos hacer es dividir esto en dos partes. La primera parte es que solo quiero
+
+75
+00:05:41,570 --> 00:05:47,100
+muestra el contenido del menú desplegable, lo que significa que si paso el ratón sobre este último
+
+76
+00:05:47,100 --> 00:05:52,240
+Uno, esta ul aquí, debería mostrarse. Me quitaré la opacidad,
+
+77
+00:05:52,240 --> 00:05:56,470
+la pantalla ninguno apagado. Usted ve, hay el contenido de cada uno de ellos.
+
+78
+00:05:56,470 --> 00:06:01,330
+Quiero mostrar cada vez que me coloco sobre li, quiero encontrar el menú desplegable dentro de él y
+
+79
+00:06:01,330 --> 00:06:06,920
+luego mostrarlo. Y la forma en que va a funcionar es que vamos a agregar y
+
+80
+00:06:06,920 --> 00:06:13,330
+eliminando clases y luego apoyándonos en nuestro CSS para hacer eso por nosotros.
+
+81
+00:06:13,330 --> 00:06:18,980
+Así que entraremos en nuestra función de ingreso de la manija aquí, y tomaremos esto.
+
+82
+00:06:18,980 --> 00:06:22,650
+¿Que es esto? Este es el elemento de la lista. Voy a poner la clase en el ítem de la lista.
+
+83
+00:06:22,650 --> 00:06:30,810
+.classlist.add y diremos, trigger-enter. Y luego lo que queremos hacer.
+
+84
+00:06:30,810 --> 00:06:36,090
+También es agregar una clase de trigger-enter-active después de 150
+
+85
+00:06:36,090 --> 00:06:40,210
+milisegundos. Y esto va a ser más claro por qué he hecho esto cuando
+
+86
+00:06:40,210 --> 00:06:44,220
+entramos en la segunda parte, que es .follow por div. Así que voy a decir set
+
+87
+00:06:44,220 --> 00:06:48,870
+se acabó el tiempo. Vamos a ... Voy a mostrar un pequeño truco aquí con la flecha.
+
+88
+00:06:48,870 --> 00:06:52,060
+funciones, voy a utilizar una función normal aquí y luego voy a decir,
+
+89
+00:06:52,060 --> 00:07:01,670
+después de 150 milisegundos, this.classList.add trigger-enter-active.
+
+90
+00:07:01,670 --> 00:07:06,930
+Ahora esto no va a funcionar. Por qué no? No se puede leer la propiedad agregar de undefined.
+
+91
+00:07:06,930 --> 00:07:15,300
+Así que no puede encontrar la lista de clases de esto y por qué es eso? Si la consola inicia sesión,
+
+92
+00:07:15,300 --> 00:07:20,590
+te da una ventana y probablemente tengas como: "Sí, Wes, me mostraste esto en
+
+93
+00:07:20,590 --> 00:07:23,470
+tu curso de ES6, ahora lo entiendo ". Cuando entras en una función,
+
+94
+00:07:23,470 --> 00:07:27,240
+El valor de esto cambia. Sin embargo, si cambias eso en una función de flecha,
+
+95
+00:07:27,240 --> 00:07:31,540
+el valor de esto se hereda de la función principal, que será
+
+96
+00:07:31,540 --> 00:07:37,820
+exactamente lo que queremos Bueno. Así que podemos convertir esto en una bonita y pequeña frase corta.
+
+97
+00:07:37,820 --> 00:07:48,210
+Función de flecha aquí. Aquí vamos. ¿Esto todavía funciona? Bien, lo tengo.
+
+98
+00:07:48,210 --> 00:07:52,770
+Así que tenemos this.classList.add trigger-enter-active. Entonces queremos ir
+
+99
+00:07:52,770 --> 00:07:57,930
+en nuestro CSS, así que desplázate hacia arriba y es por eso que he incluido el CSS en el archivo para ti
+
+100
+00:07:57,930 --> 00:08:01,930
+Aquí porque en realidad es un poco largo. Sería más adecuado para un separado
+
+101
+00:08:01,930 --> 00:08:06,710
+Archivo CSS, y encontraremos nuestro menú desplegable que está aquí, y notará que el
+
+102
+00:08:06,710 --> 00:08:13,000
+La forma en que muestro la lista desplegable es con ambas, la golpeo con opacidad cero y se muestra
+
+103
+00:08:13,000 --> 00:08:18,450
+ninguna. Y la razón por la que lo he hecho es porque no se puede pasar de la opacidad al cero.
+
+104
+00:08:18,450 --> 00:08:23,160
+uno, así como mostrar ninguno para mostrar el bloque. Eso es un poco de dolor,
+
+105
+00:08:23,160 --> 00:08:28,770
+pero lo que vamos a hacer es que vamos a dar un paso en el que cuando tenemos
+
+106
+00:08:28,770 --> 00:08:35,000
+trigger-enter, nuestro menú desplegable será un bloque de visualización, pero aún así será
+
+107
+00:08:35,000 --> 00:08:40,920
+una opacidad Y te mostraré una opacidad. Mira, eso se mostrará inmediatamente
+
+108
+00:08:40,920 --> 00:08:46,370
+eso, pero quiero que se convierta en una especie de transición, por lo que tenemos esto aquí.
+
+109
+00:08:46,370 --> 00:08:51,500
+Entonces, lo que quiero hacer es no poner la opacidad allí, sino después de un segundo,
+
+110
+00:08:51,500 --> 00:08:56,720
+Vamos a tener esta clase de trigger-enter-active. Así que mira esto.
+
+111
+00:08:56,720 --> 00:09:01,800
+Vea cómo después de 150 milisegundos, obtenemos el segundo y luego, cuando tiene un
+
+112
+00:09:01,800 --> 00:09:07,710
+clase de trigger-enter-active, porque ya se mostró con el bloque de visualización
+
+113
+00:09:07,710 --> 00:09:14,800
+Solo una fracción de segundo antes, entramos en nuestra opacidad y la configuramos como una.
+
+114
+00:09:14,800 --> 00:09:19,090
+Y así es como, si alguna vez has usado animaciones en reacción o angular,
+
+115
+00:09:19,090 --> 00:09:23,500
+Así es como funcionan las animaciones o transiciones dentro de esos marcos.
+
+116
+00:09:23,500 --> 00:09:27,880
+Solo aplican dos clases separadas cuando algo entra o sale y luego tú
+
+117
+00:09:27,880 --> 00:09:34,050
+Puedes usar tu CSS solo para hacer ese tipo de movimiento en escena allí. Así que ahora si le damos una
+
+118
+00:09:34,050 --> 00:09:40,560
+guardar y actualizar, parece que no muestra opacidad, porque necesito decir
+
+119
+00:09:40,560 --> 00:09:44,780
+.desplegable. Ah, ahí vamos. Mira cómo se animan o hacen la transición.
+
+120
+00:09:44,780 --> 00:09:48,250
+ellos mismos en? Y luego, por supuesto, al otro lado de las cosas,
+
+121
+00:09:48,250 --> 00:09:53,370
+podemos entrar en nuestro LEAVE y simplemente necesitamos duplicar ese y nosotros
+
+122
+00:09:53,370 --> 00:09:57,890
+simplemente eliminará la clase de trigger-enter y luego lo haré
+
+123
+00:09:57,890 --> 00:10:03,310
+todo en un disparo No voy a animarlo. Diremos, "trigger-enter-active".
+
+124
+00:10:03,310 --> 00:10:08,890
+Bueno. Usted ve que estas cosas están bien desvaneciéndose. Así que eso es un montón de JavaScript solo para
+
+125
+00:10:08,890 --> 00:10:13,620
+hacer algo que CSS puede hacer fuera de la caja, pero la próxima pieza y la razón por la que
+
+126
+00:10:13,620 --> 00:10:17,770
+Necesitamos hacer esto con JavaScript, es porque la siguiente pieza es que vamos
+
+127
+00:10:17,770 --> 00:10:24,520
+para averiguar qué tan grande es esta UL con una clase de desplegable y luego puede que poco
+
+128
+00:10:24,520 --> 00:10:29,930
+¿El div blanco va detrás de él para que tengamos esta pequeña animación que tenemos aquí?
+
+129
+00:10:29,930 --> 00:10:34,800
+Así que vamos aquí. Lo primero que tenemos que hacer es poner esa cosa blanca en la página.
+
+130
+00:10:34,800 --> 00:10:38,790
+Y esa cosa blanca es nuestro fondo. Es lo que tenemos aquí.
+
+131
+00:10:38,790 --> 00:10:44,290
+Así que diremos "background.classList.add" y tendrá una clase de open y
+
+132
+00:10:44,290 --> 00:10:52,210
+luego simplemente duplique eso y elimínelo en nuestro LEAVE. Así que ahora deberíamos mirar nuestra
+
+133
+00:10:52,210 --> 00:10:57,240
+fondo desplegable aquí y luego cuando pasas el cursor sobre uno de ellos,
+
+134
+00:10:57,240 --> 00:11:04,090
+También debe agregar una clase de abrir. Así que si entramos en nuestro CSS,
+
+135
+00:11:04,090 --> 00:11:10,090
+Lo vemos aquí. Cuando nuestro fondo desplegable también tiene una clase de abierta
+
+136
+00:11:10,090 --> 00:11:16,510
+decir, opacidad uno. Ah, ya ves? Mira que el hombrecito blanco en la esquina está
+
+137
+00:11:16,510 --> 00:11:21,930
+mostrándose? Tiene sentido. Así que ahora tenemos que hacer, que es realmente el pesado
+
+138
+00:11:21,930 --> 00:11:28,210
+Levantar, es averiguar, está bien, tenemos este menú desplegable, solo Twitter o Facebook
+
+139
+00:11:28,210 --> 00:11:35,070
+catálogo de cursos de blog, qué ancho, qué tan alto y en qué lugar de la página vive para que
+
+140
+00:11:35,070 --> 00:11:39,890
+Podemos tomar esta cosa blanca y moverla hacia donde existe.
+
+141
+00:11:39,890 --> 00:11:44,490
+Así que vamos a bajar aquí abajo, donde hicimos todas esas listas de clase y primero
+
+142
+00:11:44,490 --> 00:11:49,640
+Lo que debemos hacer es averiguar qué es ese desplegable en realidad.
+
+143
+00:11:49,640 --> 00:11:57,200
+Así que diremos, "const dropdown = this.querySelector". Ahora vamos a ser
+
+144
+00:11:57,200 --> 00:12:01,080
+Buscando un desplegable. Usted podría preguntarse, como, "¿Por qué no lo hicimos
+
+145
+00:12:01,080 --> 00:12:04,880
+que aquí [[00: 012: 01]] con nuestra navegación? "Bueno, no puedes hacer eso aquí porque
+
+146
+00:12:04,880 --> 00:12:07,410
+Hay tres menús desplegables diferentes y debe ser dinámico.
+
+147
+00:12:07,410 --> 00:12:12,210
+Necesitas encontrar el único desplegable que existe dentro de lo que obtuviste.
+
+148
+00:12:12,210 --> 00:12:19,960
+flotaba Entonces, si controlamos ese menú desplegable, vaya a nuestra consola aquí.
+
+149
+00:12:19,960 --> 00:12:26,870
+Ahora deberías ver que obtenemos un menú desplegable diferente en la consola cada vez que nos movemos.
+
+150
+00:12:26,870 --> 00:12:32,090
+Bueno. Entonces podemos tomar las coordenadas de eso como lo hicimos en el anterior
+
+151
+00:12:32,090 --> 00:12:39,900
+uno. Diremos, "const dropdownCoords = dropdown.getBoundingClientRect" Pon esos
+
+152
+00:12:39,900 --> 00:12:52,530
+juntos. Vamos a console.log dropdownCoords, vamos a guardar.
+
+153
+00:12:52,530 --> 00:12:58,980
+Entonces, lo que está sucediendo aquí es que obtenemos información sobre dónde se encuentra en la página.
+
+154
+00:12:58,980 --> 00:13:03,680
+desde la parte inferior, la izquierda, la parte superior, la derecha y el ancho es el elemento real.
+
+155
+00:13:03,680 --> 00:13:08,710
+Ahora, la otra cosa es que necesitamos obtener información sobre dónde está la navegación porque
+
+156
+00:13:08,710 --> 00:13:13,230
+no se puede asumir que esta etiqueta de navegación siempre va a ser lo primero en el
+
+157
+00:13:13,230 --> 00:13:17,300
+página. Es posible que tenga un h2 que diga "hola" y cuando eso suceda,
+
+158
+00:13:17,300 --> 00:13:23,020
+tu golpeas todo hacia abajo Y esta información, te da información.
+
+159
+00:13:23,020 --> 00:13:28,880
+en relación a dónde está en la página, absolutamente en la página, y no lo hace
+
+160
+00:13:28,880 --> 00:13:32,580
+tener en cuenta estas cosas Entonces, lo que tendremos que hacer es agarrar el
+
+161
+00:13:32,580 --> 00:13:41,560
+Coordenadas para la navegación también. Así que ve abajo, abajo, abajo "const navCoords =
+
+162
+00:13:41,560 --> 00:13:47,380
+nav.getBoundingClientRect. "También deberíamos tener las coordenadas para la navegación y la
+
+163
+00:13:47,380 --> 00:13:50,240
+por lo que hago eso cada vez, algo podría cambiar,
+
+164
+00:13:50,240 --> 00:13:53,310
+A veces tienes un banner que se abre y se cierra. No podemos asumir que siempre es
+
+165
+00:13:53,310 --> 00:13:57,790
+va a ser el mismo en la carga de la página que cuando se desplaza. Tienes estas nav coords
+
+166
+00:13:57,790 --> 00:14:02,630
+así, vamos a la consola de registro de esos. Bueno. Tenemos eso. Y luego lo que necesitamos
+
+167
+00:14:02,630 --> 00:14:06,740
+hacer es averiguar dónde están los acordes para todo, así que vamos a poner esos
+
+168
+00:14:06,740 --> 00:14:12,810
+dos coordenadas que acabamos de juntar "const coords =" y luego la altura es
+
+169
+00:14:12,810 --> 00:14:20,600
+sólo va a ser igual a la dropdownCoords.height y el ancho es
+
+170
+00:14:20,600 --> 00:14:25,080
+También va a ser "dropdownCoords.width". Vamos a detenerlo allí y trabajar con el
+
+171
+00:14:25,080 --> 00:14:29,320
+El ancho y la altura antes de seguir adelante. Ahora que tenemos el ancho y
+
+172
+00:14:29,320 --> 00:14:33,090
+La altura aquí, podemos simplemente tomar nuestro fondo que es esa cosa blanca.
+
+173
+00:14:33,090 --> 00:14:38,900
+Podemos establecer el estilo y diremos ".setProperty" y vamos a establecer el
+
+174
+00:14:38,900 --> 00:14:45,090
+propiedad, el ancho para ser, coords.width y también vamos a hacer eso con el
+
+175
+00:14:45,090 --> 00:14:50,550
+altura. Y eso no parece estar funcionando, ¿cómo es posible? Porque necesitas
+
+176
+00:14:50,550 --> 00:14:58,570
+dale píxeles para que puedas envolver estos retoños en una cadena de plantilla y agregar
+
+177
+00:14:58,570 --> 00:15:06,040
+px hasta el final y eso deberia hacerlo por nosotros. Ah, mira esto. Así que cuando te quedas
+
+178
+00:15:06,040 --> 00:15:12,810
+Sabrá lo grande y ancho que es ese elemento real y esa es otra
+
+179
+00:15:12,810 --> 00:15:17,140
+razón por la que hacemos ese tipo de dos etapas añadiendo trigger-enter y
+
+180
+00:15:17,140 --> 00:15:20,500
+trigger-enter-active para que cuando lo ingreses, aunque no se muestre en
+
+181
+00:15:20,500 --> 00:15:25,250
+La página, es el bloque de visualización y somos capaces de obtener estos datos de clientes delimitadores.
+
+182
+00:15:25,250 --> 00:15:28,900
+de eso. Porque de lo contrario, si estaba oculto, no se puede saber el ancho y el
+
+183
+00:15:28,900 --> 00:15:33,330
+La altura de un elemento oculto, por lo que debe estar en la página, incluso si es visible no
+
+184
+00:15:33,330 --> 00:15:38,070
+Ahí con la opacidad. Así que tenemos nuestro ancho y nuestra altura y la razón por la que eso es
+
+185
+00:15:38,070 --> 00:15:44,200
+animándose a sí mismo si subimos a nuestro CSS aquí, ¿ve este fondo desplegable?
+
+186
+00:15:44,200 --> 00:15:51,520
+Tengo una transición de la opacidad es de medio segundo y luego todo lo demás es 0,3
+
+187
+00:15:51,520 --> 00:15:56,230
+segundos que se traducen en 0.2 segundos. Así que si hago esos dos segundos y hago esto.
+
+188
+00:15:56,230 --> 00:16:02,990
+uno tres segundos, el ancho y la altura tomarán solo dos segundos
+
+189
+00:16:02,990 --> 00:16:07,440
+realmente crece, pero quieres que sea agradable y corto y que puedas jugar
+
+190
+00:16:07,440 --> 00:16:12,300
+alrededor con lo bien que va. Bueno. Eso esta funcionando Y la última pieza del
+
+191
+00:16:12,300 --> 00:16:19,850
+El rompecabezas realmente funciona con los valores superiores e izquierdos. Así que si volvemos a bajar
+
+192
+00:16:19,850 --> 00:16:26,970
+aquí, digamos que la parte superior será: digamos "dropdownCoords.top" y
+
+193
+00:16:26,970 --> 00:16:33,450
+la izquierda va a ser la misma cosa y luego vamos a bajar aquí y establecer nuestra
+
+194
+00:16:33,450 --> 00:16:38,270
+transformar porque esto es una propiedad CSS. Va a ser ... normalmente,
+
+195
+00:16:38,270 --> 00:16:44,680
+sería un traductor y le daremos nuestra x y nuestra y, pero en nuestro caso,
+
+196
+00:16:44,680 --> 00:16:54,770
+va a ser "coords.left.px, coordsTop" y luego guardarlo.
+
+197
+00:16:54,770 --> 00:17:01,000
+Parece estar funcionando, pero si tuviera que subir aquí, de nuevo, simplemente haga lo que hicimos antes
+
+198
+00:17:01,000 --> 00:17:09,700
+y tal vez poner como "h2", decir como "cool". ¿Ahora ves cómo todo está en mal estado?
+
+199
+00:17:09,700 --> 00:17:12,520
+Y eso es porque las coordenadas que obtenemos están un poco apagadas porque eso
+
+200
+00:17:12,520 --> 00:17:16,150
+La navegación se empuja hacia abajo. Así que no siempre se puede asumir que todo va a
+
+201
+00:17:16,150 --> 00:17:23,530
+estar anclado a la parte superior de la página actual. Y es por eso que seguimos adelante y agarramos.
+
+202
+00:17:23,530 --> 00:17:28,380
+esta navegación se coordina aquí porque necesitamos tomar nuestros acordes desplegables y luego
+
+203
+00:17:28,380 --> 00:17:35,210
+compensarlos con la navegación superior. Así que si la navegación superior es de 30 píxeles, sabemos que ha sido
+
+204
+00:17:35,210 --> 00:17:41,060
+ha bajado 30 píxeles, por lo que el valor de la parte superior de este cuadro blanco debe moverse hacia arriba
+
+205
+00:17:41,060 --> 00:17:47,150
+30 píxeles e igual para el navCoords.left izquierdo. Y esos dos valores son
+
+206
+00:17:47,150 --> 00:17:52,850
+Simplemente los compensaré y se pondrá perfectamente a sí mismo ... a-ha,
+
+207
+00:17:52,850 --> 00:17:57,010
+Suave manteca lo tienes en marcha. Esta es probablemente la parte más difícil.
+
+208
+00:17:57,010 --> 00:18:00,780
+Eso me tomó un tiempo para darme cuenta, cuando tienes algo anidado dentro de él,
+
+209
+00:18:00,780 --> 00:18:05,640
+a estos valores no les importa y usted necesita hacer los cálculos usted mismo. Esa es una que jQuery
+
+210
+00:18:05,640 --> 00:18:09,890
+lo hizo muy bien para ti. Si alguna vez usas .offset dentro de jQuery,
+
+211
+00:18:09,890 --> 00:18:12,850
+no tenía que preocuparse por eso porque hacía todos los cálculos detrás de escena para
+
+212
+00:18:12,850 --> 00:18:17,270
+tú allí. Aparte de eso, trabajar muy bien para nosotros, hay una pequeña cosa
+
+213
+00:18:17,270 --> 00:18:23,370
+donde, si te gustan los bananos, toma la navegación, la ul, abre esto.
+
+214
+00:18:23,370 --> 00:18:26,590
+Ya ves, como ¿por qué hay disparador-enter-active aquí? Y si tu,
+
+215
+00:18:26,590 --> 00:18:30,570
+como, realmente meterse con eso, como, ir muy rápido, verás como bien a veces
+
+216
+00:18:30,570 --> 00:18:36,070
+ves el contenido antes de llegar a él. Y luego si te metes con eso,
+
+217
+00:18:36,070 --> 00:18:41,040
+a veces vas a terminar con activo aquí y lo que está sucediendo es que
+
+218
+00:18:41,040 --> 00:18:45,250
+Es el tiempo establecido aquí. Inmediatamente cuando entramos, vamos a agregar una clase.
+
+219
+00:18:45,250 --> 00:18:49,590
+de trigger-enter y luego 150 milisegundos después, vamos a entrar
+
+220
+00:18:49,590 --> 00:18:56,380
+trigger-enter-active. Pero a veces ya estoy flotando antes de que esto sea parejo.
+
+221
+00:18:56,380 --> 00:19:01,000
+adicional. Así que hay un pequeño problema aquí cuando intentas eliminar el activo
+
+222
+00:19:01,000 --> 00:19:05,570
+antes de que se haya agregado, por lo que ejecuta la eliminación y luego un poco más tarde,
+
+223
+00:19:05,570 --> 00:19:10,970
+en realidad lo añades. Eso es un poco de dolor. Así que lo que queremos hacer es tomar esto
+
+224
+00:19:10,970 --> 00:19:17,470
+función que estamos ejecutando aquí, pon eso en su propio y diremos si
+
+225
+00:19:17,470 --> 00:19:30,410
+this.classList contiene trigger-enter, entonces queremos agregar una clase de active y
+
+226
+00:19:30,410 --> 00:19:34,090
+entonces puedes verlo Puedes volverte loco con eso y verás que nunca estás
+
+227
+00:19:34,090 --> 00:19:38,620
+ver el contenido demasiado pronto porque ese activo nunca se agrega y usted
+
+228
+00:19:38,620 --> 00:19:44,830
+nunca los veas aqui Otra forma en que me gusta escribirlo es que es un poco.
+
+229
+00:19:44,830 --> 00:19:49,460
+más corto donde voy a llevarlo de vuelta a lo que tenemos aquí, toma eso,
+
+230
+00:19:49,460 --> 00:19:54,100
+saque la declaración, saque este bloque que teníamos aquí, devuélvalo a
+
+231
+00:19:54,100 --> 00:19:58,360
+esa función de flecha y lo que puedes hacer es decir, this.classList que contiene
+
+232
+00:19:58,360 --> 00:20:04,610
+trigger-enter y este class.add. Y eso es una especie de cortocircuito aquí donde
+
+233
+00:20:04,610 --> 00:20:11,920
+Si esto es cierto, entonces esto se ejecutará. Si esto es falso, entonces no molesta.
+
+234
+00:20:11,920 --> 00:20:16,010
+Comprobando el segundo. Así que es un poco piratear allí donde aprovechas
+
+235
+00:20:16,010 --> 00:20:21,230
+este booleano y. Pero eso significa que el complemento nunca se ejecutará a menos que realmente
+
+236
+00:20:21,230 --> 00:20:26,050
+contiene disparador entrar. Es como la afirmación if que tenemos en las cosas.
+
+237
+00:20:26,050 --> 00:20:31,600
+¡Oh no, lo rompí! Token, tenemos demasiados tokens. ¿Es ese?
+
+238
+00:20:31,600 --> 00:20:37,260
+Tal vez, sí, ahí vamos, trabajando muy bien para nosotros. Así que espero
+
+239
+00:20:37,260 --> 00:20:40,620
+tu disfrutaste de eso Realmente me gustó. Creo que la gente que trabaja en Stripe.
+
+240
+00:20:40,620 --> 00:20:44,460
+tienen ... si lo miras, si te fijas como cuando solo te mueves hacia él,
+
+241
+00:20:44,460 --> 00:20:48,700
+Tienen este tipo de efecto plegable realmente genial que tienen
+
+242
+00:20:48,700 --> 00:20:52,680
+y creo que su código es probablemente seis o siete veces más grande que este.
+
+243
+00:20:52,680 --> 00:20:56,930
+Pero si esto es algo con lo que te encanta trabajar, que es coordenadas y
+
+244
+00:20:56,930 --> 00:21:00,850
+tiempo y todo eso, definitivamente lo alentaría a que intente hacer ese pequeño
+
+245
+00:21:00,850 --> 00:21:06,080
+Doblar hacia abajo el trabajo de animación también. Muchas gracias y nos vemos mañana.
+
+246
+00:21:06,080 --> 00:21:08,080
+♪ [música] ♪
+

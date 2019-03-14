@@ -1,0 +1,308 @@
+﻿1
+00:00:00,000 --> 00:00:02,955
+♪ [music] ♪
+
+2
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+3
+00:00:07,485 --> 00:00:10,114
+Today we're going to learn
+about key sequencing detection,
+
+4
+00:00:10,114 --> 00:00:14,480
+and that means when someone
+inputs a certain sequence of keys
+
+5
+00:00:14,480 --> 00:00:18,580
+into your window or into an inputter,
+something like that, then something needs
+
+6
+00:00:18,580 --> 00:00:23,270
+to happen. And what this is used
+most for online is the Konami code
+
+7
+00:00:23,270 --> 00:00:26,650
+which is, if you grew up in the 1980s or
+1990s, you'll know that you can type in
+
+8
+00:00:26,650 --> 00:00:30,890
+up, up, down, down, left, right, left,
+right, B, A, start, and what that will do
+
+9
+00:00:30,890 --> 00:00:34,540
+is it will trigger like unlimited lives
+in Mario or something like that.
+
+10
+00:00:34,540 --> 00:00:38,070
+So, I figured out Buzzfeed, of all
+websites, has a Konami code.
+
+11
+00:00:38,070 --> 00:00:41,140
+If you go to the website and press
+up, up, down, down, left, right,
+
+12
+00:00:41,140 --> 00:00:45,800
+left, right, B, A, enter, and it changes
+all the words to Wilkie,
+
+13
+00:00:45,800 --> 00:00:51,300
+I'm not sure who that is, but it's pretty
+funny. Different websites have little
+
+14
+00:00:51,300 --> 00:00:54,984
+Easter eggs that you can
+surface. So, let's see how
+
+15
+00:00:54,984 --> 00:00:57,740
+that works. We'll go into our
+scriptag, and we will listen for the
+
+16
+00:00:57,740 --> 00:01:01,810
+window.addEventListener. You're going to
+listen for the keyup event,
+
+17
+00:01:01,810 --> 00:01:07,030
+and when that happens we are going to run
+a function here, which we are going to go
+
+18
+00:01:07,030 --> 00:01:11,590
+into console.log(e.key), and that's going
+to tell us the name of the key that they
+
+19
+00:01:11,590 --> 00:01:15,750
+have pressed. So if I press up,
+it's arrow up, a down, arrow down,
+
+20
+00:01:15,750 --> 00:01:19,580
+A, S, D, F, you get the point right here.
+
+21
+00:01:19,580 --> 00:01:23,780
+So, now what we need to do is whenever
+someone presses one of these items,
+
+22
+00:01:23,780 --> 00:01:29,510
+we're going to push it into an array. So,
+we're going to first make a pressed array,
+
+23
+00:01:29,510 --> 00:01:33,990
+and then we also need to look,
+what is it that we're looking for.
+
+24
+00:01:33,990 --> 00:01:39,100
+So, in this case, secret code... In our
+case I'm just going to look for the word
+
+25
+00:01:39,100 --> 00:01:45,740
+"wesbos." Now we go into here,
+and we'll say pressed.push(e.key),
+
+26
+00:01:45,740 --> 00:01:47,380
+[inaudible 01:47] console.log(pressed).
+
+27
+00:01:47,380 --> 00:01:56,790
+All right, see what's happening whenever I
+type something? We get the specific key,
+
+28
+00:01:56,790 --> 00:02:02,110
+whatever is pressed, into that array. Now,
+that's great, and it makes sense,
+
+29
+00:02:02,110 --> 00:02:05,740
+but that could get fairly big, and
+that is essentially a key logger,
+
+30
+00:02:05,740 --> 00:02:10,030
+where you're logging everything the person
+has logged. So what we want to do is just
+
+31
+00:02:10,030 --> 00:02:14,490
+trim this array to be the maximum that
+we would ever need. And in our case,
+
+32
+00:02:14,490 --> 00:02:19,254
+if we're just looking for the word
+"wesbos," then we are maximum looking
+
+33
+00:02:19,254 --> 00:02:24,720
+for six characters. So, just going to
+splice that real quickly, we're going to
+
+34
+00:02:24,720 --> 00:02:31,130
+say, "pressed.splice." Now we want
+to start from counting from the back,
+
+35
+00:02:31,130 --> 00:02:35,610
+because if I... Let me refresh this. If I
+say "wesbos..." I guess I got to type it
+
+36
+00:02:35,610 --> 00:02:42,440
+up here. "Wesbos is cool." If I want
+to...say I'm looking for "is cool." What
+
+37
+00:02:42,440 --> 00:02:49,140
+we want to do is we want to start
+from the end and go forward.
+
+38
+00:02:49,140 --> 00:02:52,530
+We don't want to start from the start and
+go in, so, the way that we do that is we
+
+39
+00:02:52,530 --> 00:03:02,530
+use a -secretCode.length - 1,
+and if I'm looking for six letters,
+
+40
+00:03:02,530 --> 00:03:08,300
+that's going to go from the back, up seven
+letters, and then we're going to trim from
+
+41
+00:03:08,300 --> 00:03:12,480
+there, which is going to be the
+pressed.length, which is the length of the
+
+42
+00:03:12,480 --> 00:03:18,998
+array minus the secretCode.length, and
+that will give us the exact number that we
+
+43
+00:03:18,998 --> 00:03:26,267
+need. So, now if I refresh, and we say,
+"Wes is cool," you see as I start to get
+
+44
+00:03:26,267 --> 00:03:32,221
+over that budget of six letters, it starts
+to push out the first ones that were
+
+45
+00:03:32,221 --> 00:03:36,894
+pushed. So I could keep typing, "Wesbos."
+At that point it says "Wesbos," but if I
+
+46
+00:03:36,894 --> 00:03:41,550
+type, "i," the "w" gets
+pushed out into the array.
+
+47
+00:03:41,550 --> 00:03:46,750
+Now all that's left is we need to check if
+this array contains the secret code that
+
+48
+00:03:46,750 --> 00:03:52,160
+we are looking for. So we say if
+pressed.join, because that we want to
+
+49
+00:03:52,160 --> 00:03:55,750
+turn it into a string really quickly,
+and I'll show you what that does.
+
+50
+00:03:55,750 --> 00:04:00,110
+That will make it into a string, so,
+if pressed.join, which is the string,
+
+51
+00:04:00,110 --> 00:04:07,090
+.includes(secretCode), then we can do
+things like console.log('DING DING!').
+
+52
+00:04:07,090 --> 00:04:09,820
+You did it.
+
+53
+00:04:09,820 --> 00:04:17,210
+W-E-S-B-O-S, and there we go, ding, ding,
+it includes what we're looking for,
+
+54
+00:04:17,210 --> 00:04:22,000
+and at that point we can do some fun
+stuff. So, way back there was this thing
+
+55
+00:04:22,000 --> 00:04:27,240
+called cornify.js, and I'll show you what
+it does. There is a function called
+
+56
+00:04:27,240 --> 00:04:35,770
+cornify_add, and when you run it,
+"wesbos," it adds unicorns or rainbows or
+
+57
+00:04:35,770 --> 00:04:42,540
+random stuff to the screen. So if I do
+it again, it's going to add another one,
+
+58
+00:04:42,540 --> 00:04:45,802
+another one, another one, another
+one...you get the point, right?
+
+59
+00:04:45,802 --> 00:04:49,479
+We're just adding hilarious different
+unicorns at random. And all you have to
+
+60
+00:04:49,479 --> 00:04:55,011
+do is call this cornify_add, so that's
+it. That's the basics of getting up a
+
+61
+00:04:55,011 --> 00:04:59,497
+key sequencing detection, store them in an
+array, and then check every single time
+
+62
+00:04:59,497 --> 00:05:02,240
+that they key up if it matches
+what you're looking for.
+
+63
+00:05:02,240 --> 00:05:04,658
+♪ [music] ♪

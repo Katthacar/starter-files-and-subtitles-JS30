@@ -1,0 +1,528 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,307 --> 00:00:03,307
+♪ [música] ♪
+
+3
+00:00:08,070 --> 00:00:12,550
+El ejercicio de hoy es, creo, un poco difícil y realmente quiero que lo den.
+
+4
+00:00:12,550 --> 00:00:17,140
+un disparo por su cuenta. Déjame explicarte lo que hace y luego te daré una oportunidad de ir.
+
+5
+00:00:17,140 --> 00:00:21,240
+y hazlo por tu cuenta. El código final no es realmente tan complicado.
+
+6
+00:00:21,240 --> 00:00:25,490
+Descubrí que al principio me resultó un poco difícil pensar en esta idea.
+
+7
+00:00:25,490 --> 00:00:29,190
+aunque. Entonces, así es como funciona. Hace clic en una casilla de verificación, mantiene presionada la tecla Mayús,
+
+8
+00:00:29,190 --> 00:00:32,900
+hace clic en otra, y todas las casillas de verificación entre la primera y
+
+9
+00:00:32,900 --> 00:00:37,440
+El segundo en el que hizo clic se verificará. Esto funciona de arriba a abajo,
+
+10
+00:00:37,440 --> 00:00:41,400
+pero también de abajo hacia arriba. Por lo tanto, si hago clic en este, mantenga presionada la tecla shift,
+
+11
+00:00:41,400 --> 00:00:47,880
+haga clic aquí, va a ir de abajo hacia arriba. Por lo tanto, va en todos los sentidos dependiendo de
+
+12
+00:00:47,880 --> 00:00:51,240
+en lo que estas trabajando Puedes ir en cualquier dirección. Y esto es algo bastante común.
+
+13
+00:00:51,240 --> 00:00:55,980
+que va a ver en aplicaciones como Gmail, donde desea seleccionar un
+
+14
+00:00:55,980 --> 00:01:00,452
+Todo un montón de correos electrónicos y eliminarlos a la vez. Echemos un vistazo rápido a nuestra
+
+15
+00:01:00,452 --> 00:01:05,280
+HTML aquí. Tenemos nuestra entrada con el tipo de casilla de verificación y un tipo de párrafo.
+
+16
+00:01:05,280 --> 00:01:10,120
+Probablemente una etiqueta sería más adecuada para algo así, pero lo que sea.
+
+17
+00:01:10,120 --> 00:01:13,490
+Estamos trabajando con ello. Entonces tenemos una etiqueta de script aquí. Y por cierto,
+
+18
+00:01:13,490 --> 00:01:16,960
+Si te estás preguntando por qué siempre he sangrado mis etiquetas de script tan a la izquierda,
+
+19
+00:01:16,960 --> 00:01:20,090
+Es solo porque necesito el espacio horizontal. Si te molesta
+
+20
+00:01:20,090 --> 00:01:25,550
+Lo siento, pero necesito asegurarme de que mi código se ajuste a la pantalla. Ahora,
+
+21
+00:01:25,550 --> 00:01:29,916
+pruébalo tú mismo y te veré de vuelta aquí, con suerte triunfante,
+
+22
+00:01:29,916 --> 00:01:34,526
+Tal vez no, y lo haremos juntos. Así que, aquí vamos. Bien, primero
+
+23
+00:01:34,526 --> 00:01:38,590
+Lo que tenemos que hacer es seleccionar cada una de las casillas de verificación porque necesitamos
+
+24
+00:01:38,590 --> 00:01:44,070
+escuchen cuando se revisen. Entonces, diremos, "const checkboxes =
+
+25
+00:01:44,070 --> 00:01:53,630
+document.querySelectorAll. "Y queremos agarrar" .inbox "y queremos agarrar el
+
+26
+00:01:53,630 --> 00:01:58,156
+entradas Tengo un tipo de casilla de verificación que probablemente ingresaré allí también.
+
+27
+00:01:58,156 --> 00:02:04,420
+Bueno. Simplemente verifiquemos que tenemos todas esas casillas de verificación, "querySelectorAll".
+
+28
+00:02:04,420 --> 00:02:09,644
+Tienes que deletrearlo bien, "querySelectorAll". Aquí vamos.
+
+29
+00:02:09,644 --> 00:02:10,991
+Entrada, entrada, entrada. Bueno. Bueno.
+
+30
+00:02:10,991 --> 00:02:13,600
+Tengo todas las entradas con las que estoy trabajando aquí.
+
+31
+00:02:13,600 --> 00:02:17,860
+Ahora debemos escuchar cuando se hace clic o se cambia uno de ellos.
+
+32
+00:02:17,860 --> 00:02:23,340
+Entonces, tomaremos las casillas de verificación y recorreremos cada una de ellas.
+
+33
+00:02:23,340 --> 00:02:29,390
+Caja. Y en eso vamos a marcar la casilla de verificación y "addEventListener".
+
+34
+00:02:29,390 --> 00:02:33,660
+Vamos a escuchar un click. Al principio pensé que tenías que escuchar.
+
+35
+00:02:33,660 --> 00:02:38,440
+para el evento de cambio, pero aparentemente el evento de clic se disparará incluso si usa su
+
+36
+00:02:38,440 --> 00:02:43,480
+teclado, que es muy útil saber. Tenemos nuestro "addEventListener"
+
+37
+00:02:43,480 --> 00:02:48,090
+y cuando alguien haga clic en él, ejecutaremos una función llamada "handleCheck".
+
+38
+00:02:48,090 --> 00:02:54,951
+Ahora subamos aquí y hagamos esa función. Vamos a tener este evento y vamos a
+
+39
+00:02:54,951 --> 00:03:02,945
+solo consola de registrar el evento. Hacer clic. Todo bien. Hacer clic. Hacer clic. Hacer clic.
+
+40
+00:03:02,945 --> 00:03:05,603
+Estamos recibiendo la información para cada uno de ellos.
+
+41
+00:03:05,603 --> 00:03:11,990
+Ahora, aquí es donde comienza la parte difícil, donde necesitamos
+
+42
+00:03:11,990 --> 00:03:16,830
+para iniciar sesión, cuando reviso mi primera, necesitamos poner eso en una variable. Porque cuando
+
+43
+00:03:16,830 --> 00:03:22,400
+compruebas la segunda y estás presionando shift, necesitamos saber qué
+
+44
+00:03:22,400 --> 00:03:26,365
+ese último fue Entonces, vamos a hacer una variable aquí llamada "dejar
+
+45
+00:03:26,365 --> 00:03:31,505
+lastChecked. "Y la razón por la que estoy usando let es porque va a ser
+
+46
+00:03:31,505 --> 00:03:38,591
+reasignado constantemente. Y luego dentro de aquí, una especie de la última cosa que estamos
+
+47
+00:03:38,591 --> 00:03:44,820
+lo que vamos a hacer es decir "lastChecked = this". Eso es lo último que estamos.
+
+48
+00:03:44,820 --> 00:03:49,235
+Lo vamos a hacer pero lo pondremos allí. Ahora, cuando hago clic en uno y escribimos
+
+49
+00:03:50,780 --> 00:03:55,070
+"lastChecked", tenemos una referencia a la entrada que se verificó por última vez.
+
+50
+00:03:55,070 --> 00:04:03,290
+Ahora arriba, un par de cosas que tenemos que hacer. Necesitamos comprobar si tuvieron el turno.
+
+51
+00:04:03,290 --> 00:04:10,410
+llave hacia abajo Por lo tanto, voy a decir, "si e.shiftKey". Si el evento ".shiftKey" es
+
+52
+00:04:10,410 --> 00:04:14,560
+allí, eso significa que lo estaban sosteniendo. Entonces vamos a seguir adelante y escribir nuestra
+
+53
+00:04:14,560 --> 00:04:17,890
+código. Sin embargo, la otra cosa que tenemos que hacer es cuando desactivo,
+
+54
+00:04:17,890 --> 00:04:23,460
+también activará "handleCheck". Por lo tanto, tenemos que asegurarnos de que compruebe si tenían una
+
+55
+00:04:23,460 --> 00:04:31,950
+Mueva la tecla hacia abajo y compruebe que lo están comprobando. Por lo tanto, no se desmarca.
+
+56
+00:04:31,950 --> 00:04:34,580
+¿Derecha? Porque no te importa si lo desmarcan. Quieres comprobar si
+
+57
+00:04:34,580 --> 00:04:38,690
+están deseleccionados ... Bueno, dejemos de decir la palabra marcada. Vamos a destriparlo.
+
+58
+00:04:38,690 --> 00:04:44,930
+Y "esto.controlado". Como si fuera un tabú. Deja de decirlo. Así que si la tecla de cambio es
+
+59
+00:04:44,930 --> 00:04:53,751
+abajo y ellos están marcando la casilla, entonces podemos seguir adelante y hacer lo que nos plazca.
+
+60
+00:04:53,751 --> 00:04:57,251
+Y dentro de aquí, ahora, aquí es donde nuestro
+
+61
+00:04:57,251 --> 00:05:04,020
+se hace la salchicha. Lo que vamos a hacer aquí, es que vamos a recorrer
+
+62
+00:05:04,020 --> 00:05:08,370
+cada casilla de verificación individual. Cada vez que esto suceda, vamos a recorrer cada
+
+63
+00:05:08,370 --> 00:05:13,940
+casilla de verificación individual. Y lo que vamos a hacer es buscar el primero.
+
+64
+00:05:13,940 --> 00:05:19,900
+uno que fue revisado, y luego verifico aquí abajo. Lo que va a pasar es,
+
+65
+00:05:19,900 --> 00:05:24,063
+vamos a decir: "Oh, no lo eres. No eres el primero. Oh, tú eres el
+
+66
+00:05:24,063 --> 00:05:28,550
+el primero. Bien, bien. "Luego ve al siguiente, compruébalo. Siguiente, compruébalo.
+
+67
+00:05:28,550 --> 00:05:32,540
+Siguiente, compruébalo. Este, "Oh, tú eres el último que está marcado.
+
+68
+00:05:32,540 --> 00:05:38,180
+Basta. "Y entonces estos dos no serán revisados. Entonces, en lugar de tratar de calcular
+
+69
+00:05:38,180 --> 00:05:44,730
+dónde están en el dom y tratando de averiguar qué elementos son
+
+70
+00:05:44,730 --> 00:05:51,110
+en medio, y encontrar padres y ... Encuentro que es realmente una forma frágil de hacerlo
+
+71
+00:05:51,110 --> 00:05:57,240
+es porque dependes de tener el conjunto de HTML solo así, y luego si alguien más
+
+72
+00:05:57,240 --> 00:06:01,670
+viene y cambia el HTML un poco, simplemente se romperá.
+
+73
+00:06:01,670 --> 00:06:06,450
+Por lo tanto, vamos a recorrer cada casilla de verificación. Vamos a crear un
+
+74
+00:06:06,450 --> 00:06:11,740
+variable llamada intermedia. Y lo que hará el medio es que haremos un bucle sobre esto
+
+75
+00:06:11,740 --> 00:06:15,890
+uno y voy a decir en el medio falso. Iremos sobre esto, entre falso.
+
+76
+00:06:15,890 --> 00:06:19,290
+Pasaremos por encima de éste y dirá: "Bueno, aquí es donde empezamos".
+
+77
+00:06:19,290 --> 00:06:24,120
+Ahora estamos en el área que deseamos verificar, así que revisémosla.
+
+78
+00:06:24,120 --> 00:06:28,120
+Revisalo. Revisalo. Revisalo. Debido a que la variable intermedia se va a establecer en
+
+79
+00:06:28,120 --> 00:06:32,620
+cierto cuando estamos aquí. Y luego, cuando lleguemos a la última, vamos a decir:
+
+80
+00:06:32,620 --> 00:06:37,270
+el medio es falso, porque hemos terminado y ya no vamos a revisar ningún
+
+81
+00:06:37,270 --> 00:06:42,730
+otros. Por lo tanto, esto probablemente tomará un par de lecturas en off, pero vamos a hacerlo.
+
+82
+00:06:42,730 --> 00:06:49,740
+Entonces, subiremos aquí antes de que hagamos la declaración f, diremos, "vamos entre = ="
+
+83
+00:06:49,740 --> 00:06:55,310
+mayúscula B en ese intermedio, "falso". Por lo tanto, no estamos en el medio.
+
+84
+00:06:55,310 --> 00:07:04,530
+Y luego aquí vamos a recorrer cada casilla de verificación.
+
+85
+00:07:04,530 --> 00:07:13,920
+Diga, "checkboxes.forEach" checkbox, y solo consolamos el checkbox.
+
+86
+00:07:13,920 --> 00:07:21,002
+Mira dónde estamos. Por lo tanto, si hago clic en uno, nada. Y ahora voy a
+
+87
+00:07:21,002 --> 00:07:25,018
+mantenga presionada la tecla de mayúsculas y haga clic en otra. Ok entonces cuando
+
+88
+00:07:25,018 --> 00:07:30,110
+sucedió, me sale cada casilla de verificación en el camino. Ahora tenemos que averiguar,
+
+89
+00:07:30,110 --> 00:07:35,710
+mientras hacemos un bucle para esto, tenemos que establecer esta variable intermedia como verdadera.
+
+90
+00:07:35,710 --> 00:07:45,336
+Y la forma en que lo vamos a hacer es decir "si la casilla de verificación es igual a esto o
+
+91
+00:07:45,336 --> 00:07:56,190
+la casilla de verificación es igual a la última marcada, luego la intermedia es ... "Normalmente diríamos
+
+92
+00:07:56,190 --> 00:07:59,370
+en medio es igual a verdadero, pero como queríamos ir en ambos sentidos, decimos en medio
+
+93
+00:07:59,370 --> 00:08:05,390
+Al contrario de sí mismo. ¿Qué? Está bien, vamos a pasar por esto. Un segundo. Si el
+
+94
+00:08:05,390 --> 00:08:13,990
+casilla de verificación es igual a esto, así que aquí vamos, lo comprobamos. Déjame hacerlo al revés de esta manera
+
+95
+00:08:13,990 --> 00:08:18,200
+para que podamos entender Por lo tanto, compruebe este. Presiono Shift y hago clic en
+
+96
+00:08:18,200 --> 00:08:22,850
+"marcar un elemento". Y lo que va a pasar es que vamos a pasar por
+
+97
+00:08:22,850 --> 00:08:26,440
+éste. Va a decir: "¿Es eso en medio? No." Va a pasar por
+
+98
+00:08:26,440 --> 00:08:30,920
+éste y diga: "¿Es la casilla de verificación igual a esto? ¿Y qué es esto?"
+
+99
+00:08:30,920 --> 00:08:34,820
+Este va a ser el que se revisó. Y esa es la casilla de verificación.
+
+100
+00:08:34,820 --> 00:08:39,890
+Este va a ser igual al mismo que estamos realizando actualmente.
+
+101
+00:08:39,890 --> 00:08:44,500
+Entonces, eso va a ser verdad. Entonces, vamos a activar esa variable intermedia.
+
+102
+00:08:44,500 --> 00:08:50,460
+Y luego al revés es si vamos de esta manera, verificamos por última vez, y luego vamos
+
+103
+00:08:50,460 --> 00:08:54,840
+Hasta la buena suerte y haga clic de nuevo. Todavía va a ir de arriba a abajo, pero
+
+104
+00:08:54,840 --> 00:08:59,750
+va a decir: "Si la casilla de verificación es la última marcada", significa que esta es la
+
+105
+00:08:59,750 --> 00:09:04,200
+actualmente marcado uno, pero "marcar un elemento" es el último marcado.
+
+106
+00:09:04,200 --> 00:09:07,740
+Entonces, siento que estoy diciendo "revisado" mucho, pero tenemos esto. Tenemos esto.
+
+107
+00:09:07,740 --> 00:09:17,570
+Así que en el medio, por lo que podría iniciar la consola de registro para comprobarlos en el medio.
+
+108
+00:09:17,570 --> 00:09:24,270
+Compruebe allí, compruebe allí. Y lo que pasa es que, aquí vamos, uno, llegamos a este.
+
+109
+00:09:24,270 --> 00:09:27,058
+y dice: "Está bien. Bien. Ahora estamos empezando, comenzando a revisarlos
+
+110
+00:09:27,058 --> 00:09:31,164
+entre. Abajo, abajo, abajo, abajo, y luego abajo.
+
+111
+00:09:31,164 --> 00:09:32,757
+Y luego una vez que llegamos a este,
+
+112
+00:09:32,757 --> 00:09:37,200
+Ese es el último que revisamos. Por lo tanto, la consola lo registra de nuevo. Eso significa que estamos
+
+113
+00:09:37,200 --> 00:09:41,530
+Terminado, por lo que hacemos lo contrario. Entonces, si es verdad,
+
+114
+00:09:41,530 --> 00:09:45,900
+es falso. Si es falso, es verdad. Y luego llegamos a estos dos últimos, que no son.
+
+115
+00:09:45,900 --> 00:09:51,120
+va a ser. Entonces, podemos decir que aquí abajo tenemos otra declaración "si" que es
+
+116
+00:09:51,120 --> 00:10:05,890
+"si entre," mayúscula B ", entonces checkbox.checked es igual a verdadero".
+
+117
+00:10:05,890 --> 00:10:12,080
+Revisalo. Mantenga presionada la tecla shift, revise otra. Bam. Dado en el clavo. Esta bien veamos
+
+118
+00:10:12,080 --> 00:10:16,680
+que esta pasando ahí. Establecemos una variable de bandera llamada en medio
+
+119
+00:10:16,680 --> 00:10:21,630
+que se establece en falso Una vez que lleguemos al primero, va a ser cierto.
+
+120
+00:10:21,630 --> 00:10:26,930
+que va a comprobar si está encendido y luego vamos a configurarlo programáticamente
+
+121
+00:10:26,930 --> 00:10:31,290
+Comprobado con Javascript. Y vamos a hacer eso para cada uno unti
+
+122
+00:10:31,290 --> 00:10:36,186
+golpeamos ese último, que nuestra variable de marca llamada en medio, se establece en
+
+123
+00:10:36,186 --> 00:10:42,560
+false y ya no se ejecutará para estos dos primeros o para estos dos últimos.
+
+124
+00:10:42,560 --> 00:10:47,900
+Y eso funciona en ambos sentidos, de abajo hacia arriba, porque hicimos este pequeño cambio a la derecha.
+
+125
+00:10:47,900 --> 00:10:52,000
+aquí donde verificamos si es igual a esto, que es el que hicimos clic,
+
+126
+00:10:52,000 --> 00:10:56,560
+O si es la última que revisamos. Eso es todo. En realidad es bastante
+
+127
+00:10:56,560 --> 00:11:01,050
+Simple ahora que lo tenemos. No es mucho código. Es un poco difícil
+
+128
+00:11:01,050 --> 00:11:05,530
+Entender lo que está pasando. Entonces, tal vez pase por eso un par de veces más.
+
+129
+00:11:05,530 --> 00:11:08,850
+Hazlo tú mismo desde cero para que lo entiendas totalmente. Aparte de eso,
+
+130
+00:11:08,850 --> 00:11:11,550
+Espero que lo hayan disfrutado. Déjame saber lo que piensas de eso.
+
+131
+00:11:11,550 --> 00:11:12,872
+Te veo mañana.
+
+132
+00:11:14,345 --> 00:11:17,692
+♪ [música] ♪
+

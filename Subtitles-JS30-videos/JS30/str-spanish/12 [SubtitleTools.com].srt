@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:02,955
+♪ [música] ♪
+
+2
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+3
+00:00:07,485 --> 00:00:10,114
+Hoy vamos a aprender sobre la detección de secuencias clave,
+
+4
+00:00:10,114 --> 00:00:14,480
+y eso significa que cuando alguien ingresa una determinada secuencia de teclas
+
+5
+00:00:14,480 --> 00:00:18,580
+en su ventana o en una entrada, algo así, entonces algo necesita
+
+6
+00:00:18,580 --> 00:00:23,270
+que suceda Y lo que más se usa en línea es el código de Konami.
+
+7
+00:00:23,270 --> 00:00:26,650
+que es, si creciste en los años 80 o 90, sabrás que puedes escribir
+
+8
+00:00:26,650 --> 00:00:30,890
+Arriba, arriba, abajo, izquierda, derecha, izquierda, derecha, B, A, inicio y lo que hará
+
+9
+00:00:30,890 --> 00:00:34,540
+Es que se disparará como vidas ilimitadas en Mario o algo así.
+
+10
+00:00:34,540 --> 00:00:38,070
+Entonces, me di cuenta de que Buzzfeed, de todos los sitios web, tiene un código Konami.
+
+11
+00:00:38,070 --> 00:00:41,140
+Si va al sitio web y presiona arriba, arriba, abajo, abajo, izquierda, derecha,
+
+12
+00:00:41,140 --> 00:00:45,800
+izquierda, derecha, B, A, ingrese, y cambia todas las palabras a Wilkie,
+
+13
+00:00:45,800 --> 00:00:51,300
+No estoy seguro de quién es, pero es bastante gracioso. Diferentes sitios web tienen poco
+
+14
+00:00:51,300 --> 00:00:54,984
+Huevos de pascua que pueden salir a la superficie. Entonces, veamos cómo
+
+15
+00:00:54,984 --> 00:00:57,740
+eso funciona. Entraremos en nuestro scriptag, y escucharemos el
+
+16
+00:00:57,740 --> 00:01:01,810
+window.addEventListener. Vas a escuchar el evento keyup,
+
+17
+00:01:01,810 --> 00:01:07,030
+y cuando eso suceda, vamos a ejecutar una función aquí, a la que vamos a ir
+
+18
+00:01:07,030 --> 00:01:11,590
+en console.log (e.key), y eso nos dirá el nombre de la clave que
+
+19
+00:01:11,590 --> 00:01:15,750
+han presionado Así que si presiono hacia arriba, es flecha arriba, abajo, flecha abajo.
+
+20
+00:01:15,750 --> 00:01:19,580
+A, S, D, F, entiendes el punto justo aquí.
+
+21
+00:01:19,580 --> 00:01:23,780
+Entonces, ahora lo que tenemos que hacer es cada vez que alguien presiona uno de estos elementos,
+
+22
+00:01:23,780 --> 00:01:29,510
+Vamos a empujarlo en una matriz. Entonces, primero vamos a hacer una matriz presionada,
+
+23
+00:01:29,510 --> 00:01:33,990
+Y luego también tenemos que mirar, qué es lo que estamos buscando.
+
+24
+00:01:33,990 --> 00:01:39,100
+Entonces, en este caso, el código secreto ... En nuestro caso, solo voy a buscar la palabra
+
+25
+00:01:39,100 --> 00:01:45,740
+"wesbos". Ahora entramos aquí, y diremos presionado. Push (e.key),
+
+26
+00:01:45,740 --> 00:01:47,380
+[inaudible 01:47] console.log (presionado).
+
+27
+00:01:47,380 --> 00:01:56,790
+De acuerdo, ¿ves lo que pasa cada vez que escribo algo? Obtenemos la clave específica,
+
+28
+00:01:56,790 --> 00:02:02,110
+lo que sea presionado, en esa matriz. Ahora, eso es genial, y tiene sentido,
+
+29
+00:02:02,110 --> 00:02:05,740
+pero eso podría ser bastante grande, y eso es esencialmente un registrador clave,
+
+30
+00:02:05,740 --> 00:02:10,030
+donde estás registrando todo lo que la persona ha registrado. Así que lo que queremos hacer es solo
+
+31
+00:02:10,030 --> 00:02:14,490
+recorte esta matriz para que sea lo máximo que podríamos necesitar. Y en nuestro caso,
+
+32
+00:02:14,490 --> 00:02:19,254
+Si solo buscamos la palabra "wesbos", entonces estamos buscando al máximo.
+
+33
+00:02:19,254 --> 00:02:24,720
+para seis personajes. Entonces, solo vamos a unir eso rápidamente, vamos a
+
+34
+00:02:24,720 --> 00:02:31,130
+decir, "planchado.plice". Ahora queremos empezar contando desde atrás,
+
+35
+00:02:31,130 --> 00:02:35,610
+porque si yo ... déjame refrescar esto. Si digo "wesbos ..." supongo que tengo que escribirlo
+
+36
+00:02:35,610 --> 00:02:42,440
+aquí arriba. "Wesbos es genial". Si quiero ... decir que estoy buscando "es genial". Qué
+
+37
+00:02:42,440 --> 00:02:49,140
+Lo que queremos hacer es comenzar desde el final y seguir adelante.
+
+38
+00:02:49,140 --> 00:02:52,530
+No queremos empezar desde el principio y entrar, así que la forma en que lo hacemos es
+
+39
+00:02:52,530 --> 00:03:02,530
+use un -secretCode.length - 1, y si estoy buscando seis letras,
+
+40
+00:03:02,530 --> 00:03:08,300
+eso va a ir desde atrás, hasta siete letras, y luego vamos a recortar desde
+
+41
+00:03:08,300 --> 00:03:12,480
+allí, que va a ser presionado.longitud, que es la longitud de la
+
+42
+00:03:12,480 --> 00:03:18,998
+array menos el secretCode.length, y eso nos dará el número exacto que nosotros
+
+43
+00:03:18,998 --> 00:03:26,267
+necesitar. Entonces, si actualizo y decimos: "Wes es genial", verás cuando empiezo a entender.
+
+44
+00:03:26,267 --> 00:03:32,221
+sobre ese presupuesto de seis letras, comienza a eliminar las primeras que fueron
+
+45
+00:03:32,221 --> 00:03:36,894
+empujado. Para que pudiera seguir escribiendo, "Wesbos". En ese punto dice "Wesbos", pero si yo
+
+46
+00:03:36,894 --> 00:03:41,550
+escriba "i", la "w" se inserta en la matriz.
+
+47
+00:03:41,550 --> 00:03:46,750
+Ahora todo lo que queda es que tenemos que comprobar si esta matriz contiene el código secreto que
+
+48
+00:03:46,750 --> 00:03:52,160
+estamos buscando. Así que decimos si presionamos. Únete, porque eso queremos.
+
+49
+00:03:52,160 --> 00:03:55,750
+conviértelo en una cuerda muy rápido, y te mostraré lo que hace eso.
+
+50
+00:03:55,750 --> 00:04:00,110
+Eso lo convertirá en una cadena, por lo tanto, si se presiona. Únete, que es la cadena,
+
+51
+00:04:00,110 --> 00:04:07,090
+.includes (secretCode), entonces podemos hacer cosas como console.log ('DING DING!').
+
+52
+00:04:07,090 --> 00:04:09,820
+Lo hiciste.
+
+53
+00:04:09,820 --> 00:04:17,210
+WESBOS, y ahí vamos, ding, ding, incluye lo que estamos buscando,
+
+54
+00:04:17,210 --> 00:04:22,000
+y en ese punto podemos hacer algunas cosas divertidas. Así que, de vuelta había esta cosa.
+
+55
+00:04:22,000 --> 00:04:27,240
+Llamé a cornify.js, y te mostraré lo que hace. Hay una función llamada
+
+56
+00:04:27,240 --> 00:04:35,770
+cornify_add, y cuando lo ejecutas, "wesbos", agrega unicornios o arco iris o
+
+57
+00:04:35,770 --> 00:04:42,540
+Cosas aleatorias a la pantalla. Así que si lo hago otra vez, va a agregar otro,
+
+58
+00:04:42,540 --> 00:04:45,802
+otro, otro, otro ... entiendes el punto, ¿verdad?
+
+59
+00:04:45,802 --> 00:04:49,479
+Solo estamos agregando hilarantes diferentes unicornios al azar. Y todo lo que tienes que
+
+60
+00:04:49,479 --> 00:04:55,011
+do is call cornify_add, así que eso es todo. Eso es lo básico de levantarse un
+
+61
+00:04:55,011 --> 00:04:59,497
+Detección de secuenciación de teclas, almacenarlas en una matriz y luego verificar cada vez
+
+62
+00:04:59,497 --> 00:05:02,240
+que encienden si coincide con lo que estás buscando.
+
+63
+00:05:02,240 --> 00:05:04,658
+♪ [música] ♪
+

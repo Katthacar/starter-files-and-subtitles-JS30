@@ -1,0 +1,1388 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,669 --> 00:00:03,669
+♪ [música] ♪
+
+3
+00:00:07,440 --> 00:00:12,560
+Hola a todos. Wes Bos aquí. Vamos a hacer un fotomatón con JavaScript.
+
+4
+00:00:12,560 --> 00:00:19,430
+hoy. Ahora, primero que nada, si ves que estoy hablando, y luego más tarde en el audio
+
+5
+00:00:19,430 --> 00:00:23,940
+no se suma, eso es porque estoy grabando mi pantalla en un monitor 4K y
+
+6
+00:00:23,940 --> 00:00:28,070
+Canalización de video a través, y es demasiado. Así que cuando deje de grabar mi pantalla,
+
+7
+00:00:28,070 --> 00:00:32,300
+esto es en vivo, no te preocupes si te preguntas si el sonido está apagado o no.
+
+8
+00:00:32,300 --> 00:00:38,190
+Entonces, ¿qué vamos a construir hoy? En primer lugar, tenemos nuestro video siendo
+
+9
+00:00:38,190 --> 00:00:44,280
+canalizado desde nuestra cámara web, y luego tenemos nuestro video siendo canalizado en un lienzo
+
+10
+00:00:44,280 --> 00:00:48,360
+elemento. Luego, una vez que está en un elemento de lienzo, podemos comenzar a hacer todo tipo de
+
+11
+00:00:48,360 --> 00:00:53,470
+cosas geniales con eso. Como podemos tomar nuestra foto, y luego puedes seguir adelante y
+
+12
+00:00:53,470 --> 00:00:58,080
+Descárgalos. Se descargarán en tu computadora y podrás verlos como reales.
+
+13
+00:00:58,080 --> 00:01:04,250
+fotos, guapo.png. Luego, en los scripts, una vez que lo tenemos, podemos empezar a
+
+14
+00:01:04,250 --> 00:01:09,340
+Agrega efectos, como diferentes filtros donde las cosas deben ser rojas.
+
+15
+00:01:09,340 --> 00:01:17,760
+O lo que podemos hacer es hacer esta división RGB realmente genial, donde puedes ver mi cara.
+
+16
+00:01:17,760 --> 00:01:21,410
+No mires en la esquina superior derecha, me veo loco. Pero los valores RGB son solo un
+
+17
+00:01:21,410 --> 00:01:26,830
+poco fuera Puedes jugar con el alfa. Así que es sólo un poco como,
+
+18
+00:01:26,830 --> 00:01:32,710
+Woo, efecto fantasma que se enciende aquí. Luego, por fin, la pantalla verde.
+
+19
+00:01:32,710 --> 00:01:36,600
+Si nunca has sabido cómo funciona la pantalla verde, básicamente eliges un color que sea
+
+20
+00:01:36,600 --> 00:01:40,940
+en el fondo, y luego encuentras cualquier color que esté dentro del rango de ese
+
+21
+00:01:40,940 --> 00:01:45,140
+Color específico, generalmente verde, y luego lo sacas. Todo lo que está detrás de esto,
+
+22
+00:01:45,140 --> 00:01:48,070
+Como un video o una playa, o algo así, se va a mostrar.
+
+23
+00:01:48,070 --> 00:01:54,640
+Así que tenemos estos valores de control deslizante aquí, que podemos usar para descubrir cuál es el umbral
+
+24
+00:01:54,640 --> 00:01:58,440
+es, y en mi caso estoy sacando un montón de cosas,
+
+25
+00:01:58,440 --> 00:02:04,270
+Pero puedes hacer algunas cosas divertidas. Cualquier cosa que estuviera detrás de eso, entonces se vería en
+
+26
+00:02:04,270 --> 00:02:08,510
+mediante. Así que esto va a ser un poco grande, pero va a ser divertido.
+
+27
+00:02:08,510 --> 00:02:12,861
+Así que vamos a empezar a rodar. Abriré mi index.html y cambiaré esto
+
+28
+00:02:12,861 --> 00:02:19,430
+scripts-TERMINADO a solo scripts.js, y entrará en nuestros scripts.js.
+
+29
+00:02:19,430 --> 00:02:23,880
+Antes de comenzar hoy, hay una cosa que necesitamos para levantarnos y
+
+30
+00:02:23,880 --> 00:02:28,380
+En ejecución, y eso es un servidor. Hasta ahora, en este curso hemos estado trabajando fuera de
+
+31
+00:02:28,380 --> 00:02:32,310
+el archivo. Hacemos clic derecho y ese lechón en el navegador. Sin embargo,
+
+32
+00:02:32,310 --> 00:02:35,570
+Debido a las restricciones de seguridad al obtener la cámara web de un usuario,
+
+33
+00:02:35,570 --> 00:02:41,630
+debe estar vinculado a lo que se llama un "origen seguro". Un origen seguro es un sitio web que
+
+34
+00:02:41,630 --> 00:02:47,660
+es HTTPS, o en nuestro caso, localhost también es un origen seguro. Incluso si no lo es,
+
+35
+00:02:47,660 --> 00:02:51,640
+tiene un pequeño icono de bloqueo allí, todavía se considera un origen seguro,
+
+36
+00:02:51,640 --> 00:02:55,190
+que es localhost. Entonces, ¿qué necesito que hagas, si miras esto?
+
+37
+00:02:55,190 --> 00:02:59,480
+tenemos este index.html, que necesita ser alimentado a través de algún tipo de servidor.
+
+38
+00:02:59,480 --> 00:03:04,300
+Así que si ya tienes un servidor Python o quizás Map si has hecho WordPress,
+
+39
+00:03:04,300 --> 00:03:08,990
+o cualquier tipo de servidor local en ejecución, puede usarlo totalmente.
+
+40
+00:03:08,990 --> 00:03:14,020
+Solo asegúrese de alimentar este index.html a través de su servidor localhost.
+
+41
+00:03:14,020 --> 00:03:18,170
+Ahora, si no tienes ningún tipo de servidor local, lo que he hecho es que he incluido un
+
+42
+00:03:18,170 --> 00:03:23,950
+archivo package.JSON. Si abrimos eso, verás que tengo una dependencia,
+
+43
+00:03:23,950 --> 00:03:26,590
+que es esta cosa llamada "browser-sync". Es realmente muy bonito.
+
+44
+00:03:26,590 --> 00:03:31,580
+porque le permite abrir su sitio web e iniciar un pequeño servidor,
+
+45
+00:03:31,580 --> 00:03:34,390
+y también te da recarga en vivo y un montón de otras cosas.
+
+46
+00:03:34,390 --> 00:03:38,320
+Entonces, lo que quiero que hagas es escribir "npm install". Si no tienes NPM,
+
+47
+00:03:38,320 --> 00:03:43,250
+Si le dice que eso no es algo, vaya a nodejs.org y descargue Node.js.
+
+48
+00:03:43,250 --> 00:03:47,760
+Así que voy a escribir "npm install", y cuando eso haya terminado lo que se puede escribir
+
+49
+00:03:47,760 --> 00:03:52,620
+es "npm start". Qué va a hacer, va a ejecutar este script que tengo
+
+50
+00:03:52,620 --> 00:03:56,540
+Aquí y esto es solo un archivo de inicio de sincronización de navegador realmente largo. Esto acaba de empezar
+
+51
+00:03:56,540 --> 00:04:01,150
+Un pequeño servidor para ti. Así que "npm start", y eso va a arrancar un poco
+
+52
+00:04:01,150 --> 00:04:04,650
+servidor. Te dirá que tu servidor local es 3001,
+
+53
+00:04:04,650 --> 00:04:08,640
+y luego también le dará un servidor externo en caso de que quiera verificarlo
+
+54
+00:04:08,640 --> 00:04:11,370
+su Wi-Fi, tal vez verifíquelo en su teléfono Android, o algo así.
+
+55
+00:04:11,370 --> 00:04:16,190
+Así que tengo eso en marcha. Ahora, vamos a nuestros scripts.js,
+
+56
+00:04:16,190 --> 00:04:19,180
+y voy a cargar en un par de selectores con los que estamos trabajando aquí,
+
+57
+00:04:19,180 --> 00:04:22,360
+solo porque probablemente estés harto de verme los selectores de tipo por ahora.
+
+58
+00:04:22,360 --> 00:04:27,350
+Vamos a revisar muy rápido. Tenemos este video aquí, que es una clase de "jugador".
+
+59
+00:04:27,350 --> 00:04:32,290
+Si miramos nuestro HTML, verán que tenemos un lienzo, tenemos un video,
+
+60
+00:04:32,290 --> 00:04:37,260
+Y tenemos una tira. Ahora, el video de nuestra cámara web va a llegar caliente desde el
+
+61
+00:04:37,260 --> 00:04:40,860
+Cámara web, y vamos a canalizar eso en este elemento de video. Entonces,
+
+62
+00:04:40,860 --> 00:04:45,440
+cada, no sé, 16 milisegundos más o menos, vamos a tomar una instantánea de eso
+
+63
+00:04:45,440 --> 00:04:51,270
+Video y volcarlo en este lienzo. Una vez que esté en el lienzo, vamos a
+
+64
+00:04:51,270 --> 00:04:54,510
+Manipular los píxeles, cambiar el color, aplicar filtros. Vamos a tener mucho
+
+65
+00:04:54,510 --> 00:04:57,730
+De diversión con eso. Pero solo sepan que el video saldrá de la webcam.
+
+66
+00:04:57,730 --> 00:05:01,200
+El elemento de video, y lo vamos a tirar en el lienzo de vez en cuando.
+
+67
+00:05:01,200 --> 00:05:05,160
+Luego, finalmente, la tira, ahí es donde vamos a poner todas nuestras imágenes.
+
+68
+00:05:05,160 --> 00:05:08,840
+Entonces, en qué contexto de video lienzo, aquí es donde ocurre el trabajo.
+
+69
+00:05:08,840 --> 00:05:13,180
+Si nunca ha usado lienzo antes, vuelva a nuestro tutorial de lienzo que hemos
+
+70
+00:05:13,180 --> 00:05:15,830
+hecho antes Tenemos nuestra tira, y luego tenemos este audio,
+
+71
+00:05:15,830 --> 00:05:20,290
+que es un pequeño [sonidos verbales 00:05:17] sonido que va a reproducirse todos y cada uno
+
+72
+00:05:20,290 --> 00:05:25,200
+Es hora de que reproduzcamos un video aquí. Bueno. Lo primero que queremos hacer es conseguir el video.
+
+73
+00:05:25,200 --> 00:05:30,820
+siendo canalizado en ese elemento de video. Así que vamos a decir "función getVideo".
+
+74
+00:05:30,820 --> 00:05:33,300
+La forma en que obtienes el video de alguien, en realidad es
+
+75
+00:05:33,300 --> 00:05:42,350
+"navigator.mediaDevices.getUserMedia". Si has hecho esto antes,
+
+76
+00:05:42,350 --> 00:05:46,230
+es posible que lo hayas visto como "navigator.getUserMedia". Ahora ha cambiado
+
+77
+00:05:46,230 --> 00:05:51,140
+a "navigator.mediaDevices" en algunos de los navegadores más nuevos, que es "getUserMedia".
+
+78
+00:05:51,140 --> 00:05:55,040
+De eso lo pasamos al video, que queremos que sea "verdadero" y al audio,
+
+79
+00:05:55,040 --> 00:06:01,600
+que va a ser "falso". Ahora esa cosa esta va a devolver una promesa.
+
+80
+00:06:01,600 --> 00:06:05,670
+Usted sabe que con una promesa, llamamos ".en" en él. Nos va a dar
+
+81
+00:06:05,670 --> 00:06:12,980
+algo llamado "localMediaStream". A partir de ahí, ejecutaremos una función.
+
+82
+00:06:12,980 --> 00:06:16,380
+Solo consolaremos.log que "localMediaStream", veamos que tenemos
+
+83
+00:06:16,380 --> 00:06:21,450
+aquí. Así que cuando lo cargue, probablemente aparezca un pequeño mensaje emergente aquí que dice "localhost
+
+84
+00:06:21,450 --> 00:06:25,740
+le gustaría acceder a su cámara ". Continúe y haga clic en Sí,
+
+85
+00:06:25,740 --> 00:06:30,370
+y, por supuesto, necesitamos ejecutar esta función getVideo en la carga de la página.
+
+86
+00:06:30,370 --> 00:06:32,920
+Notarás que es refrescante automáticamente para ti, lo cual es un
+
+87
+00:06:32,920 --> 00:06:36,350
+buena característica Así que aquí está lo que tenemos aquí. Tenemos este flujo de medios,
+
+88
+00:06:36,350 --> 00:06:44,000
+y luego acabamos de obtener una identificación, "active: true", y hay algunas cosas en el
+
+89
+00:06:44,000 --> 00:06:49,650
+Prototipo con el que estamos trabajando aquí. Pero realmente no es mucho para que nos ocupemos.
+
+90
+00:06:49,650 --> 00:06:56,860
+Entonces, lo que debemos hacer es tomar nuestro video, y debemos configurar la fuente para que sea
+
+91
+00:06:56,860 --> 00:07:00,780
+que "localMediaStream". Ahora, eso no va a funcionar automáticamente,
+
+92
+00:07:00,780 --> 00:07:06,120
+porque esto es un objeto Para que nuestro video funcione, realmente necesita ser
+
+93
+00:07:06,120 --> 00:07:10,260
+convertido en algún tipo de URL. Esto es un poco raro, porque podrías ser
+
+94
+00:07:10,260 --> 00:07:15,620
+Solía ​​tener un video como un .mp4. Pero así es como lo configuras para ser un video en vivo.
+
+95
+00:07:15,620 --> 00:07:21,150
+alimentar. Así que vamos a envolver este "localMediaStream" en las gorras de window.url
+
+96
+00:07:21,150 --> 00:07:26,650
+".createObjectURL". Eso va a convertir ese flujo de medios en algo.
+
+97
+00:07:26,650 --> 00:07:31,030
+que este reproductor de video puede entender. Finalmente, debajo de eso llamaremos
+
+98
+00:07:31,030 --> 00:07:35,010
+"video.play", que lo va a reproducir. Si lo intento con eso,
+
+99
+00:07:35,010 --> 00:07:39,620
+Usted puede ver como un cuadro. Sí, ¿ves? Un cuadro Si pasas el mouse sobre él,
+
+100
+00:07:39,620 --> 00:07:44,680
+a veces se abrirá. ¿Porqué es eso? Eso es porque configuramos el video para que sea este
+
+101
+00:07:44,680 --> 00:07:49,810
+flujo de medios Pero no se actualizará a menos que sigamos jugando.
+
+102
+00:07:49,810 --> 00:07:54,240
+Así que voy a llamar "video.play". Ahora, cuando carga la página,
+
+103
+00:07:54,240 --> 00:07:59,450
+deberías verte en el elemento de video real en la esquina superior derecha
+
+104
+00:07:59,450 --> 00:08:03,410
+que he hecho aqui Si lo inspecciona, verá que la fuente de video es
+
+105
+00:08:03,410 --> 00:08:09,460
+gota. Eso solo significa que son los datos sin procesar que se canalizan fuera de este derecho de cámara web
+
+106
+00:08:09,460 --> 00:08:13,650
+aquí. Lo último que debemos hacer es hacer una trampa aquí,
+
+107
+00:08:13,650 --> 00:08:15,880
+por si alguien no te permite acceder a su webcam.
+
+108
+00:08:15,880 --> 00:08:21,670
+Necesitamos manejar ese error. Así que diremos "error", y cuando eso suceda estamos
+
+109
+00:08:21,670 --> 00:08:28,990
+Yendo a la consola.error. Oh, no, y luego date el error.
+
+110
+00:08:28,990 --> 00:08:33,570
+Obviamente, puedes decirle al usuario: "Oye, negaste la cámara web. Tal vez no deberías hacerlo.
+
+111
+00:08:33,570 --> 00:08:38,130
+eso, porque necesitamos tener acceso a su cámara web ". Bien. Así que estamos arriba y
+
+112
+00:08:38,130 --> 00:08:43,530
+correr con la transmisión del video. Lo siguiente que debemos hacer es
+
+113
+00:08:43,530 --> 00:08:50,510
+para tomar un cuadro de este video y pintarlo en el lienzo real en el
+
+114
+00:08:50,510 --> 00:08:59,010
+pantalla. Así que eso es lo que haremos aquí, es que haremos una función y llamaremos
+
+115
+00:08:59,010 --> 00:09:04,870
+que "paintToCanvas". Tenemos un par de cosas primero. Lo que necesitamos es el ancho.
+
+116
+00:09:04,870 --> 00:09:08,910
+y la altura del video real. Así que diremos "const width = video.videowidth"
+
+117
+00:09:08,910 --> 00:09:20,540
+y "const height = video.videoheight". Ahora, lo que tenemos que hacer es que el video sea
+
+118
+00:09:20,540 --> 00:09:26,560
+va a tener un ancho y una altura asociados, y si tuviéramos que llamar
+
+119
+00:09:26,560 --> 00:09:32,090
+ese "paintToCanvas" verás que es 640 por 480. Ese es el tamaño del video
+
+120
+00:09:32,090 --> 00:09:37,950
+Eso viene de mi webcam. Ahora, tenemos que asegurarnos de que el lienzo es el
+
+121
+00:09:37,950 --> 00:09:42,120
+Exactamente el mismo tamaño antes de pintarlo. Eso es realmente importante porque si el
+
+122
+00:09:42,120 --> 00:09:45,760
+El lienzo no es del mismo tamaño que el video o si su cámara web tiene un video diferente
+
+123
+00:09:45,760 --> 00:09:52,650
+ancho y alto, entonces tenemos que cambiar eso. Así que diremos "canvas.width =
+
+124
+00:09:52,650 --> 00:09:59,330
+ancho "y" canvas.height = altura ". Bien. Ahora, si actualiza e inspecciona esto
+
+125
+00:09:59,330 --> 00:10:04,800
+Lienzo aquí, verás que ahora mismo es de 943 píxeles. Pero si tuviera que llamar
+
+126
+00:10:04,800 --> 00:10:08,850
+que "paintToCanvas", entonces será cambiado. Todavía me lo muestra,
+
+127
+00:10:08,850 --> 00:10:13,940
+Porque lo estoy estirando con CSS. Pero el ancho y la altura han sido
+
+128
+00:10:13,940 --> 00:10:21,910
+establecido explícitamente en el lienzo real. Ahora, lo que queremos hacer es a todos,
+
+129
+00:10:21,910 --> 00:10:27,410
+No sé, 16 o más milisegundos, vamos a tomar una imagen de la webcam.
+
+130
+00:10:27,410 --> 00:10:33,580
+y ponerlo en el lienzo. Así que vamos a "setinterval", y eso va
+
+131
+00:10:33,580 --> 00:10:37,670
+para ejecutar una función cada ... Empecemos con 16 milisegundos. Realmente tienes que
+
+132
+00:10:37,670 --> 00:10:41,130
+Juega con qué frecuencia va a pintar al lienzo. Un menor rendimiento
+
+133
+00:10:41,130 --> 00:10:44,480
+Máquina, a veces hay que subir. También puedes jugar con
+
+134
+00:10:44,480 --> 00:10:49,110
+"requestAnimationFrame". Pero no he tenido éxito con eso, así que me quedo con un
+
+135
+00:10:49,110 --> 00:10:53,700
+intervalo aquí Vamos a tomar el contexto del lienzo, vamos a llamar
+
+136
+00:10:53,700 --> 00:10:57,770
+"dramImage", y simplemente pasas tu elemento de video. Así que la forma en que
+
+137
+00:10:57,770 --> 00:11:01,730
+"dramImage" funciona es que le pasas una imagen, o un elemento de video,
+
+138
+00:11:01,730 --> 00:11:08,170
+Y eso lo pintará bien. Vamos a empezar a las 00, que supongo
+
+139
+00:11:08,170 --> 00:11:12,830
+Estás al otro lado aquí. Comienza en la esquina superior izquierda del lienzo,
+
+140
+00:11:12,830 --> 00:11:17,910
+y luego pintar el ancho y la altura. Es exactamente por eso que los metimos en su
+
+141
+00:11:17,910 --> 00:11:24,980
+propias variables aquí mismo. Así que si volvemos a ejecutar ese "paintToCanvas" ahora ...
+
+142
+00:11:24,980 --> 00:11:30,210
+Oh, tenemos un error, "setInterval". Es capital I. Probablemente te vuelva loco.
+
+143
+00:11:30,210 --> 00:11:34,980
+mirandome codigo asi Aquí vamos. Cortejar. ¿Que está pasando aqui?
+
+144
+00:11:34,980 --> 00:11:40,210
+Cada 16 milisegundos lo que sucede es que este es nuestro elemento de lienzo aquí,
+
+145
+00:11:40,210 --> 00:11:44,050
+y luego aquí tenemos nuestro elemento de video con el que estamos trabajando.
+
+146
+00:11:44,050 --> 00:11:49,640
+Así que estamos tomando un marco de ello. Una cosa que me gusta hacer es devolver eso
+
+147
+00:11:49,640 --> 00:11:53,280
+Intervalo aquí, porque si alguna vez necesitas detener esto de pintar,
+
+148
+00:11:53,280 --> 00:11:58,290
+puede tener acceso a ese intervalo y puede llamar "clearInterval" en él.
+
+149
+00:11:58,290 --> 00:12:04,840
+Bueno. Ahora, lo que queremos hacer es trabajar en la función takePhoto,
+
+150
+00:12:04,840 --> 00:12:13,400
+por lo que "función takePhoto". Vamos a trabajar en la parte de audio ahora mismo.
+
+151
+00:12:13,400 --> 00:12:21,950
+Así que diré "snap.currentTime = 0" y diremos "snap.play".
+
+152
+00:12:21,950 --> 00:12:28,360
+Así consola, actualizar. Queremos entrar en nuestra consola y ejecutar "paintToCanvas".
+
+153
+00:12:28,360 --> 00:12:32,880
+Lo tengo funcionando Luego, vamos a ejecutar "takePhoto", que debería jugar.
+
+154
+00:12:32,880 --> 00:12:35,100
+Aquí vamos. Puede que no lo escuches, porque no está grabando en mi
+
+155
+00:12:35,100 --> 00:12:39,200
+audio de la computadora. Pero eso debería decir [ruido verbal 00:12:38].
+
+156
+00:12:39,200 --> 00:12:43,260
+Imagínate que se está yendo ahora mismo. Bueno. Así que eso es jugar la foto.
+
+157
+00:12:43,260 --> 00:12:49,880
+Pero antes de seguir adelante, es un poco difícil tener que ejecutar esto manualmente
+
+158
+00:12:49,880 --> 00:12:53,620
+"PaintToCanvas". Entonces, lo que vamos a hacer es ir al fondo
+
+159
+00:12:53,620 --> 00:12:59,120
+aquí. Vamos a escuchar un evento en el elemento de video llamado "canplay".
+
+160
+00:12:59,120 --> 00:13:02,844
+Así que vamos a decir "video.addEventListener ('canplay')".
+
+161
+00:13:02,844 --> 00:13:07,130
+Ese es un evento que el video emitirá. Cuando eso suceda, vamos a correr el
+
+162
+00:13:07,130 --> 00:13:15,960
+Función "paintToCanvas". Entonces, ¿qué va a hacer eso? Una vez que este video es reproducido,
+
+163
+00:13:15,960 --> 00:13:19,540
+se va a emitir ... Porque primero tenemos que arreglar la cámara web.
+
+164
+00:13:19,540 --> 00:13:25,350
+¿Derecha? Una vez que el video se está reproduciendo, se emitirá un evento llamado "canplay",
+
+165
+00:13:25,350 --> 00:13:29,300
+que a su vez el lienzo dirá: "Oh, ahora deberíamos empezar a pintar en lienzo".
+
+166
+00:13:29,300 --> 00:13:34,770
+Así que eso va a pasar ahora en nuestra página de carga. Bueno. Estoy feliz con eso.
+
+167
+00:13:34,770 --> 00:13:40,790
+Ahora, ¿cómo tomamos una foto de este lienzo real aquí? Así que es parte de nuestra
+
+168
+00:13:40,790 --> 00:13:47,260
+"tomar foto". Ya hemos reproducido el sonido, que no es realmente nada que hacer
+
+169
+00:13:47,260 --> 00:13:55,220
+con eso. Lo que ahora tenemos que hacer es sacar los datos del lienzo.
+
+170
+00:13:55,220 --> 00:14:03,172
+Podemos hacer esto, "const data = canvas.toDataURL". Entonces, lo pasas,
+
+171
+00:14:03,172 --> 00:14:11,405
+"image / jpeg" o "jpng", o lo que sea que estés buscando. Pero probablemente tenga sentido
+
+172
+00:14:11,405 --> 00:14:16,120
+hacer un PJEG con una E allí, porque esa es una foto mía. No es realmente un
+
+173
+00:14:16,120 --> 00:14:20,350
+PNG. Entonces, solo voy a console.log los datos reales y veremos en qué estamos trabajando
+
+174
+00:14:20,350 --> 00:14:28,060
+con Aquí. Así que iré a mi consola y veré con qué estamos trabajando.
+
+175
+00:14:28,060 --> 00:14:34,310
+aquí. Voy a tomar una foto. Está bien, y esto es lo que pasa.
+
+176
+00:14:34,310 --> 00:14:40,800
+Whoa ¿Qué diablos es esto? Entonces, qué es esto, esto es algo que se llama "Base64".
+
+177
+00:14:40,800 --> 00:14:47,200
+Esto es como una representación basada en texto de la imagen de mí.
+
+178
+00:14:47,200 --> 00:14:56,750
+Así que esto como "8vpb4fb", que significa "sonrisa deslumbrante". Este "rvs0",
+
+179
+00:14:56,750 --> 00:15:00,830
+que significa "dulce baby blues". Estos son como pequeños atributos sobre el
+
+180
+00:15:00,830 --> 00:15:08,240
+Foto en forma de texto. Entonces, lo que podemos hacer con eso es que podemos crear un enlace y
+
+181
+00:15:08,240 --> 00:15:12,910
+Una imagen para ponerla realmente en nuestra tira. Vamos a crear un enlace aquí.
+
+182
+00:15:12,910 --> 00:15:17,490
+Así que diremos "const link = document.createElement". Necesitas
+
+183
+00:15:17,490 --> 00:15:21,910
+Crea un enlace adecuado aquí. No puedes simplemente usar el texto de vuelta. Entonces,
+
+184
+00:15:21,910 --> 00:15:29,570
+Vamos a crear un enlace de anclaje. Ese "link.href" va a ser igual a los datos.
+
+185
+00:15:29,570 --> 00:15:34,877
+Eso es lo que tenemos allí. Entonces, también vamos a decir "link.setAttribute".
+
+186
+00:15:34,877 --> 00:15:38,150
+El atributo que vamos a establecer se llama "descargar", y vamos a establecer
+
+187
+00:15:38,150 --> 00:15:42,390
+que a "guapo". Te mostraré por qué en un segundo. Entonces, solo diremos
+
+188
+00:15:42,390 --> 00:15:48,190
+"link.textContent = _'Download Image'_". Entonces, finalmente, vamos a tomar nuestro
+
+189
+00:15:48,190 --> 00:15:53,920
+Strip, que es donde vamos a volcar nuestros enlaces. Vamos a insertar antes
+
+190
+00:15:53,920 --> 00:15:58,570
+Y vamos a insertar el nodo de enlace. Va a suceder justo antes de la
+
+191
+00:15:58,570 --> 00:16:04,870
+strip.firstChild. Eso es algo así como si has jQueried ".prepend",
+
+192
+00:16:04,870 --> 00:16:09,770
+Así es como haces eso en JavaScript vainilla. Así que lo que hicimos fue crear una
+
+193
+00:16:09,770 --> 00:16:16,070
+enlazar. Configuramos el href ... Aparentemente "href" no es una palabra, pero hagámoslo como una cosa.
+
+194
+00:16:16,070 --> 00:16:20,690
+".setAttribute", ".textContent", hemos creado el enlace y lo hemos puesto.
+
+195
+00:16:20,690 --> 00:16:23,800
+Así que vamos a ver lo que tenemos aquí. Está corriendo. Voy a ejecutar la función
+
+196
+00:16:23,800 --> 00:16:28,010
+"tomar foto". Bueno. Ahora, tenemos un enlace aquí que es "descargar foto".
+
+197
+00:16:28,010 --> 00:16:33,200
+Voy a abrirlo en una nueva pestaña, en primer lugar. Whoa Mira lo que tenemos
+
+198
+00:16:33,200 --> 00:16:38,900
+aquí. Así que esta, la URL, es solo una imagen de datos aquí. Pero es lo suficientemente inteligente como para saberlo.
+
+199
+00:16:38,900 --> 00:16:42,500
+Esa es la imagen real. No está en ninguna parte de nuestra computadora.
+
+200
+00:16:42,500 --> 00:16:48,440
+Simplemente se almacena en esta cadena de texto muy larga. Pero lo que también hice es que hicimos.
+
+201
+00:16:48,440 --> 00:16:54,560
+Este atributo de descarga de "Handsome", y cuando hace clic en eso, se va a
+
+202
+00:16:54,560 --> 00:17:00,000
+En realidad, ahí vamos, lo descargamos a su computadora, donde luego se colocará
+
+203
+00:17:00,000 --> 00:17:05,320
+el disco duro de su usuario. A continuación, puede abrirlo en su buscador,
+
+204
+00:17:05,320 --> 00:17:09,690
+lo que sea que estés usando. Ahí vamos, "handsome.jpeg". Lo tengo arriba y
+
+205
+00:17:09,690 --> 00:17:13,580
+corriendo. Guay. Así que tenemos nuestra descarga "descargar imagen". Lo tenemos.
+
+206
+00:17:13,580 --> 00:17:17,580
+Ahora, pongamos la imagen visible dentro de allí también.
+
+207
+00:17:17,580 --> 00:17:22,680
+Entonces, en lugar de vincular ese contenido de texto, elimínalo. Diremos que "link.innerHTM" es
+
+208
+00:17:22,680 --> 00:17:28,460
+igual a una etiqueta de imagen ". La fuente será igual a los datos.
+
+209
+00:17:28,460 --> 00:17:32,230
+Por lo tanto, tanto href como la fuente serán iguales a los datos.
+
+210
+00:17:32,230 --> 00:17:37,310
+[Inaudible 00:17:32] "Hombre guapo", ajústalo si no estás
+
+211
+00:17:37,310 --> 00:17:45,490
+hermoso. Cuando ejecutamos "takePhoto", ahí vamos, deberías ver tu actual
+
+212
+00:17:45,490 --> 00:17:50,650
+foto. Cada vez que ejecutes esa función, te sacarás una foto,
+
+213
+00:17:50,650 --> 00:17:55,020
+Y puedes descargar cualquiera de las que te gusten. Guay. Vamos a conectarlo a la
+
+214
+00:17:55,020 --> 00:18:00,050
+botón actual Así que si vamos a nuestro index.html y tenemos esta foto,
+
+215
+00:18:00,050 --> 00:18:04,110
+ya está conectado al clic, o puede seleccionarlo. Acabo de hacer una especie de
+
+216
+00:18:04,110 --> 00:18:09,400
+como una forma barata de hacerlo sin seleccionarlo, y ese botón debería ahora
+
+217
+00:18:09,400 --> 00:18:13,970
+Trabaja sin importar lo que sea que estés haciendo. Bueno. Así que tenemos nuestro
+
+218
+00:18:13,970 --> 00:18:17,360
+"getVideo". Tenemos nuestros "paintToCanvas". Tenemos nuestro "takePhoto".
+
+219
+00:18:17,360 --> 00:18:21,970
+Realmente, lo último que queremos hacer es hacer algunos filtros en ellos.
+
+220
+00:18:21,970 --> 00:18:31,860
+Así que la forma en que funciona un filtro es que obtienes los píxeles del lienzo,
+
+221
+00:18:31,860 --> 00:18:36,740
+y luego te metes con ellos, cambias los valores RGB y los pones de nuevo.
+
+222
+00:18:36,740 --> 00:18:41,120
+Así que volvamos a nuestros "paintToCanvas". Vamos a entrar en nuestro
+
+223
+00:18:41,120 --> 00:18:47,910
+intervalo, y haremos algo como esto y decir, "const pixels =
+
+224
+00:18:47,910 --> 00:18:55,620
+ctx.getImageData ", y luego pide el 00, el ancho y el alto,
+
+225
+00:18:55,620 --> 00:19:00,170
+tal como lo hicimos antes. Esto podría bloquear mi navegador, pero voy a probar la consola
+
+226
+00:19:00,170 --> 00:19:04,460
+logueando Va a tener millones de píxeles de gran tamaño, pero veamos.
+
+227
+00:19:04,460 --> 00:19:10,420
+Whoa Bueno. Así que, aquí vamos. Tenemos este tipo de matriz especial aquí,
+
+228
+00:19:10,420 --> 00:19:15,380
+que es pixels.data va a ser un tipo especial de matriz que está destinado a
+
+229
+00:19:15,380 --> 00:19:20,420
+Muy, muy grandes números. Si abres uno de esos retoños ...
+
+230
+00:19:20,420 --> 00:19:25,120
+A donde se fué. Aquí. ¿Y si hiciéramos esto? "Console.log (píxeles)",
+
+231
+00:19:25,120 --> 00:19:31,610
+y "depurador". Vamos a detenerlo por completo. Aquí vamos. Lo pause.
+
+232
+00:19:31,610 --> 00:19:35,550
+Vuelve a nuestra consola. Mira algunos de estos datos de imagen. Abre los datos.
+
+233
+00:19:35,550 --> 00:19:41,570
+Aquí vamos. Tenemos uno, dos, tres, cuatro, cinco, seis, 1.2 millones de artículos.
+
+234
+00:19:41,570 --> 00:19:47,180
+Si abres uno de esos y uno de esos, y uno de esos,
+
+235
+00:19:47,180 --> 00:19:53,420
+Aquí están los valores reales. Ahora que es esto Bueno, "0" va a ser "R",
+
+236
+00:19:53,420 --> 00:20:00,000
+"1" va a ser "G", "B", "R", rojo, verde, azul, alfa. Rojo,
+
+237
+00:20:00,000 --> 00:20:06,360
+verde, azul, alfa. Así que esta matriz aquí es simplemente una gran variedad de números,
+
+238
+00:20:06,360 --> 00:20:12,660
+el primer píxel es rojo, el primer píxel es verde, el primer píxel es azul,
+
+239
+00:20:12,660 --> 00:20:15,450
+Ni siquiera puedo recordar, y luego el primer píxel es alfa. Entonces,
+
+240
+00:20:15,450 --> 00:20:20,000
+comienza de nuevo El segundo píxel es rojo, verde, azul, alfa. Rojo,
+
+241
+00:20:20,000 --> 00:20:24,200
+verde, azul, alfa, y simplemente va una y otra vez, y otra vez. Así que por cada píxel
+
+242
+00:20:24,200 --> 00:20:29,780
+en esta foto mía, tienes cuatro entradas en tu matriz que describen la
+
+243
+00:20:29,780 --> 00:20:35,180
+Rojo, el verde, el azul y el alfa. Entonces, lo que podemos hacer es tomar estos
+
+244
+00:20:35,180 --> 00:20:39,190
+píxeles, y esto debe ser "let", porque vamos a reasignar los píxeles
+
+245
+00:20:39,190 --> 00:20:46,050
+matriz, no "const". No nos dejaría hacer eso. Necesitamos entonces tomar los píxeles.
+
+246
+00:20:46,050 --> 00:20:53,070
+Di "pixels =" y primero hagamos el efecto rojo. Voy a decir "efecto rojo" y lo pasaré
+
+247
+00:20:53,070 --> 00:21:00,000
+nuestros píxeles. Luego bajamos aquí y haremos nuestra función de filtro "redEffect"
+
+248
+00:21:00,000 --> 00:21:07,650
+, mezcle nuestros píxeles y luego haga un bucle sobre cada uno de los píxeles que tiene.
+
+249
+00:21:07,650 --> 00:21:16,320
+Diga "para (sea i = 0); i <pixels.length". Si te estás preguntando por qué no estoy usando .map
+
+250
+00:21:16,320 --> 00:21:21,330
+Aquí, es porque este es un tipo especial de matriz en JavaScript.
+
+251
+00:21:21,330 --> 00:21:25,520
+No tiene todo el método de matriz regular con el que estás acostumbrado a trabajar.
+
+252
+00:21:25,520 --> 00:21:34,120
+Dices "i = i + para" o "I + = 4". Eso va a ir incrementándolo por cuatro y no.
+
+253
+00:21:34,120 --> 00:21:39,000
+por uno. [Inaudible 00:21:35] Entonces, tenemos acceso a nuestro rojo, verde,
+
+254
+00:21:39,000 --> 00:21:45,090
+azul y alfa, porque "píxeles [i]" será un canal rojo.
+
+255
+00:21:45,090 --> 00:21:53,030
+"I + 1" va a ser nuestro verde. "I +2" va a ser nuestro rojo,
+
+256
+00:21:53,030 --> 00:21:57,460
+verde, azul, y luego realmente no necesitamos meternos con el alfa en este
+
+257
+00:21:57,460 --> 00:22:03,280
+Efecto por nuestra cuenta. Entonces decimos "píxeles [i] =", y luego podemos comenzar a desordenar
+
+258
+00:22:03,280 --> 00:22:06,460
+Con él y cambiando con el rojo, el verde, el azul, el uno.
+
+259
+00:22:06,460 --> 00:22:09,580
+Así que solo voy a pegar algunas cosas aquí, y pueden divertirse con eso.
+
+260
+00:22:09,580 --> 00:22:14,460
+Entonces, lo que he hecho aquí es que acabo de decir el primero más cero.
+
+261
+00:22:14,460 --> 00:22:18,660
+Acabo de agregar un cero para que pueda ver que es el primero, segundo,
+
+262
+00:22:18,660 --> 00:22:23,410
+y el tercero que tenemos aquí, y me lo estoy igualando a sí mismo más 100,
+
+263
+00:22:23,410 --> 00:22:28,910
+el segundo menos 50, y el tercero por 0.5. No hay rima o razón para
+
+264
+00:22:28,910 --> 00:22:32,120
+ese. Solo estaba jugando con ellos. Algunos de ellos van a pasar más de 255,
+
+265
+00:22:32,120 --> 00:22:35,220
+y algunos de ellos se hundirán, y eso está totalmente bien.
+
+266
+00:22:35,220 --> 00:22:38,350
+Pero lo que haremos es que nos dará un poco de un efecto genial.
+
+267
+00:22:38,350 --> 00:22:43,880
+Lo que hacemos aquí es que devolvemos esos píxeles una vez que hemos terminado de jugar con el real
+
+268
+00:22:43,880 --> 00:22:49,120
+Valores RGB, y regresamos aquí donde "pixels = redEffect".
+
+269
+00:22:49,120 --> 00:22:57,190
+Luego, decimos "context.putImageData (píxeles 0, 0)". Eso va a
+
+270
+00:22:57,190 --> 00:23:01,200
+Si quitas los píxeles ... Tal vez deberíamos poner algunos comentarios aquí.
+
+271
+00:23:01,200 --> 00:23:13,280
+"Saque los píxeles. Ensucie con ellos. Devuélvalos". Así que ahora, si refrescamos esto
+
+272
+00:23:13,280 --> 00:23:21,460
+Lechón, no veo un efecto rojo aquí. ¿Porqué es eso? "Let pixels =",
+
+273
+00:23:21,460 --> 00:23:25,840
+vamos a depurar esto muy rápido. Tenemos nuestros píxeles. Tenemos nuestros píxeles
+
+274
+00:23:25,840 --> 00:23:31,470
+regresando. Lo estamos poniendo. ¿Algún error en nuestra consola? No
+
+275
+00:23:31,470 --> 00:23:38,450
+[Inaudible 00:23:33], girando nuestros píxeles. No estoy seguro.
+
+276
+00:23:48,110 --> 00:23:53,400
+Oh, me di cuenta de lo que era. Nuestro bucle es "pixels.data.length",
+
+277
+00:23:53,400 --> 00:23:57,410
+porque "píxeles" no es una matriz "." Pixels.data "es una matriz real.
+
+278
+00:23:57,410 --> 00:24:02,450
+Así que ahora si guardo eso, ahí vamos. Ahora, tengo un poco de efecto rojo en marcha
+
+279
+00:24:02,450 --> 00:24:07,490
+Aquí, y estamos viendo todos los diferentes colores siendo cambiados.
+
+280
+00:24:07,490 --> 00:24:12,070
+Si tuviera que meterse con esto, como menos 100, verá que obtiene un poco de diferente
+
+281
+00:24:12,070 --> 00:24:17,960
+efecto de color O menos 200, simplemente elevará el rojo tan alto como podamos
+
+282
+00:24:17,960 --> 00:24:22,010
+ir. Así que ese es el efecto rojo. A continuación, lo que quiero hacer es lo que me gusta llamar
+
+283
+00:24:22,010 --> 00:24:28,890
+la "división RGB". Así que diré "function rgbSplit". Eso toma en nuestros píxeles,
+
+284
+00:24:28,890 --> 00:24:31,770
+Y vamos a hacer exactamente lo mismo que hicimos aquí.
+
+285
+00:24:31,770 --> 00:24:36,950
+Así que puedes copiar y pegar estos valores aquí. Excepto,
+
+286
+00:24:36,950 --> 00:24:43,790
+con nuestra división RGB, lo que voy a hacer en lugar de cambiar cada persona
+
+287
+00:24:43,790 --> 00:24:52,650
+uno es que voy a tomar el rojo y cambiar el que es de 150 píxeles de nuevo a
+
+288
+00:24:52,650 --> 00:25:00,000
+Se el color actual. Voy a tomar el verde, y tomaré el píxel que es 150
+
+289
+00:25:00,000 --> 00:25:04,430
+Píxeles hacia adelante y configúralo para que sea el color actual. Entonces, haré lo mismo
+
+290
+00:25:04,430 --> 00:25:11,770
+Cosa con los 150 píxeles para el azul. Así que básicamente estoy separando el
+
+291
+00:25:11,770 --> 00:25:18,390
+diferentes rojos, verdes, azules, y los muevo a ambos lados para que cuando
+
+292
+00:25:18,390 --> 00:25:22,400
+estamos trabajando, vamos a ser capaces de ver los diferentes que estamos trabajando
+
+293
+00:25:22,400 --> 00:25:26,710
+con. Así que voy a tomar esa función "rgbSplit". Voy a comentar esto
+
+294
+00:25:26,710 --> 00:25:33,390
+píxeles uno. Usaré este, "pixels = rgbSplit (pixels)". Ahora,
+
+295
+00:25:33,390 --> 00:25:38,210
+cuando se actualice, debería ver los canales rojo, verde y azul de una especie de
+
+296
+00:25:38,210 --> 00:25:44,830
+mostrando donde lo tenemos. Creo que podemos bajar aquí y tal vez cambiar este
+
+297
+00:25:44,830 --> 00:25:49,140
+a 550 tal vez. No lo sé. Solo estoy m -... Ahí vamos. Ves el azul.
+
+298
+00:25:49,140 --> 00:25:57,130
+Mi cara, que es azul, tiene 550 píxeles de distancia. Entonces, si llego al borde de la
+
+299
+00:25:57,130 --> 00:26:01,410
+Aquí, la pantalla comienza a ajustarse al otro borde de la pantalla.
+
+300
+00:26:01,410 --> 00:26:04,990
+Porque en un cierto punto, los píxeles en el lado izquierdo,
+
+301
+00:26:04,990 --> 00:26:10,910
+se va a envolver alrededor Por supuesto, puedes jugar con esto, haz este 500.
+
+302
+00:26:10,910 --> 00:26:17,260
+Whoa Eso es mucho más divertido. Realmente me gusta eso. Entonces, también me di cuenta de que si
+
+303
+00:26:17,260 --> 00:26:25,090
+sube aquí y tomas tu CTX Global Alpha para ser 0.1,
+
+304
+00:26:25,090 --> 00:26:31,560
+Lo que vamos a hacer es corregir el real que tenemos nosotros.
+
+305
+00:26:31,560 --> 00:26:35,830
+Pero los que están debajo todavía se mostrarán durante 10 más.
+
+306
+00:26:35,830 --> 00:26:39,010
+marcos La razón por la que esto es así es porque somos como poner un
+
+307
+00:26:39,010 --> 00:26:43,840
+transparencia del 10% de la imagen actual en la parte superior, y solo estamos apilando y
+
+308
+00:26:43,840 --> 00:26:48,390
+Apilamiento, y apilamiento. Así que a medida que avanza, es como que te sigue.
+
+309
+00:26:48,390 --> 00:26:55,420
+Puedes hacer ese 0.8 y aún sería fantasma, solo un poco menos de
+
+310
+00:26:55,420 --> 00:27:01,100
+efecto fantasma real. Cortejar. Eso es muy, muy divertido. Guay. El último hasta
+
+311
+00:27:01,100 --> 00:27:05,430
+Queremos trabajar con la pantalla verde. Así que vamos a entrar aquí.
+
+312
+00:27:05,430 --> 00:27:11,720
+Tengo una función llamada "pantalla verde". Eso va a tener en nuestros píxeles.
+
+313
+00:27:11,720 --> 00:27:16,980
+Nuevamente, solo tomaré esto de la respuesta aquí y se lo explicaré,
+
+314
+00:27:16,980 --> 00:27:24,980
+porque hay un montón de cosas que están pasando aquí. Así que lo pegué
+
+315
+00:27:24,980 --> 00:27:31,160
+aquí. En primer lugar, tenemos este objeto de Niveles aquí, y eso va a mantener nuestro
+
+316
+00:27:31,160 --> 00:27:35,770
+Mínimo y máximo verde. Porque la forma en que funciona la pantalla verde es que dices,
+
+317
+00:27:35,770 --> 00:27:41,530
+"Dame todos los colores entre este valor RGB y sácalos". Generalmente,
+
+318
+00:27:41,530 --> 00:27:46,630
+así es como encuentras una cierta gama de greens especiales, y luego tomas esos
+
+319
+00:27:46,630 --> 00:27:50,170
+Unos fuera y no ocurren en la ropa de la gente y qué no.
+
+320
+00:27:50,170 --> 00:27:57,620
+Así que hemos comenzado con algunos niveles en blanco. Entonces, he agarrado cada entrada RGB.
+
+321
+00:27:57,620 --> 00:28:04,210
+En realidad, esta conversión a matriz ya no es necesaria. Así que eso es todo seis de estos
+
+322
+00:28:04,210 --> 00:28:10,840
+deslizadores aquí Entonces, he establecido el rojo mínimo, rojo máximo, verde mínimo, verde máximo,
+
+323
+00:28:10,840 --> 00:28:17,420
+Blue Min, y Blue Max para estar en eso. Así que si fueras a console.log los niveles,
+
+324
+00:28:17,420 --> 00:28:22,570
+y teníamos que subir aquí ... Quitar la división RGB y el alfa.
+
+325
+00:28:22,570 --> 00:28:34,230
+Diga "pixels = pantalla verde (pixels)". Echa un vistazo a nuestra consola aquí.
+
+326
+00:28:34,230 --> 00:28:38,220
+Usted ve que tenemos estos objetos sucediendo, lo que nos va a dar la
+
+327
+00:28:38,220 --> 00:28:46,000
+Red Min, Red Max, etc., etc. ¿De acuerdo? Bueno. Entonces, tenemos un enorme de cuatro bucles,
+
+328
+00:28:46,000 --> 00:28:49,710
+Al igual que hemos hecho antes. Recorremos cada píxel, averiguamos qué
+
+329
+00:28:49,710 --> 00:28:54,680
+rojo, el verde, el azul y el alfa son, y luego decimos, "el rojo y el
+
+330
+00:28:54,680 --> 00:28:56,790
+verde, y el azul, y el rojo, y el verde, y el azul,
+
+331
+00:28:56,790 --> 00:29:03,150
+si está en algún lugar entre esos valores mínimos y máximos, "eso es lo que este enorme si
+
+332
+00:29:03,150 --> 00:29:09,130
+declaración hace, "lo sacamos". ¿Por qué? Porque el cuarto píxel es el alfa,
+
+333
+00:29:09,130 --> 00:29:13,930
+que es el píxel de transparencia, y si lo establece en cero, eso va a ser
+
+334
+00:29:13,930 --> 00:29:18,800
+totalmente transparente En lugar de 255, que estaría totalmente allí.
+
+335
+00:29:18,800 --> 00:29:25,640
+Así que si lo guardamos ahora y juegas con estos controles deslizantes ahora,
+
+336
+00:29:25,640 --> 00:29:30,790
+solo puedes cambiar tu mínimo y tu máximo rojo, verde, y si tienes un poco de
+
+337
+00:29:30,790 --> 00:29:34,070
+pantalla verde ... O lo he hecho antes, donde tengo un tablero de cerdas de color rosa y
+
+338
+00:29:34,070 --> 00:29:39,370
+ponlo detrás de mí, y encontré esa porción del arco iris donde queremos tirar eso
+
+339
+00:29:39,370 --> 00:29:43,340
+Rosa específico o azul hacia fuera. En este caso, solo estoy sacando colores al azar que
+
+340
+00:29:43,340 --> 00:29:50,550
+parecen coincidir. Es divertido trabajar con ellos. Así que eso es todo. Esa fue una grande
+
+341
+00:29:50,550 --> 00:29:54,080
+Sé que fui un poco rápido. Pero este es uno donde quiero que vuelvas.
+
+342
+00:29:54,080 --> 00:29:58,040
+y solo juega con eso. Empieza a hacer tus propios filtros. Ahora que entiendes eso
+
+343
+00:29:58,040 --> 00:30:03,000
+es solo una gran variedad de valores de color, y especialmente si entiendes cómo el color
+
+344
+00:30:03,000 --> 00:30:06,650
+y las matemáticas se relacionan entre sí, puedes empezar a hacer algunas realmente geniales,
+
+345
+00:30:06,650 --> 00:30:10,520
+Divertidos filtros con ellos. Me encantaría ver cualquiera de los filtros que hagas.
+
+346
+00:30:10,520 --> 00:30:14,276
+Muchas gracias. ¿Adivina qué? Te veo mañana.
+
+347
+00:30:14,276 --> 00:30:16,276
+♪ [música] ♪
+

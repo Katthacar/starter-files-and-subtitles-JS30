@@ -1,0 +1,120 @@
+﻿1
+00:00:00,000 --> 00:00:03,001
+♪ [music] ♪
+
+2
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+3
+00:00:07,810 --> 00:00:12,753
+You did it. Congratu-freaking-lations.
+You killed it. You did all 30 days.
+
+4
+00:00:12,753 --> 00:00:14,857
+Or, you're just watching this video.
+For some reason, you want to see
+
+5
+00:00:14,857 --> 00:00:19,065
+what the last video is.
+Don't do that. That's a jerk move.
+
+6
+00:00:19,065 --> 00:00:21,789
+Great job. I'm really proud of you
+for doing all 30 days.
+
+7
+00:00:21,789 --> 00:00:25,070
+And what I want to leave you with is
+sort of some motivation to keep going.
+
+8
+00:00:25,070 --> 00:00:28,233
+Keep building more stuff. I said a
+1,000 things is what you've got to
+
+9
+00:00:28,233 --> 00:00:32,890
+build. Well, you've got 970 left.
+You're just getting started with
+
+10
+00:00:32,890 --> 00:00:36,552
+this sort of thing.
+So how do you keep it going?
+
+11
+00:00:36,552 --> 00:00:39,602
+For some people, the best way
+is to just start teaching others.
+
+12
+00:00:39,602 --> 00:00:42,935
+So help other people out
+on this course. Write a blog post.
+
+13
+00:00:42,935 --> 00:00:46,977
+Create a YouTube tutorial, whatever it is.
+The way that I got into this stuff is
+
+14
+00:00:46,977 --> 00:00:49,760
+I initially started blogging and
+putting up tutorials on YouTube.
+
+15
+00:00:49,760 --> 00:00:56,380
+And it really helped me solidify my skills
+by having to explain it to other people.
+
+16
+00:00:56,380 --> 00:01:01,390
+So being involved in open-source doesn't
+just mean building these frameworks.
+
+17
+00:01:01,390 --> 00:01:04,460
+There's a lot of really smart people
+that are out there building frameworks and
+
+18
+00:01:04,460 --> 00:01:08,000
+libraries and plugins and all that stuff.
+But if that's not really where you're at
+
+19
+00:01:08,000 --> 00:01:11,700
+right now, where I think you can
+contribute is by sharing what you
+
+20
+00:01:11,700 --> 00:01:14,140
+know. You just learned a whole
+bunch of stuff in this course.
+
+21
+00:01:14,140 --> 00:01:17,280
+Now turn around, start telling other
+people about it. Share it.
+
+22
+00:01:17,280 --> 00:01:21,780
+Make lots of examples for everybody.
+Really, keep it up. Keep building stuff.
+
+23
+00:01:21,780 --> 00:01:25,710
+Don't let this stop you. You've got 970
+more things to build. Thanks a lot.
+
+24
+00:01:25,710 --> 00:01:28,024
+And I will see you in my next course.
+
+25
+00:01:28,024 --> 00:01:31,100
+♪ [music] ♪

@@ -1,0 +1,356 @@
+1
+00:00:00,000 --> 00:00:03,000
+♪ [música] ♪
+
+2
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+3
+00:00:07,630 --> 00:00:11,850
+Hoy vamos a trabajar con el método array.sort de JavaScript,
+
+4
+00:00:11,850 --> 00:00:16,325
+y vamos a ordenar este conjunto de nombres de bandas, pero el tipo de captura que
+
+5
+00:00:16,325 --> 00:00:24,920
+Lo que tenemos aquí es que debe ordenarlos sin "El", "An" o "A" delante de
+
+6
+00:00:24,920 --> 00:00:28,063
+el nombre real de la banda, porque esos son artículos y no entran en
+
+7
+00:00:28,063 --> 00:00:32,351
+Alfabetizando tu nombre real de tu banda.
+
+8
+00:00:32,351 --> 00:00:35,097
+Así que adelante y pausa el video. Creo que puedes hacer
+
+9
+00:00:35,097 --> 00:00:39,880
+esto por tu cuenta, al menos dale una buena oportunidad y trata de construirlo donde clasifiques
+
+10
+00:00:39,880 --> 00:00:46,680
+primero esta matriz, y luego una vez que haya ordenado la matriz sin "the", "an" o
+
+11
+00:00:46,680 --> 00:00:53,490
+"a", luego colóquelos en el html real aquí, pero observe cómo "The", "An" o "A"
+
+12
+00:00:53,490 --> 00:00:57,880
+todavía vienen para el paseo, simplemente no están afectando el orden de clasificación.
+
+13
+00:00:57,880 --> 00:01:02,100
+Así que pausa el video y vuelve cuando hayas dado una buena foto.
+
+14
+00:01:02,100 --> 00:01:09,500
+Dar una buena acogida. Así que aquí estoy, primero voy a hacer una variable sortedBands,
+
+15
+00:01:09,500 --> 00:01:13,360
+Y tomaremos las bandas y vamos a ordenarlas. Ahora, sabemos que ese tipo será
+
+16
+00:01:13,360 --> 00:01:18,450
+Toma un nombre de función que nos dé a y b, y ¿qué es a? A va a ser el
+
+17
+00:01:18,450 --> 00:01:20,600
+Lo primero que nos pasa, la b va a ser la segunda.
+
+18
+00:01:20,600 --> 00:01:23,880
+Es como que te da dos manzanas en cada mano, y tú eres como,
+
+19
+00:01:23,880 --> 00:01:26,760
+"¿Cuál es más grande?" Entonces el más grande te mueves a la parte superior,
+
+20
+00:01:26,760 --> 00:01:30,720
+Y al otro te mueves al fondo. O el que viene antes en el
+
+21
+00:01:30,720 --> 00:01:34,150
+Alfabeto que mueves a la parte superior, y el otro que pones en la parte inferior.
+
+22
+00:01:34,150 --> 00:01:37,220
+Luego arrojas la más grande y obtienes otra manzana en la mano.
+
+23
+00:01:37,220 --> 00:01:40,580
+y tienes esa primera manzana del primer racimo, y luego la segunda manzana
+
+24
+00:01:40,580 --> 00:01:43,430
+del segundo grupo, y dices "¿Cuál es más grande?" Tu sigues haciendo eso
+
+25
+00:01:43,430 --> 00:01:47,430
+Una y otra y otra vez hasta que tenga una lista ordenada. Por eso siempre
+
+26
+00:01:47,430 --> 00:01:48,910
+te da dos cosas
+
+27
+00:01:48,910 --> 00:01:53,990
+Así que normalmente lo que hacemos es decir "si a es mayor que b", y podemos hacer esto,
+
+28
+00:01:53,990 --> 00:01:57,750
+aunque no sean números. Todavía va a funcionar con cuerdas,
+
+29
+00:01:57,750 --> 00:02:02,230
+porque son alfabéticos Así que "si a es más grande que b", entonces devolveremos 1,
+
+30
+00:02:02,230 --> 00:02:12,000
+De lo contrario vamos a volver -1. Y vamos a console.log (sortedBands),
+
+31
+00:02:12,000 --> 00:02:17,740
+Mira lo que tenemos aquí. Así que tenemos nuestros datos y los estamos alfabetizando,
+
+32
+00:02:17,740 --> 00:02:24,860
+pero se basa en "A" y "El". Entonces, lo que tenemos que hacer es subir aquí y
+
+33
+00:02:24,860 --> 00:02:29,310
+crear una nueva función que me gusta llamar tira, y va a tomar en el
+
+34
+00:02:29,310 --> 00:02:33,650
+bandName, y luego desde allí vamos a devolver el bandName,
+
+35
+00:02:33,650 --> 00:02:41,330
+pero vamos a reemplazar la palabra "El" o "A" o "Un". Así que una forma en que nosotros
+
+36
+00:02:41,330 --> 00:02:46,360
+podría reemplazar los tres de una sola vez es usar una expresión regular,
+
+37
+00:02:46,360 --> 00:02:50,150
+y podemos decir cuándo comienza, para eso está el caret,
+
+38
+00:02:50,150 --> 00:02:54,030
+y de ninguna manera soy un experto en expresiones regulares, si sabes algo sobre expresiones regulares
+
+39
+00:02:54,030 --> 00:02:57,960
+Probablemente puedas encontrar una mejor manera de hacer esto, pero la forma en que lo he hecho eres tú.
+
+40
+00:02:57,960 --> 00:03:04,010
+puede decir "a", "the" o "an", y usted quiere hacer que eso sea insensible.
+
+41
+00:03:04,010 --> 00:03:10,080
+Así que va a coincidir con "an" o "An" o "AN", así que ahí vamos.
+
+42
+00:03:10,080 --> 00:03:13,580
+Estoy seguro de que hay una bandera que puedes pasar para que no necesites ese espacio allí,
+
+43
+00:03:13,580 --> 00:03:17,300
+donde podrias decir solo una palabra completa. Lo que estoy tratando de hacer es asegurarme
+
+44
+00:03:17,300 --> 00:03:21,080
+que no detectamos esto, donde una palabra como "En cualquier lugar" comienza con "An", pero
+
+45
+00:03:21,080 --> 00:03:26,950
+Ese no es en realidad el artículo, "An". Así que estamos reemplazando. Asegúrate de deletrear
+
+46
+00:03:26,950 --> 00:03:30,580
+"reemplazar" a la derecha, y vamos a reemplazar eso con nada,
+
+47
+00:03:30,580 --> 00:03:35,980
+y luego solo llamaremos recortar al final, por si tenemos espacios.
+
+48
+00:03:35,980 --> 00:03:38,260
+después de. Bueno.
+
+49
+00:03:38,260 --> 00:03:41,169
+Entonces, qué podemos hacer ... Vamos a ver si eso funciona, en realidad.
+
+50
+00:03:41,169 --> 00:03:48,760
+Así que si llamo a esa función de tira desde la consola, di "Un perro viejo",
+
+51
+00:03:48,760 --> 00:03:55,080
+vuelve a ti "perro viejo", "perro viejo", "perro viejo", no lo hará,
+
+52
+00:03:55,080 --> 00:04:00,430
+"El perro viejo" te dará "perro viejo". Bueno. Así que esa función está funcionando.
+
+53
+00:04:00,430 --> 00:04:06,240
+Ahora lo que podemos hacer es simplemente cambiar nuestra declaración if a una tira y
+
+54
+00:04:06,240 --> 00:04:12,110
+strip, y note cómo solo estamos usando strip en la sentencia if,
+
+55
+00:04:12,110 --> 00:04:15,790
+y no vamos a modificar estos datos. Así que los datos que nos
+
+56
+00:04:15,790 --> 00:04:19,780
+El uso para decidir a dónde va no es necesariamente el dato que se va a
+
+57
+00:04:19,780 --> 00:04:23,400
+en la matriz. Así que estamos usando strip, ahora veamos dónde estamos.
+
+58
+00:04:23,400 --> 00:04:28,000
+Bueno, en cualquier lugar pero aquí, The Bled, Contrapartes, The Devil Wears Prada,
+
+59
+00:04:28,000 --> 00:04:32,700
+bueno. Así que ahora está totalmente ignorándolo. Podemos hacer esto mucho más fácil aquí,
+
+60
+00:04:32,700 --> 00:04:39,210
+Así que, ante todo, lo que podemos hacer, simplemente podríamos hacerlo regresar,
+
+61
+00:04:39,210 --> 00:04:44,570
+strip (a)> strip (b), si eso es cierto devolvemos 1, de lo contrario devolvemos -1,
+
+62
+00:04:44,570 --> 00:04:50,360
+así que solo estamos usando un operador ternario allí. Todavía funciona bien.
+
+63
+00:04:50,360 --> 00:04:58,700
+Podemos hacer de esto una función de flecha, bueno, todavía funciona, y ahora ves mi editor
+
+64
+00:04:58,700 --> 00:05:02,210
+gritándome porque es ... Si lo único que estás haciendo en una función es
+
+65
+00:05:02,210 --> 00:05:06,260
+devolviendo algo, puede utilizar el retorno implícito. Así que voy a despegar
+
+66
+00:05:06,260 --> 00:05:11,600
+Ese corchete y el punto y coma, toman de este corchete, yendo a ponerlo en el mismo.
+
+67
+00:05:11,600 --> 00:05:16,638
+línea, y voy a eliminar la palabra clave de retorno, y eso es hacer exactamente lo mismo
+
+68
+00:05:16,638 --> 00:05:19,620
+cosa, sólo en una línea caliente.
+
+69
+00:05:19,620 --> 00:05:25,080
+Allá vamos, trabajando bien. Así que tenemos las bandas. Y ahora vamos a seguir adelante.
+
+70
+00:05:25,080 --> 00:05:37,518
+tome nuestras bandas, que está aquí, diga document.querySelector ('# bands'.
+
+71
+00:05:37,518 --> 00:05:44,587
+) innerHTML es igual, tomaremos nuestras Bandas ordenadas, y vamos a hacer un bucle
+
+72
+00:05:44,587 --> 00:05:50,693
+cada uno de ellos. Así que usaremos el mapa, y desde ese mapa devolveremos la banda,
+
+73
+00:05:50,693 --> 00:05:56,243
+pero la banda en un elemento de la lista, y luego nos uniremos a todos de una sola vez.
+
+74
+00:05:56,243 --> 00:06:01,750
+Entonces, ¿qué hace eso? Toma el elemento y establece el innerHTML en b,
+
+75
+00:06:01,750 --> 00:06:05,360
+y podemos poner esto en su propia línea, sorttedBands, pero queremos mapear sobre cada
+
+76
+00:06:05,360 --> 00:06:09,530
+de esos, y luego eso va a devolver una matriz, por lo que queremos unirnos a ella.
+
+77
+00:06:09,530 --> 00:06:12,460
+Mira dónde estamos ... ahí vamos. En cualquier lugar, pero aquí, The Bled,
+
+78
+00:06:12,460 --> 00:06:15,390
+tenemos todo lo que se está tirando en el DOM allí.
+
+79
+00:06:15,390 --> 00:06:19,830
+Déjame mostrarte muy rápido, si quito esa unión, notarás que recibimos estos
+
+80
+00:06:19,830 --> 00:06:25,050
+Las comas aparecen aquí, y eso es porque lo que sucede es que tenemos este tipo de Bandas ordenadas
+
+81
+00:06:25,050 --> 00:06:30,310
+array, que es todo, y si tuviera que llamar a .toString en él,
+
+82
+00:06:30,310 --> 00:06:36,760
+entonces eso es exactamente lo que el DOM hará. Cuando intentas establecer algo en innerHTML
+
+83
+00:06:36,760 --> 00:06:41,890
+eso no es una cadena, como una matriz, entonces solo llamará .toString en ella,
+
+84
+00:06:41,890 --> 00:06:45,490
+y por defecto va a poner una coma entre cada uno. Así que tenemos que poner
+
+85
+00:06:45,490 --> 00:06:55,670
+ese. únete en el extremo para que se unan en una cadena grande en lugar de un montón de
+
+86
+00:06:55,670 --> 00:06:58,240
+cuerdas con una coma en el medio.
+
+87
+00:06:58,240 --> 00:07:02,040
+Así que vamos a revisar eso, trabajando muy bien. Espero que hayas disfrutado eso,
+
+88
+00:07:02,040 --> 00:07:03,681
+Te veo mañana.
+
+89
+00:07:03,681 --> 00:07:05,681
+♪ [música] ♪
+

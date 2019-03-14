@@ -1,0 +1,1201 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:00,360 --> 00:00:03,796
+♪ [music] ♪
+
+3
+00:00:07,988 --> 00:00:12,121
+Today we are creating a countdown timer
+that will show us how many seconds
+
+4
+00:00:12,121 --> 00:00:16,614
+are left in some sort of task, like
+you've got a quick 5-minute break,
+
+5
+00:00:16,614 --> 00:00:20,283
+or you have a 15-minute break,
+or you've got a lunch break going on.
+
+6
+00:00:20,283 --> 00:00:23,650
+You need to be able to click these
+buttons or you can put in the number
+
+7
+00:00:23,650 --> 00:00:26,181
+of minutes that you'd like.
+It's going to count it down as well as
+
+8
+00:00:26,181 --> 00:00:29,431
+show you what time to be back.
+This is just because when I teach,
+
+9
+00:00:29,431 --> 00:00:34,510
+we have breaks and people need to know how
+long a break is left and they always ask
+
+10
+00:00:34,510 --> 00:00:38,400
+me, "Hey, Wes, how much time is left in
+the break?" And I say, "I'm not your dad."
+
+11
+00:00:38,400 --> 00:00:42,730
+Then we built something so we could
+stop asking that question.
+
+12
+00:00:42,730 --> 00:00:49,300
+We want to first go into our scripts here,
+and I'm just going to make a function
+
+13
+00:00:49,300 --> 00:00:53,080
+called timer, and we're just going to
+work in the console to start.
+
+14
+00:00:53,080 --> 00:00:56,780
+Then what we are going to do
+is update this actual interface here.
+
+15
+00:00:56,780 --> 00:01:00,620
+I'm going to make a function called timer.
+That's going to take in the number of
+
+16
+00:01:00,620 --> 00:01:07,150
+seconds you wish for the timer to be in.
+And then we are going to do two things.
+
+17
+00:01:07,150 --> 00:01:10,690
+Now, how do timers work? You have the
+amount of time that you wish for it to
+
+18
+00:01:10,690 --> 00:01:16,240
+have, and then you simply elapse that time
+over however many seconds it is.
+
+19
+00:01:16,240 --> 00:01:22,870
+In the past what I've done is I would just
+set an interval, which has a function and
+
+20
+00:01:22,870 --> 00:01:29,970
+that function itself, let's get rid of all
+this junk, it would run every second and
+
+21
+00:01:29,970 --> 00:01:33,450
+then what I would do is I would just say,
+seconds, minus, minus.
+
+22
+00:01:33,450 --> 00:01:36,910
+Then it would just decrement the amount of
+seconds every single time.
+
+23
+00:01:36,910 --> 00:01:41,780
+However, I did run into issues with that
+because said interval does not run
+
+24
+00:01:41,780 --> 00:01:46,400
+sometimes. I found sometimes when I tab
+away for a long time, it would simply just
+
+25
+00:01:46,400 --> 00:01:49,680
+stop running it. I don't know if the
+browser does something funky there with
+
+26
+00:01:49,680 --> 00:01:53,920
+pausing its intervals when it's not
+necessarily running. Then I also found on
+
+27
+00:01:53,920 --> 00:01:58,820
+iOS, when you are scrolling,
+it will pause all of your intervals.
+
+28
+00:01:58,820 --> 00:02:02,600
+I think it does that for performance
+issues as well as making your scrolling
+
+29
+00:02:02,600 --> 00:02:06,090
+nice and buttery smooth. Similar to how,
+if you scroll a page,
+
+30
+00:02:06,090 --> 00:02:11,740
+your animated gifs will also stop.
+So it's not really a good use case there,
+
+31
+00:02:11,740 --> 00:02:15,480
+because if I were to be scrolling for
+10 seconds, then it would add an extra
+
+32
+00:02:15,480 --> 00:02:20,230
+10 seconds onto the break. So rather than
+doing that, we will use an interval but in
+
+33
+00:02:20,230 --> 00:02:26,290
+a different way. What we want to do is
+figure out when the timer started,
+
+34
+00:02:26,290 --> 00:02:32,220
+just const now equals date.now. That's
+kind of a new one to the browser.
+
+35
+00:02:32,220 --> 00:02:38,800
+Previously we had to do like, new date and
+then get time but there's a new static
+
+36
+00:02:38,800 --> 00:02:44,060
+method on date called now, and that will
+just give us the current timestamp in
+
+37
+00:02:44,060 --> 00:02:50,220
+milliseconds. Then we also want then,
+which is now plus the number of seconds
+
+38
+00:02:50,220 --> 00:02:55,830
+that you wish to run the timer for, but
+that now is going to be in milliseconds
+
+39
+00:02:55,830 --> 00:03:00,720
+and seconds is obviously in seconds.
+So we just multiply that by 1000.
+
+40
+00:03:00,720 --> 00:03:04,950
+So it's console log, now and then just to
+see what we've got going on here.
+
+41
+00:03:04,950 --> 00:03:10,210
+If I were to refresh this, run timer 10,
+you see our now and our then values that
+
+42
+00:03:10,210 --> 00:03:15,300
+we have here. Good, so those are working
+for us. Next thing we need to do is every
+
+43
+00:03:15,300 --> 00:03:21,200
+single second, we need to display the
+amount of time left. This is where we set
+
+44
+00:03:21,200 --> 00:03:25,870
+an interval. This is okay to use an
+interval here because we're really not
+
+45
+00:03:25,870 --> 00:03:30,180
+worried about it running every single
+second if something happens.
+
+46
+00:03:30,180 --> 00:03:34,530
+But like, let's say it were to skip two
+seconds. It would just update two seconds
+
+47
+00:03:34,530 --> 00:03:39,580
+later and show us those two less seconds
+rather than one. So, it's fine to use it
+
+48
+00:03:39,580 --> 00:03:44,160
+here, we are going to run it every second,
+which is 1000 milliseconds here.
+
+49
+00:03:44,160 --> 00:03:49,940
+Then what we need to figure out is
+how much time is left on the clock.
+
+50
+00:03:49,940 --> 00:03:56,040
+We'll take our then, which is when it
+stops, we'll say const seconds left is
+
+51
+00:03:56,040 --> 00:04:03,510
+equal to then minus and we can't just say
+now because that was captured when it ran,
+
+52
+00:04:03,510 --> 00:04:08,600
+but we need to run date.now once more.
+Again, now it's going to be in
+
+53
+00:04:08,600 --> 00:04:13,060
+milliseconds so we want to divide that
+by 1000 so we can get seconds.
+
+54
+00:04:13,060 --> 00:04:19,690
+Console log seconds left. Let's see what
+we got here. Eight and a half,
+
+55
+00:04:19,690 --> 00:04:23,470
+seven, six, five, so we have a bit of
+a rounding error here. Oh,
+
+56
+00:04:23,470 --> 00:04:27,100
+that's a bit of a funky one. I guess just
+because we're dealing with milliseconds
+
+57
+00:04:27,100 --> 00:04:34,120
+and doing this division here, so you can
+wrap the entire thing in the math.round.
+
+58
+00:04:34,120 --> 00:04:39,850
+Then run it at ten, nine, there we go. You
+may have just seen that it started going
+
+59
+00:04:39,850 --> 00:04:44,610
+negative after awhile. And why is that?
+Because intervals don't know when to stop
+
+60
+00:04:44,610 --> 00:04:53,090
+themselves. So what we need to do here is
+before we display it, we need to check if
+
+61
+00:04:53,090 --> 00:05:02,320
+we should stop it. How do you stop? I'll
+say if the seconds left is less or equal
+
+62
+00:05:02,320 --> 00:05:08,840
+to zero, then we want to stop it. So,
+obviously, we could return which will stop
+
+63
+00:05:08,840 --> 00:05:11,920
+the function from running, but that's
+not really going to help us,
+
+64
+00:05:11,920 --> 00:05:15,580
+and I'll show you here. That's not going
+to totally stop this interval from
+
+65
+00:05:15,580 --> 00:05:20,800
+running, it's just going to run but not
+show us anything. What we need to do is to
+
+66
+00:05:20,800 --> 00:05:26,070
+store this interval in its own variable.
+I'm going to go up here and say let
+
+67
+00:05:26,070 --> 00:05:30,250
+countdown and that's going to be
+our sort of higher-level variable.
+
+68
+00:05:30,250 --> 00:05:33,230
+In this case, it's a global variable,
+it's going to live on the window,
+
+69
+00:05:33,230 --> 00:05:37,370
+but you could pop that into IFFE and not
+have it in the global name space.
+
+70
+00:05:37,370 --> 00:05:42,230
+Then here we're going to simply update it.
+Countdown is equal to.
+
+71
+00:05:42,230 --> 00:05:47,120
+Then here we will call clear interval and
+pass it the name of our timer which is
+
+72
+00:05:47,120 --> 00:05:51,760
+countdown. Then when we run it,
+let's run it with three seconds left,
+
+73
+00:05:51,760 --> 00:05:58,280
+two, one, and then it will never
+run again because we hit this here.
+
+74
+00:05:58,280 --> 00:06:02,380
+Real quick aside, sorry that I have to
+jump in here though, but I said less or
+
+75
+00:06:02,380 --> 00:06:06,800
+equal to, but that ends up with leaving us
+one second. Obviously we want less than
+
+76
+00:06:06,800 --> 00:06:13,170
+zero seconds, which is going to give us
+two, one and zero. Not less or equal to,
+
+77
+00:06:13,170 --> 00:06:17,550
+just less. All right, back to scheduled
+programming. Now, one other issue that we
+
+78
+00:06:17,550 --> 00:06:24,630
+are running into is if I run 10 seconds,
+watch what happens. Only after one second
+
+79
+00:06:24,630 --> 00:06:29,350
+elapses does it actually run. The
+problem with that is that set interval,
+
+80
+00:06:29,350 --> 00:06:37,030
+what we have right here, that does not run
+immediately. It has to wait for the first
+
+81
+00:06:37,030 --> 00:06:42,540
+second to elapse. So what I want to do is,
+we'll create a second function down here
+
+82
+00:06:42,540 --> 00:06:53,460
+called display time left which takes in
+seconds. Here we're going to console log
+
+83
+00:06:53,460 --> 00:06:59,040
+the number of seconds left, and we're
+going to change that to minutes and
+
+84
+00:06:59,040 --> 00:07:04,440
+whatnot. Down here, instead of console
+logging it, we're going to display it
+
+85
+00:07:04,440 --> 00:07:09,350
+which it should still do the same thing,
+still after a second.
+
+86
+00:07:09,350 --> 00:07:13,320
+But then we could also run that
+as soon as the function is invoked.
+
+87
+00:07:13,320 --> 00:07:18,740
+We'll run display time left and we'll
+pass it seconds. We're going to run it
+
+88
+00:07:18,740 --> 00:07:25,870
+immediately once, and then once again,
+every single time that we do that
+
+89
+00:07:25,870 --> 00:07:32,120
+interval. Here we go, a timer. See? It
+does 10 immediately and then we'll count
+
+90
+00:07:32,120 --> 00:07:38,990
+down from 9 to 6, all the way down to 1.
+Good, so this little countdown function
+
+91
+00:07:38,990 --> 00:07:44,900
+that we've written here is looking pretty
+good, now I want to go down into our
+
+92
+00:07:44,900 --> 00:07:50,140
+display time left and start working with
+converting it to minutes and seconds.
+
+93
+00:07:50,140 --> 00:07:53,466
+In a previous video, what we did is we
+took all of our seconds and converted it
+
+94
+00:07:53,466 --> 00:07:57,900
+to seconds, minutes, and hours. You can
+go grab that code right now if you'd like.
+
+95
+00:07:57,900 --> 00:08:01,100
+Or if you want a little bit of practice,
+figure it out yourself.
+
+96
+00:08:01,100 --> 00:08:04,170
+We're only going to do minutes and seconds
+here, but you are welcome to do hours as
+
+97
+00:08:04,170 --> 00:08:12,650
+well. So I'll say, const minutes is equal
+to seconds divided by 60 and let's just
+
+98
+00:08:12,650 --> 00:08:20,729
+console what we have left. If I were to
+run 70, we have 1.16 minutes left,
+
+99
+00:08:20,729 --> 00:08:27,000
+1.13. So what's going on here with that?
+Well, that's because we only want whole
+
+100
+00:08:27,000 --> 00:08:31,140
+minutes. We don't care about those
+remainders here. So we'll say math.floor,
+
+101
+00:08:31,140 --> 00:08:35,764
+we'll grab the lower bound of that number.
+And now if I were to run,
+
+102
+00:08:35,764 --> 00:08:43,404
+let's do 124 seconds. So, two minutes, two
+minutes and then eventually it should get
+
+103
+00:08:43,404 --> 00:08:49,058
+to one whole minute, there we go. Now
+we're worried about how many seconds are
+
+104
+00:08:49,058 --> 00:08:57,405
+left. So I say const remainderSeconds and
+that is going to be seconds mod 60 and mod
+
+105
+00:08:57,405 --> 00:09:02,177
+will give us the remainder that we have.
+Minutes and remainderSeconds timer,
+
+106
+00:09:02,177 --> 00:09:09,440
+Here we go, three, two, one. That goes
+down to 1 minute and 59 seconds.
+
+107
+00:09:09,440 --> 00:09:13,230
+Good. So we've got our minutes in our
+remainderSeconds, now we can start
+
+108
+00:09:13,230 --> 00:09:20,780
+working with our HTML. We've got
+this display time left div here.
+
+109
+00:09:20,780 --> 00:09:25,760
+If we were to put that in a variable,
+const timer display is equal to
+
+110
+00:09:25,760 --> 00:09:34,170
+document.querySelector. We want to look
+for that. Then we'll go down here and
+
+111
+00:09:34,170 --> 00:09:38,570
+create another variable which is
+going to be our display time,
+
+112
+00:09:38,570 --> 00:09:43,389
+which is going to look something like
+11:11, right? How do we get the number of
+
+113
+00:09:43,389 --> 00:09:49,786
+minutes left? Simply just
+minutes: number of remainderSeconds.
+
+114
+00:09:49,786 --> 00:09:58,420
+Then we take our timerDisplay which is
+our div, we set the textContent to be
+
+115
+00:09:58,420 --> 00:10:04,050
+display. We can get rid of this console
+log because now we're dealing with actual
+
+116
+00:10:04,050 --> 00:10:09,900
+DOM elements here. If I were to run it,
+oh, I spelled it wrong. Minutes.
+
+117
+00:10:09,900 --> 00:10:18,480
+Minutsas. Now we run it. Oh, okay, kind of
+working but you see what the problem is
+
+118
+00:10:18,480 --> 00:10:22,880
+here? When you have less than 10 seconds
+left, it just says 4 seconds,
+
+119
+00:10:22,880 --> 00:10:28,730
+but we should be 04 seconds left. How do
+we do that? Well, we could go to this
+
+120
+00:10:28,730 --> 00:10:35,020
+remainderSeconds, and we'll say if the
+remainderSeconds is greater than 10,
+
+121
+00:10:35,020 --> 00:10:43,840
+or sorry, less than 10, then we want to
+return a zero. It's a question mark,
+
+122
+00:10:43,840 --> 00:10:48,360
+this is a shorthand ternary operator, and
+otherwise, we're just going to return
+
+123
+00:10:48,360 --> 00:10:53,050
+nothing. And that will give us a zero.
+And then, finally, on the end here,
+
+124
+00:10:53,050 --> 00:10:58,760
+you can just give us the remainderSeconds
+left. So if we run it now,
+
+125
+00:10:58,760 --> 00:11:04,270
+with 124 seconds, we have that padded zero
+on the front until it gets there.
+
+126
+00:11:04,270 --> 00:11:08,430
+Another thing is we should update
+the tab on our browser here,
+
+127
+00:11:08,430 --> 00:11:16,640
+it just says countdown timer. We can
+simply just say document.title.
+
+128
+00:11:16,640 --> 00:11:23,600
+Document.title is the title tag in your
+HTML, is equal to display.
+
+129
+00:11:23,600 --> 00:11:27,910
+Now we're going to run it. Here we go.
+It updates it as we're updating it.
+
+130
+00:11:27,910 --> 00:11:32,170
+You can put that really wherever it is
+that you like. Now I want to work on that
+
+131
+00:11:32,170 --> 00:11:36,450
+other function which is showing the ending
+time. If it's 2:30 and you have a
+
+132
+00:11:36,450 --> 00:11:41,810
+five-minute break, I want to say be back
+at 2:35. We'll create a function called
+
+133
+00:11:41,810 --> 00:11:47,460
+displayEndTime. That's going to take in
+a timestamp of when you want to finish.
+
+134
+00:11:47,460 --> 00:11:54,640
+That's our then time right here. Takes in
+a timestamp and we got to turn that
+
+135
+00:11:54,640 --> 00:12:01,340
+timestamp into a date. Const end equals
+new date. You want to pass it the
+
+136
+00:12:01,340 --> 00:12:06,220
+timestamp. Why? If you've never worked
+with timestamps before, this is how they
+
+137
+00:12:06,220 --> 00:12:12,950
+work. You have date.now which is just a
+number of milliseconds since January 1st,
+
+138
+00:12:12,950 --> 00:12:16,940
+1970. That's when God created the earth.
+That's the number of milliseconds that has
+
+139
+00:12:16,940 --> 00:12:21,440
+elapsed since that amount of time. Now, if
+you were just to take this and then put it
+
+140
+00:12:21,440 --> 00:12:24,180
+in a string and then come back to
+JavaScript, you'd be like, "Okay,
+
+141
+00:12:24,180 --> 00:12:29,810
+I need to convert this back into a date."
+You say new date and you pass it the
+
+142
+00:12:29,810 --> 00:12:32,860
+number of milliseconds that you have.
+It's going to convert that.
+
+143
+00:12:32,860 --> 00:12:38,711
+It's December 1st right now, convert it
+into a proper timestamp for you.
+
+144
+00:12:38,711 --> 00:12:41,927
+What's cool about that is you
+could put it in a variable called X
+
+145
+00:12:41,927 --> 00:12:52,702
+and then you can call
+X.getDate, X.getDay, X.getMonth,
+
+146
+00:12:52,702 --> 00:12:56,092
+and you get all the information about
+what day and month and all that.
+
+147
+00:12:56,092 --> 00:13:00,220
+That's a proper date. That takes
+in a timestamp. We create a new date
+
+148
+00:13:00,220 --> 00:13:07,730
+object from that. Then we can simply just
+get the hours. We'll say const hour equals
+
+149
+00:13:07,730 --> 00:13:20,960
+end.getHours and const minutes is equal to
+end.getMinutes, then we'll say end-time
+
+150
+00:13:20,960 --> 00:13:24,080
+which we don't have that yet.
+Let's go back up to the top here.
+
+151
+00:13:24,080 --> 00:13:30,780
+What is our end time? Display end time.
+Grab that sucker, const endTime is equal
+
+152
+00:13:30,780 --> 00:13:37,310
+to document.querySelector. We'll grab
+the thing with the class of display,
+
+153
+00:13:37,310 --> 00:13:43,580
+end-time. Okay, so we got this
+endTime.textContent is equal to,
+
+154
+00:13:43,580 --> 00:13:46,320
+and I'm just going to set it here.
+Previously, we put it in a variable called
+
+155
+00:13:46,320 --> 00:13:49,940
+display. Why? Because I needed to use it
+more than once. I needed to use it to
+
+156
+00:13:49,940 --> 00:13:53,850
+update the title, as well as update the
+text content. But in this case I just want
+
+157
+00:13:53,850 --> 00:14:01,060
+to do it directly inside of here. We'll
+say "Be Back At" and then we will grab the
+
+158
+00:14:01,060 --> 00:14:10,590
+hour and we will grab the minutes. That
+easy, right? No, it's not going to be that
+
+159
+00:14:10,590 --> 00:14:17,310
+easy, but let's give it a shot. In our
+timer, we're not going to run this in our
+
+160
+00:14:17,310 --> 00:14:21,210
+interval, it doesn't need to be updated
+every second, it just needs to happen once
+
+161
+00:14:21,210 --> 00:14:26,690
+when you run the timer. So, simply
+just displayEndTime, you pass it then,
+
+162
+00:14:26,690 --> 00:14:31,920
+which is the endTime. So if I were to
+run our timer with, I don't know,
+
+163
+00:14:31,920 --> 00:14:38,737
+3,000 seconds to pass it into it, we got
+50 minutes left. But the problem here
+
+164
+00:14:38,737 --> 00:14:44,193
+is that I am not European, and I do not
+understand what 15:00 is.
+
+165
+00:14:44,193 --> 00:14:50,330
+I do know that I should be back at 3:11.
+So we need to then, go in here,
+
+166
+00:14:50,330 --> 00:14:54,800
+and if you're European, congratulations.
+You can leave this part and maybe go get a
+
+167
+00:14:54,800 --> 00:15:00,770
+pop or something like that. But we
+Canadians and Americans and whoever else
+
+168
+00:15:00,770 --> 00:15:07,600
+is normal needs to go into this hour and
+we'll say, if the hour is greater than 12,
+
+169
+00:15:07,600 --> 00:15:14,420
+then we need to return the hour minus 12,
+otherwise we want to just return the hour.
+
+170
+00:15:14,420 --> 00:15:19,740
+And if this is a little bit too funky for
+you, you can simply just go in here and
+
+171
+00:15:19,740 --> 00:15:26,320
+create a new variable const adjusted hour
+is equal to, we'll return the hour minus
+
+172
+00:15:26,320 --> 00:15:32,070
+12. So, if it is 13:00, take away 12, it
+is 1:00 and take that adjusted hour and
+
+173
+00:15:32,070 --> 00:15:38,700
+put it here, so how's that looking?
+Okay, be back at 3:12, good.
+
+174
+00:15:38,700 --> 00:15:47,770
+But what if I were to run it with
+2700 seconds? Be back at 3:07,
+
+175
+00:15:47,770 --> 00:15:53,370
+so we got the trailing minutes again.
+If the minutes is less than 10,
+
+176
+00:15:53,370 --> 00:16:02,270
+then return a 0 otherwise return nothing.
+And then we'll tack the minutes onto the
+
+177
+00:16:02,270 --> 00:16:10,630
+end again. Be back at 3:07. Beautiful.
+Okay, so we've got our timer working,
+
+178
+00:16:10,630 --> 00:16:14,470
+our function is working, it's updating,
+displaying, and everything.
+
+179
+00:16:14,470 --> 00:16:19,130
+Last thing that we need to do now is hook
+it up to all of these different buttons as
+
+180
+00:16:19,130 --> 00:16:23,940
+well as our minutes here. If we look at
+our HTML, you'll see that each of these
+
+181
+00:16:23,940 --> 00:16:29,540
+buttons here, has a data-time and the
+number of seconds we wish to run it on it.
+
+182
+00:16:29,540 --> 00:16:33,510
+And then we have a form here which is a
+custom number of minutes, not seconds.
+
+183
+00:16:33,510 --> 00:16:38,230
+Let's deal with these buttons, we'll knock
+them off first. We'll go in here and first
+
+184
+00:16:38,230 --> 00:16:46,220
+we'll select all of those, so say, const
+buttons equals all. And you want to select
+
+185
+00:16:46,220 --> 00:16:51,290
+anything with a data-time. Not just a
+button, it might be a picture,
+
+186
+00:16:51,290 --> 00:16:56,530
+it might be something else, anything
+that has a data-time attribute.
+
+187
+00:16:56,530 --> 00:17:02,860
+When that happens, we'll go down here and
+we'll say buttons for each button,
+
+188
+00:17:02,860 --> 00:17:09,363
+button.addEventListener, we want to listen
+for a click, and when that happens,
+
+189
+00:17:09,363 --> 00:17:13,787
+we could run a function
+called startTimer.
+
+190
+00:17:13,787 --> 00:17:18,106
+We'll go here, we'll make a function
+called startTimer and we will
+
+191
+00:17:18,106 --> 00:17:21,833
+simply just console log this.
+Okay, let's see what we got here.
+
+192
+00:17:21,833 --> 00:17:26,500
+Twenty seconds button, got it. How did we
+get this data-time out?
+
+193
+00:17:26,500 --> 00:17:31,090
+Well, this.dataset will give us
+an object with the time on it.
+
+194
+00:17:31,090 --> 00:17:36,114
+This.dataset.time will give us
+a string of the number of minutes.
+
+195
+00:17:36,114 --> 00:17:41,862
+So we can just put that into a variable,
+const seconds is equal to
+
+196
+00:17:41,862 --> 00:17:48,051
+this.dataset.time you want to wrap it
+in a quick parseint, turn it into a real
+
+197
+00:17:48,051 --> 00:17:52,417
+number and then we'll
+console log seconds.
+
+198
+00:17:52,417 --> 00:17:56,364
+Twenty, 30, good.
+Working really nicely for us.
+
+199
+00:17:56,364 --> 00:18:00,950
+What we want to do is then we can
+simply just call timer, seconds,
+
+200
+00:18:00,950 --> 00:18:07,260
+that other function. So click it, ah-ha,
+looks like it's working really nicely,
+
+201
+00:18:07,260 --> 00:18:14,130
+although, watch this, click on work five.
+Oh, back and forth, back and forth,
+
+202
+00:18:14,130 --> 00:18:17,682
+back and forth.
+So what's going on here?
+
+203
+00:18:17,682 --> 00:18:22,211
+And if I click a couple of them...let's
+just go to town, here. If I just click,
+
+204
+00:18:22,211 --> 00:18:26,495
+like, 100 times. Oh my goodness,
+what's going on? Well I just queued up
+
+205
+00:18:26,495 --> 00:18:34,550
+like, 1000 timers and there's no way for
+the timers to cancel themselves out unless
+
+206
+00:18:34,550 --> 00:18:38,590
+the number of seconds hits zero. That's
+annoying. Like, what if you click the
+
+207
+00:18:38,590 --> 00:18:42,390
+wrong one. Do you have to like, refresh
+the page and then start again?
+
+208
+00:18:42,390 --> 00:18:46,480
+That's not really any way to live your
+life. What we want to do is when we start
+
+209
+00:18:46,480 --> 00:18:54,760
+our timer, we'll just clear any existing
+timers. Let's clear interval countdown.
+
+210
+00:18:54,760 --> 00:18:58,280
+If there is a timer in countdown,
+it will clear it. If there's not,
+
+211
+00:18:58,280 --> 00:19:02,280
+the variable still exists and it's not
+gonna error out on us. Now,
+
+212
+00:19:02,280 --> 00:19:08,610
+if I say, "Oh, not 20, I meant 5." It's
+not going back 15, it's not going back,
+
+213
+00:19:08,610 --> 00:19:12,380
+you see that? Our "be back" time is
+also updating itself nicely.
+
+214
+00:19:12,380 --> 00:19:20,050
+Good, good, good. Last thing is this form
+here where you enter in maybe 30 minutes.
+
+215
+00:19:20,050 --> 00:19:24,220
+So we want to take this form right here,
+which, if you go into our HTML you'll see
+
+216
+00:19:24,220 --> 00:19:29,470
+that this form has a name of custom form,
+so we'll go into here.
+
+217
+00:19:29,470 --> 00:19:32,920
+Before you select it, I kind of wanted to
+show you this little thing.
+
+218
+00:19:32,920 --> 00:19:36,360
+I actually didn't know about it for the
+longest time. I was just selecting all of
+
+219
+00:19:36,360 --> 00:19:41,520
+my elements. But did you know that you can
+type document., and then if it has a name
+
+220
+00:19:41,520 --> 00:19:46,960
+attribute on it, custom form, you can just
+type document.customform and that will
+
+221
+00:19:46,960 --> 00:19:52,600
+give us the form element. Similarly,
+if your input also has a name,
+
+222
+00:19:52,600 --> 00:19:57,270
+it'll just nest itself .minutes and that
+will give us the input.
+
+223
+00:19:57,270 --> 00:20:01,610
+Whoa, we don't have to select a single
+thing. Let's go into our scripts here and
+
+224
+00:20:01,610 --> 00:20:06,160
+we'll say
+documentcustomform.addeventlistener and
+
+225
+00:20:06,160 --> 00:20:12,152
+we're going to listen for it, what? Click.
+Enter? No. Submit. Then we are going to
+
+226
+00:20:12,152 --> 00:20:15,460
+run a function, a proper function here,
+I'll show you why in a second,
+
+227
+00:20:15,460 --> 00:20:21,620
+past the event. Now, if we submit this
+now, type 10, it refreshes the page and
+
+228
+00:20:21,620 --> 00:20:25,870
+you see the URL says minutes equals 10.
+How do we stop it from reloading the page
+
+229
+00:20:25,870 --> 00:20:32,960
+and sending the data over a get? A call,
+e.preventdefault. That will stop it from
+
+230
+00:20:32,960 --> 00:20:39,629
+running. Ten. Good, nothing happens. Then
+we can get the mins which is going to be
+
+231
+00:20:39,629 --> 00:20:45,713
+this, because this is the form.minutes,
+which is going to be that text box there
+
+232
+00:20:45,713 --> 00:20:52,110
+that we typed into, the input.value.
+And console log our mins, 10, got it.
+
+233
+00:20:52,110 --> 00:20:58,390
+We can quickly call this .reset and clear
+out the value, 10, it'll clear the value
+
+234
+00:20:58,390 --> 00:21:04,760
+and console log it. Then we simply just
+take that number of minutes that we want,
+
+235
+00:21:04,760 --> 00:21:09,980
+we pass it to our timer, we can't pass it
+minutes because our timer requires
+
+236
+00:21:09,980 --> 00:21:19,173
+seconds. Multiply that by 60, and if we
+do it right, so 5 minutes should give us
+
+237
+00:21:19,173 --> 00:21:25,460
+5 whole minutes. Very nice. So that is
+our timer. We got a couple of different
+
+238
+00:21:25,460 --> 00:21:29,910
+functions going on here, we have our time
+out and whatnot, hopefully you enjoyed
+
+239
+00:21:29,910 --> 00:21:34,149
+that. I'd love to see how you
+can take this a little bit further,
+
+240
+00:21:34,149 --> 00:21:38,085
+either adding some animation and some
+interaction, or adding some features in
+
+241
+00:21:38,085 --> 00:21:39,583
+terms of hours and whatnot.

@@ -1,0 +1,1731 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:00,669 --> 00:00:03,669
+♪ [music] ♪
+
+3
+00:00:07,440 --> 00:00:12,560
+Hi, everybody. Wes Bos here. We are
+going to make a photobooth with JavaScript
+
+4
+00:00:12,560 --> 00:00:19,430
+today. Now, first of all, if you see like
+I'm talking, and then later on the audio
+
+5
+00:00:19,430 --> 00:00:23,940
+doesn't add up, that's because I'm
+recording my screen on a 4K monitor and
+
+6
+00:00:23,940 --> 00:00:28,070
+piping video through, and it's just too
+much. So when I stop recording my screen,
+
+7
+00:00:28,070 --> 00:00:32,300
+this is live, don't worry if you wonder if
+the sound is off or not.
+
+8
+00:00:32,300 --> 00:00:38,190
+So what are we going to be building today?
+First of all, we've got our video being
+
+9
+00:00:38,190 --> 00:00:44,280
+piped in from our webcam, and then we've
+got our video being piped into a canvas
+
+10
+00:00:44,280 --> 00:00:48,360
+element. Then, once it's in a canvas
+element, we can start to do all kinds of
+
+11
+00:00:48,360 --> 00:00:53,470
+cool things with it. Like we can take our
+photo, and then you can go ahead and
+
+12
+00:00:53,470 --> 00:00:58,080
+download them. They'll download to your
+computer, and you can see them as real
+
+13
+00:00:58,080 --> 00:01:04,250
+photos, handsome.png. Then, in the
+scripts, once we have it, we can start to
+
+14
+00:01:04,250 --> 00:01:09,340
+add effects, like different filters where
+things should be red.
+
+15
+00:01:09,340 --> 00:01:17,760
+Or what we can do is make this really cool
+RGB split, where you can see my face.
+
+16
+00:01:17,760 --> 00:01:21,410
+Don't look at the top right-hand corner, I
+look crazy. But the RGB values are just a
+
+17
+00:01:21,410 --> 00:01:26,830
+little bit off. You can play with the
+alpha. So it's just a bit of like a,
+
+18
+00:01:26,830 --> 00:01:32,710
+woo, ghosting effect that goes on here.
+Then, finally, the green screen.
+
+19
+00:01:32,710 --> 00:01:36,600
+If you've never known how the green screen
+works, essentially you pick a color that's
+
+20
+00:01:36,600 --> 00:01:40,940
+in the background, and then you find any
+color that's within the range of that
+
+21
+00:01:40,940 --> 00:01:45,140
+specific color, usually green, and then
+you pull it out. Whatever is behind it,
+
+22
+00:01:45,140 --> 00:01:48,070
+like a video or a beach, or something like
+that, it's going to show.
+
+23
+00:01:48,070 --> 00:01:54,640
+So we have these slider values here, which
+we can use to discover what the threshold
+
+24
+00:01:54,640 --> 00:01:58,440
+is, and in my case I'm pulling out just a
+whole bunch of stuff,
+
+25
+00:01:58,440 --> 00:02:04,270
+but you can do some fun stuff. Whatever
+would be behind that would then show on
+
+26
+00:02:04,270 --> 00:02:08,510
+through. So this is going to be a bit of a
+big one, but it's going to be fun.
+
+27
+00:02:08,510 --> 00:02:12,861
+So let's get rolling. I'll open up my
+index.html and switch this
+
+28
+00:02:12,861 --> 00:02:19,430
+scripts-FINISHED to just scripts.js, and
+it'll go into our scripts.js.
+
+29
+00:02:19,430 --> 00:02:23,880
+Before we get started today, there is one
+thing that we do need to get up and
+
+30
+00:02:23,880 --> 00:02:28,380
+running, and that is a server. So far, in
+this course we've just been working off of
+
+31
+00:02:28,380 --> 00:02:32,310
+the file. We right-click and that sucker
+in the browser. However,
+
+32
+00:02:32,310 --> 00:02:35,570
+because of security restrictions with
+getting a user's webcam,
+
+33
+00:02:35,570 --> 00:02:41,630
+it must be tied to what's called a "secure
+origin". A secure origin is a website that
+
+34
+00:02:41,630 --> 00:02:47,660
+is HTTPS, or in our case localhost is also
+a secure origin. Even if it's not,
+
+35
+00:02:47,660 --> 00:02:51,640
+has a little icon lock there, it's still
+considered a secure origin,
+
+36
+00:02:51,640 --> 00:02:55,190
+which is localhost. So what I need you to
+do, if you take a look at this,
+
+37
+00:02:55,190 --> 00:02:59,480
+we have this index.html, that needs to be
+fed through some sort of server.
+
+38
+00:02:59,480 --> 00:03:04,300
+So if you've already got Python server or
+maybe Map if you've done WordPress,
+
+39
+00:03:04,300 --> 00:03:08,990
+or any sort of local server running, you
+can totally use that.
+
+40
+00:03:08,990 --> 00:03:14,020
+Just make sure that you feed this
+index.html through your localhost server.
+
+41
+00:03:14,020 --> 00:03:18,170
+Now, if you don't have any sort of server
+locally, what I've done is I've included a
+
+42
+00:03:18,170 --> 00:03:23,950
+package.JSON file. If we open that up,
+you'll see that I have one dependency,
+
+43
+00:03:23,950 --> 00:03:26,590
+which is this thing called "browser-sync".
+It's really, really nice,
+
+44
+00:03:26,590 --> 00:03:31,580
+because it allows you to open up your
+website and start a little server,
+
+45
+00:03:31,580 --> 00:03:34,390
+and it also gives you live reloading and a
+whole bunch of other stuff.
+
+46
+00:03:34,390 --> 00:03:38,320
+So what I want you to do is type "npm
+install". If you don't have NPM,
+
+47
+00:03:38,320 --> 00:03:43,250
+if it tells you that's not something, you
+go to nodejs.org and download Node.js.
+
+48
+00:03:43,250 --> 00:03:47,760
+So I'm going to type "npm install", and
+when that has finished what you can type
+
+49
+00:03:47,760 --> 00:03:52,620
+is "npm start". What that is going to do,
+it's going to run this script that I have
+
+50
+00:03:52,620 --> 00:03:56,540
+here and this is just a really long
+browser-sync start file. This just starts
+
+51
+00:03:56,540 --> 00:04:01,150
+a little server for you. So "npm start",
+and that is going to kick open a little
+
+52
+00:04:01,150 --> 00:04:04,650
+server. It's going to tell you that your
+local server is 3001,
+
+53
+00:04:04,650 --> 00:04:08,640
+and then it will also give you an external
+server in case you want to check it on
+
+54
+00:04:08,640 --> 00:04:11,370
+your Wi-Fi, maybe check it on your Android
+phone, or something like that.
+
+55
+00:04:11,370 --> 00:04:16,190
+So I've got that up and running. Now,
+let's go to our scripts.js,
+
+56
+00:04:16,190 --> 00:04:19,180
+and I'm going to load in a couple
+selectors that we're working with here,
+
+57
+00:04:19,180 --> 00:04:22,360
+just because you're probably sick of
+seeing me type selectors for now.
+
+58
+00:04:22,360 --> 00:04:27,350
+Let's review real quick. We've got this
+video here, which is a class of "player".
+
+59
+00:04:27,350 --> 00:04:32,290
+If we look at our HTML, you'll see that we
+have a canvas, we have a video,
+
+60
+00:04:32,290 --> 00:04:37,260
+and we have a strip. Now, the video from
+our webcam is going to come in hot off the
+
+61
+00:04:37,260 --> 00:04:40,860
+webcam, and we're going to pipe that into
+this video element. Then,
+
+62
+00:04:40,860 --> 00:04:45,440
+every, I don't know, 16 milliseconds or
+so, we're going to take a snapshot of that
+
+63
+00:04:45,440 --> 00:04:51,270
+video and dump it into this canvas. Once
+it's in the canvas, we're going to
+
+64
+00:04:51,270 --> 00:04:54,510
+manipulate the pixels, change the color,
+apply filters. We're going to have a lot
+
+65
+00:04:54,510 --> 00:04:57,730
+of fun with that. But just know that the
+video is going to come off the webcam on
+
+66
+00:04:57,730 --> 00:05:01,200
+the video element, and we're going to dump
+it into the canvas every so often.
+
+67
+00:05:01,200 --> 00:05:05,160
+Then, finally the strip, that's where
+we're going to put all of our images.
+
+68
+00:05:05,160 --> 00:05:08,840
+So what that canvas video context, this is
+where the work happens.
+
+69
+00:05:08,840 --> 00:05:13,180
+If you've never used canvas before, go
+back to our canvas tutorial that we've
+
+70
+00:05:13,180 --> 00:05:15,830
+done earlier. We've got our strip, and
+then we have this audio,
+
+71
+00:05:15,830 --> 00:05:20,290
+which is a little [verbal sounds 00:05:17]
+sound that's going to play every single
+
+72
+00:05:20,290 --> 00:05:25,200
+time that we play a video here. Good. The
+first thing we want to do is get the video
+
+73
+00:05:25,200 --> 00:05:30,820
+being piped into that video element. So
+we're going to say "function getVideo".
+
+74
+00:05:30,820 --> 00:05:33,300
+The way that you get
+someone's video, it's actually
+
+75
+00:05:33,300 --> 00:05:42,350
+"navigator.mediaDevices.getUserMedia".
+If you've done this before,
+
+76
+00:05:42,350 --> 00:05:46,230
+you might have seen it as
+"navigator.getUserMedia". It's now changed
+
+77
+00:05:46,230 --> 00:05:51,140
+to "navigator.mediaDevices" in some of the
+newer browsers, which is "getUserMedia".
+
+78
+00:05:51,140 --> 00:05:55,040
+From that we pass it to the video, which
+we want to be "true" and the audio,
+
+79
+00:05:55,040 --> 00:06:01,600
+which is going to be "false". Now that
+thing this going to return a promise.
+
+80
+00:06:01,600 --> 00:06:05,670
+You know that with a promise, we call
+".then" on it. It's going to give us
+
+81
+00:06:05,670 --> 00:06:12,980
+something called a "localMediaStream".
+From there, we'll run a function.
+
+82
+00:06:12,980 --> 00:06:16,380
+Let's just console.log that
+"localMediaStream", see what we've got
+
+83
+00:06:16,380 --> 00:06:21,450
+here. So when you load it, you probably
+get a little pop-up here saying "localhost
+
+84
+00:06:21,450 --> 00:06:25,740
+would like to access your camera". Go
+ahead and click Yes to that,
+
+85
+00:06:25,740 --> 00:06:30,370
+and of course we need to run this getVideo
+function on page load.
+
+86
+00:06:30,370 --> 00:06:32,920
+You'll notice it's refreshing
+automatically for you, which is a really
+
+87
+00:06:32,920 --> 00:06:36,350
+nice feature. So here's what we've got
+here. We've got this media stream,
+
+88
+00:06:36,350 --> 00:06:44,000
+and then we've just got some ID, "active:
+true", and there's some stuff on the
+
+89
+00:06:44,000 --> 00:06:49,650
+prototype that we're working with here.
+But really not much for us to deal with.
+
+90
+00:06:49,650 --> 00:06:56,860
+So what we need to do is to take our
+video, and we need to set the source to be
+
+91
+00:06:56,860 --> 00:07:00,780
+that "localMediaStream". Now, that's not
+going to work automatically,
+
+92
+00:07:00,780 --> 00:07:06,120
+because this is an object. In order for
+our video to work, it actually needs to be
+
+93
+00:07:06,120 --> 00:07:10,260
+converted into some sort of URL. This is a
+little bit weird, because you might be
+
+94
+00:07:10,260 --> 00:07:15,620
+used to having a video like a .mp4. But
+this is how you set it to be a live video
+
+95
+00:07:15,620 --> 00:07:21,150
+feed. So we're going to wrap this
+"localMediaStream" in window.url caps
+
+96
+00:07:21,150 --> 00:07:26,650
+".createObjectURL". That's going to
+convert that media stream into something
+
+97
+00:07:26,650 --> 00:07:31,030
+that this video player can understand.
+Finally, underneath that we'll call
+
+98
+00:07:31,030 --> 00:07:35,010
+"video.play", which is going to play it.
+If I try it with that,
+
+99
+00:07:35,010 --> 00:07:39,620
+you might see like one frame. Yeah, see?
+One frame. If you mouse over it,
+
+100
+00:07:39,620 --> 00:07:44,680
+it will sometimes open. Why is that?
+That's because we set the video to be this
+
+101
+00:07:44,680 --> 00:07:49,810
+media stream. But it's not going to update
+unless we actually go ahead and play it.
+
+102
+00:07:49,810 --> 00:07:54,240
+So I'm going to call "video.play". Now,
+when you load the page,
+
+103
+00:07:54,240 --> 00:07:59,450
+you should see yourself in the actual
+video element in the top right-hand corner
+
+104
+00:07:59,450 --> 00:08:03,410
+that I've done here. If you inspect it,
+you'll see that the video source is a
+
+105
+00:08:03,410 --> 00:08:09,460
+blob. That just means that it's the raw
+data being piped in off this webcam right
+
+106
+00:08:09,460 --> 00:08:13,650
+here. The last thing that we need to do is
+we need to do a catch here,
+
+107
+00:08:13,650 --> 00:08:15,880
+just in case someone doesn't allow you to
+access their webcam.
+
+108
+00:08:15,880 --> 00:08:21,670
+We need to handle that error. So we'll say
+"error", and when that happens we're just
+
+109
+00:08:21,670 --> 00:08:28,990
+going to console.error. Oh, no, and then
+give yourself the error.
+
+110
+00:08:28,990 --> 00:08:33,570
+You can obviously tell the user, "Hey, you
+denied the webcam. Maybe you should not do
+
+111
+00:08:33,570 --> 00:08:38,130
+that, because we need to get access to
+your webcam." Good. So we are up and
+
+112
+00:08:38,130 --> 00:08:43,530
+running with getting the video being piped
+in. The next thing that we need to do is
+
+113
+00:08:43,530 --> 00:08:50,510
+to take a frame from this video, and to
+paint it onto the actual canvas on the
+
+114
+00:08:50,510 --> 00:08:59,010
+screen. So that's what we'll do here, is
+we'll make a function and we will call
+
+115
+00:08:59,010 --> 00:09:04,870
+that "paintToCanvas". We have a couple
+things first. What we need is the width
+
+116
+00:09:04,870 --> 00:09:08,910
+and the height of the actual video. So
+we'll say "const width = video.videowidth"
+
+117
+00:09:08,910 --> 00:09:20,540
+and "const height = video.videoheight".
+Now, what we need to do is the video is
+
+118
+00:09:20,540 --> 00:09:26,560
+going to have a width and height
+associated with it, and if we were to call
+
+119
+00:09:26,560 --> 00:09:32,090
+that "paintToCanvas" you'll see that it's
+640 by 480. That's the size of the video
+
+120
+00:09:32,090 --> 00:09:37,950
+that's coming in off my webcam. Now, we
+need to make sure that the canvas is the
+
+121
+00:09:37,950 --> 00:09:42,120
+exact same size before we paint to it.
+That's really important because if the
+
+122
+00:09:42,120 --> 00:09:45,760
+canvas is not the same size as the video
+or if your video webcam has a different
+
+123
+00:09:45,760 --> 00:09:52,650
+width and height to it, then we need to
+change that. So we'll say "canvas.width =
+
+124
+00:09:52,650 --> 00:09:59,330
+width" and "canvas.height = height". Good.
+Now, if you refresh and you inspect this
+
+125
+00:09:59,330 --> 00:10:04,800
+canvas here, you'll see that right now
+it's 943 pixels. But if I were to call
+
+126
+00:10:04,800 --> 00:10:08,850
+that "paintToCanvas", it will then be
+changed. It still shows me it,
+
+127
+00:10:08,850 --> 00:10:13,940
+because I'm stretching it with CSS. But
+the width and the height have been
+
+128
+00:10:13,940 --> 00:10:21,910
+explicitly set on the actual canvas. Now,
+what we want to do is to every,
+
+129
+00:10:21,910 --> 00:10:27,410
+I don't know, 16 or so milliseconds, we
+are going to take an image from the webcam
+
+130
+00:10:27,410 --> 00:10:33,580
+and put it into the canvas. So we are
+going to "setinterval", and that is going
+
+131
+00:10:33,580 --> 00:10:37,670
+to run a function every... Let's start
+with 16 milliseconds. You really have to
+
+132
+00:10:37,670 --> 00:10:41,130
+play with how often is it going to paint
+to the canvas. A lower-performance
+
+133
+00:10:41,130 --> 00:10:44,480
+machine, sometimes you have to go up. You
+can also play with
+
+134
+00:10:44,480 --> 00:10:49,110
+"requestAnimationFrame". But I have had no
+success with that, so I'm sticking with an
+
+135
+00:10:49,110 --> 00:10:53,700
+interval here. We're going to take the
+canvas context, we're going to call
+
+136
+00:10:53,700 --> 00:10:57,770
+"dramImage", and you simply just pass it
+your video element. So the way that
+
+137
+00:10:57,770 --> 00:11:01,730
+"dramImage" works is that you pass it an
+image, or a video element,
+
+138
+00:11:01,730 --> 00:11:08,170
+and it will paint it right to it. We're
+going to start at 00, which is I guess
+
+139
+00:11:08,170 --> 00:11:12,830
+you're on the other side here. Start at
+the top left-hand corner of the canvas,
+
+140
+00:11:12,830 --> 00:11:17,910
+and then paint the width and the height.
+That's exactly why we stuck them in their
+
+141
+00:11:17,910 --> 00:11:24,980
+own variables right here. So if we rerun
+that "paintToCanvas" now...
+
+142
+00:11:24,980 --> 00:11:30,210
+Oh, we got an error, "setInterval". It's
+capital I. It probably drives you nuts
+
+143
+00:11:30,210 --> 00:11:34,980
+watching me code like that. There we go.
+Woo. What's going on here?
+
+144
+00:11:34,980 --> 00:11:40,210
+Every 16 milliseconds what's happening is
+this is our canvas element right here,
+
+145
+00:11:40,210 --> 00:11:44,050
+and then up here we've got our video
+element that we're working with.
+
+146
+00:11:44,050 --> 00:11:49,640
+So we are taking a frame from it. One
+thing I like to do is just return that
+
+147
+00:11:49,640 --> 00:11:53,280
+interval here, because if you ever need to
+stop this from painting,
+
+148
+00:11:53,280 --> 00:11:58,290
+you can have access to that interval and
+you can call "clearInterval" on it.
+
+149
+00:11:58,290 --> 00:12:04,840
+Good. Now, what we want to do is let's
+work on the takePhoto function,
+
+150
+00:12:04,840 --> 00:12:13,400
+so "function takePhoto". Let's work on the
+audio portion of it right now.
+
+151
+00:12:13,400 --> 00:12:21,950
+So I'll say "snap.currentTime = 0" and we
+will say "snap.play".
+
+152
+00:12:21,950 --> 00:12:28,360
+So Console, Refresh. We want to go into
+our console and run "paintToCanvas".
+
+153
+00:12:28,360 --> 00:12:32,880
+Got it going. Then, we're going to run
+"takePhoto", which should play.
+
+154
+00:12:32,880 --> 00:12:35,100
+There we go. You might not hear it,
+because it's not recording on my
+
+155
+00:12:35,100 --> 00:12:39,200
+computer's audio. But that should say
+[verbal noise 00:12:38].
+
+156
+00:12:39,200 --> 00:12:43,260
+Just imagine it going off right now. Good.
+So that is playing the photo.
+
+157
+00:12:43,260 --> 00:12:49,880
+But before we go any further, it's kind of
+a pain to have to manually run this
+
+158
+00:12:49,880 --> 00:12:53,620
+"paintToCanvas". So what we're going to do
+is we're going to go down to the bottom
+
+159
+00:12:53,620 --> 00:12:59,120
+here. We're going to listen for an event
+on the video element called "canplay".
+
+160
+00:12:59,120 --> 00:13:02,844
+So we're going to say
+"video.addEventListener('canplay')".
+
+161
+00:13:02,844 --> 00:13:07,130
+That's an event that the video will emit.
+When that happens, we are going to run the
+
+162
+00:13:07,130 --> 00:13:15,960
+function "paintToCanvas". So what will
+that do? Once this video is played,
+
+163
+00:13:15,960 --> 00:13:19,540
+it's going to emit... Because we've got to
+get the webcam sorted out first.
+
+164
+00:13:19,540 --> 00:13:25,350
+Right? Once the video is playing, it's
+going to emit an event called "canplay",
+
+165
+00:13:25,350 --> 00:13:29,300
+which in turn canvas is going to say, "Oh,
+now we should start to paint to canvas."
+
+166
+00:13:29,300 --> 00:13:34,770
+So that's going to now happen on our page
+load. Good. I'm happy with that.
+
+167
+00:13:34,770 --> 00:13:40,790
+Now, how do we take a photo of this actual
+canvas here. So it's part of our
+
+168
+00:13:40,790 --> 00:13:47,260
+"takePhoto". We've already played the
+sound, which is not really anything to do
+
+169
+00:13:47,260 --> 00:13:55,220
+with it. What we now need to do is take
+the data out of the canvas.
+
+170
+00:13:55,220 --> 00:14:03,172
+We can do this, "const data =
+canvas.toDataURL". Then, you pass it,
+
+171
+00:14:03,172 --> 00:14:11,405
+"image/jpeg" or "jpng", or whatever you're
+looking for. But it probably makes sense
+
+172
+00:14:11,405 --> 00:14:16,120
+to do a PJEG with an E there, because
+that's a picture of me. It's not really a
+
+173
+00:14:16,120 --> 00:14:20,350
+PNG. Then, I'm just going to console.log
+the actual data and see what we're working
+
+174
+00:14:20,350 --> 00:14:28,060
+with here. So I'm going to go to my
+console, and see what we're working with
+
+175
+00:14:28,060 --> 00:14:34,310
+here. I'm going to take a photo. Okay, and
+this is what happens.
+
+176
+00:14:34,310 --> 00:14:40,800
+Whoa. What the heck is this? So what this
+is, this is something called "Base64".
+
+177
+00:14:40,800 --> 00:14:47,200
+This is like a text-based representation
+of the picture of me.
+
+178
+00:14:47,200 --> 00:14:56,750
+So this like "8vpb4fb", that means
+"stunning smile". This "rvs0",
+
+179
+00:14:56,750 --> 00:15:00,830
+that means "sweet baby blues". These are
+just like little attributes about the
+
+180
+00:15:00,830 --> 00:15:08,240
+photo in text-based form. So what we can
+do with that is we can create a link and
+
+181
+00:15:08,240 --> 00:15:12,910
+an image to actually put it into our
+strip. Let's create a link here.
+
+182
+00:15:12,910 --> 00:15:17,490
+So we'll say "const link =
+document.createElement". You need to
+
+183
+00:15:17,490 --> 00:15:21,910
+create a proper link here. You can't just
+use back text. Then,
+
+184
+00:15:21,910 --> 00:15:29,570
+we will be creating an anchor link. That
+"link.href" is going to equal the data.
+
+185
+00:15:29,570 --> 00:15:34,877
+That's what we have there. Then, we are
+also going to say "link.setAttribute".
+
+186
+00:15:34,877 --> 00:15:38,150
+The attribute we are going to set is
+called "download", and we're going to set
+
+187
+00:15:38,150 --> 00:15:42,390
+that to "handsome". I'll show you why in
+just a second. Then, we'll just say
+
+188
+00:15:42,390 --> 00:15:48,190
+"link.textContent = _'Download Image'_".
+Then, finally, we are going to take our
+
+189
+00:15:48,190 --> 00:15:53,920
+strip, which is where we're going to dump
+our links. We are going to insert before
+
+190
+00:15:53,920 --> 00:15:58,570
+and we're going to insert the link node.
+It's going to happen right before the
+
+191
+00:15:58,570 --> 00:16:04,870
+strip.firstChild. That's sort of like if
+you've jQueried ".prepend",
+
+192
+00:16:04,870 --> 00:16:09,770
+this is how you do that in vanilla
+JavaScript. So what we did is we created a
+
+193
+00:16:09,770 --> 00:16:16,070
+link. We set the href... Apparently "href"
+is not a word, but let's make it a thing.
+
+194
+00:16:16,070 --> 00:16:20,690
+".setAttribute", ".textContent", we've
+created the link, and we've put it in.
+
+195
+00:16:20,690 --> 00:16:23,800
+So let's see what we've got here. It's
+running. I'm going to run the function
+
+196
+00:16:23,800 --> 00:16:28,010
+"takePhoto". Good. Now, we have a link
+here that is "download photo".
+
+197
+00:16:28,010 --> 00:16:33,200
+I'm going to open it up in a new tab,
+first of all. Whoa. Look what we've got
+
+198
+00:16:33,200 --> 00:16:38,900
+here. So this, the URL, is just a data
+image here. But it's smart enough to know
+
+199
+00:16:38,900 --> 00:16:42,500
+that that is the actual image. It's not
+anywhere on our computer.
+
+200
+00:16:42,500 --> 00:16:48,440
+It's just stored in this really long text
+string. But what I also did is we made
+
+201
+00:16:48,440 --> 00:16:54,560
+this download attribute of "handsome", and
+when you click that it's going to
+
+202
+00:16:54,560 --> 00:17:00,000
+actually, there we go, download it to your
+computer, where it will then be put on
+
+203
+00:17:00,000 --> 00:17:05,320
+your user's hard drive. You can then open
+it up in your Finder,
+
+204
+00:17:05,320 --> 00:17:09,690
+whatever it is you're using. There we go,
+"handsome.jpeg". I've got it up and
+
+205
+00:17:09,690 --> 00:17:13,580
+running. Cool. So we've got our download
+"download image". We've got it.
+
+206
+00:17:13,580 --> 00:17:17,580
+Now, let's actually put the image visible
+inside of there as well.
+
+207
+00:17:17,580 --> 00:17:22,680
+So rather than link that text content,
+delete that. We'll say "link.innerHTM" is
+
+208
+00:17:22,680 --> 00:17:28,460
+equal to an image tag". The source is
+going to be equal to the data.
+
+209
+00:17:28,460 --> 00:17:32,230
+So both the href and the source is going
+to be equal to the data.
+
+210
+00:17:32,230 --> 00:17:37,310
+[inaudible 00:17:32] "Handsome Man",
+adjust accordingly if you're not
+
+211
+00:17:37,310 --> 00:17:45,490
+handsome. When we run "takePhoto", there
+we go, you should now see your actual
+
+212
+00:17:45,490 --> 00:17:50,650
+photo. Every time you run that function,
+it's going to take a photo of yourself,
+
+213
+00:17:50,650 --> 00:17:55,020
+and you can download any of the ones that
+you like. Cool. Let's hook it up to the
+
+214
+00:17:55,020 --> 00:18:00,050
+actual button. So if we go to our
+index.html and we have this photo,
+
+215
+00:18:00,050 --> 00:18:04,110
+it's already hooked up on click, or you
+could select it. I've just did sort of
+
+216
+00:18:04,110 --> 00:18:09,400
+like a bit of a cheap way to do it without
+selecting it, and that button should now
+
+217
+00:18:09,400 --> 00:18:13,970
+work regardless of whatever it is that
+you're doing. Good. So we've got our
+
+218
+00:18:13,970 --> 00:18:17,360
+"getVideo". We've got our "paintToCanvas".
+We've got our "takePhoto".
+
+219
+00:18:17,360 --> 00:18:21,970
+Really, the last thing that we want to do
+is do some filters on them.
+
+220
+00:18:21,970 --> 00:18:31,860
+So the way that a filter works is that you
+get the pixels out of the canvas,
+
+221
+00:18:31,860 --> 00:18:36,740
+and then you mess with them, changing the
+RGB values, and put them back in.
+
+222
+00:18:36,740 --> 00:18:41,120
+So let's go back up to our
+"paintToCanvas". Let's go into our
+
+223
+00:18:41,120 --> 00:18:47,910
+interval, and we'll just do something like
+this and say, "const pixels =
+
+224
+00:18:47,910 --> 00:18:55,620
+ctx.getImageData", and then you ask for
+the 00, the width and the height,
+
+225
+00:18:55,620 --> 00:19:00,170
+just like we did before. This might crash
+my browser, but I'm going to try console
+
+226
+00:19:00,170 --> 00:19:04,460
+logging it. It's going to be millions of
+pixels large, but let's see.
+
+227
+00:19:04,460 --> 00:19:10,420
+Whoa. Okay. So here we go. We've got this
+sort of special kind of array here,
+
+228
+00:19:10,420 --> 00:19:15,380
+which is pixels.data is going to be a
+special kind of array that's meant for
+
+229
+00:19:15,380 --> 00:19:20,420
+very, very large numbers. If you open up
+one of those suckers...
+
+230
+00:19:20,420 --> 00:19:25,120
+Where did it go. Here. What if we did
+this? "Console.log(pixels)",
+
+231
+00:19:25,120 --> 00:19:31,610
+and "debugger". Let's just stop it
+altogether. There we go. I paused it.
+
+232
+00:19:31,610 --> 00:19:35,550
+Go back to our console. Look at some of
+this image data. Open up the data.
+
+233
+00:19:35,550 --> 00:19:41,570
+There we go. We've got one, two, three,
+four, five, six, 1.2 million items.
+
+234
+00:19:41,570 --> 00:19:47,180
+If you open up one of those and one of
+those, and one of those,
+
+235
+00:19:47,180 --> 00:19:53,420
+here's the actual values. Now, what is
+this? Well, "0" is going to be "R",
+
+236
+00:19:53,420 --> 00:20:00,000
+"1" is going to be "G", "B", "R", red,
+green, blue, alpha. Red,
+
+237
+00:20:00,000 --> 00:20:06,360
+green, blue, alpha. So this array here is
+simply just a huge array of numbers,
+
+238
+00:20:06,360 --> 00:20:12,660
+which is the first pixel is red, the first
+pixel is green, the first pixel is blue,
+
+239
+00:20:12,660 --> 00:20:15,450
+I can't even remember, and then the first
+pixel is alpha. Then,
+
+240
+00:20:15,450 --> 00:20:20,000
+it starts again. The second pixel is red,
+green, blue, alpha. Red,
+
+241
+00:20:20,000 --> 00:20:24,200
+green, blue, alpha, and it just goes over
+and over, and over. So for every one pixel
+
+242
+00:20:24,200 --> 00:20:29,780
+on this picture of me, you have four
+entries in your array that describe the
+
+243
+00:20:29,780 --> 00:20:35,180
+red, the green, the blue, and the alpha.
+So what we can then do is we take these
+
+244
+00:20:35,180 --> 00:20:39,190
+pixels, and this needs to be "let",
+because we're going to reassign the pixels
+
+245
+00:20:39,190 --> 00:20:46,050
+array, not "const". It wouldn't let us do
+that. We need to then take the pixels.
+
+246
+00:20:46,050 --> 00:20:53,070
+Say "pixels =" and let's do the red effect
+first. I'll say "redEffect" and pass it
+
+247
+00:20:53,070 --> 00:21:00,000
+our pixels. Then, we go down here and
+we'll make our filter function "redEffect"
+
+248
+00:21:00,000 --> 00:21:07,650
+, mix in our pixels, and then you loop
+over every single pixel that you have.
+
+249
+00:21:07,650 --> 00:21:16,320
+Say "for (let i = 0); i < pixels.length".
+If you're wondering why I'm not using .map
+
+250
+00:21:16,320 --> 00:21:21,330
+here, it's because this is a special kind
+of array in JavaScript.
+
+251
+00:21:21,330 --> 00:21:25,520
+It doesn't have all of the regular array
+method that you're used to working with.
+
+252
+00:21:25,520 --> 00:21:34,120
+You say "i = i + for" or "I += 4". That's
+just going to increment it by four and not
+
+253
+00:21:34,120 --> 00:21:39,000
+by one. [inaudible 00:21:35] Then, we have
+access to our red, green,
+
+254
+00:21:39,000 --> 00:21:45,090
+blue, and alpha, because "pixels[i]" is
+going to be a red channel.
+
+255
+00:21:45,090 --> 00:21:53,030
+"I + 1" is going to be our green. "I +2"
+is going to be our red,
+
+256
+00:21:53,030 --> 00:21:57,460
+green, blue, and then we actually don't
+need to really mess with the alpha on this
+
+257
+00:21:57,460 --> 00:22:03,280
+redEffect on our own. So we say "pixels[i]
+=", and then we can just start messing
+
+258
+00:22:03,280 --> 00:22:06,460
+with it and changing with the red, the
+green, the blue, the one.
+
+259
+00:22:06,460 --> 00:22:09,580
+So I'm just going to paste some stuff in
+here, and you can have some fun with it.
+
+260
+00:22:09,580 --> 00:22:14,460
+So what I've done here is I've just said
+the first one plus zero,
+
+261
+00:22:14,460 --> 00:22:18,660
+I've just added a zero so I can see that
+it's the first, second,
+
+262
+00:22:18,660 --> 00:22:23,410
+and third one that we have here, and I'm
+just equaling it to itself plus 100,
+
+263
+00:22:23,410 --> 00:22:28,910
+the second one minus 50, and the third one
+times 0.5. There's no rhyme or reason to
+
+264
+00:22:28,910 --> 00:22:32,120
+that. I just was messing with them. Some
+of them are going to go over 255,
+
+265
+00:22:32,120 --> 00:22:35,220
+and some of them are going to go under,
+and that's totally fine.
+
+266
+00:22:35,220 --> 00:22:38,350
+But what that will do is it'll give us a
+bit of a cool effect.
+
+267
+00:22:38,350 --> 00:22:43,880
+What we do here is we return those pixels
+once we've done messing with the actual
+
+268
+00:22:43,880 --> 00:22:49,120
+RGB values, and we go back up here where
+"pixels = redEffect".
+
+269
+00:22:49,120 --> 00:22:57,190
+Then, we say "context.putImageData(pixels
+0, 0)". That's going to,
+
+270
+00:22:57,190 --> 00:23:01,200
+if you take the pixels out... Maybe we
+should put some comments here.
+
+271
+00:23:01,200 --> 00:23:13,280
+"Take the pixels out. Mess with them. Put
+them back." So now, if we refresh this
+
+272
+00:23:13,280 --> 00:23:21,460
+sucker, I don't see a red effect happening
+here. Why is that? "Let pixels =",
+
+273
+00:23:21,460 --> 00:23:25,840
+let's just debug this real quick. We've
+got our pixels. We've got our pixels
+
+274
+00:23:25,840 --> 00:23:31,470
+coming back. We're putting it in. Any
+errors in our console? Nope.
+
+275
+00:23:31,470 --> 00:23:38,450
+[inaudible 00:23:33], turning our pixels.
+I'm not sure.
+
+276
+00:23:48,110 --> 00:23:53,400
+Oh, I figured out what it was. Our loop
+is "pixels.data.length",
+
+277
+00:23:53,400 --> 00:23:57,410
+because "pixels" is not an array".
+"Pixels.data" is an actual array.
+
+278
+00:23:57,410 --> 00:24:02,450
+So now if I save that, there we go. Now,
+I've got this bit of a red effect going on
+
+279
+00:24:02,450 --> 00:24:07,490
+here, and we are seeing all of the
+different colors being changed.
+
+280
+00:24:07,490 --> 00:24:12,070
+If you were to mess with this, like minus
+100, you see you get a bit of a different
+
+281
+00:24:12,070 --> 00:24:17,960
+color effect. Or less 200, it will just
+jack the red up really as high as we can
+
+282
+00:24:17,960 --> 00:24:22,010
+go. So that's the red effect. Next up,
+what I want to do is what I like to call
+
+283
+00:24:22,010 --> 00:24:28,890
+the "RGB split". So I'll say "function
+rgbSplit". That takes in our pixels,
+
+284
+00:24:28,890 --> 00:24:31,770
+and we're going to do exactly the same
+thing that we did here.
+
+285
+00:24:31,770 --> 00:24:36,950
+So you can just copy and paste these
+values into here. Except,
+
+286
+00:24:36,950 --> 00:24:43,790
+with our RGB split, what I'm going to do
+instead of just changing each individual
+
+287
+00:24:43,790 --> 00:24:52,650
+one is I'm going to take the red and
+change the one that is 150 pixels back to
+
+288
+00:24:52,650 --> 00:25:00,000
+be the current color. I'm going to take
+the green, and take the pixel that is 150
+
+289
+00:25:00,000 --> 00:25:04,430
+pixels forward and set it to be the
+current color. Then, I'll do the same
+
+290
+00:25:04,430 --> 00:25:11,770
+thing with the 150 pixels for the blue. So
+I'm essentially just pulling apart the
+
+291
+00:25:11,770 --> 00:25:18,390
+different red, green, blues, and I'm
+moving them to either side so that when
+
+292
+00:25:18,390 --> 00:25:22,400
+we're working it we're going to be able to
+see the different ones that we're working
+
+293
+00:25:22,400 --> 00:25:26,710
+with. So I'm going to take that "rgbSplit"
+function. I'm going to comment out this
+
+294
+00:25:26,710 --> 00:25:33,390
+pixels one. I'll use this one, "pixels =
+rgbSplit(pixels)". Now,
+
+295
+00:25:33,390 --> 00:25:38,210
+when you refresh, you should see your red,
+green, and your blue channels sort of
+
+296
+00:25:38,210 --> 00:25:44,830
+showing up where we have it. I think we
+can go down here and maybe change this one
+
+297
+00:25:44,830 --> 00:25:49,140
+to 550 maybe. I don't know. I'm just m-...
+There we go. You see the blue.
+
+298
+00:25:49,140 --> 00:25:57,130
+My face, which is blue, it's 550 pixels
+off. Then, if I get to the edge of the
+
+299
+00:25:57,130 --> 00:26:01,410
+screen here, it starts to wrap around to
+the other edge of the screen.
+
+300
+00:26:01,410 --> 00:26:04,990
+Because at a certain point, the pixels on
+the very left-hand side,
+
+301
+00:26:04,990 --> 00:26:10,910
+it's going to wrap around. Of course, you
+can play with this, make this 500.
+
+302
+00:26:10,910 --> 00:26:17,260
+Whoa. That's way more fun. I really like
+that. Then, I also figured out that if you
+
+303
+00:26:17,260 --> 00:26:25,090
+go up right here and you take your CTX
+Global Alpha to be 0.1,
+
+304
+00:26:25,090 --> 00:26:31,560
+what that's going to do is it's going to
+right the actual one that we have.
+
+305
+00:26:31,560 --> 00:26:35,830
+But the ones that are underneath it are
+still going to show through for 10 more
+
+306
+00:26:35,830 --> 00:26:39,010
+frames. The reason that that is, is
+because we're just like putting a
+
+307
+00:26:39,010 --> 00:26:43,840
+transparency of 10% of the current image
+on top, and we're just stacking and
+
+308
+00:26:43,840 --> 00:26:48,390
+stacking, and stacking. So as it goes, it
+sort of like follows you around.
+
+309
+00:26:48,390 --> 00:26:55,420
+You can make that 0.8 and it would still
+be ghosting, just a little bit less of an
+
+310
+00:26:55,420 --> 00:27:01,100
+actual ghosting effect. Woo. That's
+really, really fun. Cool. Last one up,
+
+311
+00:27:01,100 --> 00:27:05,430
+we want to work with the green screen. So
+we're going to go in here.
+
+312
+00:27:05,430 --> 00:27:11,720
+I have a function called "greenScreen".
+That's going to take in our pixels.
+
+313
+00:27:11,720 --> 00:27:16,980
+Again, I'm just going to take this from
+the answer here and explain it to you,
+
+314
+00:27:16,980 --> 00:27:24,980
+because there's a whole bunch of stuff
+that's going on here. So I pasted it in
+
+315
+00:27:24,980 --> 00:27:31,160
+here. First of all, we've got this Levels
+object here, and that's going to hold our
+
+316
+00:27:31,160 --> 00:27:35,770
+minimum and maximum green. Because the way
+that green screen works is that you say,
+
+317
+00:27:35,770 --> 00:27:41,530
+"Give me all the colors in between this
+RGB value, and take them out." Usually,
+
+318
+00:27:41,530 --> 00:27:46,630
+that's like you find a certain range of
+special greens, and then you take those
+
+319
+00:27:46,630 --> 00:27:50,170
+ones out and they don't occur in the
+people's clothing and what not.
+
+320
+00:27:50,170 --> 00:27:57,620
+So we have started with some blank levels.
+Then, I've grabbed every single RGB input.
+
+321
+00:27:57,620 --> 00:28:04,210
+Actually, this conversion to array is no
+longer needed. So that's all six of these
+
+322
+00:28:04,210 --> 00:28:10,840
+sliders here. Then, I've set the Red Min,
+Red Max, Green Min, Green Max,
+
+323
+00:28:10,840 --> 00:28:17,420
+Blue Min, and Blue Max to be on that. So
+if you were to console.log the levels,
+
+324
+00:28:17,420 --> 00:28:22,570
+and we were to go up here... Take off the
+RGB split and the alpha.
+
+325
+00:28:22,570 --> 00:28:34,230
+Say "pixels = greenScreen(pixels)". Check
+out our console here.
+
+326
+00:28:34,230 --> 00:28:38,220
+You see that we've got these objects
+happening, which is going to give us the
+
+327
+00:28:38,220 --> 00:28:46,000
+Red Min, Red Max, etc. , etc. Okay? Good.
+Then, we have a huge four-loop,
+
+328
+00:28:46,000 --> 00:28:49,710
+just like we've done before. We loop over
+every single pixel, figure out what the
+
+329
+00:28:49,710 --> 00:28:54,680
+red, the green, the blue, and the alpha
+are, and then we say, "The red and the
+
+330
+00:28:54,680 --> 00:28:56,790
+green, and the blue, and the red, and the
+green, and the blue,
+
+331
+00:28:56,790 --> 00:29:03,150
+if it's anywhere in between those min and
+max values," that's what this huge if
+
+332
+00:29:03,150 --> 00:29:09,130
+statement does, "we take it out." Why?
+Because the fourth pixel is the alpha,
+
+333
+00:29:09,130 --> 00:29:13,930
+which is the transparency pixel, and if
+you set that to zero, that's going to be
+
+334
+00:29:13,930 --> 00:29:18,800
+totally transparent. Rather than 255,
+which would be totally there.
+
+335
+00:29:18,800 --> 00:29:25,640
+So if we give that a save now and you play
+around with these sliders now,
+
+336
+00:29:25,640 --> 00:29:30,790
+you can just change your min and your max
+red, green, and if you have a bit of a
+
+337
+00:29:30,790 --> 00:29:34,070
+green screen... Or I've done it before
+where I've got a pink bristle board and
+
+338
+00:29:34,070 --> 00:29:39,370
+put it behind me, and I found that slice
+of the rainbow where we want to pull that
+
+339
+00:29:39,370 --> 00:29:43,340
+specific pink or blue out. In this case,
+I'm just pulling out random colors that
+
+340
+00:29:43,340 --> 00:29:50,550
+seem to match. It's kind of fun to work
+with. So that is it. That was a big one.
+
+341
+00:29:50,550 --> 00:29:54,080
+I know that I went a little bit fast. But
+this is one where I want you to go back
+
+342
+00:29:54,080 --> 00:29:58,040
+and just play with it. Start to make your
+own filters. Now that you understand that
+
+343
+00:29:58,040 --> 00:30:03,000
+it's just a huge array of color values,
+and especially if you understand how color
+
+344
+00:30:03,000 --> 00:30:06,650
+and math relate to each other, you can
+start to make some really cool,
+
+345
+00:30:06,650 --> 00:30:10,520
+fun filters with them. I'd love to see any
+of the filters that you do make.
+
+346
+00:30:10,520 --> 00:30:14,276
+Thanks a lot. Guess what?
+I will see you tomorrow.
+
+347
+00:30:14,276 --> 00:30:16,276
+♪ [music] ♪

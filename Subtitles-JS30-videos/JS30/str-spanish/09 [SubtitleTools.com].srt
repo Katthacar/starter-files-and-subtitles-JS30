@@ -1,0 +1,496 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,395 --> 00:00:03,900
+♪ [música] ♪
+
+3
+00:00:08,951 --> 00:00:13,030
+Este es un video rápido sobre algunas herramientas de desarrollo y trucos de consola.
+
+4
+00:00:13,030 --> 00:00:16,610
+Es probable que ya conozcas la mayoría de estos, pero espero que solo aprendas
+
+5
+00:00:16,610 --> 00:00:20,510
+como uno o dos pequeños nuggets de ver este video rápido.
+
+6
+00:00:20,510 --> 00:00:23,850
+Entonces, lo que tenemos aquí es que tengo una etiqueta de párrafo, cuando haces clic en ella,
+
+7
+00:00:23,850 --> 00:00:27,430
+Va a ejecutar una función llamada "makeGreen". Esta función aquí.
+
+8
+00:00:27,430 --> 00:00:31,270
+Y acabo de hacer eso en línea para simplificar. Podría haber añadido
+
+9
+00:00:31,270 --> 00:00:34,370
+oyente del evento, no hay diferencia allí. Y cuando lo corro,
+
+10
+00:00:34,370 --> 00:00:38,210
+simplemente tomará el primer párrafo de la página y lo hará verde y arriba del
+
+11
+00:00:38,210 --> 00:00:42,400
+tamaño, ¿verdad? Así que eso es algo que le pasa a la gente, donde me preguntan,
+
+12
+00:00:42,400 --> 00:00:47,102
+"Hey, tengo algunos JavaScript ejecutándose en la página pero no sé qué está causando
+
+13
+00:00:47,102 --> 00:00:50,016
+eso. No sé qué es lo que realmente lo está cambiando. Sé que es JavaScript,
+
+14
+00:00:50,016 --> 00:00:55,020
+pero no sé dónde se está ejecutando el JavaScript que está cambiando ". Entonces, ¿qué
+
+15
+00:00:55,020 --> 00:01:01,060
+puede hacerlo usted puede inspeccionarlo, encontrarlo en su DOM aquí, romper,
+
+16
+00:01:01,060 --> 00:01:04,550
+modificaciones de atributos. Hay algunos otros aquí, como cuando eliminas
+
+17
+00:01:04,550 --> 00:01:09,114
+un niño o usted iba a cambiar uno de los textos o atributos de los niños o
+
+18
+00:01:09,114 --> 00:01:13,142
+algo como eso. Queremos este, modificación de atributos. Ahora, cuando tu
+
+19
+00:01:13,142 --> 00:01:19,160
+haga clic en él, aparecerá un comando de depuración. Es un punto de quiebre para nosotros
+
+20
+00:01:19,160 --> 00:01:25,000
+Aquí, y luego se detendrá. Exactamente donde se detuvo, nos dirá qué
+
+21
+00:01:25,000 --> 00:01:29,460
+El párrafo es y nos mostrará la línea de código que está causando ese atributo.
+
+22
+00:01:29,460 --> 00:01:36,300
+Puedo hacer una pausa y pasar, y hemos terminado. Así que podemos quitar eso solo por
+
+23
+00:01:36,300 --> 00:01:41,560
+volviendo a nuestro panel de elementos, y quitandonos eso.
+
+24
+00:01:41,560 --> 00:01:45,270
+A continuación, tenemos un montón de consolas. cosas, y probablemente sabes
+
+25
+00:01:45,270 --> 00:01:50,860
+sobre console.log, como, hola, que te dará, obviamente, que has visto esto
+
+26
+00:01:50,860 --> 00:01:55,010
+Un millón de veces, lo registrará. También puedes interpolar valores en él,
+
+27
+00:01:55,010 --> 00:02:01,130
+Así que console.log, Hola, soy una cadena% s! Y luego, pase lo que pase.
+
+28
+00:02:01,130 --> 00:02:10,917
+los otros, es posible que haya hecho otro lenguaje como PHP en el pasado donde
+
+29
+00:02:10,917 --> 00:02:15,514
+hace esto por ti, y eso interpolará lo que hayas pasado como
+
+30
+00:02:15,514 --> 00:02:20,322
+el segundo en el primero. Ahora, ya no uso mucho eso ahora
+
+31
+00:02:20,322 --> 00:02:30,364
+que tenemos back-ticks ES6, prefiero hacerlo, console.log ('Hola soy $')
+
+32
+00:02:30,364 --> 00:02:33,580
+Pero depende totalmente de ti, cuál te gustaría aquí.
+
+33
+00:02:33,580 --> 00:02:37,156
+También podemos aplicar estilo a nuestro texto con% c.
+
+34
+00:02:37,156 --> 00:02:43,785
+Entonces, console.log ('Soy un gran texto')
+
+35
+00:02:43,785 --> 00:02:50,806
+Y si ponemos un% c delante de allí, y en el segundo, hacemos cosas como
+
+36
+00:02:50,806 --> 00:03:00,250
+font-size, y puedes aplicar cualquier fuente CSS a ella, 50px. Whoa! Soy un gran texto.
+
+37
+00:03:00,250 --> 00:03:07,756
+También podemos hacer cosas como fondo: rojo. Whoa! Puedes hacer cosas como
+
+38
+00:03:07,756 --> 00:03:18,902
+text-shadow: 10px 10px 0 azul. Aquí tienes el punto.
+
+39
+00:03:18,902 --> 00:03:22,820
+Puedes hacer algunas cosas bastante divertidas con eso. Así que haces% c delante de lo que
+
+40
+00:03:22,820 --> 00:03:26,510
+desea diseñar, y luego el segundo argumento que pase a la consola será
+
+41
+00:03:26,510 --> 00:03:29,773
+Interpolado a la derecha allí. Voy a comentar eso
+
+42
+00:03:29,773 --> 00:03:30,818
+porque es odioso
+
+43
+00:03:30,818 --> 00:03:37,600
+Tenemos console.warn, que dirá, "OH NOOO" Y eso nos dará una advertencia,
+
+44
+00:03:37,600 --> 00:03:41,240
+y nos dirá el rastro de pila en cuanto a donde se llamó. Tenemos
+
+45
+00:03:41,240 --> 00:03:46,027
+console.error que lanzará, bueno, lo siento, no lanzará un error.
+
+46
+00:03:46,027 --> 00:03:51,190
+Solo mostrará un error en la consola. Y de nuevo, eso también dará
+
+47
+00:03:51,190 --> 00:03:55,210
+un rastro de pila en cuanto a donde estaba eso. Si tuviéramos un par de funciones llamando para obtener
+
+48
+00:03:55,210 --> 00:03:57,955
+hasta ese punto, le daría todo el seguimiento de la pila allí.
+
+49
+00:03:57,955 --> 00:04:01,960
+Tenemos console.info que te dará un poco de información,
+
+50
+00:04:01,960 --> 00:04:08,056
+Me divertí ... Espera, déjame encontrarte un dato divertido, aquí.
+
+51
+00:04:08,056 --> 00:04:11,341
+Los cocodrilos comen de tres a cuatro personas por año. Eso es un hecho divertido.
+
+52
+00:04:11,341 --> 00:04:14,743
+Debería ser console.funfact, pero es información, y le dará el poco
+
+53
+00:04:14,743 --> 00:04:16,949
+"i" info uno.
+
+54
+00:04:16,949 --> 00:04:24,790
+Puedes usar console.assert para verificar si las cosas son ciertas. Así que si uno es igual a uno
+
+55
+00:04:24,790 --> 00:04:31,750
+dirás "¡Eso está mal!" Y si corres esto, no ves nada.
+
+56
+00:04:31,750 --> 00:04:36,630
+¿Por qué? Porque eso es verdad. Console.assert solo disparará si algo está mal.
+
+57
+00:04:36,630 --> 00:04:40,750
+Y luego le dirá: "Falló la afirmación. Eso está mal". Si fuera a agarrar
+
+58
+00:04:40,750 --> 00:04:48,471
+el párrafo en la página, por lo tanto, const p = document.querySelector,
+
+59
+00:04:48,471 --> 00:04:59,090
+"párrafo", y luego podría afirmar que "p.classlist.contains (ouch)" y usted
+
+60
+00:04:59,090 --> 00:05:07,210
+podría decirle al usuario: "¡Eso está mal!" Y si la lista de clases no contiene "ouch"
+
+61
+00:05:07,210 --> 00:05:11,180
+le dirá que es incorrecto o debe proporcionar clase ... obtendrá el punto aquí.
+
+62
+00:05:11,180 --> 00:05:17,060
+Puedes probar algo y si es falso, arrojará este error a tu
+
+63
+00:05:17,060 --> 00:05:21,130
+consola aqui Y si es verdad, no pasará nada. Así que no tienes que tener un
+
+64
+00:05:21,130 --> 00:05:22,900
+"si" declaración aquí.
+
+65
+00:05:22,900 --> 00:05:29,020
+Tenemos "console.clear" que borrará tu consola. Si realmente quieres desordenar
+
+66
+00:05:29,020 --> 00:05:32,760
+con un desarrollador puedes poner eso en la parte inferior de tu javascript
+
+67
+00:05:32,760 --> 00:05:36,817
+expediente. Porque eso es realmente frustrante. Viendo elementos del DOM. Así que tengo esto
+
+68
+00:05:36,817 --> 00:05:40,597
+párrafo aquí, y si tuviera que "console.log" ese párrafo que
+
+69
+00:05:40,597 --> 00:05:43,450
+seleccionado anteriormente, ve esto, el párrafo real.
+
+70
+00:05:43,450 --> 00:05:47,433
+¿Pero cómo sabes cuáles son los métodos disponibles?
+
+71
+00:05:47,433 --> 00:05:50,962
+y todas las propiedades en ese elemento? Bien si quieres usar
+
+72
+00:05:50,962 --> 00:05:54,956
+"console.dir", eso te dará un menú desplegable. Ese es el elemento
+
+73
+00:05:54,956 --> 00:05:59,890
+"console.log". "Console.dir" le permitirá abrirlo y echar un vistazo a
+
+74
+00:05:59,890 --> 00:06:05,530
+la lista de clases Whoa! Abre eso hasta arriba. El niño conoce a los niños,
+
+75
+00:06:05,530 --> 00:06:09,970
+el conjunto de datos de ese específico, el estilo, todas las diferentes propiedades y
+
+76
+00:06:09,970 --> 00:06:12,680
+Métodos que viven. Si quieres ver todos los diferentes métodos, abre la ventana
+
+77
+00:06:12,680 --> 00:06:17,310
+prototipo. Todas las cosas que viven en ese elemento, "console.dir" le mostrarán,
+
+78
+00:06:17,310 --> 00:06:22,220
+mientras que "console.log" te mostrará el elemento real.
+
+79
+00:06:22,220 --> 00:06:25,510
+Agrupando cosas juntas. Este es realmente muy bueno Solo voy a
+
+80
+00:06:25,510 --> 00:06:33,281
+ejecuta otro "console.clear" aquí. Si tuviera que tomar esta serie de "perros" que he
+
+81
+00:06:33,281 --> 00:06:42,730
+Se levantó en la parte superior aquí y recorre cada uno. Así que "console.dogs.forEach", "dog",
+
+82
+00:06:42,730 --> 00:06:47,080
+y luego para cada uno de estos solo voy a hacer "console.log (` Esto es
+
+83
+00:06:47,080 --> 00:06:52,740
+$ `)" y "Esto es Snickers", "Este es Hugo." Pero y si tengo algo
+
+84
+00:06:52,740 --> 00:07:02,840
+¿otra información? Años. Quiero tener como otro, "dog.name" es "dog.age"
+
+85
+00:07:02,840 --> 00:07:14,310
+años. De acuerdo, y quizás otro, "dog.name", "dog.age * 7" dog años.
+
+86
+00:07:14,310 --> 00:07:18,060
+Así que esto se pone un poco peludo, hay mucho que hacer aquí, e imagina que estabas haciendo
+
+87
+00:07:18,060 --> 00:07:22,230
+Más cosas que solo la consola de registro de tres cadenas. Tienes un montón de cosas
+
+88
+00:07:22,230 --> 00:07:30,550
+Entonces, lo que podemos hacer es decir "console.group" y usted puede iniciarlo.
+
+89
+00:07:30,550 --> 00:07:36,820
+y usaremos el nombre del perro aquí, "dog.name". Y cuando termines, dices.
+
+90
+00:07:36,820 --> 00:07:43,810
+"console.groupEnd" y luego pasa la misma cadena que usó para definir
+
+91
+00:07:43,810 --> 00:07:49,000
+ese grupo Ahora, cuando lo abres, tienes "Snickers" y "Hugo",
+
+92
+00:07:49,000 --> 00:07:53,890
+estos son los dos grupos que hemos creado al pasarlo, y usted puede cerrar,
+
+93
+00:07:53,890 --> 00:07:57,930
+Abre, y ciérralos. Si sientes que esto todavía es un poco desordenado,
+
+94
+00:07:57,930 --> 00:08:02,530
+puede cambiar "grupo" con "grupo Controleado", y por defecto lo harán
+
+95
+00:08:02,530 --> 00:08:05,540
+estar colapsado. Lo cual es realmente bueno porque no necesariamente necesitas eso.
+
+96
+00:08:05,540 --> 00:08:09,510
+información, pero si lo hace, puede abrir la que está asociada.
+
+97
+00:08:09,510 --> 00:08:14,240
+Buscando y ver toda la información que está asociada para eso.
+
+98
+00:08:14,240 --> 00:08:21,880
+"Console.count" contará sin embargo, muchas veces que use una palabra específica,
+
+99
+00:08:21,880 --> 00:08:27,200
+o número, u objeto, o nodo DOM, o cualquier cosa que tenga. Así que "console.count"
+
+100
+00:08:27,200 --> 00:08:32,520
+"Wes", corro eso un par de veces, me va a decir cuántas veces tengo
+
+101
+00:08:32,520 --> 00:08:37,124
+ejecutarlo. Si tuviera que tomar y decir "Steve" en el medio, y luego hacer un par más
+
+102
+00:08:37,124 --> 00:08:42,047
+De esos, otro aquí abajo y un par más. Así que estoy por todo el lugar
+
+103
+00:08:42,047 --> 00:08:50,615
+aquí. Simplemente los registrará en tiempo real y me dirá cuántos hemos
+
+104
+00:08:50,615 --> 00:08:52,577
+contados en ese momento.
+
+105
+00:08:52,577 --> 00:08:56,740
+Por último, tenemos "Tiempo". Si quieres ver cuánto tarda algo,
+
+106
+00:08:56,740 --> 00:09:03,910
+Lo que puedes hacer es iniciar un temporizador. Así que "console.time", diremos "fetchingData",
+
+107
+00:09:03,910 --> 00:09:17,970
+entonces podrías hacer algo que lleve tiempo, como buscar algunos datos desde github.
+
+108
+00:09:17,970 --> 00:09:23,460
+Y cuando haya terminado, simplemente ejecute "console.timeEnd" y luego pase la
+
+109
+00:09:23,460 --> 00:09:29,250
+La misma cadena que usaste para iniciarla. Y obviamente puedes "console.log" tus datos
+
+110
+00:09:29,250 --> 00:09:35,331
+En ese tiempo. Entonces eso nos dirá, la obtención de datos tomó 160 milisegundos,
+
+111
+00:09:35,331 --> 00:09:42,178
+esta vez 104 milisegundos, 57, 62, 75, etc., etc. Puedes ver cuánto tiempo estos
+
+112
+00:09:42,178 --> 00:09:47,147
+las cosas estan tomando Sé que también hay "performance.now" en el navegador,
+
+113
+00:09:47,147 --> 00:09:52,011
+pero esta es una buena manera solo para tener una idea rápida de cuánto tardan tus cosas.
+
+114
+00:09:52,011 --> 00:09:55,006
+No tienes que tener variables ni nada de eso.
+
+115
+00:09:55,006 --> 00:09:56,736
+Sólo tienes que empezar y detenerlos.
+
+116
+00:09:56,736 --> 00:10:00,335
+Finalmente, hay una última, que es "console.table", pero te he estado mostrando
+
+117
+00:10:00,335 --> 00:10:03,806
+que uno en cada video solo hasta ahora. Probablemente lo sepas.
+
+118
+00:10:03,806 --> 00:10:09,878
+Pero puede tomar una matriz de objetos, por lo que una matriz que es "perros" de objetos,
+
+119
+00:10:09,878 --> 00:10:13,570
+que es cada perro, y asumiendo que todos tienen las mismas propiedades,
+
+120
+00:10:13,570 --> 00:10:17,982
+como "nombre" y "edad", los mostrará en una bonita tabla para ti,
+
+121
+00:10:17,982 --> 00:10:21,102
+como eso. Se pone un poco peludo cuando tienes otros pocos,
+
+122
+00:10:21,102 --> 00:10:25,026
+Pero siempre puedes arrastrar y soltar las cosas, diferentes partes que quieras.
+
+123
+00:10:25,026 --> 00:10:29,868
+Eso es. Esperemos que hayas aprendido una cosa o dos. ¡Te veo mañana!
+
+124
+00:10:29,868 --> 00:10:32,841
+♪ [música] ♪
+

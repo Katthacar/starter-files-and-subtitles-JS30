@@ -1,0 +1,776 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:02,993 --> 00:00:06,282
+♪ [música] ♪
+
+3
+00:00:08,440 --> 00:00:11,920
+Hoy vamos a crear lo que me gusta llamar una función de escritura anticipada donde tengo un
+
+4
+00:00:11,920 --> 00:00:15,690
+Lista de ciudades y estados con su población en ella. Cuando escribo algo en
+
+5
+00:00:15,690 --> 00:00:20,040
+Como nuevo, me mostrará todo lo que coincida con la palabra nuevo.
+
+6
+00:00:20,040 --> 00:00:27,044
+Si escribo en Nueva York o Boston o en el oeste, me mostrará cada ciudad.
+
+7
+00:00:27,044 --> 00:00:32,720
+y el estado que coincide con lo que he escrito junto con la población correspondiente
+
+8
+00:00:32,720 --> 00:00:35,820
+Ahora, estos datos provendrán de una fuente externa.
+
+9
+00:00:35,820 --> 00:00:40,199
+Lo que hice fue ir a GitHub aquí y encontré una ciudad. JSON
+
+10
+00:00:40,199 --> 00:00:45,580
+archivo que incluirá el nombre de la ciudad, el nombre del estado, así como el
+
+11
+00:00:45,580 --> 00:00:50,376
+La población que tenemos aquí y la he puesto en una URL. Así que lo primero que nosotros
+
+12
+00:00:50,376 --> 00:00:55,820
+Lo que hay que hacer es, tenemos que ir realmente a buscar estos datos, que es una gran variedad y
+
+13
+00:00:55,820 --> 00:01:00,520
+luego, una vez que los datos están de vuelta, cada vez que alguien escribe en este cuadro específico,
+
+14
+00:01:00,520 --> 00:01:05,260
+vamos a filtrar esa matriz hasta un subconjunto de todos los que, o bien el
+
+15
+00:01:05,260 --> 00:01:09,000
+El nombre de la ciudad o el nombre del estado coincidirán.
+
+16
+00:01:09,000 --> 00:01:12,280
+Entonces, ¿cómo vamos a hacer eso? Bueno, en primer lugar, necesitamos una matriz vacía para poner nuestro
+
+17
+00:01:12,280 --> 00:01:16,790
+en ciudades así que digamos, ciudades const es igual a una matriz vacía y luego necesitamos
+
+18
+00:01:16,790 --> 00:01:22,060
+Sal a buscar nuestros datos. Vamos a utilizar una nueva API en el navegador llamado
+
+19
+00:01:22,060 --> 00:01:28,280
+ha podido recuperar. Y si has hecho una solicitud HTTP o HTML HTTP en el navegador antes,
+
+20
+00:01:28,280 --> 00:01:33,980
+Usted probablemente ha utilizado como JQuery.dol. JSON o una biblioteca como axios.
+
+21
+00:01:33,980 --> 00:01:38,620
+Sin embargo, el navegador ahora tiene uno nuevo incorporado que se llama fetch.
+
+22
+00:01:38,620 --> 00:01:41,742
+Así que eso es lo que vamos a usar. Vamos a llamar a fetch y tú traes el final.
+
+23
+00:01:41,742 --> 00:01:49,150
+punto. Y lo que hará la recuperación, si está acostumbrado a ejecutar una devolución de llamada como esta
+
+24
+00:01:49,150 --> 00:01:51,990
+función, y usted tiene los datos, y luego puede constar el registro de los datos,
+
+25
+00:01:51,990 --> 00:01:57,130
+Funciona de forma un poco diferente a eso, ya que la recuperación en sí misma devolverá lo que
+
+26
+00:01:57,130 --> 00:02:01,450
+Se llama promesa y te lo enseñaré. Si fueras a poner esto
+
+27
+00:02:01,450 --> 00:02:07,980
+en una variable, const prom es igual a fetch y console log prom. Abre esa ventosa en
+
+28
+00:02:07,980 --> 00:02:13,980
+nuestro navegador, ya ves eso, oh prom. Prom, aquí vamos. ¿Ves eso?
+
+29
+00:02:13,980 --> 00:02:18,970
+No devuelve los datos, devuelve lo que se llama una promesa que es una especie de
+
+30
+00:02:18,970 --> 00:02:23,420
+como un algo eventualmente volverá de esta búsqueda.
+
+31
+00:02:23,420 --> 00:02:27,860
+Entonces, la forma en que podemos trabajar con la promesa es que llamas a .then en contra.
+
+32
+00:02:27,860 --> 00:02:33,820
+Así que es un .then. Y va a volver a nosotros como una masa de datos.
+
+33
+00:02:33,820 --> 00:02:37,570
+Me gusta llamarlo una gota. Y te mostraré por qué. Usted podría pensar como
+
+34
+00:02:37,570 --> 00:02:43,160
+"Oh, ¿por qué no sería esa la lista de ciudades?" Así que de eso vamos a console.log
+
+35
+00:02:43,160 --> 00:02:49,710
+la gota. Así que esto es lo que vuelve. Respuesta, por supuesto, funcionó, doscientos,
+
+36
+00:02:49,710 --> 00:02:57,460
+bien es cierto bueno Encabezados, abrimos el cuerpo. Sólo hay una secuencia legible
+
+37
+00:02:57,460 --> 00:03:04,990
+bloqueado falso T, como lo que está pasando aquí? Y lo que pasa es que los datos que
+
+38
+00:03:04,990 --> 00:03:10,656
+regresa de nuestro alcance, no sabe qué tipo de datos es todavía.
+
+39
+00:03:10,656 --> 00:03:14,550
+Simplemente podría ser una imagen, podría ser algo de HTML, podría ser algo de música que sea
+
+40
+00:03:14,550 --> 00:03:18,950
+regresando. Sabemos explícitamente que es JSON.
+
+41
+00:03:18,950 --> 00:03:22,716
+Así que podrías pensar: "Está bien, está bien. ¿Por qué no hacemos JSON.parse, verdad?
+
+42
+00:03:22,716 --> 00:03:27,930
+Eso debería funcionar. "Pero no porque el blob tiene que convertirse desde
+
+43
+00:03:27,930 --> 00:03:33,710
+los datos en bruto que se encuentra en JSON. Entonces lo que haces de esto es que llamas blob.
+
+44
+00:03:33,710 --> 00:03:38,040
+Y si miras este blob y abres el prototipo, verás que hay un
+
+45
+00:03:38,040 --> 00:03:44,720
+método llamado JSON justo allí. Así que si llamas a blob.JSON, eso mismo va a
+
+46
+00:03:44,720 --> 00:03:49,500
+Regresa otra promesa a la que vamos a llamar .then on. Esto se está poniendo un poco
+
+47
+00:03:49,500 --> 00:03:55,567
+poco peludo, así que vamos a hacer esto. Oh, sí, eso se ve mucho mejor. A continuación, y eso es
+
+48
+00:03:55,567 --> 00:04:00,823
+Le daremos los datos en bruto con los que podemos consolar estos datos aquí.
+
+49
+00:04:01,698 --> 00:04:07,150
+Ahora, cuando actualizo, obtenemos una gran variedad de las 1000 ciudades y estados y
+
+50
+00:04:07,150 --> 00:04:11,910
+Población y latitud y longitud de cada uno. Ahora como consigo esto
+
+51
+00:04:11,910 --> 00:04:18,407
+datos en ciudades? Podrías pensar, "Oh, solo haré una ciudad es igual a datos, ¿verdad?
+
+52
+00:04:18,407 --> 00:04:23,300
+No hay problema allí. Asignación a una variable const. Así que solo tratamos de
+
+53
+00:04:23,300 --> 00:04:27,890
+elimine una variable const reasignándola a los datos.
+
+54
+00:04:27,890 --> 00:04:32,330
+Entonces, lo que podrías hacer es decir "dejar ciudades" y esa es una buena manera de avanzar.
+
+55
+00:04:32,330 --> 00:04:38,140
+sobre esto como ciudades por matriz o si te gusta mantener tus variables const porque
+
+56
+00:04:38,140 --> 00:04:44,340
+Si no desea que la matriz cambie, puede enviar los elementos a las ciudades.
+
+57
+00:04:44,340 --> 00:04:52,530
+Así que podrías pensar, "De acuerdo, ciudades.pulso" y diremos datos y veremos ciudades.
+
+58
+00:04:52,530 --> 00:04:57,770
+Bien, esta es una matriz de una cosa pero si abres esa matriz entonces dices,
+
+59
+00:04:57,770 --> 00:05:01,170
+esta bien no es eso Es una matriz de una matriz. Ahora, estamos anidados.
+
+60
+00:05:01,170 --> 00:05:06,690
+Entonces, ¿cómo puedo obtener cada elemento para ir a las ciudades? Bueno, tu deberias saber eso
+
+61
+00:05:06,690 --> 00:05:10,660
+cities.push, si presionas algo como uno, dos, tres, cuatro,
+
+62
+00:05:10,660 --> 00:05:15,660
+y luego mirar ciudades, notará que cada vez que tengo otro argumento para
+
+63
+00:05:15,660 --> 00:05:20,980
+empujar, lo pondrá como su propio elemento en la matriz. Y la forma en que podemos cambiar.
+
+64
+00:05:20,980 --> 00:05:27,167
+esta matriz en argumentos individuales es que nos extendemos en ella. Un spread es parte de ES6.
+
+65
+00:05:27,167 --> 00:05:29,580
+Tengo un montón de videos en mi otra serie ES6,
+
+66
+00:05:29,580 --> 00:05:36,060
+pero simplemente se propaga en una función o se disemina en este método de empuje y eso lo hará
+
+67
+00:05:36,060 --> 00:05:41,720
+Danos ciudades adecuadas, ahí vamos. Ahora que es una matriz de mil diferentes
+
+68
+00:05:41,720 --> 00:05:45,240
+ciudades que tenemos. Bueno. Ahora estoy feliz con eso.
+
+69
+00:05:45,240 --> 00:05:48,850
+Lo siguiente que debemos hacer es cuando alguien escribe en este cuadro aquí,
+
+70
+00:05:48,850 --> 00:05:53,390
+Necesito ejecutar una función que tome esta matriz masiva y la filtre hacia abajo
+
+71
+00:05:53,390 --> 00:05:58,340
+en un subconjunto donde puedes escucharlo. Así que voy a crear una función.
+
+72
+00:05:58,340 --> 00:06:05,570
+Aquí se llama encontrar coincidencias. Y eso va a tomar en una palabra para emparejar,
+
+73
+00:06:05,570 --> 00:06:09,970
+y también va a tomar en la matriz de ciudades como queremos pasar en los datos
+
+74
+00:06:09,970 --> 00:06:14,590
+Esta función que va a filtrar. Y a partir de eso, vamos a volver.
+
+75
+00:06:14,590 --> 00:06:18,266
+matriz de estas ciudades, pero vamos a llamar filtro en el que va a
+
+76
+00:06:18,266 --> 00:06:22,800
+tipo de cincel hacia abajo en un subconjunto de esa matriz inicial.
+
+77
+00:06:22,800 --> 00:06:28,140
+Así que cada uno tendrá un lugar que es cada ciudad y estado individual y
+
+78
+00:06:28,140 --> 00:06:32,690
+La población y todo eso. Y a partir de eso, tenemos que averiguar,
+
+79
+00:06:32,690 --> 00:06:42,550
+Aquí debemos averiguar si la ciudad o el estado coinciden con lo que se buscó.
+
+80
+00:06:42,550 --> 00:06:50,810
+¿Derecha? Como si tuviera que correr coincidencias con Bos, debería mostrarme Boston y
+
+81
+00:06:50,810 --> 00:06:57,440
+Cualquier otra ciudad tiene la palabra Bos en ella. Así que necesitamos un par de acceso regular.
+
+82
+00:06:57,440 --> 00:07:05,600
+porque podrías pensar que "Bien, solo regresaremos place.city.match". Y
+
+83
+00:07:05,600 --> 00:07:11,770
+normalmente se podría hacer algo como esto donde se busca la palabra bos y si
+
+84
+00:07:11,770 --> 00:07:16,440
+coincide, entonces será verdad, y nos daremos un subconjunto.
+
+85
+00:07:16,440 --> 00:07:22,220
+Pero el problema es que la palabra para emparejar no siempre va a ser bos o siempre
+
+86
+00:07:22,220 --> 00:07:26,840
+va a ser nuevo, o siempre va a ser York, va a ser una variable,
+
+87
+00:07:26,840 --> 00:07:31,370
+y la variable es donde coincidir. ¿Así que acaba de aparecer en el partido de trabajo?
+
+88
+00:07:31,370 --> 00:07:35,591
+No, eso no funciona porque en realidad buscará la palabra que coincida
+
+89
+00:07:35,591 --> 00:07:41,800
+Entonces, ¿cómo poner una variable en una expresión regular? Bueno, no puedes solo
+
+90
+00:07:41,800 --> 00:07:46,260
+hazlo en esta sintaxis aquí. Necesitamos crear una expresión regular.
+
+91
+00:07:46,260 --> 00:07:55,530
+fuera de ella Así que vamos arriba y diremos que const regX es igual a nuevo regEXP
+
+92
+00:07:55,530 --> 00:07:59,110
+y usted pasa a la palabra para que coincida, y eso va a ser lo que sea la persona
+
+93
+00:07:59,110 --> 00:08:05,154
+Pasa en Bos, New, York, etc, etc. Y luego le pasas cualquiera de las banderas que
+
+94
+00:08:05,154 --> 00:08:08,328
+usted quiere. Así que G va a ser global, lo que significa que va a ver a través de
+
+95
+00:08:08,328 --> 00:08:14,415
+toda la cadena para ese específico Y va a ser insensible el significado.
+
+96
+00:08:14,415 --> 00:08:20,839
+que no es una persona terrible o que es insensible, va a coincidir con minúsculas
+
+97
+00:08:20,839 --> 00:08:25,608
+así como en mayúsculas, independientemente de lo que estés buscando. Así que ahora llamamos punto
+
+98
+00:08:25,608 --> 00:08:31,140
+coincide con nuestro regX aquí. Y eso va a tomar el lugar. Ciudad en.
+
+99
+00:08:31,140 --> 00:08:38,270
+Si echamos un vistazo a nuestras ciudades aquí, verás que cada lugar es Nueva York.
+
+100
+00:08:38,270 --> 00:08:43,050
+Y la ciudad va a ser Nueva York. Pero también tenemos que coincidir con el estado
+
+101
+00:08:43,050 --> 00:08:46,940
+que ... eso es un mal ejemplo. Aquí vamos. El estado va a ser California.
+
+102
+00:08:46,940 --> 00:08:51,040
+Así que tenemos que devolver el lugar que city.match regX o el
+
+103
+00:08:51,040 --> 00:08:59,120
+place.state.match regX. Y eso comprobará si la ciudad o el estado tienen o
+
+104
+00:08:59,120 --> 00:09:05,050
+uno, entonces si este es verdadero o este es verdadero, todo será verdad,
+
+105
+00:09:05,050 --> 00:09:09,360
+Y por lo tanto nuestro filtro se va a hacer mucho más pequeño.
+
+106
+00:09:09,360 --> 00:09:15,240
+Así que si tuviera que ejecutar esto, si tuviéramos que decir, encontrar coincidencias, y debemos buscar
+
+107
+00:09:15,240 --> 00:09:22,220
+Para Bos y tenemos que pasar nuestra matriz de ciudades aquí. Lo que nos devuelve es un
+
+108
+00:09:22,220 --> 00:09:28,570
+pequeño conjunto de dos cosas, Boston y Bossier City, bien. Tenemos nuestro hallazgo
+
+109
+00:09:28,570 --> 00:09:35,310
+coincide con la función realizada. Entonces, lo que debemos hacer es crear nuestra función de visualización.
+
+110
+00:09:35,310 --> 00:09:41,860
+Así que digo función, visualizo coincidencias y eso se va a llamar cada vez que alguien
+
+111
+00:09:41,860 --> 00:09:47,090
+cambia el valor aquí. Así que voy a console.log este .value.
+
+112
+00:09:47,090 --> 00:09:55,070
+Y luego vamos a seleccionar esta entrada que estamos trabajando aquí.
+
+113
+00:09:55,070 --> 00:10:00,190
+Entonces, ¿qué es el selector de aquí. Tipo de entrada de la clase de texto es la búsqueda,
+
+114
+00:10:00,190 --> 00:10:05,410
+eso es bueno para mí. Así que voy a bajar aquí por si acaso. Entrada de búsqueda const
+
+115
+00:10:05,410 --> 00:10:13,600
+es igual a document.query selector.search. Y luego también queremos seleccionar este UL
+
+116
+00:10:13,600 --> 00:10:21,780
+Aquí que es sugerencias. Entonces diremos, busque el detector de eventos input.add.
+
+117
+00:10:21,780 --> 00:10:28,130
+Vamos a escuchar el evento de cambio y cuando cambie la entrada,
+
+118
+00:10:28,130 --> 00:10:35,570
+Vamos a correr encontrar fósforos. Salvar. Ahora deberíamos ver cuando lo ejecutamos.
+
+119
+00:10:35,570 --> 00:10:42,150
+Escribe aquí y hago clic afuera, luego ejecuta esa función, oh, tenemos un error.
+
+120
+00:10:42,150 --> 00:10:49,350
+No se puede leer el filtro de propiedades de undefined en nuestro ... oh porque no estamos funcionando bien
+
+121
+00:10:49,350 --> 00:10:55,110
+coincidencias directamente, lo sentimos, estamos ejecutando coincidencias de visualización no encontrar coincidencias.
+
+122
+00:10:55,110 --> 00:11:00,840
+Así que si escribo aquí, como Bos y hago clic afuera, se activará en la consola
+
+123
+00:11:00,840 --> 00:11:05,760
+registra esto, que es el input.value y eso es lo que alguien haya escrito
+
+124
+00:11:05,760 --> 00:11:09,920
+Aquí, nuevo, haga clic fuera. Entonces, ¿por qué necesito hacer clic fuera? Eso es porque el
+
+125
+00:11:09,920 --> 00:11:15,390
+el evento de cambio solo se activa cuando se sale de esa entrada, no siempre que se escribe y
+
+126
+00:11:15,390 --> 00:11:20,250
+tecla Arriba. Así que si quieres que también se dispare y encienda, simplemente duplica que escuchará
+
+127
+00:11:20,250 --> 00:11:26,430
+para el evento clave y volveremos a ejecutar las coincidencias en eso también.
+
+128
+00:11:26,430 --> 00:11:34,490
+Ahora si escribo nuevo, hola, bos, entiendes el punto. Cada vez que pulsamos,
+
+129
+00:11:34,490 --> 00:11:38,460
+nos dirá lo que la persona ha escrito en esa casilla.
+
+130
+00:11:38,460 --> 00:11:43,930
+Ahora lo que queremos hacer es volver a esta función de visualización de coincidencias aquí,
+
+131
+00:11:43,930 --> 00:11:49,410
+y vamos a usar esta función de encontrar coincidencias que construimos.
+
+132
+00:11:49,410 --> 00:11:58,880
+Así que digamos que la matriz de coincidencias const es igual a encontrar coincidencias y vamos a pasar esto
+
+133
+00:11:58,880 --> 00:12:05,840
+.value así como nuestra matriz de ciudades y eso debería darnos la matriz de coincidencias.
+
+134
+00:12:05,840 --> 00:12:11,100
+Vamos a probarlo. Cada vez que escribo, debe ejecutar esta función de llamador encontrar unos
+
+135
+00:12:11,100 --> 00:12:16,928
+que coinciden, bos. Aquí vamos. Así que la primera vez que escribo B, hay mucho
+
+136
+00:12:16,928 --> 00:12:21,140
+de ciudades. La segunda vez que escribo O, un poco menos y luego el tercer tipo,
+
+137
+00:12:21,140 --> 00:12:25,605
+Escribo Bos, me dará esa variedad de solo dos ciudades que tienen
+
+138
+00:12:25,605 --> 00:12:30,290
+emparejado Bueno. Así que tenemos los datos, y eso es realmente lo que me gustaría enfatizar
+
+139
+00:12:30,290 --> 00:12:34,549
+cuando estamos haciendo estas cosas Obtenga sus datos primero, obtenga todas sus funciones en su lugar
+
+140
+00:12:34,549 --> 00:12:39,400
+y luego nos preocuparemos por conectarlo a los oyentes del evento, así como a
+
+141
+00:12:39,400 --> 00:12:41,720
+Creando el HTML que necesitamos allí.
+
+142
+00:12:41,720 --> 00:12:50,240
+Así que primero vamos a hacer un bucle sobre eso. Así que digamos que const HTML es igual a la matriz array
+
+143
+00:12:50,240 --> 00:12:56,540
+y cada uno va a ser el lugar, ¿qué usamos aquí?
+
+144
+00:12:56,540 --> 00:13:02,540
+Sí, lugar, me gusta mantenerlo consistente. Y de cada uno de esos textos de vuelta,
+
+145
+00:13:02,540 --> 00:13:08,180
+va a mantener nuestra lista de elementos LI. Dentro de eso, queremos un lapso con el
+
+146
+00:13:08,180 --> 00:13:17,760
+clase de nombre que solo va a contener la place.city y el place.state y más abajo
+
+147
+00:13:17,760 --> 00:13:22,920
+que vamos a tener un lapso con una clase de población, place.population.
+
+148
+00:13:22,920 --> 00:13:30,860
+Entonces, finalmente, una vez que hayamos mapeado esta matriz, simplemente podemos llamar al punto de sugerencias.
+
+149
+00:13:30,860 --> 00:13:34,060
+¿Y qué son las sugerencias? Ese es el selector cuadrado que hemos hecho aquí abajo.
+
+150
+00:13:34,060 --> 00:13:40,670
+.inner HTML es igual a HTML, que es este HTML que tenemos aquí.
+
+151
+00:13:40,670 --> 00:13:44,550
+Una última cosa es que este mapa devolverá una matriz cuando realmente queremos
+
+152
+00:13:44,550 --> 00:13:50,440
+una cuerda Así que podemos llamarlo rápido. Únete al final, y eso lo convertirá en
+
+153
+00:13:50,440 --> 00:13:56,320
+de una matriz con varios elementos en una cadena grande. Vamos a darle una oportunidad.
+
+154
+00:13:56,320 --> 00:14:02,590
+Bos, ahí vamos, Boston, Massachusetts, Bossier City. Nuevo, se ve bien.
+
+155
+00:14:02,590 --> 00:14:06,660
+Un par de últimas cosas que tenemos que hacer. Si nos fijamos en la respuesta real que estamos
+
+156
+00:14:06,660 --> 00:14:14,420
+trabajar aquí es que queremos dar formato a estos números aquí, así como queremos
+
+157
+00:14:14,420 --> 00:14:20,430
+resalte las palabras reales como Wes en West Virginia y West Sacramento.
+
+158
+00:14:20,430 --> 00:14:25,080
+¿Entonces cómo hacemos eso? Bueno, volvamos a nuestra función de mapa aquí.
+
+159
+00:14:25,080 --> 00:14:31,730
+Y antes de regresar, lo que podemos hacer es crear un regX o hacer coincidir el nombre de la ciudad
+
+160
+00:14:31,730 --> 00:14:37,060
+y luego usaremos ese regX para reemplazar la palabra que coincide como Wes con
+
+161
+00:14:37,060 --> 00:14:41,140
+sólo un lapso de la clase de HL y la palabra que coincide.
+
+162
+00:14:41,140 --> 00:14:44,736
+Así que vamos a ser como arrancar la palabra Wes y reemplazarla con
+
+163
+00:14:44,736 --> 00:14:52,270
+una clase abarcadora de HL. Así que digamos que const regX es igual a nuevo regXt. Verás esto
+
+164
+00:14:52,270 --> 00:14:55,589
+valor superior que es lo que la persona buscó. Queremos buscar eso
+
+165
+00:14:55,589 --> 00:15:01,043
+a nivel mundial porque si se compara más de una vez en el nombre de la ciudad, sería una especie de
+
+166
+00:15:01,043 --> 00:15:04,930
+genial para demostrarlo e insensiblemente no nos importan los capitales.
+
+167
+00:15:04,930 --> 00:15:10,230
+Y luego crearemos una variable de nombre de ciudad donde vamos a tomar el
+
+168
+00:15:10,230 --> 00:15:16,277
+place.city y vamos a reemplazar el regX, que es lo que sea
+
+169
+00:15:16,277 --> 00:15:24,130
+coincide con solo un lapso con la clase de resaltado y vamos a aparecer en esto,
+
+170
+00:15:24,130 --> 00:15:29,410
+.valor, oh, tengo que usar el texto de vuelta allí. Aquí vamos. Así que va a encontrar
+
+171
+00:15:29,410 --> 00:15:33,490
+lo que sea que coincida en el regX y reemplazarlo con un lapso con una clase de
+
+172
+00:15:33,490 --> 00:15:37,400
+resalte y luego el valor que la persona había buscado.
+
+173
+00:15:37,400 --> 00:15:43,720
+Así que ahora, cuando tomamos el nombre de esa ciudad, podemos reemplazarlo. Coloca esa ciudad con la ciudad.
+
+174
+00:15:43,720 --> 00:15:49,740
+nombre variable que va a incluir el HTML para nosotros. Escriba en Bos y allí
+
+175
+00:15:49,740 --> 00:15:54,210
+vamos, está a juego. Si escribo en Wes, trabajando hasta ahora pero también tenemos que
+
+176
+00:15:54,210 --> 00:16:00,060
+hazlo por el nombre del estado Así que simplemente duplicaremos esto y lo cambiaremos a nombre del estado
+
+177
+00:16:00,060 --> 00:16:06,400
+y place.state.replace. Y luego toma esa variable de nombre de estado y reemplaza
+
+178
+00:16:06,400 --> 00:16:10,630
+aquí mismo Aquí vamos. Parece que está funcionando.
+
+179
+00:16:10,630 --> 00:16:16,200
+Finalmente, lo que debemos hacer es encontrar una función que se ponga en comas.
+
+180
+00:16:16,200 --> 00:16:20,360
+para nosotros. Así que tengo una función aquí. Puedes tomar esto de la respuesta si
+
+181
+00:16:20,360 --> 00:16:25,180
+no tiene ganas de escribirlo o ir al desbordamiento de pila más cercano y tomar eso
+
+182
+00:16:25,180 --> 00:16:30,130
+responder. Y voy a pegarlo aquí. Número con comas solo va a
+
+183
+00:16:30,130 --> 00:16:32,710
+Reemplázalo y de nuevo te dará esas bonitas comas.
+
+184
+00:16:32,710 --> 00:16:41,330
+Para que podamos ir a nuestra población. Decimos número con comas, y luego daremos
+
+185
+00:16:41,330 --> 00:16:44,280
+Nosotras esas bonitas comas en lugar de todo lo que tenemos allí.
+
+186
+00:16:44,280 --> 00:16:48,230
+Tan nuevo ... ahí vamos, estamos emparejando nuevos en el estado, estamos emparejando nuevos en el
+
+187
+00:16:48,230 --> 00:16:52,520
+nombre de la ciudad, así como estamos poniendo en esas comas agradables para mostrar los datos a
+
+188
+00:16:52,520 --> 00:16:56,259
+el usuario. Es todo por hoy. Si quieres un poco más de un reto,
+
+189
+00:16:56,259 --> 00:17:00,810
+tal vez vaya a estos datos y diga: "¿Qué otra cosa podría usar para ordenar estos datos?" Tal vez tú
+
+190
+00:17:00,810 --> 00:17:05,030
+podría averiguar cómo funciona la geolocalización que viene en un video futuro y
+
+191
+00:17:05,030 --> 00:17:09,890
+clasifíquelo según cuáles son las ciudades más cercanas a mí en lugar de solo el orden
+
+192
+00:17:09,890 --> 00:17:14,130
+que aparecen explícitamente en esta matriz. Muchas gracias y ya veré.
+
+193
+00:17:14,130 --> 00:17:15,644
+Tú en el siguiente.
+
+194
+00:17:15,644 --> 00:17:19,609
+♪ [música] ♪
+

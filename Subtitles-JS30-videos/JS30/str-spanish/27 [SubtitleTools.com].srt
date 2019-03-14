@@ -1,0 +1,700 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,447 --> 00:00:04,224
+♪ [música] ♪
+
+3
+00:00:07,074 --> 00:00:11,460
+Hoy vamos a aprender cómo hacer clic y arrastrar desde cero.
+
+4
+00:00:11,460 --> 00:00:15,510
+Este es un efecto que vi en este sitio web de Hover States. Me desplazo hasta la
+
+5
+00:00:15,510 --> 00:00:19,200
+Aquí abajo y me di cuenta de que puedes desplazarte si quieres,
+
+6
+00:00:19,200 --> 00:00:22,600
+Es solo un div de desplazamiento horizontal, que es bastante bueno porque funciona
+
+7
+00:00:22,600 --> 00:00:27,930
+sin Javascript. Sin embargo, también puede tomar el cursor, hacer clic y arrastrar
+
+8
+00:00:27,930 --> 00:00:30,620
+Quiero pasar por eso y pensé que era un efecto genial.
+
+9
+00:00:30,620 --> 00:00:35,760
+Entonces, eso es lo que me gustaría hacer aquí cuando haces clic, arrastres el mouse y te vas.
+
+10
+00:00:35,760 --> 00:00:41,310
+En algún lugar, queremos que venga acompañado y todo este evento del mouse
+
+11
+00:00:41,310 --> 00:00:44,130
+y posicionamiento del mouse, me parece un poco complicado,
+
+12
+00:00:44,130 --> 00:00:48,620
+así que pensé que este sería un ejercicio muy agradable para que nos sintiéramos cómodos con
+
+13
+00:00:48,620 --> 00:00:52,480
+Que está pasando aqui. Así que, bastante simple, lo que tenemos aquí.
+
+14
+00:00:52,480 --> 00:00:57,420
+tenemos nuestro estilo que es CSS, le he agregado algún tipo de CSS divertido,
+
+15
+00:00:57,420 --> 00:01:02,340
+como cuando haces clic en él, agregamos una clase de activo y lo mostrará un poco
+
+16
+00:01:02,340 --> 00:01:10,590
+poco. Y luego también utilicé este giro y una perspectiva, para que cuando te muevas
+
+17
+00:01:10,590 --> 00:01:14,820
+Ya ves cómo es el 17 "oh, apenas puedo verlo, oh, ahora está mirando totalmente
+
+18
+00:01:14,820 --> 00:01:18,980
+nosotros. "Sólo algunas cosas divertidas, no tiene nada que ver con eso, además de que se ve bonito.
+
+19
+00:01:18,980 --> 00:01:24,660
+Entonces, vamos a nuestro guión aquí. Y realmente lo que queremos hacer aquí es
+
+20
+00:01:24,660 --> 00:01:29,970
+seleccionando los elementos, que es este cuadro blanco aquí y luego vamos a ser
+
+21
+00:01:29,970 --> 00:01:34,820
+escuchando una serie de diferentes eventos. Entonces, cuando hago clic por primera vez,
+
+22
+00:01:34,820 --> 00:01:38,480
+Vamos a agregar una clase de activos y vamos a averiguar dónde hice clic
+
+23
+00:01:38,480 --> 00:01:42,950
+abajo. Luego, cuando muevo mi ratón hacia la izquierda o hacia la derecha,
+
+24
+00:01:42,950 --> 00:01:49,790
+vamos a averiguar bien, digamos si hago clic aquí. Esto es 500 px y si
+
+25
+00:01:49,790 --> 00:01:55,340
+Me desplazo hacia la izquierda, 20 px, sabemos que debemos desplazar la div 20 píxeles.
+
+26
+00:01:55,340 --> 00:01:58,840
+Si me desplazo a la derecha 20 píxeles, sabemos que debemos desplazar el div 20
+
+27
+00:01:58,840 --> 00:02:02,910
+píxeles de esa manera. Y así es como va a funcionar, solo vamos a
+
+28
+00:02:02,910 --> 00:02:07,650
+anclarlo hacia abajo tan pronto como hagamos clic y luego dependiendo de qué tan lejos estamos
+
+29
+00:02:07,650 --> 00:02:11,760
+desplazarse, así es como vamos a desplazar el div o podemos hacerlo una
+
+30
+00:02:11,760 --> 00:02:15,600
+múltiple de eso, si desea que el desplazamiento sea un poco más grande.
+
+31
+00:02:15,600 --> 00:02:18,870
+Es solo una combinación de mouse hacia abajo, mouse mouse, mouse out,
+
+32
+00:02:18,870 --> 00:02:23,830
+arriba y mover el mouse. Entonces, primero sigamos adelante y tomemos los controles deslizantes, por lo que decimos const
+
+33
+00:02:23,830 --> 00:02:28,100
+deslizadores es igual a document.query selector. Vamos a buscar el
+
+34
+00:02:28,100 --> 00:02:32,850
+Objeto, ese es el div blanco que rodea todo. Y luego necesitamos un par de
+
+35
+00:02:32,850 --> 00:02:35,570
+variables, todas serán dejadas porque serán actualizadas.
+
+36
+00:02:35,570 --> 00:02:39,390
+Así que vamos a decir que está abajo, para construir un falso. Esa va a ser nuestra bandera
+
+37
+00:02:39,390 --> 00:02:43,550
+variable, eso puede ser verdadero o falso, dependiendo de si estoy haciendo clic o si
+
+38
+00:02:43,550 --> 00:02:48,700
+No soy. Y luego también necesitamos uno llamado start x y scroll left, entonces decimos
+
+39
+00:02:48,700 --> 00:02:55,800
+vamos a empezar x y vamos a la izquierda. Notarás cómo no estoy asignando ningún valor a
+
+40
+00:02:55,800 --> 00:02:59,410
+Ellos, porque eso va a estar pasando en nuestros eventos. Y entenderemos exactamente
+
+41
+00:02:59,410 --> 00:03:04,900
+Lo que estos son en tan solo un segundo. Entonces, lo que tenemos que hacer es adjuntar un montón de
+
+42
+00:03:04,900 --> 00:03:08,630
+diferentes oyentes, así que vamos a trabajar con el mouse hacia abajo,
+
+43
+00:03:08,630 --> 00:03:13,020
+ratón deja, ratón arriba y movimiento del ratón. Y he pasado por esto aquí.
+
+44
+00:03:13,020 --> 00:03:17,800
+Y vamos a escuchar un evento en cada uno de ellos, así que vamos a decir:
+
+45
+00:03:17,800 --> 00:03:29,280
+Detector de eventos slider.add. Y puedes agruparlas en funciones separadas.
+
+46
+00:03:29,280 --> 00:03:32,800
+Los voy a hacer en línea solo porque en este momento creo que es importante que nosotros
+
+47
+00:03:32,800 --> 00:03:36,470
+Adjunte el código que está sucediendo directamente al evento. Sin embargo,
+
+48
+00:03:36,470 --> 00:03:39,730
+una vez que hayas terminado, sería genial refactorizarlos en funciones separadas
+
+49
+00:03:39,730 --> 00:03:42,970
+y luego simplemente pásalos a tu oyente de eventos, como hemos estado haciendo con mucho
+
+50
+00:03:42,970 --> 00:03:47,960
+de nuestros videos hasta ahora. Tenemos el mouse hacia abajo, el mouse deja, el mouse arriba y el mouse se mueven.
+
+51
+00:03:47,960 --> 00:03:53,960
+Así que primero vamos a manejar lo que está abajo. Así que cuando alguien se cae,
+
+52
+00:03:53,960 --> 00:03:59,850
+vamos a tomar esto es variable abajo, configúralo a verdadero. Cuando alguien se va,
+
+53
+00:03:59,850 --> 00:04:05,150
+así que si me arrastro aquí, y luego dejo esto y vuelvo,
+
+54
+00:04:05,150 --> 00:04:08,930
+no debería funcionar porque lo que pasa es que alguien se va, regresan,
+
+55
+00:04:08,930 --> 00:04:12,350
+Lo dejan ir y luego regresan aquí y todavía está en el estado de baja.
+
+56
+00:04:12,350 --> 00:04:20,750
+Entonces, lo que tenemos que hacer es eliminar esto y establecer que sea falso.
+
+57
+00:04:20,750 --> 00:04:25,030
+Cuando alguien se monta, también queremos que sea falso.
+
+58
+00:04:25,030 --> 00:04:29,830
+Y luego en el movimiento del ratón, ahí es donde va a pasar toda nuestra magia,
+
+59
+00:04:29,830 --> 00:04:36,410
+así que vamos dentro de eso, el registro de la consola está caído. Y luego vamos a la consola de registro
+
+60
+00:04:36,410 --> 00:04:40,490
+hacer trabajo. Abre eso, abre tu consola, quiero ver qué está pasando
+
+61
+00:04:40,490 --> 00:04:46,140
+aquí. Y ya ves, aquí estoy mucho logueando la consola y ni siquiera tengo
+
+62
+00:04:46,140 --> 00:04:52,390
+Hizo clic en cualquier cosa. Este registro de la consola no debería mostrar nada a menos que esté
+
+63
+00:04:52,390 --> 00:04:55,980
+en realidad el ratón hacia abajo. Y si hago clic en él y el ratón a mi alrededor dice verdad,
+
+64
+00:04:55,980 --> 00:05:00,030
+verdadero, verdadero, lo dejo ir, falso, falso, falso. Entonces, lo primero que queremos hacer aquí es
+
+65
+00:05:00,030 --> 00:05:05,850
+en nuestro movimiento del ratón, diremos que si no está abajo, solo vamos a volver.
+
+66
+00:05:05,850 --> 00:05:10,890
+Y lo que hará es detener la ejecución de la función y luego este registro de la consola es
+
+67
+00:05:10,890 --> 00:05:15,880
+hacia abajo y el trabajo no se registrará a menos que se haga clic en el estado de clic.
+
+68
+00:05:15,880 --> 00:05:20,940
+Aquí vamos, déjame ir, déjame aclarar esto. Mira, me estoy moviendo,
+
+69
+00:05:20,940 --> 00:05:24,700
+nada, nada, nada Haz clic hacia abajo, muévete, empieza a funcionar.
+
+70
+00:05:24,700 --> 00:05:30,559
+Vamos, no hay actualización. Y podríamos console.log, si cambias eso a
+
+71
+00:05:30,559 --> 00:05:34,380
+console.count y solo para ver cuantas veces eso pasa. Ninguno, ninguno
+
+72
+00:05:34,380 --> 00:05:39,130
+Arrastra, arrastra, arrastra, bien. Entonces se detiene, luego vuelve a ir. Bueno,
+
+73
+00:05:39,130 --> 00:05:43,800
+Así que tenemos ese ratón abajo. Lo siguiente que quiero hacer es tomar el control deslizante.
+
+74
+00:05:43,800 --> 00:05:47,020
+Cuando el ratón hacia abajo. Vamos a tomar el detector de eventos slider.add.
+
+75
+00:05:47,020 --> 00:05:55,080
+No Tomaremos el control deslizante, class list.add, activo, y luego también lo haremos
+
+76
+00:05:55,080 --> 00:06:02,170
+lo opuesto cuando alguien se va, entonces retíralo, y luego una vez que mi mouse esté arriba,
+
+77
+00:06:02,170 --> 00:06:06,725
+También eliminará clase de acto, bien. Así que ahora cuando haces clic en él,
+
+78
+00:06:06,725 --> 00:06:11,566
+Usted ve que tiene un poco de efecto allí. ¿Por qué está sucediendo eso?
+
+79
+00:06:11,566 --> 00:06:14,920
+Eso está pasando porque si nos fijamos en nuestro estilo, ese CSS.
+
+80
+00:06:14,920 --> 00:06:20,200
+Cuando tenemos una clase de activo, solo cambio el fondo,
+
+81
+00:06:20,200 --> 00:06:23,950
+Yo cambio el cursor. Tienes que cambiarlo a ... Ni siquiera sabía que tenías que hacerlo.
+
+82
+00:06:23,950 --> 00:06:28,400
+Cursor de prefijo de proveedor, ha pasado un tiempo desde que lo he visto.
+
+83
+00:06:28,400 --> 00:06:33,000
+Y luego transforma la escala en uno, de modo que va del 98 por ciento a uno.
+
+84
+00:06:33,000 --> 00:06:36,830
+Solo te da un poco de un efecto genial que entra y sale.
+
+85
+00:06:36,830 --> 00:06:41,820
+Ahora pensemos en cómo va a funcionar esto. Cuando hago clic aquí abajo y arrastro 20
+
+86
+00:06:41,820 --> 00:06:46,810
+píxeles a la izquierda o 20 píxeles a la derecha, necesitamos saber dónde está el ancla
+
+87
+00:06:46,810 --> 00:06:52,210
+El punto es cuando me desplazo hacia la izquierda o hacia la derecha. Porque tantas veces como me muevo.
+
+88
+00:06:52,210 --> 00:06:59,360
+alrededor, hasta que suelte el mouse o el mouse hacia arriba, necesitamos saber dónde está ese clic inicial hacia abajo
+
+89
+00:06:59,360 --> 00:07:04,170
+estaba. Y para eso es que comienza la variable x, donde creamos aquí.
+
+90
+00:07:04,170 --> 00:07:07,950
+Entonces, cuando alguien hace clic hacia abajo, antes de comenzar a moverse hacia la izquierda o hacia la derecha,
+
+91
+00:07:07,950 --> 00:07:12,340
+Necesitamos registrar donde hicieron ese clic inicial hacia abajo. Eso va a pasar
+
+92
+00:07:12,340 --> 00:07:17,460
+en nuestro ratón aquí abajo. Y vamos a subir a nuestra función y pasar el evento.
+
+93
+00:07:17,460 --> 00:07:21,440
+Ahora, si vamos a consolar el registro de ese evento, veamos qué información obtenemos
+
+94
+00:07:21,440 --> 00:07:25,240
+ahí. Sí, tengo el evento del ratón, tengo todo tipo de información.
+
+95
+00:07:25,240 --> 00:07:31,730
+Cliente x, cliente y, etc., etc. Una forma de saber dónde hicimos clic dentro de él y
+
+96
+00:07:31,730 --> 00:07:38,970
+En esta serie, hemos hecho un par de formas diferentes para consolar el registro e.page x.
+
+97
+00:07:38,970 --> 00:07:43,780
+Y luego nos va a decir exactamente tres, nueve, seis. Nos esta diciendo exactamente
+
+98
+00:07:43,780 --> 00:07:50,440
+lo que coordina la x en la página actual. Sin embargo, si hubiera algún margen en
+
+99
+00:07:50,440 --> 00:07:55,680
+entre este elemento aquí, como margen 50 px. Si realmente lo sacáramos,
+
+100
+00:07:55,680 --> 00:08:00,000
+entonces eso estaría apagado. Necesitamos saber dónde hicieron clic dentro de esta cosa,
+
+101
+00:08:00,000 --> 00:08:04,610
+no en la pagina Así que solo tomamos start x es igual a e.page x,
+
+102
+00:08:04,610 --> 00:08:10,580
+pero luego atraeremos el slider.offset a la izquierda y eso lo compensará.
+
+103
+00:08:10,580 --> 00:08:16,180
+Si hay 50 px de margen entre la página y el elemento que nos interesa,
+
+104
+00:08:16,180 --> 00:08:21,480
+luego restándolo manejará ese desplazamiento por nosotros. Entonces podemos consolar log
+
+105
+00:08:21,480 --> 00:08:26,690
+comienzo x y si hago clic aquí, deberíamos obtener un número realmente bajo, 18.
+
+106
+00:08:26,690 --> 00:08:30,670
+Si hago clic aquí, obtendremos un número alto, bien. Entonces,
+
+107
+00:08:30,670 --> 00:08:35,000
+lo importante es que cuando movemos el mouse, deberíamos poder
+
+108
+00:08:35,000 --> 00:08:42,500
+inicio de registro de consola x una y otra vez. Mira que es 645 sin importar a donde me muevo
+
+109
+00:08:42,500 --> 00:08:46,180
+cursor real aquí, eso es muy bueno. Y luego cuando lo suelto,
+
+110
+00:08:46,180 --> 00:08:51,090
+Realmente no nos importa. Hacemos clic de nuevo, ahora es 547, eso nos importa.
+
+111
+00:08:51,090 --> 00:08:55,820
+La otra cosa que necesitamos registrar al momento de hacer clic es el desplazamiento.
+
+112
+00:08:55,820 --> 00:08:59,860
+Porque digamos que estoy desplazado 200 píxeles y luego quiero
+
+113
+00:08:59,860 --> 00:09:04,798
+desplácese hacia la izquierda y hacia la derecha de esta div. Entonces tenemos que averiguar
+
+114
+00:09:04,798 --> 00:09:09,563
+donde estaba el scroll inicial cuando lo empezamos. Y eso es lo que esta otra
+
+115
+00:09:09,563 --> 00:09:11,872
+La variable es para, que es el desplazamiento a la izquierda.
+
+116
+00:09:11,872 --> 00:09:18,485
+Así que vamos a tomar esto, vamos a decir que el desplazamiento a la izquierda es igual a slider.scroll izquierda.
+
+117
+00:09:18,485 --> 00:09:21,770
+Y la razón por la que vamos a mantener eso en una variable es porque es
+
+118
+00:09:21,770 --> 00:09:25,280
+va a moverse Si voy a la respuesta aquí, se va a mover,
+
+119
+00:09:25,280 --> 00:09:28,980
+pero siempre tenemos que volver a ese estado inicial cuando comenzó,
+
+120
+00:09:28,980 --> 00:09:33,800
+Cuando hiciste eso primero haz clic hacia abajo. Conseguimos nuestro comienzo x y nos queda nuestro pergamino a la izquierda,
+
+121
+00:09:33,800 --> 00:09:39,280
+Podemos sacar estos registros de la consola de aquí. Bueno. Ahora vamos a bajar a nuestro mouse.
+
+122
+00:09:39,280 --> 00:09:46,000
+Muévete y empieza a hacer el trabajo. Así que primero que nada, me gustaría tomar el evento y luego
+
+123
+00:09:46,000 --> 00:09:51,940
+simplemente llama a un e.prevent predeterminado en él. Y eso detendrá cualquier selección de texto.
+
+124
+00:09:51,940 --> 00:09:56,560
+eso está dentro de allí o cualquiera de los deslizamientos hacia la izquierda o cualquier otro extraño
+
+125
+00:09:56,560 --> 00:09:59,670
+cosas que el navegador podría pensar que en realidad estás tratando de seleccionar un texto,
+
+126
+00:09:59,670 --> 00:10:06,830
+Eso lo detendremos por nosotros. Entonces, lo que tenemos que hacer es averiguar dónde está el cursor
+
+127
+00:10:06,830 --> 00:10:10,990
+Es cuando lo movieron. Ya sabemos dónde está el cursor cuando inicialmente
+
+128
+00:10:10,990 --> 00:10:15,190
+pulsamos hacia abajo, pero queremos saber dónde está el cursor cuando lo mueven al
+
+129
+00:10:15,190 --> 00:10:24,350
+Izquierda y hacia la derecha. Así que diremos que const x es igual a e.page x minus slider.offset
+
+130
+00:10:24,350 --> 00:10:28,550
+izquierda. Ese es exactamente el mismo código que acabamos de usar aquí. Aquí lo estamos usando para
+
+131
+00:10:28,550 --> 00:10:31,837
+decir dónde hicieron clic inicialmente y aquí vamos a recalcular cada
+
+132
+00:10:31,837 --> 00:10:39,446
+Una sola vez que nos movemos el ratón. Así que ahora si solo consola.log x así como lo que
+
+133
+00:10:39,446 --> 00:10:45,257
+¿Fue ese otro llamado aquí? Empieza x. Y un pequeño consejo aquí, si quieres saber.
+
+134
+00:10:45,340 --> 00:10:50,440
+cuáles son esas variables, simplemente tírelas en un objeto y verá los valores.
+
+135
+00:10:50,440 --> 00:10:56,280
+Ahora, cuando hago clic en el medio aquí, ves que el valor de x está cambiando y el
+
+136
+00:10:56,280 --> 00:11:03,670
+El inicio x no está cambiando en absoluto. Así que simplemente podemos tomar eso y voy a
+
+137
+00:11:03,670 --> 00:11:11,570
+Llama a eso el wok. Const wok es igual a, tomaremos el valor de x y restaremos el
+
+138
+00:11:11,570 --> 00:11:17,530
+empieza x. Y esto nos dirá hasta qué punto nos hemos desviado de esa inicial
+
+139
+00:11:17,530 --> 00:11:24,150
+espacio. Consola wok de registro, deshacerse de ese registro de consola inicial y ahora estamos viendo,
+
+140
+00:11:24,150 --> 00:11:29,380
+¡Ah, mira eso! Así que voy a hacer clic aquí. Voy a mover 20 píxeles a la
+
+141
+00:11:29,380 --> 00:11:34,620
+Correcto. Así que hemos ido 20 píxeles a la derecha. Entonces voy a volver y 20
+
+142
+00:11:34,620 --> 00:11:38,570
+Los píxeles a la izquierda me dan negativo. Así que nos está diciendo, ¿hasta qué punto nos hemos desviado?
+
+143
+00:11:38,570 --> 00:11:42,510
+desde ese punto inicial, que podríamos poner como un punto rojo allí al hacer clic,
+
+144
+00:11:42,510 --> 00:11:47,301
+Porque entonces puedes ver exactamente qué tan lejos a la izquierda y a la derecha estás
+
+145
+00:11:47,301 --> 00:11:53,030
+trabajando. A continuación, lo que debemos hacer es cambiar esta división aquí para
+
+146
+00:11:53,030 --> 00:11:58,980
+Desplácese y lo hacemos con una propiedad de desplazamiento a la izquierda. Así que diremos slider.scroll izquierda
+
+147
+00:11:58,980 --> 00:12:02,370
+es igual a ... ahora usted podría pensar, bien, simplemente lo estableceremos en wok y
+
+148
+00:12:02,370 --> 00:12:03,730
+Veamos que hace eso por nosotros.
+
+149
+00:12:09,438 --> 00:12:12,463
+Funciona, pero está muy nervioso.
+
+150
+00:12:12,463 --> 00:12:16,890
+Y el problema es que estamos recalculando el desplazamiento a la izquierda cada uno
+
+151
+00:12:16,890 --> 00:12:23,330
+hora. Así que la razón por la que capturamos el valor de desplazamiento a la izquierda cuando hicimos esa inicial
+
+152
+00:12:23,330 --> 00:12:26,870
+El clic es para que podamos hacer referencia dentro de esta función. Así que vamos a tomar
+
+153
+00:12:26,870 --> 00:12:32,410
+slider.scroll left, configúrelo en el valor de scroll left, que es lo que inicialmente
+
+154
+00:12:32,410 --> 00:12:36,170
+capturado, lo hemos puesto en una variable y luego, sin el valor de wok.
+
+155
+00:12:36,170 --> 00:12:41,300
+Damos un ahorro aquí y ahora deberíamos poder hacer clic y arrastrar bellamente hacia atrás
+
+156
+00:12:41,300 --> 00:12:44,910
+y adelante. Si sientes que esto es mucho trabajo solo para superarlo,
+
+157
+00:12:44,910 --> 00:12:49,570
+lo que puede hacer es poner esto entre paréntesis y luego multiplicarlo por como
+
+158
+00:12:49,570 --> 00:12:54,180
+tres o algo Así que por cada píxel movido, vas a desplazar el control deslizante
+
+159
+00:12:54,180 --> 00:13:01,070
+tres pixeles Ahí obtienes un poco de un buen efecto deslizante mientras avanzamos en
+
+160
+00:13:01,070 --> 00:13:07,360
+ahí. Así que creo que eso es todo para lo que tenemos aquí, se ve bastante bien.
+
+161
+00:13:07,360 --> 00:13:12,766
+Es un simple código ISH, sin embargo, la construcción de este la primera vez me llevó
+
+162
+00:13:12,766 --> 00:13:16,973
+Un tiempo para entender. "Oh, necesitas poner estas variables, necesitas capturar
+
+163
+00:13:16,973 --> 00:13:20,575
+en el momento de bajar el mouse y luego consultarlos cada vez que alguien
+
+164
+00:13:20,575 --> 00:13:25,626
+mueve el mouse ". Así que espero que hayas disfrutado eso. Obviamente hay mucho más
+
+165
+00:13:25,626 --> 00:13:29,456
+a las bibliotecas, si echas un vistazo a éste aquí mismo, puedes simplemente moverlo
+
+166
+00:13:29,456 --> 00:13:33,731
+y no tienes que preocuparte Realmente me da aprecio por las personas que
+
+167
+00:13:33,731 --> 00:13:38,813
+construye el desplazamiento inflable y el desplazamiento inercial, ves cómo se desvanece
+
+168
+00:13:38,813 --> 00:13:42,902
+al final Hay un montón de matemáticas que van a construir estos diferentes
+
+169
+00:13:42,902 --> 00:13:46,961
+bibliotecas Pero es realmente importante saber cómo están trabajando bajo el capó.
+
+170
+00:13:46,961 --> 00:13:48,947
+Por si alguna vez quisiste construir el tuyo.
+
+171
+00:13:48,947 --> 00:13:53,360
+También debo tener en cuenta que con este ratón hacia abajo, el mouse deja, el mouse arriba,
+
+172
+00:13:53,360 --> 00:13:58,170
+Mouse Move Dance que hemos hecho aquí, también puedes implementar tu propio arrastrar y soltar,
+
+173
+00:13:58,170 --> 00:14:00,750
+así que si eso es algo que te interesa hacer, te desafiaría a hacer
+
+174
+00:14:00,750 --> 00:14:03,003
+ese. Muchas gracias, nos vemos mañana.
+
+175
+00:14:03,564 --> 00:14:06,854
+♪ [música] ♪
+

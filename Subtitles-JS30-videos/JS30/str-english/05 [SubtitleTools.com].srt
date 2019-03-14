@@ -1,0 +1,771 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:01,721 --> 00:00:04,611
+♪ [music] ♪
+
+3
+00:00:07,500 --> 00:00:11,950
+Today we are going to be making this super
+snazzy, what I like to call a flex
+
+4
+00:00:11,950 --> 00:00:17,370
+gallery, and I really like this one
+because it doesn't include all that much
+
+5
+00:00:17,370 --> 00:00:24,410
+JavaScript, and it leans heavily upon
+CSS for flexbox, for transitions,
+
+6
+00:00:24,410 --> 00:00:28,890
+and for some events that CSS is going to
+emit to us. So, this is really cool,
+
+7
+00:00:28,890 --> 00:00:32,780
+we're going to lean on CSS quite a bit.
+Let's take a look at what we're starting
+
+8
+00:00:32,780 --> 00:00:33,730
+with here.
+
+9
+00:00:33,730 --> 00:00:37,550
+We've got this thing I like to call flex
+panels, and if we scroll down to the HTML,
+
+10
+00:00:37,550 --> 00:00:42,570
+we've got a div with a class of panels,
+and each of these panels is going to be
+
+11
+00:00:42,570 --> 00:00:47,840
+called a panel, singular. And then inside
+of each of those panels is going to be,
+
+12
+00:00:47,840 --> 00:00:51,490
+"Hey," "Let's dance," "Give," "Take,"
+"Receive." And these are going to be words
+
+13
+00:00:51,490 --> 00:00:55,320
+that, when clicked, they're going to grow
+in size, as well as they're going to fall
+
+14
+00:00:55,320 --> 00:00:57,414
+from the top and come up from the bottom.
+
+15
+00:00:57,414 --> 00:01:01,550
+So, what I want to start to do is I've
+given you some CSS if we open this up in
+
+16
+00:01:01,550 --> 00:01:05,810
+the browser now. You see, we start with
+some CSS that looks, but it doesn't do
+
+17
+00:01:05,810 --> 00:01:09,230
+anything and it actually is not in the
+right place. So, I wanted to write the
+
+18
+00:01:09,230 --> 00:01:12,270
+actual important part, which is the
+flexbox piece with you, as well.
+
+19
+00:01:12,270 --> 00:01:18,170
+Let's go up to our CSS, and first of all,
+we need to get our panels going side by
+
+20
+00:01:18,170 --> 00:01:22,370
+side. So if we go the panels div, you do
+display: flex on them,
+
+21
+00:01:22,370 --> 00:01:27,300
+and by the way, if you are new to flexbox,
+I have an entire series at flexbox.io
+
+22
+00:01:27,300 --> 00:01:31,210
+that you can visit, and that will guide
+you through, similar to this one,
+
+23
+00:01:31,210 --> 00:01:35,950
+as well. And when I make those flex
+they're going to go side by side by side
+
+24
+00:01:35,950 --> 00:01:39,010
+by side, and just stick them all there.
+
+25
+00:01:39,010 --> 00:01:43,110
+Next, what we need to do is we need to go
+to each of the individual panels and tell
+
+26
+00:01:43,110 --> 00:01:49,790
+them, "Okay, well this is as much room as
+the flex-child needs." It's as big as the
+
+27
+00:01:49,790 --> 00:01:52,560
+words are, so this one is the biggest
+because it has the biggest word,
+
+28
+00:01:52,560 --> 00:01:56,560
+"experience." But what we want to tell it
+to do is that we've got all this extra
+
+29
+00:01:56,560 --> 00:02:01,350
+space here, "Why don't you split it
+amongst yourselves, children?"
+
+30
+00:02:01,350 --> 00:02:06,670
+So we go to our panel and we simply just
+say flex: 1, and what that means is that
+
+31
+00:02:06,670 --> 00:02:11,690
+each of them are going to evenly
+distribute the extra space among each
+
+32
+00:02:11,690 --> 00:02:15,350
+other. And that 1 might not make sense,
+but we're going to come back to that in
+
+33
+00:02:15,350 --> 00:02:21,820
+just a second, so believe me. There we go.
+Okay, so flex of 1 will make them evenly
+
+34
+00:02:21,820 --> 00:02:27,330
+distribute the extra space in between
+them, so I'm pretty happy with that.
+
+35
+00:02:27,330 --> 00:02:33,160
+Now, let's move on to each of the panels
+and get them visually looking like this,
+
+36
+00:02:33,160 --> 00:02:38,950
+where the items are going to be centered
+in thirds. So we're going to go to our
+
+37
+00:02:38,950 --> 00:02:44,200
+panel here, and first of all, just put a
+border: 1px solid red on it,
+
+38
+00:02:44,200 --> 00:02:47,670
+just so that we can see what's going on
+here. Visually, I think this will really
+
+39
+00:02:47,670 --> 00:02:51,720
+help us. So, what's going on here? We've
+got each of these panels...oh,
+
+40
+00:02:51,720 --> 00:02:57,240
+we don't want to put the border on each of
+the panels, sorry. We want to put the
+
+41
+00:02:57,240 --> 00:03:03,350
+border on each of the flex items or the
+flex children, which is here .panel > *.
+
+42
+00:03:03,350 --> 00:03:07,180
+Let's put a border there just so we can
+see what's going on here.
+
+43
+00:03:09,491 --> 00:03:13,900
+Okay, so these are our three items. Now, I
+want them to...again,
+
+44
+00:03:13,900 --> 00:03:19,970
+I have all of extra work vertically, how
+do I get them to go up and down?
+
+45
+00:03:19,970 --> 00:03:27,760
+So we'll go back to our panel here and
+we'll say justify-content: center.
+
+46
+00:03:27,760 --> 00:03:32,900
+Where does that get us? That gets them
+centered left to right. I want to say
+
+47
+00:03:32,900 --> 00:03:40,660
+align-items: center, which still won't get
+us much, but we also need to make this
+
+48
+00:03:40,660 --> 00:03:47,230
+panel here display: flex. And this is a
+really good example of when you will nest
+
+49
+00:03:47,230 --> 00:03:52,730
+flexbox, because... Let's take a pause for
+a second. What is the flex container here?
+
+50
+00:03:52,730 --> 00:03:59,210
+Panels. What is the flex item? Panel. But
+we're also going to make panel a flex
+
+51
+00:03:59,210 --> 00:04:05,310
+container. An element in CSS can be both a
+flex item, which it is right here,
+
+52
+00:04:05,310 --> 00:04:11,350
+as well as a flex container, which we are
+going to do by making it display: flex.
+
+53
+00:04:11,350 --> 00:04:15,840
+So by doing that, we stack them left to
+right, because that's the default of
+
+54
+00:04:15,840 --> 00:04:21,960
+flexbox. We want to change that and we are
+going to say flex-direction: column,
+
+55
+00:04:21,960 --> 00:04:26,270
+and that will vertically center them in
+the middle, but then I also want each of
+
+56
+00:04:26,270 --> 00:04:30,800
+these items to take up one-third, and
+that's just exactly what we've done.
+
+57
+00:04:30,800 --> 00:04:35,901
+So let's scroll down to our flex children,
+our flex items, and we already put a
+
+58
+00:04:35,901 --> 00:04:45,930
+border on it and here we're going to flex:
+1 0 auto, and that will give us these
+
+59
+00:04:45,930 --> 00:04:52,340
+here. And we want to display: flex on
+that, as well, which doesn't do too much
+
+60
+00:04:52,340 --> 00:04:56,157
+except bring the text to the left. But if
+we do justify-content: center and
+
+61
+00:04:56,157 --> 00:05:03,370
+align-items: center. Now we've got
+everything perfectly centered.
+
+62
+00:05:03,370 --> 00:05:07,970
+This is just a lot of flexbox nested and
+nested and nested, which allows us to get
+
+63
+00:05:07,970 --> 00:05:09,786
+this really cool layout.
+
+64
+00:05:09,786 --> 00:05:15,330
+Okay, so looking pretty good to me so far.
+Now, what I want to do is I want to hide
+
+65
+00:05:15,330 --> 00:05:20,910
+"give," all the way up, and I want to take
+"you can," and "today," and "receive," and
+
+66
+00:05:20,910 --> 00:05:26,890
+hide them all the way down. So what we're
+going to use is translateY for that.
+
+67
+00:05:26,890 --> 00:05:34,940
+Let's go down right here. I'm going to say
+.panel > *:first-child is going to be
+
+68
+00:05:34,940 --> 00:05:46,343
+transform: translateY(-100%). So each of
+the first children are going to be -100%.
+
+69
+00:05:46,343 --> 00:05:54,817
+Okay, so that puts them off-screen, and
+then the last-child is going to be 100%.
+
+70
+00:05:54,817 --> 00:06:00,351
+The idea that we're going for here is that
+when you take off this translateY,
+
+71
+00:06:00,351 --> 00:06:03,370
+it's going to animate itself. See what
+it's doing? It's going to transition
+
+72
+00:06:03,370 --> 00:06:09,120
+itself in and out, in and out, in and out.
+And the way that that's going to work is
+
+73
+00:06:09,120 --> 00:06:17,800
+that when the panel has a class of
+open-active, we are going to
+
+74
+00:06:17,800 --> 00:06:26,370
+translateY(0). And when the panel has a
+class of open-active, we are going to take
+
+75
+00:06:26,370 --> 00:06:33,640
+the last-child and translateY(0), as well.
+So, what that means is that if we take any
+
+76
+00:06:33,640 --> 00:06:39,236
+one of these panels, and add a class of
+open-active, it will animate itself in
+
+77
+00:06:39,236 --> 00:06:45,910
+take it off, and they go away. So you
+can take the border away if you sort of
+
+78
+00:06:45,910 --> 00:06:50,390
+get it now, where the elements are on the
+page. I think we've got a pretty good idea
+
+79
+00:06:50,390 --> 00:06:54,810
+of visualizing it. So that is
+what we've got so far.
+
+80
+00:06:54,810 --> 00:06:59,280
+The last bit of the puzzle is that when
+these panels also have a class of open,
+
+81
+00:07:00,051 --> 00:07:04,140
+what's going to happen is that it needs to
+get bigger. You see that the font-size
+
+82
+00:07:04,140 --> 00:07:09,510
+already changed, but when the panel has a
+class of open, scroll down to line 85 or
+
+83
+00:07:09,510 --> 00:07:13,860
+so, we want to give it a flex of 5. And,
+now, what does that mean?
+
+84
+00:07:13,860 --> 00:07:19,020
+Well, earlier we said a flex of 1
+means that each of them are going to
+
+85
+00:07:19,020 --> 00:07:23,350
+evenly distribute the extra room.
+So by giving it a flex of 5,
+
+86
+00:07:23,350 --> 00:07:28,370
+what that means is that when it has a
+class of open, it's going to take 5 times
+
+87
+00:07:28,370 --> 00:07:34,540
+the amount of extra room as the rest of
+them, because they are regular flex of 1.
+
+88
+00:07:34,540 --> 00:07:39,590
+And now we are having a flex of 5, and
+that means it should just grow a little
+
+89
+00:07:39,590 --> 00:07:44,940
+bit bigger. So if I go to one of my panels
+here, give it a class of open,
+
+90
+00:07:44,940 --> 00:07:50,700
+you see that it will animate itself in,
+take it away, animate itself out.
+
+91
+00:07:50,890 --> 00:07:55,380
+I keep saying "animate", I mean
+"transition", and why that's happening is
+
+92
+00:07:55,380 --> 00:08:00,000
+because of this. The panel has a
+transition in which we are transitioning
+
+93
+00:08:00,000 --> 00:08:05,959
+the font-size over 0.7 seconds, and we're
+using these cubic-beziers that we've done
+
+94
+00:08:05,959 --> 00:08:10,180
+in previous classes. And what that
+does is allows us to get this cool,
+
+95
+00:08:10,180 --> 00:08:13,352
+like, open and close where it goes a
+little bit bigger and a little bit smaller
+
+96
+00:08:13,352 --> 00:08:19,120
+than it should, then snaps back into
+place. Now that we've got all of the CSS
+
+97
+00:08:19,120 --> 00:08:21,890
+in place, we really just have to write a
+little bit of JavaScript so that when we
+
+98
+00:08:21,890 --> 00:08:25,760
+click them, it will do that adding and
+removing of classes. So first we want to
+
+99
+00:08:25,760 --> 00:08:31,410
+grab all the panels. Make sure that that's
+querySelectorAll, not querySelector,
+
+100
+00:08:31,410 --> 00:08:35,820
+and that will give us a node list of all
+the different ones that we have.
+
+101
+00:08:35,820 --> 00:08:40,900
+And then we want to write a function
+that's going to toggle that class of on or
+
+102
+00:08:40,900 --> 00:08:48,740
+open. So function toggleOpen(). So
+this.classList.toggle('open').
+
+103
+00:08:48,740 --> 00:08:52,761
+And then on each of the panels
+we're going to listen for a click.
+
+104
+00:08:53,647 --> 00:08:57,870
+Good. So we're going to take each of the
+panels, loop over each one of them,
+
+105
+00:08:57,870 --> 00:09:02,710
+listen for a click on each one of them,
+and then run the toggle function when it
+
+106
+00:09:02,710 --> 00:09:06,680
+is run. Often I have people ask me, "Why
+isn't it toggleOpen like that?" Because
+
+107
+00:09:06,680 --> 00:09:10,830
+that would run on page load. What we want
+to do here is we don't want to run the
+
+108
+00:09:10,830 --> 00:09:13,750
+function. We just want to give it
+reference to the function and say,
+
+109
+00:09:13,750 --> 00:09:17,800
+"Hey, when someone clicks me, make sure
+that you go find this function and run
+
+110
+00:09:17,800 --> 00:09:23,740
+it." So, let's see where we're at right
+now. Oh, we've got a bit of an error here.
+
+111
+00:09:23,740 --> 00:09:29,450
+Missing a parenthesis on line 133, got it.
+Doesn't seem to be working,
+
+112
+00:09:29,450 --> 00:09:37,150
+let's debug this real
+quick.console.log('Hello'). There we go.
+
+113
+00:09:37,150 --> 00:09:42,110
+Hello, hello, hello. Why is it not
+toggling the class of open?
+
+114
+00:09:42,110 --> 00:09:49,480
+Oh, I see the error here. It's because we
+are listening on each individual panel,
+
+115
+00:09:49,480 --> 00:09:55,540
+singular, not all the panels. Now, when I
+click it, it's going to add a class of
+
+116
+00:09:55,540 --> 00:10:00,392
+open to that specific panel, and
+remove that class. Add that class
+
+117
+00:10:00,392 --> 00:10:01,559
+and remove that class.
+
+118
+00:10:01,559 --> 00:10:07,540
+Now, the second step is that once this has
+finished transitioning itself open,
+
+119
+00:10:07,540 --> 00:10:11,670
+that's when I want to bring in the word
+from the top and bring in the word from
+
+120
+00:10:11,670 --> 00:10:15,410
+the bottom. So, in a previous exercise,
+what we did is we listened for the
+
+121
+00:10:15,410 --> 00:10:18,950
+transition end event, which is exactly
+what we're going to do here.
+
+122
+00:10:18,950 --> 00:10:22,360
+Go down to your panels and just duplicate
+that line. We're going to listen for the
+
+123
+00:10:22,360 --> 00:10:28,010
+transition end event, and we're going to
+toggle class of open-active with a
+
+124
+00:10:28,010 --> 00:10:31,620
+function called toggleActive .
+So let's go up here and write that,
+
+125
+00:10:31,620 --> 00:10:36,300
+and we'll say...normally, what
+we'd do is we would say
+
+126
+00:10:36,300 --> 00:10:43,570
+this.classList.toggle('open-active'),
+however, there is going to be multiple
+
+127
+00:10:43,570 --> 00:10:48,340
+transition end events being fired, and
+I'll show you how to figure that out.
+
+128
+00:10:48,340 --> 00:10:51,780
+We pass the event to this,
+comment that out for now, and
+
+129
+00:10:51,780 --> 00:10:59,502
+console.log(e.propertyName).
+Let's see what we got here.
+
+130
+00:11:00,380 --> 00:11:04,650
+So I'm going to click on one of these,
+which is going to trigger a transition.
+
+131
+00:11:04,650 --> 00:11:08,223
+When that transition is finished, it's
+going to tell us what transitioned.
+
+132
+00:11:09,710 --> 00:11:15,120
+Oh, font-size and flex-grow. So two things
+are being transitioned here.
+
+133
+00:11:15,120 --> 00:11:20,300
+Why? Because if you look at our CSS, when
+the panel is open, we are transitioning
+
+134
+00:11:20,300 --> 00:11:24,490
+the flex and the font-size. Both of those
+things are getting bigger when the class
+
+135
+00:11:24,490 --> 00:11:29,970
+of open. And really, we only care about
+the flex-grow here, so what we can do is
+
+136
+00:11:29,970 --> 00:11:36,480
+we say if (e.propertyName). And
+normally we'd say flex-grow, however,
+
+137
+00:11:36,480 --> 00:11:42,320
+I did find some bugs in Safari, where in
+Safari it's just flex and in the rest of
+
+138
+00:11:42,320 --> 00:11:47,840
+the browsers it's flex-grow. So even
+though if you scroll up here,
+
+139
+00:11:47,840 --> 00:11:53,450
+we have explicitly stated that we are
+working with flex here, some of the
+
+140
+00:11:53,450 --> 00:11:57,630
+browsers tell it's flex-grow, some of the
+them tell it as flex. So what we need to
+
+141
+00:11:57,630 --> 00:12:02,300
+do is just cover both of our bases, and
+rather than checking if it's explicitly
+
+142
+00:12:02,300 --> 00:12:08,820
+flex-grow, we'll see if it includes the
+word flex, and if that is true,
+
+143
+00:12:08,820 --> 00:12:12,651
+then we will toggle the
+class of open-active.
+
+144
+00:12:13,570 --> 00:12:19,460
+So, again, what's happening here? We are
+listening for a click on each panel.
+
+145
+00:12:19,460 --> 00:12:22,730
+When someone clicks we're going
+to open it. That's going to then,
+
+146
+00:12:22,730 --> 00:12:28,180
+in turn, trigger a CSS open and when
+that finishes, the second one,
+
+147
+00:12:28,180 --> 00:12:31,910
+transition end will fire, and that's when
+we're going to toggle open-active.
+
+148
+00:12:31,910 --> 00:12:35,980
+And then it will just go the other way
+when you click it off, as well.
+
+149
+00:12:35,980 --> 00:12:41,170
+Here we go, open it up and they animate
+itself in from the sky and down from the
+
+150
+00:12:41,170 --> 00:12:46,420
+bottom and then you close it up and
+they open themselves up, and close.
+
+151
+00:12:46,420 --> 00:12:50,090
+So this is pretty cool when you open up
+multiple... What I really like about this
+
+152
+00:12:50,090 --> 00:12:53,810
+is you do not have to specify a
+width for this specific gallery,
+
+153
+00:12:53,810 --> 00:12:58,140
+because if each of them have a flex of 5
+they will simply each take a little bit
+
+154
+00:12:58,140 --> 00:13:02,200
+less of the extra room. If one of them,
+it's going to take a lot more.
+
+155
+00:13:02,200 --> 00:13:04,229
+Hopefully, you liked that.
+I'll see you in the next one.
+
+156
+00:13:05,009 --> 00:13:08,672
+♪ [music] ♪

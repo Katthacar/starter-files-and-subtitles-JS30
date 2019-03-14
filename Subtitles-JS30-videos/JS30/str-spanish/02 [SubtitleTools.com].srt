@@ -1,0 +1,524 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,348 --> 00:00:03,564
+♪ [música] ♪
+
+3
+00:00:07,814 --> 00:00:11,310
+Hola a todos, Wes Bos aquí. Con suerte, estás teniendo un gran día.
+
+4
+00:00:11,310 --> 00:00:15,189
+Hoy vamos a hacer este reloj CSS muy dulce.
+
+5
+00:00:15,189 --> 00:00:19,024
+Ahora, lo que esto hace es tomar en el tiempo actual de JavaScript
+
+6
+00:00:19,024 --> 00:00:23,691
+y va a actualizar estas manos, segundas manos que tenemos aquí,
+
+7
+00:00:23,691 --> 00:00:28,637
+Basado en la hora actual, minuto, segundo que estamos viendo.
+
+8
+00:00:28,637 --> 00:00:33,170
+Así que echemos un vistazo a nuestro HTML que tenemos aquí.
+
+9
+00:00:33,170 --> 00:00:37,690
+Tenemos un div con una clase de reloj. Tenemos una cara de reloj que es este círculo.
+
+10
+00:00:37,690 --> 00:00:42,310
+Aquí, y luego tenemos tres divs separados para mano, mano, mano,
+
+11
+00:00:42,310 --> 00:00:46,690
+Cuál es nuestra hora, nuestro minuto y nuestro segundo. Ahora, vamos a abrir eso.
+
+12
+00:00:46,690 --> 00:00:51,050
+Esta es la respuesta. Esto es algo de lo que vamos a hacer con esta garrapata realista.
+
+13
+00:00:51,050 --> 00:00:55,834
+y vamos a escribir el CSS que es importante para hacer esto.
+
+14
+00:00:55,834 --> 00:00:58,600
+Así que específicamente he dejado esa parte fuera.
+
+15
+00:00:58,600 --> 00:01:02,990
+Así que aquí vamos, esto es lo que parece por defecto. Tengo estas tres manos
+
+16
+00:01:02,990 --> 00:01:09,890
+divs Seguimos adelante e inspeccionamos, entonces podemos inspeccionar esta mano div. Y veras eso
+
+17
+00:01:09,890 --> 00:01:14,820
+los tres están apilados uno sobre el otro. La idea de que vamos por
+
+18
+00:01:14,820 --> 00:01:19,710
+Aquí es que vamos a aplicar un giro a cada una de las manos dependiendo de lo que
+
+19
+00:01:19,710 --> 00:01:24,410
+tiempo que es actualmente. ¿Entonces cómo hacemos eso? Bueno, podrías ir a esto.
+
+20
+00:01:24,410 --> 00:01:31,410
+Probemos la segunda mano. Diríamos, transformar, rotar 20 grados.
+
+21
+00:01:31,410 --> 00:01:35,880
+Ahora, el problema que vamos a tener aquí es, por defecto, va a rotar
+
+22
+00:01:35,880 --> 00:01:40,980
+en el centro exacto del elemento. Y en la mayoría de los casos, eso es exactamente lo que
+
+23
+00:01:40,980 --> 00:01:45,111
+querer. Pero en este caso, no es lo que queremos en absoluto. Lo que queremos hacer es
+
+24
+00:01:45,111 --> 00:01:51,195
+Queremos girarlo en el lado derecho. Así que eso está justo en el
+
+25
+00:01:51,195 --> 00:01:56,164
+medio aquí Y eso es lo que vamos a entrar en nuestro CSS donde dice
+
+26
+00:01:56,164 --> 00:02:00,471
+".hand" y vamos a transformar el origen.
+
+27
+00:02:00,471 --> 00:02:04,350
+Ahora, el origen es donde se va a hacer la rotación. Así que vamos a
+
+28
+00:02:04,350 --> 00:02:09,438
+digamos, transformar origen. Solo vamos a decir, 100%. Y eso haremos a lo largo del
+
+29
+00:02:09,438 --> 00:02:15,452
+eje x Por defecto, es del 50%, por lo que si tuviera que cambiarlo al 50% y lo hiciera
+
+30
+00:02:15,452 --> 00:02:21,570
+transforma, ya ves, está justo en el medio. Pero si tuviera que cambiar eso
+
+31
+00:02:21,570 --> 00:02:26,702
+origen hasta ... Mira, a medida que muevo este origen, cambia de donde sale.
+
+32
+00:02:26,702 --> 00:02:33,285
+y un 100% a lo largo del eje x pondrá ese punto de pivote en el lado derecho.
+
+33
+00:02:33,285 --> 00:02:39,160
+Por eso lo cambiamos al 100%. Ahora, eso nos va a permitir girarlos
+
+34
+00:02:39,160 --> 00:02:44,140
+todos. El otro problema ahora es que debido a que los divs son bloques y se dejan
+
+35
+00:02:44,140 --> 00:02:48,190
+bien, en realidad no está empezando a las 12:00. ¿Entonces cómo hacemos eso?
+
+36
+00:02:48,190 --> 00:02:51,420
+Bueno, podríamos rotar todo de manera predeterminada, 90 grados.
+
+37
+00:02:51,420 --> 00:02:58,759
+Así que voy a decir, transformar, rotar, 90 grados. Ok bueno
+
+38
+00:02:58,759 --> 00:03:01,987
+Ahora tenemos todas nuestras manos apuntando hacia arriba y hacia abajo.
+
+39
+00:03:01,987 --> 00:03:06,190
+Entonces lo último que queremos hacer es aplicar un poco de transición.
+
+40
+00:03:06,190 --> 00:03:12,030
+Si pongo un giro aquí, verás que es de 20 a 120, de 20 a 120,
+
+41
+00:03:12,030 --> 00:03:15,873
+Sin embargo, para muchos, simplemente va. Así que podemos entrar aquí y podemos decir,
+
+42
+00:03:15,873 --> 00:03:22,699
+Transición, todos, .05 segundos. Ahora cuando giramos, se va a hacer la transición.
+
+43
+00:03:22,699 --> 00:03:26,340
+y eso va a ser a cada segundo que se marque alrededor.
+
+44
+00:03:26,340 --> 00:03:31,000
+Ahora, puede que te guste, pero lo bueno de esto es que también puedes hacerlo.
+
+45
+00:03:31,000 --> 00:03:35,990
+Algo así donde se puede decir, función de temporización de transición y darle
+
+46
+00:03:35,990 --> 00:03:40,220
+Como, cualquiera de estos como la facilidad en salir. Puedes elegir el que quieras,
+
+47
+00:03:40,220 --> 00:03:44,371
+Puedes probarlo. ¿Ves cómo se facilita dentro y fuera? Puede que te guste como
+
+48
+00:03:44,371 --> 00:03:49,282
+bien. Pero si haces clic en este pequeño editor cúbico de bezier, puedes hacer
+
+49
+00:03:49,282 --> 00:03:54,798
+algunas bastante divertidas, donde, si lo levantas así, ahora cuando
+
+50
+00:03:54,798 --> 00:04:00,220
+Cámbiala, te da esta garrapata. Va hacia adelante y hacia atrás, hacia adelante y hacia atrás.
+
+51
+00:04:00,220 --> 00:04:04,489
+Entonces, lo que voy a hacer es tomar esa función de tiempo de transición
+
+52
+00:04:04,489 --> 00:04:10,816
+y mete eso. Entonces también voy a reducir esto a 0.05 segundos, simplemente bien
+
+53
+00:04:10,816 --> 00:04:13,580
+y rapido Así que vamos a ver cómo se ve cuando hacemos eso.
+
+54
+00:04:13,580 --> 00:04:15,364
+Transforma, ahí vamos.
+
+55
+00:04:15,364 --> 00:04:18,278
+Eso nos da el tictac, tic, tic, tic, tic, garrapata.
+
+56
+00:04:18,278 --> 00:04:22,342
+Eso es exactamente lo que estamos buscando, donde irá un poco más
+
+57
+00:04:22,342 --> 00:04:25,837
+sus límites y luego se recuperará. Y porque lo hicimos tan rápido,
+
+58
+00:04:25,837 --> 00:04:28,797
+Nos da una especie de característica de tic tac realista.
+
+59
+00:04:28,797 --> 00:04:32,590
+Bueno. Así que hicimos nuestro margen de transformación, nuestra transformación, nuestra transición,
+
+60
+00:04:32,590 --> 00:04:36,830
+y nuestra función de temporización de la transición de bezier cúbico. Ahora vamos a escribir el
+
+61
+00:04:36,830 --> 00:04:41,690
+JavaScript que va a actualizar como estamos hasta ahora. Empecemos con nuestro segundo
+
+62
+00:04:41,690 --> 00:04:44,680
+solo porque eso se actualiza más a menudo y vamos a verlo funcionar,
+
+63
+00:04:44,680 --> 00:04:50,190
+garrapata, garrapata, todo alrededor. Así que lo primero que tenemos que hacer es crear una función.
+
+64
+00:04:50,190 --> 00:04:55,798
+se llama fecha establecida y eso solo va al inicio de la consola "hola". Y luego necesitamos eso
+
+65
+00:04:55,798 --> 00:04:58,132
+correr, que tan seguido? Bueno, cada segundo.
+
+66
+00:04:58,132 --> 00:05:02,400
+Entonces, ¿cómo se ejecuta algo cada segundo? Te das un intervalo establecido que
+
+67
+00:05:02,400 --> 00:05:06,476
+va a ser una fecha establecida, y eso se va a ejecutar cada segundo que es
+
+68
+00:05:06,476 --> 00:05:12,958
+1000 milisegundos. Ahora veamos si eso está funcionando. Hola hola hola vale
+
+69
+00:05:12,958 --> 00:05:16,460
+Eso está funcionando para nosotros. Sin embargo, no queremos la consola de registro hola, queremos agarrar
+
+70
+00:05:16,460 --> 00:05:22,683
+la fecha. Diga, const ahora es igual a nueva fecha. Y luego los segundos.
+
+71
+00:05:22,683 --> 00:05:30,670
+va a ser ahora dot obtener segundos. Y vamos a la consola de registro de los segundos,
+
+72
+00:05:30,670 --> 00:05:36,490
+56, 57, 58, está bien. Entonces, lo que está haciendo es conseguirnos los segundos de la corriente.
+
+73
+00:05:36,490 --> 00:05:43,180
+minuto. Ahora, ¿cómo convertimos eso en un grado? Bueno primero tenemos que convertirlo en
+
+74
+00:05:43,180 --> 00:05:48,520
+algo que es base 100 para que podamos obtener como ... en cero, va a ser cero
+
+75
+00:05:48,520 --> 00:05:55,120
+grados Al 100%, va a 360 grados. Así que vamos a bajar aquí y decir
+
+76
+00:05:55,120 --> 00:06:01,290
+const segundos grados iguales. Vamos a decir segundos divididos por 60 y
+
+77
+00:06:01,290 --> 00:06:05,820
+Eso nos va a dar nuestro porcentaje que tenemos. Y vamos a multiplicar.
+
+78
+00:06:05,820 --> 00:06:10,080
+Eso por 360 porque sería nuestro completo.
+
+79
+00:06:10,080 --> 00:06:16,410
+Entonces, si es 60 dividido por 60, será 360 veces, eso será 360.
+
+80
+00:06:16,410 --> 00:06:21,342
+grados Entonces, finalmente podemos tomar nuestra segunda mano, que aún no hemos
+
+81
+00:06:21,342 --> 00:06:24,807
+seleccionado. Podemos seleccionarlo. Puedes seleccionarlo como, dentro,
+
+82
+00:06:24,807 --> 00:06:29,300
+afuera y pásalo. Voy a seleccionarlo afuera y llegar afuera
+
+83
+00:06:29,300 --> 00:06:33,470
+para agarrarlo. Sin embargo, dependiendo de cómo quiera diseñar sus funciones, puede
+
+84
+00:06:33,470 --> 00:06:34,000
+pásalo también.
+
+85
+00:06:34,000 --> 00:06:39,130
+Así que quiero decir que la segunda mano es igual al selector de consulta del punto del documento.
+
+86
+00:06:39,130 --> 00:06:45,380
+Entonces tenemos que tomar esa segunda mano y le aplicaremos algunos estilos.
+
+87
+00:06:45,380 --> 00:06:53,030
+La transformación de puntos del estilo de punto de segunda mano será igual a, usaremos algunos ES6
+
+88
+00:06:53,030 --> 00:06:58,070
+Literales de plantilla aquí. Girar. ¿Cuántos grados? Por lo general sería como, 100 grados.
+
+89
+00:06:58,070 --> 00:07:01,850
+Pero eso va a estar en los segundos grados.
+
+90
+00:07:01,850 --> 00:07:06,170
+Bueno. Así que eso debería llevarnos a la mayor parte del camino allí. A ver dónde estamos.
+
+91
+00:07:06,170 --> 00:07:12,250
+Está bien, tiene sentido. Pero el único problema está aquí. Estoy casi a los 60 segundos pero no estoy
+
+92
+00:07:12,250 --> 00:07:16,450
+incluso casi a mitad de camino. Y el problema que estamos teniendo aquí es porque
+
+93
+00:07:16,450 --> 00:07:23,660
+inicialmente lo compensamos en 90 grados porque es por defecto, de izquierda a derecha, y nosotros
+
+94
+00:07:23,660 --> 00:07:28,660
+lo quiero por defecto, de arriba a abajo. Lo que tenemos que hacer es tomar esto,
+
+95
+00:07:28,660 --> 00:07:32,950
+es por eso que los envolví entre paréntesis, y agregaremos 90 grados para compensar eso
+
+96
+00:07:32,950 --> 00:07:36,600
+por defecto 90 grados con los que estamos trabajando aquí.
+
+97
+00:07:36,600 --> 00:07:41,870
+Vamos a ver dónde estamos ahora. Aquí vamos, 15, 16, bien. Ahora, pausa el video y
+
+98
+00:07:41,870 --> 00:07:46,008
+Quiero verte hacer tanto minutos como horas. Es probablemente un poco
+
+99
+00:07:46,008 --> 00:07:51,151
+Se explica por sí mismo, pero trata de hacerlo tú mismo. De lo contrario, vuelve
+
+100
+00:07:51,151 --> 00:07:52,498
+y haremos el resto juntos.
+
+101
+00:07:52,498 --> 00:08:00,420
+Así que vamos a decir que const min es igual ahora dot get minutes. Constas grados grados,
+
+102
+00:08:00,420 --> 00:08:09,940
+igual a los minutos dividido por 60 veces 360 más 90.
+
+103
+00:08:09,940 --> 00:08:15,320
+Entonces diremos de segunda mano. Una vez más, tenemos que subir aquí, segunda mano,
+
+104
+00:08:15,320 --> 00:08:25,410
+minutos mano, y también, vamos a obtener la manecilla de hora también. Bueno.
+
+105
+00:08:25,410 --> 00:08:33,360
+Entonces estamos aquí abajo. Por ejemplo, la mano del punto de la hora del punto es igual a
+
+106
+00:08:33,360 --> 00:08:38,911
+Tomaremos exactamente lo mismo pero lo reemplazaremos con los minutos grados
+
+107
+00:08:38,911 --> 00:08:41,047
+en vez de eso.
+
+108
+00:08:41,047 --> 00:08:44,588
+Veamos. Mi editor me está gritando, olvidé algo aquí.
+
+109
+00:08:44,588 --> 00:08:52,436
+Oh, pon un paréntesis allí, allá vamos. Oh, tengo un problema. No se puede establecer la propiedad
+
+110
+00:08:52,436 --> 00:08:56,848
+transformar de indefinido porque tienes que escribir bien el estilo, de lo contrario no lo hará
+
+111
+00:08:56,848 --> 00:09:01,364
+trabajo. Aprende a deletrear, amigos. Aquí vamos. Ambos de los dos están trabajando ahora.
+
+112
+00:09:01,364 --> 00:09:05,138
+Vas a tener que esperar un minuto completo para verlo para que realmente funcione. Entonces finalmente,
+
+113
+00:09:05,138 --> 00:09:13,370
+haremos las horas uno. Se dividirá por 12 en lugar de 60. Y luego
+
+114
+00:09:13,370 --> 00:09:20,020
+Tomará nuestra manecilla de la hora, oops. Esta es la manecilla de la hora, esta debe ser la manecilla mínima.
+
+115
+00:09:20,020 --> 00:09:30,220
+Mano de los minutos. Tome el grado de horas allí. Increíble. Parece que todo está trabajando para
+
+116
+00:09:30,220 --> 00:09:31,560
+nosotros, todo está funcionando.
+
+117
+00:09:31,560 --> 00:09:36,135
+Una pequeña cosa que sí sucede, es posible que note que cuando golpea el
+
+118
+00:09:36,135 --> 00:09:41,964
+60 segundos, vas a golpear casi 360 grados y luego
+
+119
+00:09:41,964 --> 00:09:46,329
+De repente, va a 2 grados. Y no va a transformarse.
+
+120
+00:09:46,329 --> 00:09:53,967
+En sí mismo de aquí para aquí. Esperemos a que esto suceda.
+
+121
+00:09:53,967 --> 00:09:59,992
+De acuerdo, ¿ven cómo esto está por terminar? Oh, tenemos un poco raro
+
+122
+00:09:59,992 --> 00:10:03,963
+alarido. Y lo que sucede es que llega a esa cantidad final de grados y luego nosotros
+
+123
+00:10:03,963 --> 00:10:09,071
+Ir a transformar 0 grados o 90 grados allí. Y va todo el camino
+
+124
+00:10:09,071 --> 00:10:12,508
+hacia atrás para llegar a donde quiere, en lugar de seguir adelante.
+
+125
+00:10:12,508 --> 00:10:16,490
+Por lo tanto, un par de cosas que podría hacer aquí es que solo podría contar la cantidad de grados
+
+126
+00:10:16,490 --> 00:10:21,065
+y sigue contando. O otra cosa que podrías hacer es, temporalmente,
+
+127
+00:10:21,065 --> 00:10:26,893
+con JavaScript, retire la transición para que cuando se marque en la siguiente
+
+128
+00:10:26,893 --> 00:10:30,701
+No se va a hacer la transición hacia atrás. Y luego volver a aplicarlo después.
+
+129
+00:10:30,701 --> 00:10:34,579
+Y eso se haría con algunas declaraciones if dentro de la fecha establecida.
+
+130
+00:10:34,579 --> 00:10:37,957
+Aparte de eso, ese es el de hoy, y te veré mañana.
+
+131
+00:10:37,957 --> 00:10:40,326
+♪ [música] ♪
+

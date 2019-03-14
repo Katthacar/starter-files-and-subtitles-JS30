@@ -1,0 +1,964 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,360 --> 00:00:03,796
+♪ [música] ♪
+
+3
+00:00:07,988 --> 00:00:12,121
+Hoy estamos creando un temporizador de cuenta regresiva que nos mostrará cuántos segundos
+
+4
+00:00:12,121 --> 00:00:16,614
+quedan en algún tipo de tarea, como si tuviera un breve descanso de 5 minutos,
+
+5
+00:00:16,614 --> 00:00:20,283
+o tienes un descanso de 15 minutos, o tienes un descanso para almorzar.
+
+6
+00:00:20,283 --> 00:00:23,650
+Necesita poder hacer clic en estos botones o puede ingresar el número
+
+7
+00:00:23,650 --> 00:00:26,181
+de los minutos que quieras. Se va a contar así como
+
+8
+00:00:26,181 --> 00:00:29,431
+Mostrarte a qué hora regresar. Esto es solo porque cuando enseño,
+
+9
+00:00:29,431 --> 00:00:34,510
+Tenemos descansos y la gente necesita saber cuánto tiempo queda un descanso y siempre preguntan
+
+10
+00:00:34,510 --> 00:00:38,400
+Yo, "Oye, Wes, ¿cuánto tiempo queda en el descanso?" Y yo digo, "No soy tu papá".
+
+11
+00:00:38,400 --> 00:00:42,730
+Luego construimos algo para poder dejar de hacer esa pregunta.
+
+12
+00:00:42,730 --> 00:00:49,300
+Queremos entrar primero en nuestros scripts aquí, y voy a hacer una función
+
+13
+00:00:49,300 --> 00:00:53,080
+Llamamos temporizador, y solo vamos a trabajar en la consola para empezar.
+
+14
+00:00:53,080 --> 00:00:56,780
+Entonces, lo que vamos a hacer es actualizar esta interfaz real aquí.
+
+15
+00:00:56,780 --> 00:01:00,620
+Voy a hacer una función llamada temporizador. Eso va a tomar en el número de
+
+16
+00:01:00,620 --> 00:01:07,150
+segundos en que desea que esté el temporizador. Y luego vamos a hacer dos cosas.
+
+17
+00:01:07,150 --> 00:01:10,690
+Ahora, ¿cómo funcionan los temporizadores? Usted tiene la cantidad de tiempo que desea para que lo haga.
+
+18
+00:01:10,690 --> 00:01:16,240
+tener, y luego simplemente transcurre ese tiempo por muchos segundos que sea.
+
+19
+00:01:16,240 --> 00:01:22,870
+En el pasado, lo que hice es establecer un intervalo, que tiene una función y
+
+20
+00:01:22,870 --> 00:01:29,970
+esa función en sí misma, vamos a deshacernos de toda esta basura, se ejecutaría cada segundo y
+
+21
+00:01:29,970 --> 00:01:33,450
+entonces lo que haría es decir, segundos, menos, menos.
+
+22
+00:01:33,450 --> 00:01:36,910
+Entonces solo disminuiría la cantidad de segundos cada vez.
+
+23
+00:01:36,910 --> 00:01:41,780
+Sin embargo, tuve problemas con eso porque dicho intervalo no se ejecuta
+
+24
+00:01:41,780 --> 00:01:46,400
+algunas veces. Encontré que a veces, cuando me separaba por un largo tiempo, simplemente
+
+25
+00:01:46,400 --> 00:01:49,680
+deja de ejecutarlo No sé si el navegador hace algo funky con
+
+26
+00:01:49,680 --> 00:01:53,920
+pausando sus intervalos cuando no se está ejecutando necesariamente. Entonces también encontré en
+
+27
+00:01:53,920 --> 00:01:58,820
+iOS, cuando se desplaza, pausará todos sus intervalos.
+
+28
+00:01:58,820 --> 00:02:02,600
+Creo que lo hace por problemas de rendimiento, así como por hacer su desplazamiento
+
+29
+00:02:02,600 --> 00:02:06,090
+Agradable y suave mantecoso. Similar a cómo, si se desplaza una página,
+
+30
+00:02:06,090 --> 00:02:11,740
+Tus gifs animados también se detendrán. Así que no es realmente un buen caso de uso allí,
+
+31
+00:02:11,740 --> 00:02:15,480
+porque si tuviera que desplazarme por 10 segundos, entonces agregaría un extra
+
+32
+00:02:15,480 --> 00:02:20,230
+10 segundos en el descanso. Así que en lugar de hacer eso, usaremos un intervalo pero en
+
+33
+00:02:20,230 --> 00:02:26,290
+una forma diferente Lo que queremos hacer es averiguar cuándo se inició el temporizador,
+
+34
+00:02:26,290 --> 00:02:32,220
+solo const ahora es igual a date.now. Eso es algo nuevo para el navegador.
+
+35
+00:02:32,220 --> 00:02:38,800
+Anteriormente teníamos que hacer una fecha nueva y luego obtener tiempo, pero hay una nueva estática.
+
+36
+00:02:38,800 --> 00:02:44,060
+Método en la fecha que se llama ahora, y eso nos dará la fecha y hora actual en
+
+37
+00:02:44,060 --> 00:02:50,220
+milisegundos. Entonces también queremos entonces, que ahora es más el número de segundos
+
+38
+00:02:50,220 --> 00:02:55,830
+para el que desea ejecutar el temporizador, pero que ahora va a estar en milisegundos
+
+39
+00:02:55,830 --> 00:03:00,720
+y los segundos están obviamente en segundos. Así que simplemente multiplicamos eso por 1000.
+
+40
+00:03:00,720 --> 00:03:04,950
+Así que es el registro de la consola, de vez en cuando, solo para ver lo que estamos haciendo aquí.
+
+41
+00:03:04,950 --> 00:03:10,210
+Si tuviera que actualizar esto, ejecute el temporizador 10, verá nuestro ahora y nuestro entonces valores que
+
+42
+00:03:10,210 --> 00:03:15,300
+tenemos aqui. Bien, entonces esos están trabajando para nosotros. Lo siguiente que tenemos que hacer es cada
+
+43
+00:03:15,300 --> 00:03:21,200
+Un segundo, necesitamos mostrar la cantidad de tiempo restante. Aquí es donde nos ponemos
+
+44
+00:03:21,200 --> 00:03:25,870
+un intervalo Esto está bien para usar un intervalo aquí porque realmente no estamos
+
+45
+00:03:25,870 --> 00:03:30,180
+preocupado de que se ejecute cada segundo si algo sucede.
+
+46
+00:03:30,180 --> 00:03:34,530
+Pero como, digamos que se salte dos segundos. Solo se actualizaría dos segundos.
+
+47
+00:03:34,530 --> 00:03:39,580
+Más tarde y nos muestran esos dos segundos menos que uno. Por lo tanto, está bien para usarlo
+
+48
+00:03:39,580 --> 00:03:44,160
+Aquí, lo vamos a ejecutar cada segundo, que es de 1000 milisegundos aquí.
+
+49
+00:03:44,160 --> 00:03:49,940
+Entonces, lo que necesitamos averiguar es cuánto tiempo queda en el reloj.
+
+50
+00:03:49,940 --> 00:03:56,040
+Tomaremos nuestro entonces, que es cuando se detiene, diremos que a los segundos de la izquierda es
+
+51
+00:03:56,040 --> 00:04:03,510
+igual que menos y no podemos decir ahora porque se capturó cuando se ejecutó,
+
+52
+00:04:03,510 --> 00:04:08,600
+pero tenemos que ejecutar date.now una vez más. Una vez más, ahora va a estar en
+
+53
+00:04:08,600 --> 00:04:13,060
+milisegundos, así que queremos dividir eso por 1000 para que podamos obtener segundos.
+
+54
+00:04:13,060 --> 00:04:19,690
+Quedan unos segundos de la consola. A ver que tenemos aqui. Ocho y medio,
+
+55
+00:04:19,690 --> 00:04:23,470
+siete, seis, cinco, por lo que tenemos un pequeño error de redondeo aquí. Oh,
+
+56
+00:04:23,470 --> 00:04:27,100
+eso es un poco funky Supongo que solo porque estamos tratando con milisegundos.
+
+57
+00:04:27,100 --> 00:04:34,120
+y haciendo esta división aquí, para que puedas envolver todo en matemáticas.
+
+58
+00:04:34,120 --> 00:04:39,850
+Entonces ejecútalo a las diez, nueve, ahí vamos. Es posible que hayas visto que comenzó a funcionar.
+
+59
+00:04:39,850 --> 00:04:44,610
+negativo después de un rato. ¿Y por qué es eso? Porque los intervalos no saben cuándo parar.
+
+60
+00:04:44,610 --> 00:04:53,090
+sí mismos. Entonces, lo que tenemos que hacer aquí es antes de mostrarlo, debemos verificar si
+
+61
+00:04:53,090 --> 00:05:02,320
+Deberíamos detenerlo. Como te detienes Diré si los segundos que quedan son menos o iguales.
+
+62
+00:05:02,320 --> 00:05:08,840
+a cero, entonces queremos detenerlo. Así que, obviamente, podríamos volver lo que parará.
+
+63
+00:05:08,840 --> 00:05:11,920
+la función se ejecuta, pero eso no nos va a ayudar realmente,
+
+64
+00:05:11,920 --> 00:05:15,580
+y te mostraré aquí. Eso no va a detener totalmente este intervalo de
+
+65
+00:05:15,580 --> 00:05:20,800
+corriendo, solo va a correr pero no nos muestra nada. Lo que tenemos que hacer es
+
+66
+00:05:20,800 --> 00:05:26,070
+almacenar este intervalo en su propia variable Voy a subir aquí y decir let
+
+67
+00:05:26,070 --> 00:05:30,250
+Cuenta atrás y ese será nuestro tipo de variable de nivel superior.
+
+68
+00:05:30,250 --> 00:05:33,230
+En este caso, es una variable global, va a vivir en la ventana,
+
+69
+00:05:33,230 --> 00:05:37,370
+pero podría introducir eso en IFFE y no tenerlo en el espacio de nombres global.
+
+70
+00:05:37,370 --> 00:05:42,230
+Entonces aquí vamos a simplemente actualizarlo. Cuenta atrás es igual a
+
+71
+00:05:42,230 --> 00:05:47,120
+Entonces aquí llamaremos intervalo claro y le pasaremos el nombre de nuestro temporizador, que es
+
+72
+00:05:47,120 --> 00:05:51,760
+cuenta regresiva. Luego, cuando lo ejecutamos, lo ejecutamos con tres segundos restantes,
+
+73
+00:05:51,760 --> 00:05:58,280
+dos, uno, y luego nunca volverá a ejecutarse porque hemos golpeado esto aquí.
+
+74
+00:05:58,280 --> 00:06:02,380
+Dejando de lado muy rápido, lamento tener que saltar aquí, pero dije menos o
+
+75
+00:06:02,380 --> 00:06:06,800
+Igual a, pero que termina por dejarnos un segundo. Obviamente queremos menos de
+
+76
+00:06:06,800 --> 00:06:13,170
+Cero segundos, que nos va a dar dos, uno y cero. No menos o igual a
+
+77
+00:06:13,170 --> 00:06:17,550
+solo menos Muy bien, volviendo a la programación programada. Ahora, otro tema que nos
+
+78
+00:06:17,550 --> 00:06:24,630
+se está ejecutando es si ejecuto 10 segundos, mira lo que pasa. Solo después de un segundo
+
+79
+00:06:24,630 --> 00:06:29,350
+transcurre ¿realmente se ejecuta. El problema con eso es que el intervalo establecido,
+
+80
+00:06:29,350 --> 00:06:37,030
+Lo que tenemos aquí, eso no se ejecuta de inmediato. Tiene que esperar la primera.
+
+81
+00:06:37,030 --> 00:06:42,540
+segundo que transcurre. Entonces, lo que quiero hacer es crear una segunda función aquí abajo.
+
+82
+00:06:42,540 --> 00:06:53,460
+Tiempo de visualización llamado izquierda que lleva en segundos. Aquí vamos a la consola de registro.
+
+83
+00:06:53,460 --> 00:06:59,040
+el número de segundos que quedan, y vamos a cambiar eso a minutos y
+
+84
+00:06:59,040 --> 00:07:04,440
+estante. Aquí abajo, en lugar de que la consola lo registre, lo mostraremos
+
+85
+00:07:04,440 --> 00:07:09,350
+que todavía debe hacer lo mismo, todavía después de un segundo.
+
+86
+00:07:09,350 --> 00:07:13,320
+Pero también podríamos ejecutar eso tan pronto como se invoque la función.
+
+87
+00:07:13,320 --> 00:07:18,740
+Ejecutaremos el tiempo de visualización restante y lo pasaremos en segundos. Vamos a correrlo
+
+88
+00:07:18,740 --> 00:07:25,870
+inmediatamente una vez, y luego una vez más, cada vez que hacemos eso
+
+89
+00:07:25,870 --> 00:07:32,120
+intervalo. Aquí vamos, un temporizador. ¿Ver? Hace 10 inmediatamente y luego contamos.
+
+90
+00:07:32,120 --> 00:07:38,990
+bajando de 9 a 6, hasta 1. Bien, entonces esta pequeña función de cuenta regresiva
+
+91
+00:07:38,990 --> 00:07:44,900
+que hemos escrito aquí se ve bastante bien, ahora quiero bajar a nuestro
+
+92
+00:07:44,900 --> 00:07:50,140
+Muestra el tiempo restante y comienza a trabajar convirtiéndolo en minutos y segundos.
+
+93
+00:07:50,140 --> 00:07:53,466
+En un video anterior, lo que hicimos fue tomar todos nuestros segundos y convertirlos
+
+94
+00:07:53,466 --> 00:07:57,900
+a segundos, minutos y horas. Puedes ir a buscar ese código ahora mismo si quieres.
+
+95
+00:07:57,900 --> 00:08:01,100
+O si quieres un poco de práctica, descúbrelo tú mismo.
+
+96
+00:08:01,100 --> 00:08:04,170
+Aquí solo vamos a hacer minutos y segundos, pero puede hacer horas como
+
+97
+00:08:04,170 --> 00:08:12,650
+bien. Así que voy a decir, const minutos es igual a segundos divididos por 60 y vamos a
+
+98
+00:08:12,650 --> 00:08:20,729
+Consola lo que nos queda. Si tuviera que correr 70, nos quedan 1.16 minutos,
+
+99
+00:08:20,729 --> 00:08:27,000
+1.13. Entonces, ¿qué está pasando aquí con eso? Bueno, eso es porque solo queremos todo.
+
+100
+00:08:27,000 --> 00:08:31,140
+minutos. No nos importan esos restos aquí. Así que diremos math.floor,
+
+101
+00:08:31,140 --> 00:08:35,764
+vamos a agarrar el límite inferior de ese número. Y ahora si tuviera que correr,
+
+102
+00:08:35,764 --> 00:08:43,404
+Hagamos 124 segundos. Entonces, dos minutos, dos minutos y luego eventualmente debería ser
+
+103
+00:08:43,404 --> 00:08:49,058
+A un minuto entero, ahí vamos. Ahora estamos preocupados por cuántos segundos son.
+
+104
+00:08:49,058 --> 00:08:57,405
+izquierda. Así que digo constantes segundos y eso va a ser segundos mod 60 y mod
+
+105
+00:08:57,405 --> 00:09:02,177
+Nos dará el resto que tenemos. Temporizador de minutos y el resto de segundos,
+
+106
+00:09:02,177 --> 00:09:09,440
+Aquí vamos, tres, dos, uno. Eso se reduce a 1 minuto y 59 segundos.
+
+107
+00:09:09,440 --> 00:09:13,230
+Bueno. Así que tenemos nuestros minutos en nuestros segundos segundos, ahora podemos comenzar
+
+108
+00:09:13,230 --> 00:09:20,780
+Trabajando con nuestro HTML. Tenemos este tiempo de visualización dejado div aquí.
+
+109
+00:09:20,780 --> 00:09:25,760
+Si tuviéramos que poner eso en una variable, el temporizador de const es igual a
+
+110
+00:09:25,760 --> 00:09:34,170
+document.querySelector. Queremos buscar eso. Luego bajaremos aquí y
+
+111
+00:09:34,170 --> 00:09:38,570
+Crea otra variable que será nuestro tiempo de visualización.
+
+112
+00:09:38,570 --> 00:09:43,389
+que va a parecer algo así como 11:11, ¿verdad? ¿Cómo obtenemos el número de
+
+113
+00:09:43,389 --> 00:09:49,786
+¿minutos restantes? Simplemente solo minutos: número de segundos segundos.
+
+114
+00:09:49,786 --> 00:09:58,420
+Luego tomamos nuestro timerDisplay, que es nuestro div, configuramos el contenido de texto para que sea
+
+115
+00:09:58,420 --> 00:10:04,050
+monitor. Podemos deshacernos de este registro de consola porque ahora estamos tratando con reales
+
+116
+00:10:04,050 --> 00:10:09,900
+Elementos de DOM aquí. Si tuviera que ejecutarlo, oh, lo deletreé mal. Minutos.
+
+117
+00:10:09,900 --> 00:10:18,480
+Minutsas. Ahora lo ejecutamos. Oh, está bien, tipo de trabajo pero ves cuál es el problema
+
+118
+00:10:18,480 --> 00:10:22,880
+¿aquí? Cuando quedan menos de 10 segundos, solo dice 4 segundos,
+
+119
+00:10:22,880 --> 00:10:28,730
+Pero deberíamos quedarnos 04 segundos por delante. ¿Como hacemos eso? Bueno, podríamos ir a esto
+
+120
+00:10:28,730 --> 00:10:35,020
+remainderSeconds, y diremos si el resto de segundos es mayor que 10,
+
+121
+00:10:35,020 --> 00:10:43,840
+o lo siento, menos de 10, entonces queremos devolver un cero. Es un signo de interrogación,
+
+122
+00:10:43,840 --> 00:10:48,360
+este es un operador ternario taquigráfico, y de lo contrario, solo vamos a regresar
+
+123
+00:10:48,360 --> 00:10:53,050
+nada. Y eso nos dará un cero. Y luego, finalmente, al final aquí.
+
+124
+00:10:53,050 --> 00:10:58,760
+Usted puede simplemente darnos el resto de los segundos restantes. Así que si lo ejecutamos ahora,
+
+125
+00:10:58,760 --> 00:11:04,270
+con 124 segundos, tenemos ese cero rellenado en el frente hasta que llegue allí.
+
+126
+00:11:04,270 --> 00:11:08,430
+Otra cosa es que deberíamos actualizar la pestaña en nuestro navegador aquí,
+
+127
+00:11:08,430 --> 00:11:16,640
+sólo dice temporizador de cuenta atrás. Simplemente podemos decir document.title.
+
+128
+00:11:16,640 --> 00:11:23,600
+Document.title es la etiqueta del título en su HTML, es igual a mostrar.
+
+129
+00:11:23,600 --> 00:11:27,910
+Ahora lo vamos a ejecutar. Aquí vamos. Lo actualiza como lo estamos actualizando.
+
+130
+00:11:27,910 --> 00:11:32,170
+Puedes poner eso realmente donde sea que te guste. Ahora quiero trabajar en eso
+
+131
+00:11:32,170 --> 00:11:36,450
+Otra función que muestra la hora de finalización. Si son las 2:30 y tienes un
+
+132
+00:11:36,450 --> 00:11:41,810
+Pausa de cinco minutos, quiero decir que vuelvan a las 2:35. Vamos a crear una función llamada
+
+133
+00:11:41,810 --> 00:11:47,460
+displayEndTime. Eso va a tomar en una marca de tiempo de cuando quieres terminar.
+
+134
+00:11:47,460 --> 00:11:54,640
+Ese es nuestro tiempo aquí mismo. Toma una marca de tiempo y tenemos que convertir eso
+
+135
+00:11:54,640 --> 00:12:01,340
+marca de tiempo en una fecha. Const final es igual a nueva fecha. Quieres pasarla
+
+136
+00:12:01,340 --> 00:12:06,220
+marca de tiempo ¿Por qué? Si nunca has trabajado con marcas de tiempo antes, así es como
+
+137
+00:12:06,220 --> 00:12:12,950
+trabajo. Tiene date.now, que es solo una cantidad de milisegundos desde el 1 de enero,
+
+138
+00:12:12,950 --> 00:12:16,940
+1970. Fue entonces cuando Dios creó la tierra. Esa es la cantidad de milisegundos que tiene
+
+139
+00:12:16,940 --> 00:12:21,440
+transcurrido desde esa cantidad de tiempo. Ahora, si fueras a tomar esto y luego ponerlo
+
+140
+00:12:21,440 --> 00:12:24,180
+en una cadena y luego volver a JavaScript, estarías como "Bien,
+
+141
+00:12:24,180 --> 00:12:29,810
+Necesito convertir esto de nuevo en una fecha. "Dices nueva fecha y la pasas
+
+142
+00:12:29,810 --> 00:12:32,860
+número de milisegundos que tienes. Se va a convertir eso.
+
+143
+00:12:32,860 --> 00:12:38,711
+Es el 1 de diciembre ahora mismo, conviértelo en una marca de tiempo adecuada para usted.
+
+144
+00:12:38,711 --> 00:12:41,927
+Lo bueno de esto es que puedes ponerlo en una variable llamada X
+
+145
+00:12:41,927 --> 00:12:52,702
+y luego puedes llamar a X.getDate, X.getDay, X.getMonth,
+
+146
+00:12:52,702 --> 00:12:56,092
+y obtienes toda la información sobre qué día y mes y todo eso.
+
+147
+00:12:56,092 --> 00:13:00,220
+Esa es una fecha apropiada. Eso lleva en una marca de tiempo. Creamos una nueva fecha
+
+148
+00:13:00,220 --> 00:13:07,730
+objeto de eso. Entonces simplemente podemos obtener las horas. Diremos que la hora de const es igual
+
+149
+00:13:07,730 --> 00:13:20,960
+end.getHours y const minutes es igual a end.getMinutes, entonces diremos end-time
+
+150
+00:13:20,960 --> 00:13:24,080
+que aún no tenemos eso. Volvamos a la cima aquí.
+
+151
+00:13:24,080 --> 00:13:30,780
+¿Cuál es nuestro tiempo final? Mostrar hora de finalización. Agarra esa ventosa, const endTime es igual
+
+152
+00:13:30,780 --> 00:13:37,310
+a document.querySelector. Vamos a agarrar la cosa con la clase de pantalla,
+
+153
+00:13:37,310 --> 00:13:43,580
+hora de finalización. Bien, entonces tenemos este endTime.textContent es igual a,
+
+154
+00:13:43,580 --> 00:13:46,320
+Y solo voy a ponerlo aquí. Anteriormente, lo ponemos en una variable llamada
+
+155
+00:13:46,320 --> 00:13:49,940
+monitor. ¿Por qué? Porque necesitaba usarlo más de una vez. Necesitaba usarlo para
+
+156
+00:13:49,940 --> 00:13:53,850
+actualizar el título, así como actualizar el contenido del texto. Pero en este caso solo quiero.
+
+157
+00:13:53,850 --> 00:14:01,060
+Para hacerlo directamente dentro de aquí. Diremos "Volver a" y luego tomaremos el
+
+158
+00:14:01,060 --> 00:14:10,590
+Hora y vamos a agarrar los minutos. Eso es fácil, ¿verdad? No, no va a ser eso.
+
+159
+00:14:10,590 --> 00:14:17,310
+Fácil, pero vamos a darle una oportunidad. En nuestro temporizador, no vamos a ejecutar esto en nuestro
+
+160
+00:14:17,310 --> 00:14:21,210
+intervalo, no necesita actualizarse cada segundo, solo tiene que suceder una vez
+
+161
+00:14:21,210 --> 00:14:26,690
+cuando se ejecuta el temporizador. Así que, simplemente simplemente muestre EndTime, entonces lo pasa,
+
+162
+00:14:26,690 --> 00:14:31,920
+cual es el tiempo final. Así que si tuviera que ejecutar nuestro temporizador, no sé,
+
+163
+00:14:31,920 --> 00:14:38,737
+3.000 segundos para pasarlo, nos quedan 50 minutos. Pero el problema aquí
+
+164
+00:14:38,737 --> 00:14:44,193
+Es que no soy europeo, y no entiendo qué son las 15:00.
+
+165
+00:14:44,193 --> 00:14:50,330
+Sé que debería volver a las 3:11. Entonces tenemos que entrar aquí,
+
+166
+00:14:50,330 --> 00:14:54,800
+Y si eres europeo, felicidades. Puedes dejar esta parte y tal vez ir a buscar un
+
+167
+00:14:54,800 --> 00:15:00,770
+Pop o algo así. Pero nosotros, los canadienses y los estadounidenses y cualquier otra persona.
+
+168
+00:15:00,770 --> 00:15:07,600
+Es normal que entre en esta hora y digamos, si la hora es mayor que 12,
+
+169
+00:15:07,600 --> 00:15:14,420
+luego debemos devolver la hora menos 12, de lo contrario solo queremos devolver la hora.
+
+170
+00:15:14,420 --> 00:15:19,740
+Y si esto es un poco demasiado original para usted, simplemente puede ingresar aquí y
+
+171
+00:15:19,740 --> 00:15:26,320
+crear una nueva variable ajustada a la hora es igual a, devolveremos la hora menos
+
+172
+00:15:26,320 --> 00:15:32,070
+12. Entonces, si son las 13:00, quita 12, son las 1:00 y toma esa hora ajustada y
+
+173
+00:15:32,070 --> 00:15:38,700
+ponlo aquí, así que, ¿cómo se ve? Bien, volvamos a las 3:12, bien.
+
+174
+00:15:38,700 --> 00:15:47,770
+¿Pero y si lo ejecutara con 2700 segundos? Vuelvo a las 3:07,
+
+175
+00:15:47,770 --> 00:15:53,370
+Así que conseguimos los minutos finales de nuevo. Si los minutos son menos de 10,
+
+176
+00:15:53,370 --> 00:16:02,270
+luego devuelve un 0 de lo contrario no devuelve nada. Y luego vamos a pegar los minutos en el
+
+177
+00:16:02,270 --> 00:16:10,630
+terminar de nuevo. Vuelvo a las 3:07. Hermoso. Bien, entonces tenemos nuestro temporizador funcionando.
+
+178
+00:16:10,630 --> 00:16:14,470
+Nuestra función está funcionando, se está actualizando, mostrando y todo.
+
+179
+00:16:14,470 --> 00:16:19,130
+Lo último que tenemos que hacer ahora es conectarlo a todos estos diferentes botones como
+
+180
+00:16:19,130 --> 00:16:23,940
+así como nuestros minutos aquí. Si miramos nuestro HTML, verás que cada uno de estos
+
+181
+00:16:23,940 --> 00:16:29,540
+Los botones aquí, tienen un tiempo de datos y la cantidad de segundos que queremos ejecutarlo.
+
+182
+00:16:29,540 --> 00:16:33,510
+Y luego tenemos un formulario aquí que es un número personalizado de minutos, no segundos.
+
+183
+00:16:33,510 --> 00:16:38,230
+Vamos a tratar con estos botones, los quitaremos primero. Entraremos aquí y primero
+
+184
+00:16:38,230 --> 00:16:46,220
+Vamos a seleccionar todos esos, así que di, botones const es igual a todos. Y quieres seleccionar
+
+185
+00:16:46,220 --> 00:16:51,290
+Cualquier cosa con un tiempo de datos. No solo un botón, podría ser una imagen,
+
+186
+00:16:51,290 --> 00:16:56,530
+podría ser otra cosa, cualquier cosa que tenga un atributo de tiempo de datos.
+
+187
+00:16:56,530 --> 00:17:02,860
+Cuando eso suceda, bajaremos aquí y diremos botones para cada botón,
+
+188
+00:17:02,860 --> 00:17:09,363
+button.addEventListener, queremos escuchar un clic, y cuando eso sucede,
+
+189
+00:17:09,363 --> 00:17:13,787
+Podríamos ejecutar una función llamada startTimer.
+
+190
+00:17:13,787 --> 00:17:18,106
+Iremos aquí, haremos una función llamada startTimer y haremos
+
+191
+00:17:18,106 --> 00:17:21,833
+simplemente consola de registro esto. Está bien, vamos a ver lo que tenemos aquí.
+
+192
+00:17:21,833 --> 00:17:26,500
+Botón de veinte segundos, lo tengo. ¿Cómo conseguimos este tiempo de datos?
+
+193
+00:17:26,500 --> 00:17:31,090
+Bueno, este conjunto de datos nos dará un objeto con el tiempo en él.
+
+194
+00:17:31,090 --> 00:17:36,114
+Este.dataset.time nos dará una cadena de la cantidad de minutos.
+
+195
+00:17:36,114 --> 00:17:41,862
+Así que podemos poner eso en una variable, const segundos es igual a
+
+196
+00:17:41,862 --> 00:17:48,051
+this.dataset.time desea envolverlo en un parseint rápido, convertirlo en un verdadero
+
+197
+00:17:48,051 --> 00:17:52,417
+número y luego vamos a la consola de segundos de registro.
+
+198
+00:17:52,417 --> 00:17:56,364
+Veinte, 30, bien. Trabajando muy bien para nosotros.
+
+199
+00:17:56,364 --> 00:18:00,950
+Lo que queremos hacer es simplemente llamar al temporizador, segundos,
+
+200
+00:18:00,950 --> 00:18:07,260
+Esa otra función. Así que haz clic en él, ah-ha, parece que está funcionando muy bien,
+
+201
+00:18:07,260 --> 00:18:14,130
+Aunque, mira esto, haz clic en el trabajo cinco. Oh, ida y vuelta, ida y vuelta,
+
+202
+00:18:14,130 --> 00:18:17,682
+de ida y vuelta. Entonces, ¿qué está pasando aquí?
+
+203
+00:18:17,682 --> 00:18:22,211
+Y si hago clic en un par de ellos ... vamos a la ciudad, aquí. Si sólo hago clic,
+
+204
+00:18:22,211 --> 00:18:26,495
+como, 100 veces Oh Dios mío, ¿qué está pasando? Bueno, acabo de hacer cola
+
+205
+00:18:26,495 --> 00:18:34,550
+Me gusta, 1000 temporizadores y no hay forma de que los temporizadores se cancelen automáticamente a menos que
+
+206
+00:18:34,550 --> 00:18:38,590
+el número de segundos llega a cero. Eso es molesto. Al igual que, si haces clic en la
+
+207
+00:18:38,590 --> 00:18:42,390
+el equivocado. ¿Tienes que gustar, refrescar la página y luego comenzar de nuevo?
+
+208
+00:18:42,390 --> 00:18:46,480
+Esa no es realmente una manera de vivir tu vida. Lo que queremos hacer es cuando empezamos.
+
+209
+00:18:46,480 --> 00:18:54,760
+nuestro temporizador, simplemente borraremos cualquier temporizador existente. Vamos a borrar el intervalo de cuenta atrás.
+
+210
+00:18:54,760 --> 00:18:58,280
+Si hay un temporizador en la cuenta regresiva, se borrará. Si no hay
+
+211
+00:18:58,280 --> 00:19:02,280
+La variable todavía existe y no nos va a producir un error. Ahora,
+
+212
+00:19:02,280 --> 00:19:08,610
+si digo "oh, no 20, quise decir 5." No va a volver 15, no va a volver.
+
+213
+00:19:08,610 --> 00:19:12,380
+usted ve eso? Nuestro tiempo de "volver" también se está actualizando muy bien.
+
+214
+00:19:12,380 --> 00:19:20,050
+Bien bien bien. Lo último es este formulario aquí donde ingresas en unos 30 minutos.
+
+215
+00:19:20,050 --> 00:19:24,220
+Así que queremos tomar este formulario aquí, el cual, si ingresa en nuestro HTML, verá
+
+216
+00:19:24,220 --> 00:19:29,470
+que este formulario tiene un nombre de formulario personalizado, así que entraremos aquí.
+
+217
+00:19:29,470 --> 00:19:32,920
+Antes de seleccionarlo, quería mostrarte esta pequeña cosa.
+
+218
+00:19:32,920 --> 00:19:36,360
+En realidad no lo sabía desde hace mucho tiempo. Solo estaba seleccionando todos
+
+219
+00:19:36,360 --> 00:19:41,520
+mis elementos Pero, ¿sabía que puede escribir el documento y luego si tiene un nombre?
+
+220
+00:19:41,520 --> 00:19:46,960
+atributo en él, formulario personalizado, simplemente puede escribir document.customform y eso será
+
+221
+00:19:46,960 --> 00:19:52,600
+Danos el elemento de forma. Del mismo modo, si su entrada también tiene un nombre,
+
+222
+00:19:52,600 --> 00:19:57,270
+simplemente anidará .minutos y eso nos dará la entrada.
+
+223
+00:19:57,270 --> 00:20:01,610
+Whoa, no tenemos que seleccionar una sola cosa. Vayamos a nuestros guiones aquí y
+
+224
+00:20:01,610 --> 00:20:06,160
+diremos documentcustomform.addeventlistener y
+
+225
+00:20:06,160 --> 00:20:12,152
+Vamos a escucharlo, ¿qué? Hacer clic. ¿Entrar? No. Presentar. Entonces vamos a
+
+226
+00:20:12,152 --> 00:20:15,460
+ejecuta una función, una función adecuada aquí, te mostraré por qué en un segundo,
+
+227
+00:20:15,460 --> 00:20:21,620
+pasado el evento. Ahora, si enviamos esto ahora, escriba 10, se actualiza la página y
+
+228
+00:20:21,620 --> 00:20:25,870
+ve que la URL dice que los minutos son igual a 10. ¿Cómo evitamos que se vuelva a cargar la página?
+
+229
+00:20:25,870 --> 00:20:32,960
+y enviando los datos a través de un get? Una llamada, e.preventdefault. Eso lo detendrá de
+
+230
+00:20:32,960 --> 00:20:39,629
+corriendo. Diez. Bien, no pasa nada. Entonces podemos conseguir los minutos que van a ser.
+
+231
+00:20:39,629 --> 00:20:45,713
+esto, porque este es el formulario.minutos, que será ese cuadro de texto allí
+
+232
+00:20:45,713 --> 00:20:52,110
+que escribimos, el input.value. Y la consola registra nuestros minutos, 10, lo tengo.
+
+233
+00:20:52,110 --> 00:20:58,390
+Podemos llamar rápidamente a este .reset y borrar el valor, 10, borrará el valor
+
+234
+00:20:58,390 --> 00:21:04,760
+y la consola lo registra. Entonces simplemente tomamos la cantidad de minutos que queremos,
+
+235
+00:21:04,760 --> 00:21:09,980
+Lo pasamos a nuestro temporizador, no podemos pasarlo en minutos porque nuestro temporizador requiere
+
+236
+00:21:09,980 --> 00:21:19,173
+segundos. Multiplique eso por 60, y si lo hacemos bien, entonces 5 minutos deberían darnos.
+
+237
+00:21:19,173 --> 00:21:25,460
+5 minutos enteros. Muy agradable. Así que ese es nuestro temporizador. Tenemos un par de diferentes
+
+238
+00:21:25,460 --> 00:21:29,910
+funciones que se realizan aquí, tenemos nuestro tiempo fuera y otras cosas, espero que hayan disfrutado
+
+239
+00:21:29,910 --> 00:21:34,149
+ese. Me encantaría ver cómo puedes llevar esto un poco más lejos,
+
+240
+00:21:34,149 --> 00:21:38,085
+ya sea agregando animación y interacción, o agregando algunas características en
+
+241
+00:21:38,085 --> 00:21:39,583
+términos de horas y todo eso.
+

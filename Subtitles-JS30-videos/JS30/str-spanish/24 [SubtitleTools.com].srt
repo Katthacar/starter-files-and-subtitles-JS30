@@ -1,0 +1,472 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,344 --> 00:00:03,408
+♪ [música] ♪
+
+3
+00:00:07,077 --> 00:00:08,772
+Hoy vamos a hacer algo que ...
+
+4
+00:00:08,772 --> 00:00:13,360
+esta es probablemente una de las primeras cosas que aprendí en jQuery cuando estaba
+
+5
+00:00:13,360 --> 00:00:18,210
+La primera vez que empecé a aprender JavaScript y fue cómo arreglo realmente un navegador cuando
+
+6
+00:00:18,210 --> 00:00:22,030
+desplazarse a ella? Así que esto es lo que vamos a construir aquí donde tienes
+
+7
+00:00:22,030 --> 00:00:26,226
+esta navegación que es solo la posición rodó sobre estática y luego, tan pronto como la golpeas
+
+8
+00:00:26,226 --> 00:00:29,868
+punto donde golpea la parte superior del navegador, vamos a hacerlo fijo
+
+9
+00:00:29,868 --> 00:00:33,616
+por lo que el contenido se desplaza por debajo. Y luego también podemos hacer algunas cosas calientes
+
+10
+00:00:33,616 --> 00:00:38,925
+Como desplazar el logotipo o algo así. Así que lo primero que vamos a hacer es
+
+11
+00:00:39,000 --> 00:00:45,900
+Agarra esta navegación aquí. Así que voy a decir const nav = document.querySelector
+
+12
+00:00:45,900 --> 00:00:52,074
+y vamos a buscar la navegación con el ID de main y luego también estamos
+
+13
+00:00:52,074 --> 00:00:56,754
+va a hacer una función llamada fixNav que luego va a ejecutar cada uno
+
+14
+00:00:56,754 --> 00:01:05,798
+desplazamiento de página, impresionante. Entonces, lo que esto va a hacer es que vamos a averiguar
+
+15
+00:01:05,798 --> 00:01:12,778
+Donde está la parte superior de esta barra negra de navegación. Digamos que son 500 píxeles desde la parte superior.
+
+16
+00:01:12,778 --> 00:01:17,618
+y luego, cuando nos desplazamos, vamos a averiguar qué tan lejos estamos?
+
+17
+00:01:17,618 --> 00:01:21,844
+Digamos, aquí mismo, estoy alrededor de 400 píxeles desplazados. Pero tan pronto como llegue a eso
+
+18
+00:01:21,844 --> 00:01:29,110
+El umbral de desplazamiento más alto que la parte superior de la navegación es, por lo que, tan pronto como haya desplazado 501
+
+19
+00:01:29,110 --> 00:01:36,393
+Píxeles, la barra de navegación dirá "Oop, estoy fuera de pantalla, ahora debería arreglarme".
+
+20
+00:01:36,393 --> 00:01:42,971
+Entonces, lo que tenemos que hacer en la carga de la página es agarrar la parte superior de esta navegación
+
+21
+00:01:42,971 --> 00:01:51,810
+En realidad se ve. Entonces digamos const topOfNav = nav.offsetTop.
+
+22
+00:01:51,810 --> 00:01:57,210
+Luego, cuando console.log (topOfNav) ... solo consolamos.log para que todos y cada uno
+
+23
+00:01:57,210 --> 00:02:00,924
+Una vez que lo ejecutamos, abre tus herramientas de desarrollo. Recomiendo poner tus herramientas dev
+
+24
+00:02:00,924 --> 00:02:06,229
+en el lado aquí para que no arruine su parte superior de la navegación aquí. Usted también podría
+
+25
+00:02:06,229 --> 00:02:11,353
+actualice esta variable cada vez que su ventana cambie de tamaño solo para que si alguien
+
+26
+00:02:11,353 --> 00:02:15,470
+no cambia el tamaño o abre herramientas dev, lo tienes Así que voy a desplazarme aquí y tu
+
+27
+00:02:15,470 --> 00:02:21,819
+Mira, son 542 píxeles, que es la parte superior de la navegación en ese punto.
+
+28
+00:02:21,819 --> 00:02:29,760
+Entonces, lo que podemos hacer es decir si (window.scrollY) ... ¿Por qué?
+
+29
+00:02:29,760 --> 00:02:34,390
+Porque ¿qué es window.scrollY? Volvamos a ese topOfNav y luego también
+
+30
+00:02:34,390 --> 00:02:38,486
+console.log window.scrollY. Lo hemos hecho en un par de tutoriales.
+
+31
+00:02:38,486 --> 00:02:42,930
+hasta ahora Así que ahora vas a ver que el segundo valor, 1,
+
+32
+00:02:42,930 --> 00:02:47,510
+eso es lo lejos que nos hemos desplazado. Y luego vas a ver eso a medida que nos acercamos.
+
+33
+00:02:47,510 --> 00:02:52,490
+y más cerca de donde va a llegar a la cima, estamos casi en ese punto donde
+
+34
+00:02:52,490 --> 00:02:57,760
+Los 542 píxeles serán iguales a los 542. Y en ese punto,
+
+35
+00:02:57,760 --> 00:03:02,770
+Queremos hacer que la navegación sea fija. Así que vamos a entrar aquí, vamos a decir
+
+36
+00:03:02,770 --> 00:03:09,215
+if (topOfNav> = window) ... o al revés,
+
+37
+00:03:09,215 --> 00:03:15,634
+window.scrollY> = topOfNav, si eso es cierto,
+
+38
+00:03:15,634 --> 00:03:18,800
+lo que vamos a hacer es que vamos a hacer estallar una clase y cuando hago cosas como
+
+39
+00:03:18,800 --> 00:03:23,480
+esto, me gusta poner una clase en el cuerpo solo para que siempre pueda apuntar a cualquiera de
+
+40
+00:03:23,480 --> 00:03:27,480
+Los niños cuando estamos en el estado de navegación fija. A algunas personas les gusta ponerlo en el
+
+41
+00:03:27,480 --> 00:03:30,784
+Nav en sí, pero encontré que si quiero apuntar a otra cosa,
+
+42
+00:03:30,784 --> 00:03:33,452
+Es bueno tenerlo bonito y alto en el cuerpo,
+
+43
+00:03:33,452 --> 00:03:41,967
+document.body.classList.add ('fixed-nav') y luego diremos otra cosa,
+
+44
+00:03:42,290 --> 00:03:46,918
+y simplemente duplicaremos esto, lo que vas a eliminar.
+
+45
+00:03:46,918 --> 00:03:49,156
+Ahora eso no nos va a llevar hasta el final,
+
+46
+00:03:49,156 --> 00:03:53,814
+pero si guardamos eso ahora y lo actualizamos, ahora a medida que se desplaza,
+
+47
+00:03:54,516 --> 00:04:00,605
+Verá que se está agregando y quitando esta barra fija, pero en realidad no se está reparando.
+
+48
+00:04:00,605 --> 00:04:07,040
+sí mismo. Así que tenemos que ir a nuestro estilo-start.CSS y encontrar nuestra navegación CSS
+
+49
+00:04:07,040 --> 00:04:11,471
+y este no es el mejor CSS porque usa solo los selectores de elementos
+
+50
+00:04:11,471 --> 00:04:13,846
+aquí. Probablemente debería tener una clase o algo así, pero estoy tratando de
+
+51
+00:04:13,846 --> 00:04:18,499
+Mantenlo tan simple como podamos. Y voy a decir cuando el cuerpo tiene una clase de
+
+52
+00:04:18,499 --> 00:04:24,310
+.fixed-nav, el nav en sí será posicionado: arreglado; y luego voy a
+
+53
+00:04:24,310 --> 00:04:29,550
+poner una pequeña sombra de caja allí para darle un poco de sombra, así
+
+54
+00:04:29,550 --> 00:04:33,340
+cuando está en ese estado fijo, tienes una sombra que muestra que tienes algo de profundidad
+
+55
+00:04:33,340 --> 00:04:38,936
+ahí. De acuerdo, así que ahora, cuando llegue a este punto ... ¿ves lo que está pasando?
+
+56
+00:04:38,936 --> 00:04:45,811
+Ahora parece estar funcionando, pero parece un poco tonto. Tu ves lo que esta pasando
+
+57
+00:04:45,811 --> 00:04:52,694
+¿aqui? Tan pronto como llegamos a ese punto final allí, el contenido salta y por qué
+
+58
+00:04:52,694 --> 00:04:58,300
+esta pasando eso Bueno, la razón de que eso suceda es porque cuando haces
+
+59
+00:04:58,300 --> 00:05:02,830
+esta navegación se ha solucionado, ya no ocupa espacio en el documento.
+
+60
+00:05:02,830 --> 00:05:07,214
+Lo sabes por CSS. Cuando haces un elemento fijo, ya no ocupa
+
+61
+00:05:07,214 --> 00:05:11,507
+espacio. En cierto modo, flota sobre el navegador. Y haciendo eso,
+
+62
+00:05:11,507 --> 00:05:18,131
+Lo que está sucediendo es que provocamos un reflujo en la página y esta página se ajusta aquí.
+
+63
+00:05:18,131 --> 00:05:24,223
+dice: "Oh, esta navegación ya no ocupa espacio, bueno, no me importa si lo hago"
+
+64
+00:05:24,223 --> 00:05:29,989
+y se mueve hacia arriba la cantidad exacta de espacio que abandonó, que sin embargo es
+
+65
+00:05:29,989 --> 00:05:36,100
+muchos pixeles Entonces, lo que debemos hacer es compensar esa cantidad agregando algo
+
+66
+00:05:36,100 --> 00:05:40,530
+Acolchado a nuestro cuerpo. Así que al igual que lo arreglamos, necesitamos
+
+67
+00:05:40,530 --> 00:05:43,753
+compensar esa cantidad para que no obtengan este salto desigual aquí.
+
+68
+00:05:43,753 --> 00:05:48,889
+Así que volvamos a nuestro elemento aquí y vamos a
+
+69
+00:05:48,889 --> 00:05:54,981
+toma nuestro document.body.style y vamos a configurar el rellenoTop,
+
+70
+00:05:55,425 --> 00:05:58,634
+y si tienes algo que es un top de relleno,
+
+71
+00:05:58,634 --> 00:06:01,826
+No puedes hacer eso en JavaScript, así que eso es un caso de camello.
+
+72
+00:06:01,826 --> 00:06:06,846
+Y vamos a establecer que sea el nav.offsetHeight.
+
+73
+00:06:06,846 --> 00:06:10,273
+¿Por qué? ¿Qué nos va a dar eso? Si tuviera que ejecutar esto en mi consola aquí,
+
+74
+00:06:11,362 --> 00:06:15,620
+nav.offsetHeight nos dará lo grande que sea esta navegación.
+
+75
+00:06:15,620 --> 00:06:20,780
+Y he visto a gente como Hardcode 64px, pero no hago eso porque entonces qué
+
+76
+00:06:20,780 --> 00:06:24,684
+sucede si su navegador cambia o su fuente cambia o cualquier otra cosa y entonces usted es
+
+77
+00:06:24,684 --> 00:06:29,170
+va a estar fuera sólo un par de píxeles. Así que agarra programáticamente la altura de la
+
+78
+00:06:29,170 --> 00:06:37,474
+píxeles y luego agregar en px en la parte superior. Y luego lo que también haremos es lo contrario.
+
+79
+00:06:37,474 --> 00:06:42,953
+Al final, solo estableceremos la parte superior de relleno en cero, bien. Así que ahora, cuando ...
+
+80
+00:06:42,953 --> 00:06:45,402
+Ooh, mira eso,
+
+81
+00:06:45,402 --> 00:06:49,173
+así que ahora tenemos este nav, nav, nav, normal, normal, normal y luego corregido.
+
+82
+00:06:49,173 --> 00:06:54,021
+Y tan pronto como llegamos a ese punto, ya no tenemos ese salto. Y tu puedes ir
+
+83
+00:06:54,021 --> 00:06:58,047
+en tu panel de Elementos y mira lo que está pasando aquí. ¿Mira esto?
+
+84
+00:06:58,047 --> 00:07:04,070
+style = padding-top: 0 y luego, tan pronto como llegamos a ese punto, la clase de fix continúa
+
+85
+00:07:04,070 --> 00:07:09,311
+y luego el relleno superior es 64px. Una vez más, podría estar preguntando por qué no
+
+86
+00:07:09,311 --> 00:07:15,648
+Simplemente me gusta ponerlo aquí cuando tengo una clase de navegación fija, dale padding-top
+
+87
+00:07:15,648 --> 00:07:20,387
+de 64 px? Es que no sabemos qué tan alta será esta navegación y preferiría hacer
+
+88
+00:07:20,387 --> 00:07:25,486
+Programándolo y haciendo en línea, tendrá que adivinar y actualizar eso cada vez.
+
+89
+00:07:25,486 --> 00:07:30,080
+La navegación se cambia a sí misma. Así que se ve bastante bien. Eso está funcionando muy bien.
+
+90
+00:07:30,080 --> 00:07:32,950
+Hay un par de otras cosas que podemos hacer. Si abres tu nav,
+
+91
+00:07:32,950 --> 00:07:36,293
+Vas a ver que tenemos un li con una clase de logotipo.
+
+92
+00:07:37,124 --> 00:07:41,323
+Si miramos nuestra hoja de estilo aquí, verás que le di un ancho máximo
+
+93
+00:07:41,323 --> 00:07:47,790
+De 0 y dale un desbordamiento de lo oculto. Así que está ahí, simplemente no se muestra
+
+94
+00:07:47,790 --> 00:07:51,486
+En absoluto porque tiene un ancho de cero. Entonces lo que vamos a hacer es ir
+
+95
+00:07:51,486 --> 00:07:58,590
+para decir: "Cuando el cuerpo tiene una clase de navegación fija, el li con una clase de logotipo es
+
+96
+00:07:58,590 --> 00:08:02,690
+va a tener un ancho máximo de algo más grande de lo que nunca será,
+
+97
+00:08:02,783 --> 00:08:07,378
+como 500px, "y te mostraré por qué en un segundo, por qué no usamos el ancho
+
+98
+00:08:07,378 --> 00:08:10,570
+en este caso. Así que dale un salvamento y ahora mira qué
+
+99
+00:08:10,570 --> 00:08:15,676
+sucede cuando nos desplazamos, cuando alcanzamos ese punto, ooh, se desliza hacia afuera.
+
+100
+00:08:15,676 --> 00:08:22,930
+¿Por qué? Debido a que hemos establecido que sea 0 predeterminado y luego, cuando tenga un ancho máximo de
+
+101
+00:08:22,930 --> 00:08:28,166
+500, va a pasar, lo cual es justo aquí, podría configurarlo para que sea 5px,
+
+102
+00:08:28,166 --> 00:08:33,897
+si realmente te gusta Y a lo largo de cinco segundos, se va a animar.
+
+103
+00:08:33,897 --> 00:08:37,878
+y animarse a sí mismo. Ahora, pregunta rápida, esto es un poco aparte.
+
+104
+00:08:37,878 --> 00:08:43,490
+nada que ver con JavaScript, ¿por qué no hice ancho y ancho: auto?
+
+105
+00:08:43,490 --> 00:08:49,897
+Eso es porque no puedes animar el ancho de algo desde cero
+
+106
+00:08:49,897 --> 00:08:56,502
+a auto. Tienes que usar un ancho máximo para conseguir que la transición comience
+
+107
+00:08:56,502 --> 00:09:01,247
+aquí. Así que nada se pone, obviamente, hagamos más de medio segundo.
+
+108
+00:09:01,247 --> 00:09:06,886
+en lugar. Se mete. Y luego una última cosa que hice es si miras
+
+109
+00:09:06,886 --> 00:09:14,273
+en este sitio, verás que le he dado una escala del 98%. Lo que podemos hacer aquí es
+
+110
+00:09:14,400 --> 00:09:20,775
+cuando el cuerpo tiene una clase de navegación fija, esta envoltura de sitio va a ...
+
+111
+00:09:21,658 --> 00:09:25,262
+vamos a transformarnos, vamos a escalarlo hasta 1.
+
+112
+00:09:25,262 --> 00:09:29,219
+Así que solo va a pasar de 98% a 1. Vas a obtener este pequeño ...
+
+113
+00:09:30,584 --> 00:09:33,732
+Ya ves cómo se comporta, un poco de efecto.
+
+114
+00:09:33,732 --> 00:09:38,177
+Realmente me gustan estas cosas porque todo lo que hicimos es agregar una clase al cuerpo
+
+115
+00:09:38,177 --> 00:09:42,023
+y luego todo lo demás es simplemente cuidado en nuestro CSS.
+
+116
+00:09:42,023 --> 00:09:46,375
+Así que espero que te haya gustado eso, es realmente interesante. No hay mucho codigo
+
+117
+00:09:46,375 --> 00:09:51,855
+pero entendiendo que necesitas ocuparte de ese espacio extra cuando lo arregles
+
+118
+00:09:51,855 --> 00:09:56,054
+Es realmente la clave para este. Muchas gracias. Te veré mañana.
+

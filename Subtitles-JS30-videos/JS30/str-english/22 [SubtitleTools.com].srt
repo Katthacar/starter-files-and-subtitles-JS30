@@ -1,0 +1,599 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:00,361 --> 00:00:03,361
+♪ [ music] ♪
+
+3
+00:00:07,546 --> 00:00:11,020
+A couple weeks ago Stripe launched
+this new page and I hovered over the
+
+4
+00:00:11,020 --> 00:00:16,560
+navigation and I was
+like, "Whoa. How are they doing that?"
+
+5
+00:00:16,560 --> 00:00:20,790
+Because you know if you have a drop down
+and you hide one and show the other,
+
+6
+00:00:20,790 --> 00:00:24,930
+you can't just transition the background.
+You can't just move the unordered list
+
+7
+00:00:24,930 --> 00:00:29,510
+from one to another, because it's two
+different elements. So, I figured out how
+
+8
+00:00:29,510 --> 00:00:33,710
+to do it, and we're going to build a
+replica of this in a coming video.
+
+9
+00:00:33,710 --> 00:00:37,260
+But what I wanted to do was start with
+something simple, just so we can get the
+
+10
+00:00:37,260 --> 00:00:41,020
+ideas. Because it's a bit of a doozy. They
+obviously have some really good developers
+
+11
+00:00:41,020 --> 00:00:44,410
+at Stripe to build this thing. But I
+really want to understand, sort of,
+
+12
+00:00:44,410 --> 00:00:47,920
+the fundamentals of what's happening. So,
+this is what we're going to start with,
+
+13
+00:00:47,920 --> 00:00:52,100
+and then in a couple videos down the road,
+we're going to replicate this sort of
+
+14
+00:00:52,100 --> 00:00:54,320
+thing with the Stripe navigation.
+
+15
+00:00:54,320 --> 00:00:57,600
+So, here's what we're doing. We've got
+these links on the page,
+
+16
+00:00:57,600 --> 00:01:01,850
+and when you hover over one of the links,
+we've got this little pill that's going to
+
+17
+00:01:01,850 --> 00:01:07,690
+both resize itself, so it's short and
+long, as well as follow you around the
+
+18
+00:01:07,690 --> 00:01:13,400
+page wherever that is going. So let's
+open up our index-start and get going.
+
+19
+00:01:13,400 --> 00:01:17,130
+Go down to our script tag here. So, first
+thing that we need to do,
+
+20
+00:01:17,130 --> 00:01:21,830
+is to get all of what I like to call
+triggers. Things that will be hovered,
+
+21
+00:01:21,830 --> 00:01:26,810
+that need a background behind it. So I'm
+just going to do every single link that's
+
+22
+00:01:26,810 --> 00:01:27,580
+on the page.
+
+23
+00:01:27,580 --> 00:01:33,310
+So it's "const triggers =
+document.query selector all A."
+
+24
+00:01:33,310 --> 00:01:37,320
+Every single link on the actual page. Then
+what we need to do is create what's called
+
+25
+00:01:37,320 --> 00:01:41,160
+a highlight. Because if you haven't
+figured it out yet, how does this actually
+
+26
+00:01:41,160 --> 00:01:46,870
+work? If we inspect it here, and we look
+at our DOM, you're going to see that we
+
+27
+00:01:46,870 --> 00:01:51,350
+have the span with a class of highlight,
+that I've just tacked into the DOM here.
+
+28
+00:01:51,350 --> 00:01:57,010
+And when you highlight over something, it
+will figure out the width,
+
+29
+00:01:57,010 --> 00:02:02,120
+the height, and where on the page that
+actual item is. And because there's CSS
+
+30
+00:02:02,120 --> 00:02:07,110
+transitions on this element, it's just
+going to transition itself from place,
+
+31
+00:02:07,110 --> 00:02:12,230
+to place, to place. And the width, the
+height, and the transform translate X,
+
+32
+00:02:12,230 --> 00:02:17,680
+and translate Y values, are gong to
+be moved on over.
+
+33
+00:02:17,680 --> 00:02:21,800
+So we will first make that highlight
+ourself, rather than having to go into our
+
+34
+00:02:21,800 --> 00:02:27,400
+HTML and do it we're going to make it in
+there. So, we'll say "const highlight
+
+35
+00:02:27,400 --> 00:02:30,120
+= document.create element." And we're
+going to make a span.
+
+36
+00:02:30,120 --> 00:02:37,910
+We're going to add a class of highlight,
+and then we're going to put it into the
+
+37
+00:02:37,910 --> 00:02:40,210
+DOM.
+
+38
+00:02:40,210 --> 00:02:44,330
+When we open this up in our browser here,
+you actually won't see that highlight
+
+39
+00:02:44,330 --> 00:02:47,440
+anywhere, and it's because it does not
+have a width or a height or anything like
+
+40
+00:02:47,440 --> 00:02:52,270
+that. But if we inspect, you should see
+that we do actually have this highlight
+
+41
+00:02:52,270 --> 00:02:59,340
+element in here. Good. Now what we need to
+do is listen for someone enters into a
+
+42
+00:02:59,340 --> 00:03:05,245
+link. So we'll make a function called,
+let's call it highlight link.
+
+43
+00:03:05,590 --> 00:03:11,010
+And we'll just console.log highlight. And
+then we'll listen for the mouse enter
+
+44
+00:03:11,010 --> 00:03:13,630
+event on each of our triggers.
+
+45
+00:03:13,630 --> 00:03:18,720
+Triggers.for each and then take our link,
+and we're going to take the link and we're
+
+46
+00:03:18,720 --> 00:03:24,160
+going to add the event listener for mouse
+enter. And when that happens we are gong
+
+47
+00:03:24,160 --> 00:03:29,890
+to run the function highlight link.
+Good. Now let's try it out.
+
+48
+00:03:29,890 --> 00:03:35,160
+Console highlight over it, there we go.
+We've got highlight triggering on all of
+
+49
+00:03:35,160 --> 00:03:39,220
+the links on the page. And you can tell
+that by console logging this.
+
+50
+00:03:39,220 --> 00:03:43,470
+And you'll see it will log the actual link
+that we're looking for.
+
+51
+00:03:43,470 --> 00:03:48,850
+Good. So, we've got that working so far.
+But now, what needs to happen is we need
+
+52
+00:03:48,850 --> 00:03:53,410
+to figure out the width, the height, the X
+and the Y. We need to figure out how big
+
+53
+00:03:53,410 --> 00:03:59,470
+is the element that we hovered? And where
+on the page is that actual element?
+
+54
+00:03:59,470 --> 00:04:04,820
+So, we're going to use a method called
+"get bounding client rect,"
+
+55
+00:04:04,820 --> 00:04:09,900
+which is a bit of a mouthful to say. But
+we'll say const link coords,
+
+56
+00:04:09,900 --> 00:04:14,100
+this is going to give us the coordinates,
+and this, this is going to be equal to the
+
+57
+00:04:14,100 --> 00:04:17,170
+thing that was triggered, which is going
+to be each of the links.
+
+58
+00:04:17,170 --> 00:04:23,820
+Dot get, bounding client rect. And then
+just console log those link coords to see
+
+59
+00:04:23,820 --> 00:04:26,450
+what we have here.
+
+60
+00:04:26,450 --> 00:04:30,607
+So I'm going to hover over this sucker. Ah
+and look what we get here.
+
+61
+00:04:30,607 --> 00:04:35,280
+We get the client rect. We've got the
+bottom, the height, the left,
+
+62
+00:04:35,280 --> 00:04:39,500
+the right, the top and the width. So it
+gives us all the information about where
+
+63
+00:04:39,500 --> 00:04:44,940
+on the page does that thing actually live.
+Now that we have those coordinates here,
+
+64
+00:04:44,940 --> 00:04:50,472
+we can simply take our highlight element,
+and we can apply the style.width
+
+65
+00:04:50,472 --> 00:04:57,410
+is gong to be equal to, and we'll
+take the link coords.width and you need to
+
+66
+00:04:57,410 --> 00:05:02,320
+put on PX on the end, otherwise it's just
+going to be 399 or 409 or something that
+
+67
+00:05:02,320 --> 00:05:07,820
+we don't know. And we'll do that also with
+the height. Let's see where we're at with
+
+68
+00:05:07,820 --> 00:05:11,960
+that. Hover one of these. Okay, so that
+matches up. And then when you go from one
+
+69
+00:05:11,960 --> 00:05:16,030
+to another, it's dynamically applying the
+style to it.
+
+70
+00:05:16,030 --> 00:05:20,090
+And if you go to our style.css and you
+look for the highlight selector,
+
+71
+00:05:20,090 --> 00:05:26,180
+.highlight, there we go. We have this
+transition on here of 0.2 seconds.
+
+72
+00:05:26,180 --> 00:05:32,310
+So in order to change that to two seconds,
+you'll see that it will just change itself
+
+73
+00:05:32,310 --> 00:05:36,860
+over that amount of time. And like, these
+links are a little bit shorter than these
+
+74
+00:05:36,860 --> 00:05:40,680
+links. So it will grow both in width and
+height. So that is why.
+
+75
+00:05:40,680 --> 00:05:44,220
+If we didn't have that transition on there
+it would just be immediate snaps,
+
+76
+00:05:44,220 --> 00:05:49,270
+and that's not what we want. We want it to
+animate itself. So where the fun part
+
+77
+00:05:49,270 --> 00:05:52,630
+comes in is where we start to animate the
+left and the right values.
+
+78
+00:05:52,630 --> 00:05:58,610
+And we're going to be doing that. Rather
+than doing it with CSS.left and .right,
+
+79
+00:05:58,610 --> 00:06:04,100
+or top and bottom, what we will be doing
+is we will be using the transform property
+
+80
+00:06:04,100 --> 00:06:07,843
+to apply it and that can have some
+benefits when you're looking for some
+
+81
+00:06:07,843 --> 00:06:09,300
+really smooth animation.
+
+82
+00:06:09,300 --> 00:06:13,250
+So, we'll take our highlight. We'll apply
+the style of transform.
+
+83
+00:06:13,250 --> 00:06:19,150
+And normally how it works is that we say
+something like translate and then you give
+
+84
+00:06:19,150 --> 00:06:24,460
+it an X and a Y. So 100 and 100. You see
+how it animates itself to 100 100?
+
+85
+00:06:24,460 --> 00:06:28,860
+Well, we want to make these 100 and 100
+dynamic. But we take our 100,
+
+86
+00:06:28,860 --> 00:06:35,750
+and replace it with our variable here. So
+we'll say linkcoords.left,
+
+87
+00:06:35,750 --> 00:06:40,440
+and this one is going to be
+linkcoords.top. And that will give us the
+
+88
+00:06:40,440 --> 00:06:44,300
+value right from the top. Now if we hover
+over any of these items here,
+
+89
+00:06:44,300 --> 00:06:49,750
+everything is looking good. You can also
+go up into one of your ones and maybe put
+
+90
+00:06:49,750 --> 00:06:53,040
+a break tag in or something to make it
+bigger. You can see that it's going to
+
+91
+00:06:53,040 --> 00:06:56,330
+transition both the height, the width, and
+the X and the Y.
+
+92
+00:06:56,330 --> 00:06:59,370
+Now, you might think you're done, and a
+lot of people do this,
+
+93
+00:06:59,370 --> 00:07:04,530
+but they don't try...like open your DEV
+tools, and scroll down a little bit.
+
+94
+00:07:04,530 --> 00:07:12,150
+Now hover over one of them. Oh. What the
+hell is going on? They're like a little
+
+95
+00:07:12,150 --> 00:07:19,490
+bit messed up. If I scroll down a little
+bit, you see how it's off by the amount
+
+96
+00:07:19,490 --> 00:07:23,470
+that I've scrolled down? Hmm. That's a
+little bit of a pain here.
+
+97
+00:07:23,470 --> 00:07:26,970
+And how we compensate for that is, you can
+do it in a couple of ways.
+
+98
+00:07:26,970 --> 00:07:31,000
+First, we can figure out what the offset
+of the actual parent is.
+
+99
+00:07:31,000 --> 00:07:33,880
+And we're going to do that in the next
+one. But in this case, I think we can just
+
+100
+00:07:33,880 --> 00:07:39,600
+simply take how far the person has
+scrolled down, and then take that away
+
+101
+00:07:39,600 --> 00:07:44,860
+from our actual item. So how do we do
+that? Well, let's go into our window here.
+
+102
+00:07:44,860 --> 00:07:50,390
+Window.scroll Y is going to give us zero.
+Scroll down a little bit and re-run that.
+
+103
+00:07:50,390 --> 00:07:54,300
+It's going to give you 67. That's how far
+we actually are. So,
+
+104
+00:07:54,300 --> 00:07:57,320
+let's go back and refactor this code a
+little bit.
+
+105
+00:07:57,320 --> 00:07:59,570
+What I'm going to do is I'm going to make
+our own coordinates here.
+
+106
+00:07:59,570 --> 00:08:05,240
+So we'll say "const.coords =." It's
+going to have a width, which is going to
+
+107
+00:08:05,240 --> 00:08:09,940
+be equal to the linkcoords.width. The
+width and the height are fine.
+
+108
+00:08:09,940 --> 00:08:16,000
+Right. But the problem is with our X and
+our Y, or our top and our left.
+
+109
+00:08:16,000 --> 00:08:26,620
+So the top is now going to be
+linkcoords.top minus wondow.scroll Y.
+
+110
+00:08:26,620 --> 00:08:31,711
+And then we'll do that for our left which
+is link.left and we can also do scroll X
+
+111
+00:08:31,711 --> 00:08:36,080
+just in case we have any horizontal scroll
+there. Then what we'll do is we'll switch
+
+112
+00:08:36,080 --> 00:08:40,400
+out the reference to link coords, with
+just the coords. Object,
+
+113
+00:08:40,400 --> 00:08:43,230
+which we've done here. We've done a little
+bit of math there.
+
+114
+00:08:43,230 --> 00:08:48,430
+Now when I refresh and scroll down a
+little bit, it still doesn't work,
+
+115
+00:08:48,430 --> 00:08:54,010
+and that's because I minused them, we
+should add them in, not take them away.
+
+116
+00:08:54,010 --> 00:08:58,690
+There we go. Now if I scroll down anywhere
+on the page it's always going to follow us
+
+117
+00:08:58,690 --> 00:09:03,360
+along regardless of where we are on the
+page. So, that is the very basics.
+
+118
+00:09:03,360 --> 00:09:07,250
+Really, what I wanted to get down there is
+this concept of the get bounding client
+
+119
+00:09:07,250 --> 00:09:13,120
+rect, and then applying it to the inline
+style. In a couple more videos,
+
+120
+00:09:13,120 --> 00:09:17,750
+we're going to go ahead and build out the
+entire drop down, which is a lot more
+
+121
+00:09:17,750 --> 00:09:19,622
+involved. I'll see you then.
+
+122
+00:09:19,622 --> 00:09:21,622
+♪ [music] ♪

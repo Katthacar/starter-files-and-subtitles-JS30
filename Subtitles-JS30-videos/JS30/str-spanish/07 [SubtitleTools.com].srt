@@ -1,0 +1,380 @@
+﻿1
+00:00:00,000 --> 00:00:03,402
+♪ [music] ♪
+
+2
+00:00:07,581 --> 00:00:09,918
+Hoy es Array Cardio el segundo día, donde estamos
+
+3
+00:00:09,918 --> 00:00:13,630
+voy a aprender acerca de una nueva matriz
+Métodos que son útiles cuando estás
+
+4
+00:00:13,630 --> 00:00:18,170
+Trabajando con datos. Así que tenemos dos matrices
+Aquí con algunas personas y algunos comentarios.
+
+5
+00:00:18,170 --> 00:00:22,380
+y primero, vamos a aprender sobre
+.algunos y .every. .some comprobará si en
+
+6
+00:00:22,380 --> 00:00:28,760
+Al menos una cosa en su matriz cumple con lo
+estas buscando. Asi que,
+
+7
+00:00:28,760 --> 00:00:35,070
+diremos const
+is_adult = y llama a .some contra él. Ahora
+
+8
+00:00:35,070 --> 00:00:40,040
+.some tomará una función que verificará
+esto para cada uno que tenemos.
+
+9
+00:00:40,040 --> 00:00:46,900
+Eso nos va a dar nuestra persona y nosotros
+dirá si person.year ... y ahora necesitamos
+
+10
+00:00:46,900 --> 00:00:52,360
+Al igual que el año en curso, por lo que podría tomar
+el año en curso y menos eso o lo que nosotros
+
+11
+00:00:52,360 --> 00:01:01,770
+podríamos hacer es que podríamos decir const
+current_year =
+
+12
+00:01:01,770 --> 00:01:11,637
+new_date.get_full_year (). Di si
+current_year - person.year> = 19,
+
+13
+00:01:11,637 --> 00:01:18,494
+luego regresa verdadero, y lo que debería hacer
+Si console.log is_adult es darnos verdad
+
+14
+00:01:18,494 --> 00:01:21,551
+Porque hay alguien que es mayor o
+igual a. Aquí vamos.
+
+15
+00:01:21,551 --> 00:01:25,272
+Lo poco que puedes hacer en console.log es
+Si puedes hacer estallar a su alrededor,
+
+16
+00:01:25,272 --> 00:01:29,696
+te va a mostrar el nombre de la
+Variable así como el valor.
+
+17
+00:01:29,696 --> 00:01:33,273
+Así que el is_adult va a
+ser igual a verdadero Eso tiene sentido.
+
+18
+00:01:33,273 --> 00:01:36,220
+Ahora podemos hacer esto mucho
+mas simple Voy a reescribirlo
+
+19
+00:01:36,220 --> 00:01:45,560
+here.const is_adult = people.some (person)
+Y a partir de eso, tendremos un bloque y nos
+
+20
+00:01:45,560 --> 00:01:53,640
+Necesitamos el año en curso de nuevo y luego nos
+simplemente puede devolver current_year -
+
+21
+00:01:53,640 --> 00:01:59,870
+person.year> = 19, y eso va a ser
+mucho más simple que si lo escribiera como
+
+22
+00:01:59,870 --> 00:02:02,120
+esta. lo pienso
+Lee un poco mejor Usamos una flecha
+
+23
+00:02:02,120 --> 00:02:07,880
+Funciona aquí, y devolvemos la corriente.
+año. Quieres ser un hotshot total,
+
+24
+00:02:07,880 --> 00:02:14,260
+Podrías tomarte todo esto, pop
+entre algunos paréntesis aquí,
+
+25
+00:02:14,260 --> 00:02:22,710
+deshacerse de eso, y luego usar el implícito
+Vuelve sin los corchetes aquí.
+
+26
+00:02:22,710 --> 00:02:27,310
+Tiro caliente. Eso haría lo mismo.
+Vamos a guardarlo. Tendria que comentar
+
+27
+00:02:27,310 --> 00:02:30,850
+éste fuera así que no duplicamos el
+variable. Todavía tienes
+
+28
+00:02:30,850 --> 00:02:35,350
+cierto allí. De acuerdo, hagamos el
+siguiente que va a ser .every ().
+
+29
+00:02:35,350 --> 00:02:40,290
+Así es todo el mundo 19. Así que simplemente podemos
+Toma esto, lo que hemos hecho aquí.
+
+30
+00:02:40,290 --> 00:02:48,230
+y reemplazarlo con .every (), y luego
+const all_adults. Así que los adultos de registro,
+
+31
+00:02:48,230 --> 00:02:52,270
+Y eso nos va a dar falso. Por que es
+que nos da falso?
+
+32
+00:02:52,270 --> 00:02:57,060
+Porque no todos los elementos de la matriz
+va a cumplir nuestros criterios
+
+33
+00:02:57,060 --> 00:03:00,050
+Entonces, .some () comprobará si uno, .every ()
+comprobará
+
+34
+00:03:00,050 --> 00:03:04,910
+para cada uno de ellos. A continuación, nosotros
+tener array.prototype.find () y .find () es
+
+35
+00:03:04,910 --> 00:03:09,890
+algo así como .filter () pero en lugar de
+devolviéndote un subconjunto de la matriz,
+
+36
+00:03:09,890 --> 00:03:14,120
+te va a devolver el primer artículo
+que encuentra Así que queremos encontrar el
+
+37
+00:03:14,120 --> 00:03:22,430
+comenta con el id del 823423. Así que di
+comentario const = y vamos a tomar esto
+
+38
+00:03:22,430 --> 00:03:28,530
+matriz de comentarios Llamaremos a .find () en él
+y vamos a ejecutar una función en su contra
+
+39
+00:03:28,530 --> 00:03:35,820
+lo que nos dará el comentario
+Y diremos si comment.id, creo.
+
+40
+00:03:35,820 --> 00:03:46,680
+es. Vamos a revisar eso. Ahí nosotros
+ir. Comment.id = eso ... es una cadena?
+
+41
+00:03:46,680 --> 00:03:53,920
+No, es un número ... entonces devuelve verdadero. Y
+entonces deberíamos ser capaces de console.log () a
+
+42
+00:03:53,920 --> 00:04:00,240
+comentario. Bueno. Tenemos que uno específico
+Comentario, esto es "super bien". Ahora toma
+
+43
+00:04:00,240 --> 00:04:05,030
+un segundo, pausa el video, intenta convertir
+Esto a una función de flecha con un implícito
+
+44
+00:04:05,030 --> 00:04:09,490
+regreso. Entonces, lo que podríamos hacer en su lugar es
+comentario const ...
+
+45
+00:04:09,490 --> 00:04:18,610
+Whoa, comenta, ahí vamos ... comenta.
+encontrar (comentar), y luego simplemente
+
+46
+00:04:18,610 --> 00:04:25,260
+devuelve este bit aquí mismo. Y porqué
+Eso va a ser verdadero o falso,
+
+47
+00:04:25,260 --> 00:04:29,110
+no necesitamos tener una sentencia if
+porque solo va a devolver un
+
+48
+00:04:29,110 --> 00:04:34,760
+Booleano de verdadero o falso, y entonces eso es
+una buena frase, en lugar de tener que hacer
+
+49
+00:04:34,760 --> 00:04:39,610
+en tanto tiempo, y entonces eso debería
+Sigo trabajando exactamente igual.
+
+50
+00:04:39,610 --> 00:04:45,600
+Bueno. A continuación, y finalmente, tenemos.
+.find_index () que va a encontrar donde
+
+51
+00:04:45,600 --> 00:04:49,710
+algo está dentro de la matriz. Vamos a
+Di que quería borrar uno de estos,
+
+52
+00:04:49,710 --> 00:04:54,320
+pero para borrar algo de una
+matriz, necesita saber dónde en la matriz
+
+53
+00:04:54,320 --> 00:05:01,600
+en realidad es Así que si solo tenemos esto
+Id, podemos decir const index = comentarios.
+
+54
+00:05:01,600 --> 00:05:05,600
+find_index (), y luego haríamos el
+Exactamente lo mismo que hicimos antes.
+
+55
+00:05:05,600 --> 00:05:12,090
+El comentario es igual a eso, y si nosotros
+consola. log () el índice, nos lo dirá
+
+56
+00:05:12,090 --> 00:05:17,847
+que es uno que debería significar que es el
+Segundo elemento en nuestra matriz. Aquí vamos.
+
+57
+00:05:17,847 --> 00:05:20,850
+Ahora, ¿cómo lo borras? Bueno, hay
+Dos formas de eliminarlo de la
+
+58
+00:05:20,850 --> 00:05:26,450
+formación. Simplemente podríamos simplemente decir comentarios.
+empalme(). Podríamos empezar por el índice y
+
+59
+00:05:26,450 --> 00:05:33,280
+ir por uno Echemos un vistazo a lo que
+Tenemos aquí si escribimos comentarios ahora.
+
+60
+00:05:33,280 --> 00:05:38,580
+Console.table () nuestros comentarios. Lo ves
+que el comentario "super bien" es totalmente
+
+61
+00:05:38,580 --> 00:05:44,190
+ido, o lo que también podrías hacer, y esto
+es muy popular en el mundo Redux,
+
+62
+00:05:44,190 --> 00:05:48,030
+es crear una nueva matriz de la actualización
+Comentarios, donde dirías algo.
+
+63
+00:05:48,030 --> 00:05:56,940
+como const new_comments = una matriz, y
+Lo que haces es simplemente tomar una copia de la
+
+64
+00:05:56,940 --> 00:06:05,850
+comenta antes de eso Por eso decimos comentarios.
+rebanada(). Empezamos a cero y vamos hasta
+
+65
+00:06:05,850 --> 00:06:12,650
+El índice, y luego comenzamos en el índice.
+Más uno y vamos hasta el final.
+
+66
+00:06:12,650 --> 00:06:16,580
+Entonces, no le pasas nada, y eso es
+sólo va a construir una nueva matriz de la
+
+67
+00:06:16,580 --> 00:06:21,956
+comentarios Así que si consola.tabla () la
+Comentarios, bien. Mesa de consola
+
+68
+00:06:21,956 --> 00:06:30,360
+(new_comments). Oh que hicimos
+olvida aqui? Nos dio una serie de dos
+
+69
+00:06:30,360 --> 00:06:37,880
+matrices, entonces, ¿qué hay de malo en esto? Sus
+porque no difundimos los artículos en
+
+70
+00:06:37,880 --> 00:06:41,380
+La nueva matriz. Y de nuevo, si esto no es.
+dándote sentido, siéntete libre de pegarte
+
+71
+00:06:41,380 --> 00:06:47,020
+con su empalme, o volver a mi ES6
+Videos y echa un vistazo al operador de propagación
+
+72
+00:06:47,020 --> 00:06:51,690
+unos Así que si nos consola.tabla () la nueva
+Comentarios, que uno se ha ido.
+
+73
+00:06:51,690 --> 00:06:59,680
+Sin embargo, todavía tenemos el original.
+Arreglo de comentarios donde dice "super bien".
+
+74
+00:06:59,680 --> 00:07:03,420
+Así que eso es sólo un par de métodos de matriz más
+que debes guardar en tu bolsillo trasero.
+
+75
+00:07:03,420 --> 00:07:07,160
+Conocer todos los posibles métodos de matriz.
+y cuando usarlos puede venir realmente
+
+76
+00:07:07,160 --> 00:07:09,727
+útil cuando estás masajeando tus datos.
+
+77
+00:07:09,727 --> 00:07:12,727
+♪ [música] ♪

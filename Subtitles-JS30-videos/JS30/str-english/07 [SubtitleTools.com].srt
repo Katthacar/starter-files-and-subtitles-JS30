@@ -1,0 +1,380 @@
+﻿1
+00:00:00,000 --> 00:00:03,402
+♪ [music] ♪
+
+2
+00:00:07,581 --> 00:00:09,918
+Today is Array Cardio day two, where we're
+
+3
+00:00:09,918 --> 00:00:13,630
+going to learn about a few new array
+methods that come in handy when you're
+
+4
+00:00:13,630 --> 00:00:18,170
+working with data. So we've got two arrays
+here with some people and some comments,
+
+5
+00:00:18,170 --> 00:00:22,380
+and first, we're going to learn about
+.some and .every. .some will check if at
+
+6
+00:00:22,380 --> 00:00:28,760
+least one thing in your array meets what
+you're looking for. So,
+
+7
+00:00:28,760 --> 00:00:35,070
+we will say const
+is_adult = and call .some against it. Now
+
+8
+00:00:35,070 --> 00:00:40,040
+.some will take a function that will check
+it for every single one that we have.
+
+9
+00:00:40,040 --> 00:00:46,900
+That's going to give us our person and we
+will say if person.year...and now we need
+
+10
+00:00:46,900 --> 00:00:52,360
+like the current year, so you could take
+the current year and minus that or what we
+
+11
+00:00:52,360 --> 00:01:01,770
+could do is we could say const
+current_year =
+
+12
+00:01:01,770 --> 00:01:11,637
+new_date.get_full_year(). Say if
+current_year - person.year >= 19,
+
+13
+00:01:11,637 --> 00:01:18,494
+then return true, and what that should do
+if we console.log is_adult is give us true
+
+14
+00:01:18,494 --> 00:01:21,551
+because there is someone who is greater or
+equal to. There we go.
+
+15
+00:01:21,551 --> 00:01:25,272
+Little thing you can do in console.log is
+if you can pop curly brackets around it,
+
+16
+00:01:25,272 --> 00:01:29,696
+it's going to show you the name of the
+variable as well as the value.
+
+17
+00:01:29,696 --> 00:01:33,273
+So the is_adult is going to
+be equal to true. That makes sense.
+
+18
+00:01:33,273 --> 00:01:36,220
+Now we can make this a lot
+simpler. I'm going to rewrite it
+
+19
+00:01:36,220 --> 00:01:45,560
+here.const is_adult = people.some(person)
+and from that, we'll have a block and we
+
+20
+00:01:45,560 --> 00:01:53,640
+need the current year again and then we
+can simply return current_year -
+
+21
+00:01:53,640 --> 00:01:59,870
+person.year >= 19, and that's going to be
+a lot simpler than if writing it like
+
+22
+00:01:59,870 --> 00:02:02,120
+this. I think it
+reads a little bit nicer. We used an arrow
+
+23
+00:02:02,120 --> 00:02:07,880
+function here, and we return the current
+year. You want to be a total hotshot,
+
+24
+00:02:07,880 --> 00:02:14,260
+you could take this entire thing, pop it
+in some parentheses here,
+
+25
+00:02:14,260 --> 00:02:22,710
+get rid of that, and then use the implicit
+return without the curly brackets here.
+
+26
+00:02:22,710 --> 00:02:27,310
+Hotshot. That would do the same thing.
+Let's save it. I would have to comment
+
+27
+00:02:27,310 --> 00:02:30,850
+this one out so we don't duplicate the
+variable. You still get
+
+28
+00:02:30,850 --> 00:02:35,350
+true in there. All right, let's do the
+next one which is going to be .every().
+
+29
+00:02:35,350 --> 00:02:40,290
+So is everybody 19. So we can simply just
+take this, what we've done here,
+
+30
+00:02:40,290 --> 00:02:48,230
+and replace it with .every(), and then
+const all_adults. So log adults,
+
+31
+00:02:48,230 --> 00:02:52,270
+and that's going to give us false. Why is
+that giving us false?
+
+32
+00:02:52,270 --> 00:02:57,060
+Because not every single item in the array
+is going to meet our criteria.
+
+33
+00:02:57,060 --> 00:03:00,050
+So, .some() will check if one, .every()
+will check
+
+34
+00:03:00,050 --> 00:03:04,910
+for every single one of them. Next up, we
+have array.prototype.find() and .find() is
+
+35
+00:03:04,910 --> 00:03:09,890
+kind of like .filter() but instead of
+returning you a subset of the array,
+
+36
+00:03:09,890 --> 00:03:14,120
+it's going to return you the first item
+that it finds. So we want to find the
+
+37
+00:03:14,120 --> 00:03:22,430
+comment with the id of 823423. So say
+const comment = and we'll take this
+
+38
+00:03:22,430 --> 00:03:28,530
+comments array. We'll call .find() on it
+and we will run a function against it
+
+39
+00:03:28,530 --> 00:03:35,820
+which will give us the comment
+and we'll say if comment.id, I believe
+
+40
+00:03:35,820 --> 00:03:46,680
+it is. Let's double check that. There we
+go. Comment.id = that...is it a string?
+
+41
+00:03:46,680 --> 00:03:53,920
+No, it's a number...then return true. And
+then we should be able to console.log() a
+
+42
+00:03:53,920 --> 00:04:00,240
+comment. Good. We've got that one specific
+comment, this is "super good." Now take
+
+43
+00:04:00,240 --> 00:04:05,030
+a second, pause the video, try and convert
+this to a arrow function with an implicit
+
+44
+00:04:05,030 --> 00:04:09,490
+return. So what we could do instead is
+const comment...
+
+45
+00:04:09,490 --> 00:04:18,610
+whoa, comment, there we go... comments.
+find(comment), and then we simply just
+
+46
+00:04:18,610 --> 00:04:25,260
+return this bit right here. And because
+that is going to be true or false,
+
+47
+00:04:25,260 --> 00:04:29,110
+we don't need to have an if statement,
+because it's just going to return a
+
+48
+00:04:29,110 --> 00:04:34,760
+Boolean of true or false, and then that is
+a nice one-liner, rather than having to do
+
+49
+00:04:34,760 --> 00:04:39,610
+it in that long, and then that should
+still work exactly the same.
+
+50
+00:04:39,610 --> 00:04:45,600
+Good. Next up, and finally, we have
+.find_index() which is going to find where
+
+51
+00:04:45,600 --> 00:04:49,710
+something is inside of the array. Let's
+say I wanted to delete one of these,
+
+52
+00:04:49,710 --> 00:04:54,320
+but in order to delete something from an
+array, you need to know where in the array
+
+53
+00:04:54,320 --> 00:05:01,600
+it actually is. So if we've only got this
+id, we can say const index = comments.
+
+54
+00:05:01,600 --> 00:05:05,600
+find_index(), and then we'd do the
+exact same thing we did before.
+
+55
+00:05:05,600 --> 00:05:12,090
+Comment is equal to that, and if we
+console. log() the index, it'll tell us
+
+56
+00:05:12,090 --> 00:05:17,847
+that it is one which should mean it is the
+second item in our array. There we go.
+
+57
+00:05:17,847 --> 00:05:20,850
+Now, how do you delete it? Well, there's
+two ways you could delete it from the
+
+58
+00:05:20,850 --> 00:05:26,450
+array. We could simply just say comments.
+splice(). We could start at the index and
+
+59
+00:05:26,450 --> 00:05:33,280
+go for one. Let's take a look at what
+we've got here if we type in comments now.
+
+60
+00:05:33,280 --> 00:05:38,580
+Console.table() our comments. You see
+that the "super good" comment is totally
+
+61
+00:05:38,580 --> 00:05:44,190
+gone, or what you could also do, and this
+is very popular in the Redux world,
+
+62
+00:05:44,190 --> 00:05:48,030
+is you create a new array of the updated
+comments, where you would say something
+
+63
+00:05:48,030 --> 00:05:56,940
+like const new_comments = an array, and
+what you do is you just take a copy of the
+
+64
+00:05:56,940 --> 00:06:05,850
+comments before it. So we say comments.
+slice(). We start at zero and we go until
+
+65
+00:06:05,850 --> 00:06:12,650
+the index, and then we start at the index
+plus one and go until the end.
+
+66
+00:06:12,650 --> 00:06:16,580
+So, you don't pass it anything, and that's
+just going to build a new array of the
+
+67
+00:06:16,580 --> 00:06:21,956
+comments. So if I console.table() the
+comments, good. Console.table
+
+68
+00:06:21,956 --> 00:06:30,360
+(new_comments). Oh, what did we
+forget here? It gave us an array of two
+
+69
+00:06:30,360 --> 00:06:37,880
+arrays, so what's wrong with this? It's
+because we did not spread the items into
+
+70
+00:06:37,880 --> 00:06:41,380
+the new array. And again, if this is not
+making sense to you, feel free to stick
+
+71
+00:06:41,380 --> 00:06:47,020
+with your splice, or go back into my ES6
+videos and check out the spread operator
+
+72
+00:06:47,020 --> 00:06:51,690
+ones. So if we console.table() the new
+comments, that one's gone.
+
+73
+00:06:51,690 --> 00:06:59,680
+However, we still have the original
+comments array where it says "super good."
+
+74
+00:06:59,680 --> 00:07:03,420
+So that's just a couple more array methods
+that you should keep in your back pocket.
+
+75
+00:07:03,420 --> 00:07:07,160
+Knowing all of the possible array methods
+and when to use them can come in really
+
+76
+00:07:07,160 --> 00:07:09,727
+handy when you're massaging your data.
+
+77
+00:07:09,727 --> 00:07:12,727
+♪ [music] ♪

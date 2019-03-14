@@ -1,0 +1,963 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:02,993 --> 00:00:06,282
+♪ [music] ♪
+
+3
+00:00:08,440 --> 00:00:11,920
+Today we're going to create what I like to
+call a type-ahead feature where I've got a
+
+4
+00:00:11,920 --> 00:00:15,690
+list of cities and states with their
+population in it. When I type something in
+
+5
+00:00:15,690 --> 00:00:20,040
+like new, it's going to show me everything
+that matches the word new.
+
+6
+00:00:20,040 --> 00:00:27,044
+If I type in New York or Boston or West
+it's going to show me every single city
+
+7
+00:00:27,044 --> 00:00:32,720
+and state that matches whatever I've typed
+in along with the corresponding population
+
+8
+00:00:32,720 --> 00:00:35,820
+Now this data is going to be coming in
+from an external source.
+
+9
+00:00:35,820 --> 00:00:40,199
+What I've done is I just went in GitHub
+here, and I found a cities.JSON
+
+10
+00:00:40,199 --> 00:00:45,580
+file which will include the city
+name, the state name, as well as the
+
+11
+00:00:45,580 --> 00:00:50,376
+population that we have here and I've put
+that into a URL. So first thing that we
+
+12
+00:00:50,376 --> 00:00:55,820
+need to do is, we need to actually go and
+fetch this data which is a huge array and
+
+13
+00:00:55,820 --> 00:01:00,520
+then once that data is back, whenever
+someone types into this specific box,
+
+14
+00:01:00,520 --> 00:01:05,260
+we're going to filter that array down to a
+subset of all of the ones that either the
+
+15
+00:01:05,260 --> 00:01:09,000
+city name or the state name will match.
+
+16
+00:01:09,000 --> 00:01:12,280
+So how we're going to do that? Well, first
+of all, we need an empty array to put our
+
+17
+00:01:12,280 --> 00:01:16,790
+cities into so let's say, const cities
+equals an empty array and then we need to
+
+18
+00:01:16,790 --> 00:01:22,060
+go out and fetch our data. We're going to
+be using a new API in the browser called
+
+19
+00:01:22,060 --> 00:01:28,280
+fetch. And if you've done an HTML or XML
+HTTP request in the browser before,
+
+20
+00:01:28,280 --> 00:01:33,980
+you probably have used like JQuery.dol.
+JSON or a library like axios.
+
+21
+00:01:33,980 --> 00:01:38,620
+However, the browser now has a new one
+built in which is called fetch.
+
+22
+00:01:38,620 --> 00:01:41,742
+So that's what we're going to use. We're
+going to call fetch and you fetch the end
+
+23
+00:01:41,742 --> 00:01:49,150
+point. And what fetch will do, if you're
+used to maybe running a callback like this
+
+24
+00:01:49,150 --> 00:01:51,990
+function, and you have the data, and then
+you can const log the the data,
+
+25
+00:01:51,990 --> 00:01:57,130
+it works a little bit differently than
+that because fetch itself will return what
+
+26
+00:01:57,130 --> 00:02:01,450
+is called a promise and I'll show you
+that. If you we were to just put this
+
+27
+00:02:01,450 --> 00:02:07,980
+in a variable, const prom equals fetch and
+console log prom. Open that sucker up in
+
+28
+00:02:07,980 --> 00:02:13,980
+our browser, you see that, oh prom.
+Prom, here we go. You see that?
+
+29
+00:02:13,980 --> 00:02:18,970
+It doesn't return the data, it returns
+what's called a promise which is sort of
+
+30
+00:02:18,970 --> 00:02:23,420
+like a something will eventually
+come back from this fetch.
+
+31
+00:02:23,420 --> 00:02:27,860
+So the way that we can work with the
+promise is you call .then against it.
+
+32
+00:02:27,860 --> 00:02:33,820
+So it's a .then. And it's going to return
+to us just like a blob of data.
+
+33
+00:02:33,820 --> 00:02:37,570
+I like to call it a blob. And I'll show
+you why. You might think like,
+
+34
+00:02:37,570 --> 00:02:43,160
+"Oh why, wouldn't that just be the list of
+cities?" So from that let's console.log
+
+35
+00:02:43,160 --> 00:02:49,710
+the blob. So this is what comes back.
+Response of course it worked, Two hundred,
+
+36
+00:02:49,710 --> 00:02:57,460
+okay, is true, good. Headers, we open up
+the body. There's just a readable stream
+
+37
+00:02:57,460 --> 00:03:04,990
+locked false T, like what's going on here?
+And what's happening is that the data that
+
+38
+00:03:04,990 --> 00:03:10,656
+comes back from our fetch, it doesn't
+know what kind of data it is just yet.
+
+39
+00:03:10,656 --> 00:03:14,550
+Just it could be an image, it could be
+some HTML, it could be some music that's
+
+40
+00:03:14,550 --> 00:03:18,950
+coming back. We explicitly
+know that it is JSON.
+
+41
+00:03:18,950 --> 00:03:22,716
+So you might think, "Okay, that's fine.
+Why don't we just do JSON.parse, right?
+
+42
+00:03:22,716 --> 00:03:27,930
+That should you work." But it doesn't
+because the blob has to be converted from
+
+43
+00:03:27,930 --> 00:03:33,710
+the raw data that it is in into JSON. So
+what you do from this is you call blob.
+
+44
+00:03:33,710 --> 00:03:38,040
+And if you look at this blob, and open the
+prototype, you'll see that there is a
+
+45
+00:03:38,040 --> 00:03:44,720
+method called JSON right there. So if you
+call blob.JSON, that itself is going to
+
+46
+00:03:44,720 --> 00:03:49,500
+return another promise which we're going
+to call .then on. This is getting a little
+
+47
+00:03:49,500 --> 00:03:55,567
+bit hairy, so let's do this. Oh yeah, that
+looks much better .then and that is
+
+48
+00:03:55,567 --> 00:04:00,823
+going to give you the raw data which
+we can console log this data here.
+
+49
+00:04:01,698 --> 00:04:07,150
+Now when I refresh, we get a massive array
+of all 1000 cities and states and
+
+50
+00:04:07,150 --> 00:04:11,910
+population and latitude and longitude from
+each of the ones. Now how do I get this
+
+51
+00:04:11,910 --> 00:04:18,407
+data into cities? You might think, "Oh
+I'll just do a Cities equals data, right?
+
+52
+00:04:18,407 --> 00:04:23,300
+No problem there. Assignment to a
+const variable. So we just tried to
+
+53
+00:04:23,300 --> 00:04:27,890
+wipe out a const variable by
+reassigning it to be the data.
+
+54
+00:04:27,890 --> 00:04:32,330
+So what you could do is say let
+cities and that's a fine way to go
+
+55
+00:04:32,330 --> 00:04:38,140
+about it as cities by array or if you like
+to keep your variables const because you
+
+56
+00:04:38,140 --> 00:04:44,340
+do not want that array changing,
+you can push the items into cities.
+
+57
+00:04:44,340 --> 00:04:52,530
+So you might think, "Okay, cities.push"
+and we'll say data, and look at cities.
+
+58
+00:04:52,530 --> 00:04:57,770
+Okay, this is an array of one thing but if
+you open that array then you say,
+
+59
+00:04:57,770 --> 00:05:01,170
+okay that's not it. It's an array of
+an array. Now, we're nested.
+
+60
+00:05:01,170 --> 00:05:06,690
+So how do I get each and every item to go
+into cities? Well, you might know that
+
+61
+00:05:06,690 --> 00:05:10,660
+cities.push, if you push something
+like one, two , three, four,
+
+62
+00:05:10,660 --> 00:05:15,660
+and then look at cities, you'll notice
+that every time I have another argument to
+
+63
+00:05:15,660 --> 00:05:20,980
+push, it will put it as its own item in
+the array. And the way that we can change
+
+64
+00:05:20,980 --> 00:05:27,167
+this array into individual arguments is we
+spread into it. A spread is part of ES6
+
+65
+00:05:27,167 --> 00:05:29,580
+I've got a whole bunch of videos
+in my other ES6 series,
+
+66
+00:05:29,580 --> 00:05:36,060
+but you simply spread into a function or
+spread into this push method and that will
+
+67
+00:05:36,060 --> 00:05:41,720
+give us proper cities, there we go. Now
+that's an array of a thousand different
+
+68
+00:05:41,720 --> 00:05:45,240
+cities that we have. Good.
+Now I'm happy with that.
+
+69
+00:05:45,240 --> 00:05:48,850
+The next thing we need to do is when
+someone then types into this box here,
+
+70
+00:05:48,850 --> 00:05:53,390
+I need to run a function that is going to
+take this massive array and filter it down
+
+71
+00:05:53,390 --> 00:05:58,340
+into a subset where you can then listen
+for it. So I'm going to create a function
+
+72
+00:05:58,340 --> 00:06:05,570
+here called find matches. And that's
+going to take in a word to match,
+
+73
+00:06:05,570 --> 00:06:09,970
+and it's also going to take in the cities
+array as we want to pass in the data into
+
+74
+00:06:09,970 --> 00:06:14,590
+this function that it's going to filter.
+And from that, we are going to return
+
+75
+00:06:14,590 --> 00:06:18,266
+these cities array, but we're going
+to call filter on it which is going to
+
+76
+00:06:18,266 --> 00:06:22,800
+sort of chisel it down into a
+subset of that initial array.
+
+77
+00:06:22,800 --> 00:06:28,140
+So each one is going to have a place which
+is each individual city and state and
+
+78
+00:06:28,140 --> 00:06:32,690
+population and everything like that. And
+from that, we need to figure out,
+
+79
+00:06:32,690 --> 00:06:42,550
+here we need to figure out if the city or
+state matches what was searched.
+
+80
+00:06:42,550 --> 00:06:50,810
+Right? Like if I were to run find matches
+with Bos, it should show me Boston and
+
+81
+00:06:50,810 --> 00:06:57,440
+whatever other cities have the word Bos in
+it. So we need a couple of reg access
+
+82
+00:06:57,440 --> 00:07:05,600
+because you might think like, "Okay, we'll
+just return place.city.match." And
+
+83
+00:07:05,600 --> 00:07:11,770
+normally you could do something like this
+where you search for the word bos and if
+
+84
+00:07:11,770 --> 00:07:16,440
+it does match, then it will be true, and
+we will give ourselves a subset.
+
+85
+00:07:16,440 --> 00:07:22,220
+But the problem is that the word to match
+is not always going to be bos or always
+
+86
+00:07:22,220 --> 00:07:26,840
+going to be new, or always going to
+be York, it's going to be a variable,
+
+87
+00:07:26,840 --> 00:07:31,370
+and the variable is where to match.
+So just popped in the working match?
+
+88
+00:07:31,370 --> 00:07:35,591
+No that doesn't work because it's actually
+going to look for the word to match
+
+89
+00:07:35,591 --> 00:07:41,800
+So how do you put a variable into a
+regular expression? Well, you can't just
+
+90
+00:07:41,800 --> 00:07:46,260
+do it in this syntax here. We need to
+actually create a regular expression
+
+91
+00:07:46,260 --> 00:07:55,530
+outside of it. So let's go above here and
+we'll say const regX equals new regEXP
+
+92
+00:07:55,530 --> 00:07:59,110
+and you pass at the word to match, and
+that's going to be whatever the person
+
+93
+00:07:59,110 --> 00:08:05,154
+passes in Bos, New, York, etc, etc. And
+then you pass it any of the flags that
+
+94
+00:08:05,154 --> 00:08:08,328
+you want. So G is going to be global
+meaning it's going to look through
+
+95
+00:08:08,328 --> 00:08:14,415
+the entire string for that specific one.
+And I is going to be insensitive meaning
+
+96
+00:08:14,415 --> 00:08:20,839
+that it's not a terrible person or it's
+insensitive, it's going to match lowercase
+
+97
+00:08:20,839 --> 00:08:25,608
+as well as uppercase regardless of what
+you're searching with. So now we call dot
+
+98
+00:08:25,608 --> 00:08:31,140
+match with our regX in here. And
+that's going to take the place.city in.
+
+99
+00:08:31,140 --> 00:08:38,270
+If we take a look at our cities here,
+you'll see that as each place is New York
+
+100
+00:08:38,270 --> 00:08:43,050
+and the city is going to be New York. But
+we also need to match the state
+
+101
+00:08:43,050 --> 00:08:46,940
+which...that's a bad example. Here we go.
+State is going to be California.
+
+102
+00:08:46,940 --> 00:08:51,040
+So we've got to return the place
+that city.match regX or the
+
+103
+00:08:51,040 --> 00:08:59,120
+place.state.match regX. And that will
+check if the city or the state has either
+
+104
+00:08:59,120 --> 00:09:05,050
+one, so if this one is true or this one is
+true, the whole thing is going to be true,
+
+105
+00:09:05,050 --> 00:09:09,360
+and therefore our filter is going
+to be made much smaller.
+
+106
+00:09:09,360 --> 00:09:15,240
+So if I were to then run this, if we were
+to say, find matches, and we are to search
+
+107
+00:09:15,240 --> 00:09:22,220
+for Bos and we need to pass our cities
+array here. What it returns to us is a
+
+108
+00:09:22,220 --> 00:09:28,570
+small array of two things, Boston and
+Bossier City, good. We've got our find
+
+109
+00:09:28,570 --> 00:09:35,310
+matches function done. Then what we need
+to do is create our display function.
+
+110
+00:09:35,310 --> 00:09:41,860
+So I say function, display matches and
+that's going to be called whenever someone
+
+111
+00:09:41,860 --> 00:09:47,090
+changes the value on here. So I'm
+going to console.log this .value.
+
+112
+00:09:47,090 --> 00:09:55,070
+And then we're going to select
+this input that we're working here.
+
+113
+00:09:55,070 --> 00:10:00,190
+So what is the selector on here. Input
+type of text class is search,
+
+114
+00:10:00,190 --> 00:10:05,410
+that's good for me. So I'm going to go
+down here in case. Const search input
+
+115
+00:10:05,410 --> 00:10:13,600
+equals document.query selector.search.
+And then we also want to select this UL
+
+116
+00:10:13,600 --> 00:10:21,780
+here which is suggestions. Then we'll say,
+search input.add event listener.
+
+117
+00:10:21,780 --> 00:10:28,130
+We're going to listen for the change
+event and when the input changes,
+
+118
+00:10:28,130 --> 00:10:35,570
+we are going to run find matches. Save. We
+should now see when we run it.
+
+119
+00:10:35,570 --> 00:10:42,150
+Type in here and I click outside then it
+runs that function, oh we got an error.
+
+120
+00:10:42,150 --> 00:10:49,350
+Cannot read property filter of undefined
+in our...oh because we're not running fine
+
+121
+00:10:49,350 --> 00:10:55,110
+matches directly, sorry, we are running
+display matches not find matches.
+
+122
+00:10:55,110 --> 00:11:00,840
+So if I type in here, like Bos and click
+outside, it then will trigger in console
+
+123
+00:11:00,840 --> 00:11:05,760
+log this, which is the input.value and
+that's whatever someone has typed in
+
+124
+00:11:05,760 --> 00:11:09,920
+here, new, click outside. So why do I need
+to click outside? That's because the
+
+125
+00:11:09,920 --> 00:11:15,390
+change event only fires when you go off
+that input not whenever you type into and
+
+126
+00:11:15,390 --> 00:11:20,250
+key up. So if you want it to also fire and
+key up, just duplicate that it will listen
+
+127
+00:11:20,250 --> 00:11:26,430
+for the key up event and we'll just rerun
+display matches on that as well.
+
+128
+00:11:26,430 --> 00:11:34,490
+Now if I type new, hello, bos, you get the
+point. Every time we key up,
+
+129
+00:11:34,490 --> 00:11:38,460
+it's going to tell us what the person has
+typed into that box.
+
+130
+00:11:38,460 --> 00:11:43,930
+Now what we want to do is go back to
+this display matches function here,
+
+131
+00:11:43,930 --> 00:11:49,410
+and we are going to use this find
+matches function that we built.
+
+132
+00:11:49,410 --> 00:11:58,880
+So say const match array equals find
+matches and we are going to pass it this
+
+133
+00:11:58,880 --> 00:12:05,840
+.value as well as our cities array
+and that should give us the match array.
+
+134
+00:12:05,840 --> 00:12:11,100
+Let's try it out. Whenever I type into, it
+should run this caller function find ones
+
+135
+00:12:11,100 --> 00:12:16,928
+that match it, Bos. There we go. So the
+first time I type B, there is a lot
+
+136
+00:12:16,928 --> 00:12:21,140
+of cities. Second time I type O, a
+little less and then the third type,
+
+137
+00:12:21,140 --> 00:12:25,605
+I type Bos, it's going to give me that
+array of just two cities that have
+
+138
+00:12:25,605 --> 00:12:30,290
+matched it. Good. So we've got the data,
+and that's really what I'd like to stress
+
+139
+00:12:30,290 --> 00:12:34,549
+when we're doing this stuff. Get your data
+first, get all your functionality in place
+
+140
+00:12:34,549 --> 00:12:39,400
+and then we'll worry about hooking
+it up to event listeners as well as
+
+141
+00:12:39,400 --> 00:12:41,720
+creating the HTML that we need there.
+
+142
+00:12:41,720 --> 00:12:50,240
+So we're going to first loop over it. So
+say const HTML equals match array.map
+
+143
+00:12:50,240 --> 00:12:56,540
+and each one is going to be the place,
+what did we use up here?
+
+144
+00:12:56,540 --> 00:13:02,540
+Yeah, place, I like to keep it consistent.
+And from each of those return back texts,
+
+145
+00:13:02,540 --> 00:13:08,180
+it's going to hold our list item LI.
+Inside of that, we want a span with the
+
+146
+00:13:08,180 --> 00:13:17,760
+class of name just going to contain the
+place.city and the place.state and below
+
+147
+00:13:17,760 --> 00:13:22,920
+that we're going to have a span with a
+class of population, place.population.
+
+148
+00:13:22,920 --> 00:13:30,860
+Then finally once we've mapped over this
+array, we can simply call suggestions dot.
+
+149
+00:13:30,860 --> 00:13:34,060
+And what are suggestions? That's the
+square selector that we've done down here,
+
+150
+00:13:34,060 --> 00:13:40,670
+.inner HTML equals HTML, which is this
+HTML that we have here.
+
+151
+00:13:40,670 --> 00:13:44,550
+One last thing is this map is going to
+return an array when we really want just
+
+152
+00:13:44,550 --> 00:13:50,440
+one string. So we can call it quick.join
+on the end, and that will turn it into
+
+153
+00:13:50,440 --> 00:13:56,320
+from an array with multiple items into one
+big string. Let's give it a shot.
+
+154
+00:13:56,320 --> 00:14:02,590
+Bos, there we go, Boston, Massachusetts,
+Bossier City. New, looking good.
+
+155
+00:14:02,590 --> 00:14:06,660
+A couple of last things we need to do. If
+we look at the actual answer that we're
+
+156
+00:14:06,660 --> 00:14:14,420
+working here is we want to format these
+numbers here as well as we want to
+
+157
+00:14:14,420 --> 00:14:20,430
+highlight the actual words like Wes in
+West Virginia and West Sacramento.
+
+158
+00:14:20,430 --> 00:14:25,080
+So how do we do that? Well, let's go back
+to our map function here.
+
+159
+00:14:25,080 --> 00:14:31,730
+And before we return, what we can then do
+is create a regX or match the city name
+
+160
+00:14:31,730 --> 00:14:37,060
+and then we'll use that regX to replace
+the word that it matches like Wes with
+
+161
+00:14:37,060 --> 00:14:41,140
+just a span of the class of HL and the
+word that it matches.
+
+162
+00:14:41,140 --> 00:14:44,736
+So we're just going to be like plucking
+the word Wes out and replacing it with
+
+163
+00:14:44,736 --> 00:14:52,270
+a span class of HL. So say const
+regX equals new regXt. You'll see this
+
+164
+00:14:52,270 --> 00:14:55,589
+top value which is whatever the person
+searched for. We want to search for that
+
+165
+00:14:55,589 --> 00:15:01,043
+globally because if it's matched more than
+once in the city name, it would be kind of
+
+166
+00:15:01,043 --> 00:15:04,930
+cool to show that and insensitively
+we don't care about capitals.
+
+167
+00:15:04,930 --> 00:15:10,230
+And then we will create a city name
+variable where we're going to take the
+
+168
+00:15:10,230 --> 00:15:16,277
+place.city and we're going to
+replace the regX, which is whatever
+
+169
+00:15:16,277 --> 00:15:24,130
+it matches with just a span with the
+class of highlight and we'll pop in this,
+
+170
+00:15:24,130 --> 00:15:29,410
+.value, oh, I got to use back text
+there. Here we go. So it's going to find
+
+171
+00:15:29,410 --> 00:15:33,490
+whatever it matched in the regX and
+replace it with a span with a class of
+
+172
+00:15:33,490 --> 00:15:37,400
+highlight and then the value that the
+person had searched for.
+
+173
+00:15:37,400 --> 00:15:43,720
+So now when we take that city name, we can
+replace it. Place that city with the city
+
+174
+00:15:43,720 --> 00:15:49,740
+name variable which is going to include
+the HTML for us. Type in Bos and there we
+
+175
+00:15:49,740 --> 00:15:54,210
+go, it's matching it. If I type in
+Wes, working so far but we also have to
+
+176
+00:15:54,210 --> 00:16:00,060
+do it for the state name. So we'll just
+duplicate this and change it to state name
+
+177
+00:16:00,060 --> 00:16:06,400
+and place.state.replace. And then you
+take that state name variable and replace
+
+178
+00:16:06,400 --> 00:16:10,630
+it right here. There we go.
+Looks like it's working.
+
+179
+00:16:10,630 --> 00:16:16,200
+Finally, what we need to do is find a
+function that is going to put in commas
+
+180
+00:16:16,200 --> 00:16:20,360
+for us. So I've just got a function right
+here. You can grab this from the answer if
+
+181
+00:16:20,360 --> 00:16:25,180
+you don't feel like typing it or go to
+your nearest stack overflow and take that
+
+182
+00:16:25,180 --> 00:16:30,130
+answer. And I'm just going to paste it in
+here. Number with commas is just going to
+
+183
+00:16:30,130 --> 00:16:32,710
+replace it and again it'll
+give you those nice commas.
+
+184
+00:16:32,710 --> 00:16:41,330
+So we can go to our population. We say
+number with commas, and it will then give
+
+185
+00:16:41,330 --> 00:16:44,280
+us those nice commas instead of
+everything that we have there.
+
+186
+00:16:44,280 --> 00:16:48,230
+So new...there we go, we're matching new
+in the state, we're matching new in the
+
+187
+00:16:48,230 --> 00:16:52,520
+city name as well as we're putting in
+those nice commas to display the data to
+
+188
+00:16:52,520 --> 00:16:56,259
+the user. That's it for today. If you want
+to a little bit more of a challenge,
+
+189
+00:16:56,259 --> 00:17:00,810
+maybe go to this data and say, "What else
+could I use to sort these data?" Maybe you
+
+190
+00:17:00,810 --> 00:17:05,030
+could figure out how does geolocation work
+which is coming in a future video and
+
+191
+00:17:05,030 --> 00:17:09,890
+sort it by what are the cities that are
+closest to me rather than just the order
+
+192
+00:17:09,890 --> 00:17:14,130
+that they appear in this array
+explicitly. Thanks a lot and I'll see
+
+193
+00:17:14,130 --> 00:17:15,644
+you in the next one.
+
+194
+00:17:15,644 --> 00:17:19,609
+♪ [music] ♪

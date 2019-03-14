@@ -1,0 +1,1290 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:00,584 --> 00:00:03,846
+♪ [music] ♪
+
+3
+00:00:07,714 --> 00:00:11,995
+I hope you are ready sweat because today,
+we're not doing anything pretty,
+
+4
+00:00:11,995 --> 00:00:16,060
+we're not dealing with CSS, we're not
+dealing with DOM elements, really.
+
+5
+00:00:16,060 --> 00:00:19,862
+We're dealing with the fundamentals
+of JavaScript and that is working with
+
+6
+00:00:19,862 --> 00:00:24,051
+array methods.  I found that when
+I forced myself to get really good at
+
+7
+00:00:24,051 --> 00:00:29,149
+filter, map, sort, reduce,
+all of those array methods,
+
+8
+00:00:29,149 --> 00:00:33,612
+I found that my JavaScript programming
+got a lot better. And this is really what
+
+9
+00:00:33,612 --> 00:00:37,529
+I want to drive home today, is just throw
+a whole bunch of examples at you and
+
+10
+00:00:37,529 --> 00:00:42,206
+really get you better at working with
+these array methods. A lot of people like
+
+11
+00:00:42,206 --> 00:00:48,287
+to call these filter, map, sort, reduce.
+These are sort of like the gateway drug to
+
+12
+00:00:48,287 --> 00:00:53,210
+functional programming. So what we've got
+here is some data, const inventors and
+
+13
+00:00:53,210 --> 00:00:58,460
+each inventor is an object. And then I've
+got also a people array here which just
+
+14
+00:00:58,460 --> 00:01:03,100
+has strings. But inside of that string,
+the last name, comma, space,
+
+15
+00:01:03,100 --> 00:01:08,310
+the first name. First of all, let's kick
+it off here and if you think you can do
+
+16
+00:01:08,310 --> 00:01:12,480
+these own, please pause the video
+and at least try them yourself.
+
+17
+00:01:12,480 --> 00:01:17,050
+But if you're fairly new to this stuff,
+then stick with me. So first thing we want
+
+18
+00:01:17,050 --> 00:01:23,020
+to do is get people who were born in the
+1500s. So I'm going to say, "const fifteen
+
+19
+00:01:23,020 --> 00:01:25,800
+equals" and we'll take the inventors and
+we're going to filter over it.
+
+20
+00:01:25,800 --> 00:01:30,570
+Now, the way that a filter works is you
+pass it a function and that function is
+
+21
+00:01:30,570 --> 00:01:35,300
+going to loop over every single item
+in our array, so Albert, Isaac,
+
+22
+00:01:35,300 --> 00:01:46,111
+Galileo and it's going to give us the
+inventor. So what that does is we take the
+
+23
+00:01:46,111 --> 00:01:50,725
+inventors, we loop over and for each
+inventor, we can decide whether we want to
+
+24
+00:01:50,725 --> 00:01:57,601
+keep it or not. So, go here we'll have the
+"if" statement. We say, if the inventor
+
+25
+00:01:57,601 --> 00:02:03,870
+dot, and the dot year, so that's when they
+were born. If the inventor dot year is
+
+26
+00:02:03,870 --> 00:02:14,550
+greater or equal 1500 and the inventor
+dot year is less than 1600, or we can do
+
+27
+00:02:14,550 --> 00:02:20,430
+less or equal to 1599, whatever you
+prefer, whatever reads easier for you,
+
+28
+00:02:20,430 --> 00:02:25,200
+then we are going to return true. And
+by returning true, that means we keep it.
+
+29
+00:02:25,200 --> 00:02:30,340
+And then you don't have to, a lot of times
+I see else. People have an else here,
+
+30
+00:02:30,340 --> 00:02:36,147
+and return false. If you do not return
+anything other than true, or something
+
+31
+00:02:36,147 --> 00:02:41,950
+that is truth-y, it will just throw it in
+the garbage. So there's no need to return
+
+32
+00:02:41,950 --> 00:02:45,910
+false here. You just return true if you
+want to keep it. So let's take a look at
+
+33
+00:02:45,910 --> 00:02:52,424
+our variable here, we'll console dot log
+it fifteen. We've got two people. This is
+
+34
+00:02:52,424 --> 00:02:56,439
+a bit of a pain. So I'm going to show
+you a little tip, console dot table,
+
+35
+00:02:57,383 --> 00:03:02,300
+ah-ha, very nice. So these are the people
+that were born in the 1500s that we have
+
+36
+00:03:02,300 --> 00:03:07,910
+here. Now, this can be greatly reduced.
+First of all, we can make this into an
+
+37
+00:03:07,910 --> 00:03:11,180
+arrow function, so delete the word
+function then you can delete the
+
+38
+00:03:11,180 --> 00:03:16,200
+parenthesis around inventor if you prefer
+and we'll make that an arrow function.
+
+39
+00:03:16,200 --> 00:03:21,500
+Good, that still works. And then this
+right here, this is either return true or
+
+40
+00:03:21,500 --> 00:03:27,000
+return false. So what we can actually do
+is do it all in line where we will just
+
+41
+00:03:27,000 --> 00:03:35,840
+return these two things. So it's going to
+give us the inventor and we're going to
+
+42
+00:03:35,840 --> 00:03:40,290
+return the results of these two things
+which if both of them are true,
+
+43
+00:03:40,290 --> 00:03:43,530
+it's going to return a boolean of true.
+And if that makes you a little bit
+
+44
+00:03:43,530 --> 00:03:47,220
+uncomfortable reading that, you can throw
+an extra set of parentheses around it
+
+45
+00:03:47,220 --> 00:03:52,390
+and delete this. We've done it
+all in one line, still works just as we
+
+46
+00:03:52,390 --> 00:03:57,670
+planned. Good, next one. Give us an array
+of the inventors' first and last names.
+
+47
+00:03:57,670 --> 00:04:02,570
+What does map do? Map takes in an array,
+it does something with that array and then
+
+48
+00:04:02,570 --> 00:04:08,260
+returns a new array but of the same
+length. I like to think of map as sort of
+
+49
+00:04:08,260 --> 00:04:14,860
+like a factory machine where it takes in a
+raw material and will stamp it somehow and
+
+50
+00:04:14,860 --> 00:04:19,730
+then kick out that item on the other end.
+Whereas filter, you can bring in 10 things
+
+51
+00:04:19,730 --> 00:04:25,090
+and return 2. Map will always return the
+same amount of items as you give it.
+
+52
+00:04:25,090 --> 00:04:34,490
+So here's what we're going to do. We'll
+say "const full names equals inventors dot
+
+53
+00:04:34,490 --> 00:04:43,600
+map" and we have our inventor. And from
+that, we are going to return the inventor
+
+54
+00:04:43,600 --> 00:04:52,090
+dot first, because that's their first
+name. We can return inventor dot last and
+
+55
+00:04:52,090 --> 00:04:57,219
+console log with full names. It kind of
+works but we still have a problem with the
+
+56
+00:04:57,219 --> 00:05:02,886
+space here. So you could either can
+concatenate in a space, which will work.
+
+57
+00:05:02,886 --> 00:05:12,080
+Or you can return a backtick
+and use template strings.
+
+58
+00:05:12,080 --> 00:05:18,050
+Working great for us. Pass. Good.
+Next up, the sort. Sort the inventors by
+
+59
+00:05:18,050 --> 00:05:21,980
+birth date, oldest to youngest. So if
+you've never used sort, the way that
+
+60
+00:05:21,980 --> 00:05:25,778
+sort works is that you get two items
+and you have these two items
+
+61
+00:05:25,778 --> 00:05:30,112
+in your hand and you're asked
+to sort just those two items.
+
+62
+00:05:30,112 --> 00:05:34,630
+So, you say, is person A
+older than person B? And if so,
+
+63
+00:05:34,630 --> 00:05:39,030
+you put the older person on top. And the
+way that we do that is by returning one
+
+64
+00:05:39,030 --> 00:05:42,940
+and negative one. And that's going to
+bubble these items up and down in the
+
+65
+00:05:42,940 --> 00:05:50,953
+array. So we say, "const ordered
+equals inventors dot sort"
+
+66
+00:05:50,953 --> 00:05:56,750
+and we have a function, which,
+that function is going to give us like the
+
+67
+00:05:56,750 --> 00:06:02,232
+first person and the second person.
+Or a lot of people just like to use
+
+68
+00:06:02,232 --> 00:06:08,240
+A and B, so whatever you prefer those.
+So the first person is going to be A,
+
+69
+00:06:08,240 --> 00:06:14,890
+the second person is going to be B. And
+then we will say "if A dot" and we need to
+
+70
+00:06:14,890 --> 00:06:21,690
+do it based on their birth date here, so
+"A dot year is greater than B dot year"
+
+71
+00:06:21,690 --> 00:06:27,970
+then we return one, else, you return
+negative one. And that's just going to
+
+72
+00:06:27,970 --> 00:06:33,010
+move these people up and down in the...
+You can sort of imagine bubbling up and
+
+73
+00:06:33,010 --> 00:06:37,382
+down inside of the array that we have.
+Now, let's take look at way here.
+
+74
+00:06:37,382 --> 00:06:44,727
+Oh, we've got an error here on line 39.
+What did we do? We should be able to
+
+75
+00:06:44,727 --> 00:06:50,984
+spell function right. There we go. And now
+we have the oldest people here as well as
+
+76
+00:06:50,984 --> 00:06:56,245
+the youngest people. Now, this is really,
+really long. We could really cut that down
+
+77
+00:06:56,245 --> 00:07:04,003
+by doing something like this,
+"ordered equals inventors dot sort"
+
+78
+00:07:04,003 --> 00:07:09,086
+and you have A and you have B.
+And from that, We are going to do
+
+79
+00:07:09,086 --> 00:07:12,872
+what's called a ternary.
+A ternary. I can't say that properly.
+
+80
+00:07:12,872 --> 00:07:19,237
+Ternary operator, whatever. Somebody once
+sent me a message after a talk and said,
+
+81
+00:07:19,237 --> 00:07:24,875
+you said "ternary" wrong and now I'm self
+conscious every single time that I say it.
+
+82
+00:07:24,875 --> 00:07:29,050
+So from that, we want to have a ternary
+which is like a shorthand "if" statement,
+
+83
+00:07:29,050 --> 00:07:32,620
+with "A dot year is greater than
+B dot year" and if that is true,
+
+84
+00:07:32,620 --> 00:07:37,417
+return one, otherwise, return negative
+one. And that is the exact same thing as
+
+85
+00:07:37,417 --> 00:07:41,939
+what we were doing here, just doing it one
+line with an arrow function and implicit
+
+86
+00:07:41,939 --> 00:07:45,963
+return in a ternary operator.
+Let's double check that.
+
+87
+00:07:45,963 --> 00:07:47,879
+Still works? Works great.
+
+88
+00:07:47,879 --> 00:07:54,091
+Next one. How many years did all of the
+inventors live? So what a reduce will do
+
+89
+00:07:54,091 --> 00:07:59,900
+is, where like a sort in a map, they will
+just take items in and either sort them or
+
+90
+00:07:59,900 --> 00:08:03,510
+they will turn them into something else,
+or they will filter them down.
+
+91
+00:08:03,510 --> 00:08:10,141
+What a reduce will do is allow you to sort
+of build something on every single one.
+
+92
+00:08:10,141 --> 00:08:15,917
+So if you've ever done code like this
+where you do "var total years equals zero"
+
+93
+00:08:15,917 --> 00:08:21,375
+and then you bust out the old "for"
+loop...Which one is that? Right here.
+
+94
+00:08:21,375 --> 00:08:30,020
+Then you have inventors. And then you do
+"total years plus equals inventors dot...
+
+95
+00:08:30,020 --> 00:08:33,180
+You've done this before, right?
+Where you have a variable before and then
+
+96
+00:08:33,180 --> 00:08:36,310
+you do this crazy loop and then finally
+when you're done, you can console log
+
+97
+00:08:36,310 --> 00:08:42,430
+total years, right? A reduce is just
+a much cleaner way to do that and you
+
+98
+00:08:42,430 --> 00:08:46,377
+don't have to do this crazy square bracket
+i which I have seen a lot of people having
+
+99
+00:08:46,377 --> 00:08:49,520
+trouble learning. So this is what we're
+going to do, is we're going to say
+
+100
+00:08:49,520 --> 00:08:58,022
+"const total years equals inventors dot
+reduce." And the way that reduce works is
+
+101
+00:08:58,022 --> 00:09:01,873
+it's going to give you sort of like
+your running total,
+
+102
+00:09:01,873 --> 00:09:05,206
+or what you've returned
+from this function last time.
+
+103
+00:09:05,206 --> 00:09:09,509
+So we're going to call that total.
+And then it also is going to give you
+
+104
+00:09:09,509 --> 00:09:14,860
+the inventor. And from that...
+I need to wrap those in some parentheses.
+
+105
+00:09:14,860 --> 00:09:19,390
+You have an arrow function here. And from
+that, we are going to return the total
+
+106
+00:09:19,390 --> 00:09:23,310
+which is what the total was last time
+around. Again, all these functions,
+
+107
+00:09:23,310 --> 00:09:29,080
+reduce, sort, filter, they just loop over
+every single one. And then we are going to
+
+108
+00:09:29,080 --> 00:09:32,970
+return the number of years that that
+inventor had lived. So we're going to say
+
+109
+00:09:32,970 --> 00:09:43,040
+"inventor dot past minus
+inventor dot year."
+
+110
+00:09:43,040 --> 00:09:50,470
+Now let's try that. It's not going to work
+totally for us, "console log, total years"
+
+111
+00:09:50,470 --> 00:09:54,405
+and we got this "object, object 7"
+like what? What's going here?
+
+112
+00:09:54,405 --> 00:09:59,020
+And the problem is that, the first time
+around, we don't have a total and it's
+
+113
+00:09:59,020 --> 00:10:05,950
+equal to undefined. So what we need to do
+is just make this zero and that will then
+
+114
+00:10:05,950 --> 00:10:12,150
+allow us to add it up, 523 years. How you
+doing? Maybe need to go get a drink?
+
+115
+00:10:12,150 --> 00:10:16,680
+Get a sports drink, something like that?
+We have another one coming up here,
+
+116
+00:10:16,680 --> 00:10:25,840
+sort inventors by years lived. Okay, so
+"const oldest equals inventors dot." Now
+
+117
+00:10:25,840 --> 00:10:31,880
+we're going to sort them and we are going
+to get A and B. And before I do the
+
+118
+00:10:31,880 --> 00:10:37,050
+returning one or negative one, we're going
+to create some variable so we can use that
+
+119
+00:10:37,050 --> 00:10:41,010
+in our "if" statements. So it's like,
+"const last guy, how old that he lived A
+
+120
+00:10:41,010 --> 00:10:51,370
+dot past minus A dot year" and then we'll
+say, "next guy is equal to B dot year."
+
+121
+00:10:51,370 --> 00:10:59,510
+Then from that, we are going to say "if
+last guy is greater than next guy" we are
+
+122
+00:10:59,510 --> 00:11:05,360
+going to return negative one.
+And then else, we are going to
+
+123
+00:11:05,360 --> 00:11:10,100
+return one. Now, that seems a little bit
+long. We can really clean that up and we
+
+124
+00:11:10,100 --> 00:11:16,670
+can simply just say return, we can use our
+ternary operator. Return next guy if that
+
+125
+00:11:16,670 --> 00:11:20,750
+is true, negative one. Otherwise,
+if that is false, return one.
+
+126
+00:11:20,750 --> 00:11:25,180
+And that's the exact same thing as doing
+this "if" statement. We just do it in one
+
+127
+00:11:25,180 --> 00:11:31,030
+fell swoop. Let's console log the oldest,
+console dot table it, beautiful.
+
+128
+00:11:31,030 --> 00:11:35,640
+This guy lived a whole bunch of years.
+This guy didn't live as many.
+
+129
+00:11:35,640 --> 00:11:41,640
+Looking good. Next, create a list of
+boulevards in Paris that contain "de"
+
+130
+00:11:41,640 --> 00:11:45,640
+anywhere in the name, all right. I've got
+this link here and this one we're going to
+
+131
+00:11:45,640 --> 00:11:50,800
+have to do from the console, I 'm just
+going to open it up. Now we've got all of
+
+132
+00:11:50,800 --> 00:11:58,150
+these boulevards here and I need to first
+get the DOM elements out of the page.
+
+133
+00:11:58,150 --> 00:12:03,440
+So how would we do that? Well, we could
+say, "document dot query selector" but we
+
+134
+00:12:03,440 --> 00:12:10,370
+don't know what to select. So what we
+have to do is get out our div tools,
+
+135
+00:12:10,370 --> 00:12:15,160
+inspect whatever contains this.
+Let's see, what contains all of these?
+
+136
+00:12:15,160 --> 00:12:20,100
+There we go, "mw-category," "const
+category = document.querySelector dot
+
+137
+00:12:20,100 --> 00:12:31,665
+mw-category. So let's see what we got
+here. There we go, category is equal to
+
+138
+00:12:31,665 --> 00:12:35,664
+that div and then we want to find the
+links within it, so I'm going to make
+
+139
+00:12:35,664 --> 00:12:41,830
+another one, "const links equals," we can
+say, "category dot query selector all."
+
+140
+00:12:41,830 --> 00:12:45,750
+Again, you can call query selector on any
+existing DOM element.
+
+141
+00:12:45,750 --> 00:12:50,000
+It doesn't always have to be document. It
+could look inside of an existing element
+
+142
+00:12:50,000 --> 00:12:53,440
+and that's really why I'm doing this in
+two steps. I could have just said
+
+143
+00:12:53,440 --> 00:12:57,250
+"mw-category A" and found all the links,
+but I really wanted to show you that you
+
+144
+00:12:57,250 --> 00:13:02,350
+can call query selector against any
+existing DOM element to look inside of
+
+145
+00:13:02,350 --> 00:13:06,630
+that DOM element. So it's going to
+look for links inside of that.
+
+146
+00:13:06,630 --> 00:13:12,160
+Oh, let's see what we've got. Links,
+ah-ha, so this is a list of links.
+
+147
+00:13:12,160 --> 00:13:16,270
+It's every link on the actual page.
+Now, what I want to do is first,
+
+148
+00:13:16,270 --> 00:13:21,280
+we're going to convert that list of links
+to a list of names and then we're going to
+
+149
+00:13:21,280 --> 00:13:25,280
+filter that list of names for only ones
+that include the actual names.
+
+150
+00:13:25,280 --> 00:13:31,470
+So let's say "const de equals links dot
+map." Remember, if we take in the list of
+
+151
+00:13:31,470 --> 00:13:37,680
+links and kick out a list of names.
+So we're going to map over each one.
+
+152
+00:13:37,680 --> 00:13:40,680
+It's going to be a link. And from that
+link, we are going to return just the
+
+153
+00:13:40,680 --> 00:13:47,716
+"link dot text content" and that will give
+us whatever the text is inside of that
+
+154
+00:13:47,716 --> 00:13:50,875
+rather than the entire link because we
+don't really care about the rest of the
+
+155
+00:13:50,875 --> 00:13:56,273
+link. So let's see we got here.
+Uh oh, links that mapped...oh, perfect.
+
+156
+00:13:56,273 --> 00:13:59,180
+I'm glad we ran into this. What did
+I tell you in our earlier video?
+
+157
+00:13:59,180 --> 00:14:04,760
+Query selector will return to you, a node
+list. And if we open up the prototype,
+
+158
+00:14:04,760 --> 00:14:10,340
+you don't see map, you see for each but
+not a map. So what we need to do is change
+
+159
+00:14:10,340 --> 00:14:16,772
+this into an array. Because right now,
+it's just a node list. There are two ways
+
+160
+00:14:16,772 --> 00:14:20,740
+we could do that. First, you can just wrap
+the entire thing in "array dot from" and
+
+161
+00:14:20,740 --> 00:14:25,510
+that will convert it into an array. Or you
+might also see people doing something like
+
+162
+00:14:25,510 --> 00:14:33,540
+this, where you create an array and then
+you use the ES6 spread to spread every
+
+163
+00:14:33,540 --> 00:14:38,400
+single item into the array. And again, if
+you've watched the ES6 videos I've done on
+
+164
+00:14:38,400 --> 00:14:42,540
+spreads, you'll know that a spread will
+take every item out of something
+
+165
+00:14:42,540 --> 00:14:46,272
+initerable, which in this case is going to
+be a node list, and put it into the
+
+166
+00:14:46,272 --> 00:14:51,167
+containing array. So I think array dot
+from is probably a little bit more
+
+167
+00:14:51,167 --> 00:14:56,207
+readable in this case, so let's go with
+that. And then we need to, this should
+
+168
+00:14:56,207 --> 00:15:00,824
+work. Now, I can't rerun this code here
+because I've used const. That's one of the
+
+169
+00:15:00,824 --> 00:15:04,436
+pains of using const. It's going to tell
+you it's already been declared.
+
+170
+00:15:04,436 --> 00:15:10,830
+So I just need to refresh and rerun this
+code here. So de, there we go,
+
+171
+00:15:10,830 --> 00:15:17,380
+de is a huge array of every single one.
+Then I'm just going to immediately filter
+
+172
+00:15:17,380 --> 00:15:21,490
+that. So what I like to do with mine is
+let's just put them on their own line.
+
+173
+00:15:21,490 --> 00:15:25,260
+The first one, we'll map it and then
+the second one, we'll filter it.
+
+174
+00:15:25,260 --> 00:15:32,630
+So let's say "street name" and we're going
+to only return if the street name
+
+175
+00:15:32,630 --> 00:15:40,660
+includes de. So let's see what we got
+here. I've got to refresh again and rerun
+
+176
+00:15:40,660 --> 00:15:47,480
+this. Now "de is equal to" there we go.
+Now we got a subset of that initial array
+
+177
+00:15:47,480 --> 00:15:53,690
+only containing de inside of it. Sorry for
+my French users, we have Canadian French
+
+178
+00:15:53,690 --> 00:16:00,190
+which is not the same as European French.
+Next one, we've got a sort exercise which
+
+179
+00:16:00,190 --> 00:16:05,670
+is sorting the people alphabetically by
+last name. So we're not dealing with the
+
+180
+00:16:05,670 --> 00:16:09,080
+inventors anymore. We're done with those
+guys. Now we actually want to work with
+
+181
+00:16:09,080 --> 00:16:15,320
+people. Okay, well there's no nice
+object here, so how would I do that?
+
+182
+00:16:15,320 --> 00:16:23,730
+Well, let's go up here to the sort
+exercise and I'm going to say "const alpha
+
+183
+00:16:23,730 --> 00:16:32,860
+equals." You take the people and we are
+going sort over it, so dot sort. And let's
+
+184
+00:16:32,860 --> 00:16:39,010
+just use a regular function here and we go
+over the ES6 and we're going to get the
+
+185
+00:16:39,010 --> 00:16:46,000
+last one and the next one.
+Now, I don't care about returning anything
+
+186
+00:16:46,000 --> 00:16:51,280
+just yet. What I want to do is just
+console log the last one just to see what
+
+187
+00:16:51,280 --> 00:16:56,230
+we're working with. We get an error
+because I wrote this code in here which
+
+188
+00:16:56,230 --> 00:17:01,130
+this was meant to run on the Wikipedia
+page and here, you're trying to call query
+
+189
+00:17:01,130 --> 00:17:05,430
+selector against category and if this
+category comes back with nothing,
+
+190
+00:17:05,430 --> 00:17:09,970
+you can't call query selector against it.
+So you have to a check if you weren't sure
+
+191
+00:17:09,970 --> 00:17:13,940
+that was coming in. Let's just comment
+that out for now and deal with what
+
+192
+00:17:13,940 --> 00:17:17,080
+we've  got here. There we go.
+So look, Beck, Glenn, Blake,
+
+193
+00:17:17,080 --> 00:17:23,530
+William. So that is the last one, but what
+I really want is to convert that into a
+
+194
+00:17:23,530 --> 00:17:28,540
+first name and a last name. So what we can
+do is, we can say "const parts equals
+
+195
+00:17:28,540 --> 00:17:35,452
+last one dot split." And what are
+we going to split it on? Well, one thing
+
+196
+00:17:35,452 --> 00:17:39,140
+that all of these people have in common
+is that there's a comma and a space.
+
+197
+00:17:39,140 --> 00:17:42,740
+So we're going to split it on a comma and
+a space and let's look at the parts that
+
+198
+00:17:42,740 --> 00:17:46,110
+we have here. Okay, so now
+we get an array where the first
+
+199
+00:17:46,110 --> 00:17:49,200
+thing is the last name and
+the second thing is the first name.
+
+200
+00:17:49,200 --> 00:17:53,340
+It's a little bit backwards. So what we
+could do is we could de-structure that.
+
+201
+00:17:53,340 --> 00:17:57,720
+Meaning that rather than returning array,
+we can put those into their own variables
+
+202
+00:17:57,720 --> 00:18:03,240
+right away. So we say "square bracket last
+comma first" and now if we just console
+
+203
+00:18:03,240 --> 00:18:08,120
+log the last and the first as their own
+separate variables. There we go,
+
+204
+00:18:08,120 --> 00:18:15,520
+Blake William, Nick Beddoes, whatever we
+have there, cool. Now we have some proper
+
+205
+00:18:15,520 --> 00:18:21,890
+variables to work with and then we have to
+do that with the next one as well.
+
+206
+00:18:21,890 --> 00:18:26,290
+And we probably want to rename these
+suckers to be something that obviously we
+
+207
+00:18:26,290 --> 00:18:32,820
+can't use last and first. So let's say "A
+last A first" and this one is going to be
+
+208
+00:18:32,820 --> 00:18:39,840
+"B last and B first." That's going to be
+the last person and the next person.
+
+209
+00:18:39,840 --> 00:18:45,560
+See what we have here, good.
+Then we do our simple last name here,
+
+210
+00:18:45,560 --> 00:18:51,510
+that's really all we're concerned about in
+this case, so turn A last is greater than
+
+211
+00:18:51,510 --> 00:18:56,860
+B last if that's true return negative one,
+otherwise return one and let's console log
+
+212
+00:18:56,860 --> 00:19:06,540
+alpha. There we go, sorted Blake William
+is the first one, last one is Beck Glenn.
+
+213
+00:19:06,540 --> 00:19:13,130
+We're backwards there, we need to return
+one and a negative one instead.
+
+214
+00:19:13,130 --> 00:19:17,810
+There we go, Beck is the first one, Blake
+is the last one. So you see that we're
+
+215
+00:19:17,810 --> 00:19:21,520
+actually not using this data that we've
+just made here. That's simply for the
+
+216
+00:19:21,520 --> 00:19:26,300
+conversion but we're still hanging on to
+the original string that we were working
+
+217
+00:19:26,300 --> 00:19:30,260
+with. If you did want to return an array
+or an object or something like that,
+
+218
+00:19:30,260 --> 00:19:34,400
+that's where reduce would come in. My
+editor is yelling at me here and is
+
+219
+00:19:34,400 --> 00:19:38,290
+telling me I shouldn't be using a proper
+function, I should be using an arrow
+
+220
+00:19:38,290 --> 00:19:43,600
+function in this case.
+It still works just good.
+
+221
+00:19:43,600 --> 00:19:48,900
+One more, here we go. This one is going to
+reduce, sum up the instances of these.
+
+222
+00:19:48,900 --> 00:19:54,210
+So we've got car, car, truck, truck, bike,
+walk, car. And I want to tally at the end
+
+223
+00:19:54,210 --> 00:19:59,120
+of day in order with what to work with.
+Reduce is like one of the most flexible
+
+224
+00:19:59,120 --> 00:20:03,630
+methods that we have in an array and this
+is just another way that we can use it.
+
+225
+00:20:03,630 --> 00:20:15,650
+So let's say, "const transportation equals
+data dot reduce" and we are going to then
+
+226
+00:20:15,650 --> 00:20:23,610
+give ourselves a function which is going
+to be the object or "obj" and then the,
+
+227
+00:20:23,610 --> 00:20:27,720
+let's call it item, which is
+going to be car, car, truck, truck,
+
+228
+00:20:27,720 --> 00:20:34,670
+bike and every single one. Now we need to
+start with an object which has to have
+
+229
+00:20:34,670 --> 00:20:42,900
+something like a car zero, walk zero,
+truck zero. And if you're looking at me
+
+230
+00:20:42,900 --> 00:20:45,770
+like, "Wes, I don't know what are all
+the possible ones are."
+
+231
+00:20:45,770 --> 00:20:48,030
+You can't just like hard code those
+in there and that's right.
+
+232
+00:20:48,030 --> 00:20:53,100
+We're just going to start with a blank
+object here and we'll do this by
+
+233
+00:20:53,100 --> 00:20:56,860
+ourselves. So let's go back and we're just
+going to start with the blank object
+
+234
+00:20:56,860 --> 00:21:00,640
+that's the starting and we're going to
+loop over every single one.
+
+235
+00:21:00,640 --> 00:21:09,250
+So, what we will do is just console log
+item and then return the object.
+
+236
+00:21:09,250 --> 00:21:12,480
+And I just want to show you here that
+we're going to get every single item as we
+
+237
+00:21:12,480 --> 00:21:18,620
+loop over it, good. Car, car,
+truck, bike, walk, etc., etc.
+
+238
+00:21:18,620 --> 00:21:31,120
+Now, what we want to do is we need to say
+if, let's do this, we'll say "object of
+
+239
+00:21:31,120 --> 00:21:38,210
+item plus, plus" and usually what that
+would do if we had a walk zero here,
+
+240
+00:21:38,210 --> 00:21:42,830
+it would just increment it to one. But
+because we don't know if that key exists
+
+241
+00:21:42,830 --> 00:21:50,860
+just yet, what we need to do is check for
+it on the end here. So we have to say "if
+
+242
+00:21:50,860 --> 00:22:02,730
+there is no object item, then object item
+is equal to zero." That will just set the
+
+243
+00:22:02,730 --> 00:22:07,110
+initial one to zero and then we can move
+along and increment it and return that
+
+244
+00:22:07,110 --> 00:22:15,430
+object. So if that has worked here,
+console dot log transportation.
+
+245
+00:22:15,430 --> 00:22:20,410
+Here we go, object, bike, car, truck, van.
+So you see what they're...
+
+246
+00:22:20,410 --> 00:22:24,910
+I find that reduce is probably the hardest
+one for people to get. But we start with a
+
+247
+00:22:24,910 --> 00:22:29,010
+blank object and then every time we loop
+over one, we first see is there even a
+
+248
+00:22:29,010 --> 00:22:35,530
+zero there to work with at all? If not, we
+need to make an entry for that and then we
+
+249
+00:22:35,530 --> 00:22:39,070
+go ahead and increment it. And that's
+really nice because then I can come along
+
+250
+00:22:39,070 --> 00:22:46,180
+here and add like a pogo stick and when I
+refresh the key of pogo stick is going to
+
+251
+00:22:46,180 --> 00:22:50,953
+be added, no problem to that. Actually,
+I probably shouldn't put spaces in there.
+
+252
+00:22:50,953 --> 00:22:55,740
+But no problem, add it in.
+So I know that was a lot.
+
+253
+00:22:55,740 --> 00:22:58,409
+It's just a lot of exercise.
+We've got another one
+
+254
+00:22:58,409 --> 00:23:01,344
+coming up in a couple of days
+that we're going to go over as well.
+
+255
+00:23:01,344 --> 00:23:06,160
+But if you feel at all, a little bit shaky
+at these, just keep doing them over and
+
+256
+00:23:06,160 --> 00:23:11,147
+over until you totally understand what's
+going on, as well as you feel comfortable
+
+257
+00:23:11,147 --> 00:23:16,764
+just going into a website and doing one
+of these boulevard or Paris or taking some
+
+258
+00:23:16,764 --> 00:23:21,341
+data and being able to filter and sort
+over it. See you in the next one.
+
+259
+00:23:21,341 --> 00:23:24,633
+♪ [music] ♪

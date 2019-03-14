@@ -1,0 +1,585 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:01,344 --> 00:00:03,408
+♪ [music] ♪
+
+3
+00:00:07,077 --> 00:00:08,772
+Today we're going to do something that...
+
+4
+00:00:08,772 --> 00:00:13,360
+this is probably one of the very first
+things that I learned in jQuery when I was
+
+5
+00:00:13,360 --> 00:00:18,210
+first starting to learn JavaScript and it
+was how do I actually fix a nav when you
+
+6
+00:00:18,210 --> 00:00:22,030
+scroll to it? So this is what we're going
+to be building here where you've got
+
+7
+00:00:22,030 --> 00:00:26,226
+this nav that's just position rolled over
+static and then as soon as you hit that
+
+8
+00:00:26,226 --> 00:00:29,868
+point where it hits the top of the
+browser, we're going to make it fixed
+
+9
+00:00:29,868 --> 00:00:33,616
+so the content scrolls underneath. And
+then we can also do some hotshot stuff
+
+10
+00:00:33,616 --> 00:00:38,925
+like scroll out the logo or something like
+that. So first thing we're going to do is
+
+11
+00:00:39,000 --> 00:00:45,900
+grab this nav right here. So I'm going to
+say const nav = document.querySelector
+
+12
+00:00:45,900 --> 00:00:52,074
+and we're going to look for the nav with
+the ID of main and then we're also
+
+13
+00:00:52,074 --> 00:00:56,754
+going to make a function called fixNav
+that is then going to run every single
+
+14
+00:00:56,754 --> 00:01:05,798
+page scroll, awesome. So what this is
+going to do is we're going to figure out
+
+15
+00:01:05,798 --> 00:01:12,778
+where the top of this navigation black bar
+is. Let's say it's 500 pixels from the top
+
+16
+00:01:12,778 --> 00:01:17,618
+and then when we scroll, we're going to
+figure out how far are we scrolled?
+
+17
+00:01:17,618 --> 00:01:21,844
+Let's say, right here, I'm about 400
+pixels scrolled. But as soon as I hit that
+
+18
+00:01:21,844 --> 00:01:29,110
+threshold of scrolling more than the top
+of the nav is, so as soon I've scroll 501
+
+19
+00:01:29,110 --> 00:01:36,393
+pixels, the nav bar is going to go, "Oop,
+I'm off screen, I should now fix myself."
+
+20
+00:01:36,393 --> 00:01:42,971
+So what we need to do on page load is
+grab wherever the top of this nav
+
+21
+00:01:42,971 --> 00:01:51,810
+actually looks. So let's say
+const topOfNav = nav.offsetTop.
+
+22
+00:01:51,810 --> 00:01:57,210
+Then when you console.log(topOfNav)...
+let's just console.log that every single
+
+23
+00:01:57,210 --> 00:02:00,924
+time that we run it, open up your dev
+tools. I recommend putting your dev tools
+
+24
+00:02:00,924 --> 00:02:06,229
+at the side here so that won't mess up
+your top of nav here. You could also
+
+25
+00:02:06,229 --> 00:02:11,353
+update this variable every time that your
+window resizes just so that if somebody
+
+26
+00:02:11,353 --> 00:02:15,470
+does resize or open dev tools, you've got
+it. So I'm going to scroll here and you
+
+27
+00:02:15,470 --> 00:02:21,819
+see, it's 542 pixels, that is the top
+of the navigation at that point.
+
+28
+00:02:21,819 --> 00:02:29,760
+So what we can then do is we'll say
+if(window.scrollY)... Why?
+
+29
+00:02:29,760 --> 00:02:34,390
+Because what is window.scrollY? Let's go
+back to that topOfNav and then we'll also
+
+30
+00:02:34,390 --> 00:02:38,486
+console.log window.scrollY.
+We've done this in a couple of tutorials
+
+31
+00:02:38,486 --> 00:02:42,930
+so far now. So now you're going to
+see that the second value, 1,
+
+32
+00:02:42,930 --> 00:02:47,510
+that's how far we've scrolled. And then
+you're going to see that as we get closer
+
+33
+00:02:47,510 --> 00:02:52,490
+and closer to where it's going to hit the
+top, we're just about at that point where
+
+34
+00:02:52,490 --> 00:02:57,760
+the 542 pixels is going to be equal
+to the 542. And at that point,
+
+35
+00:02:57,760 --> 00:03:02,770
+we want to make that nav fixed. So we're
+going to go in here, we're going to say
+
+36
+00:03:02,770 --> 00:03:09,215
+if(topOfNav >= window)...
+or other way around,
+
+37
+00:03:09,215 --> 00:03:15,634
+window.scrollY >= topOfNav,
+if that is true,
+
+38
+00:03:15,634 --> 00:03:18,800
+what we're going to do is we're going to
+pop a class and when I do things like
+
+39
+00:03:18,800 --> 00:03:23,480
+this, I like to pop a class on the body
+just so that I can always target any of
+
+40
+00:03:23,480 --> 00:03:27,480
+the children when we're in the fixed nav
+state. Some people like to put it on the
+
+41
+00:03:27,480 --> 00:03:30,784
+nav itself, but I found that if I
+want to target anything else,
+
+42
+00:03:30,784 --> 00:03:33,452
+it's nice to have it nice
+and high on the body,
+
+43
+00:03:33,452 --> 00:03:41,967
+document.body.classList.add('fixed-nav')
+and then we'll say else,
+
+44
+00:03:42,290 --> 00:03:46,918
+and we'll just duplicate this,
+which you're going to remove.
+
+45
+00:03:46,918 --> 00:03:49,156
+Now that's not going to
+get us all the way there,
+
+46
+00:03:49,156 --> 00:03:53,814
+but if we save that now
+and refresh, now as you scroll,
+
+47
+00:03:54,516 --> 00:04:00,605
+you'll see this fixed-nav is being added
+and removed, but it's not actually fixing
+
+48
+00:04:00,605 --> 00:04:07,040
+itself. So we need to go over to our
+style-start.CSS and find our navs CSS
+
+49
+00:04:07,040 --> 00:04:11,471
+and this isn't the greatest CSS because
+it's using just the element selectors
+
+50
+00:04:11,471 --> 00:04:13,846
+here. It should probably have a class or
+something like that, but I'm trying to
+
+51
+00:04:13,846 --> 00:04:18,499
+keep it as simple as we can. And I'm going
+to say when the body has a class of
+
+52
+00:04:18,499 --> 00:04:24,310
+.fixed-nav, the nav itself is going to be
+positioned: fixed; and then I'm going to
+
+53
+00:04:24,310 --> 00:04:29,550
+put a quick little box-shadow on there to
+just give it a little bit of a shadow so
+
+54
+00:04:29,550 --> 00:04:33,340
+when it is in that fixed state, you have a
+shadow showing that you have some depth
+
+55
+00:04:33,340 --> 00:04:38,936
+there. All right, so now, when I hit this
+point... oh, you see what's happening?
+
+56
+00:04:38,936 --> 00:04:45,811
+Now it seems to be working, but it
+seems kind of janky. You see what's going
+
+57
+00:04:45,811 --> 00:04:52,694
+on here? As soon as we hit that little end
+point there, the content jumps up and why
+
+58
+00:04:52,694 --> 00:04:58,300
+is that happening? Well, the reason for
+that happening is because when you make
+
+59
+00:04:58,300 --> 00:05:02,830
+this nav fixed, it is no longer
+taking up space in the document.
+
+60
+00:05:02,830 --> 00:05:07,214
+You know this from CSS. When you make
+an element fixed, it no longer takes up
+
+61
+00:05:07,214 --> 00:05:11,507
+space. It sort of floats on top of
+the browser. And by doing that,
+
+62
+00:05:11,507 --> 00:05:18,131
+what's happening is that we cause a reflow
+on the page and this site wrap right here,
+
+63
+00:05:18,131 --> 00:05:24,223
+it says, "Oh, this nav is no longer taking
+up space, well, I don't mind if I do,"
+
+64
+00:05:24,223 --> 00:05:29,989
+and it moves on up the exact amount of
+space that it gave up, which is however
+
+65
+00:05:29,989 --> 00:05:36,100
+many pixels. So what we need to do is we
+need to offset that amount by adding some
+
+66
+00:05:36,100 --> 00:05:40,530
+padding to our body. So just as
+we make it fixed, we need to
+
+67
+00:05:40,530 --> 00:05:43,753
+offset that amount so they don't
+get this jerky jump right here.
+
+68
+00:05:43,753 --> 00:05:48,889
+So let's go back to our element
+right here and we're going to
+
+69
+00:05:48,889 --> 00:05:54,981
+take our document.body.style and
+we're going to set the paddingTop,
+
+70
+00:05:55,425 --> 00:05:58,634
+and if you have something
+that is a padding-top,
+
+71
+00:05:58,634 --> 00:06:01,826
+you cannot do that in JavaScript,
+so that's a camel case.
+
+72
+00:06:01,826 --> 00:06:06,846
+And we're going to set that
+to be the nav.offsetHeight.
+
+73
+00:06:06,846 --> 00:06:10,273
+Why? What is that going to give us? If I
+were to run this in my console here,
+
+74
+00:06:11,362 --> 00:06:15,620
+nav.offsetHeight is going to give
+us however large this nav is.
+
+75
+00:06:15,620 --> 00:06:20,780
+And I've seen people just like hardcode
+64px, but don't do that because then what
+
+76
+00:06:20,780 --> 00:06:24,684
+happens if your nav changes or your font
+changes or anything else and then you're
+
+77
+00:06:24,684 --> 00:06:29,170
+going to be off just a couple pixels. So
+programmatically grab the height of the
+
+78
+00:06:29,170 --> 00:06:37,474
+pixels and then add on px to the top. And
+then what we'll also do is on the opposite
+
+79
+00:06:37,474 --> 00:06:42,953
+end, we'll just set the padding top
+to be zero, good. So now when...
+
+80
+00:06:42,953 --> 00:06:45,402
+Ooh, look at that,
+
+81
+00:06:45,402 --> 00:06:49,173
+so now we've got this nav, nav, nav,
+normal, normal, normal, and then fixed.
+
+82
+00:06:49,173 --> 00:06:54,021
+And as soon as we hit that point, we don't
+have that jump anymore. And your can go
+
+83
+00:06:54,021 --> 00:06:58,047
+into your Elements panel and take a
+look at what's going on here. See this?
+
+84
+00:06:58,047 --> 00:07:04,070
+style= padding-top: 0 and then as soon as
+we that point, the class of fixed goes on
+
+85
+00:07:04,070 --> 00:07:09,311
+and then the padding-top is 64px.
+Again, you might be asking why don't
+
+86
+00:07:09,311 --> 00:07:15,648
+I just like put it in here when I have a
+class of fixed-nav, give it padding-top
+
+87
+00:07:15,648 --> 00:07:20,387
+of 64 px? It's that we don't know how high
+this nav is going to be and I'd rather do
+
+88
+00:07:20,387 --> 00:07:25,486
+it programmatically and do in line than
+have to guess and update that every time
+
+89
+00:07:25,486 --> 00:07:30,080
+the nav changes itself. So that's looking
+pretty good. So that's working great.
+
+90
+00:07:30,080 --> 00:07:32,950
+There're a couple other things that
+we can do. If you open up your nav,
+
+91
+00:07:32,950 --> 00:07:36,293
+you're going to see that we have
+an li with a class of logo.
+
+92
+00:07:37,124 --> 00:07:41,323
+If we look into our style sheet here,
+you'll see that I gave it a max-width
+
+93
+00:07:41,323 --> 00:07:47,790
+of 0 and give it an overflow of hidden.
+So it's there, it's just not being shown
+
+94
+00:07:47,790 --> 00:07:51,486
+at all because it has a width of zero.
+Then what we're going to do is we're going
+
+95
+00:07:51,486 --> 00:07:58,590
+to say, "When the body has a class of
+fixed-nav, the li with a class of logo is
+
+96
+00:07:58,590 --> 00:08:02,690
+going to have a max-width of
+something bigger than it will ever be,
+
+97
+00:08:02,783 --> 00:08:07,378
+like 500px," and I'll show you why in just
+second, why we didn't use width
+
+98
+00:08:07,378 --> 00:08:10,570
+in this case. So give that
+a save and now watch what
+
+99
+00:08:10,570 --> 00:08:15,676
+happens when we scroll, when we hit
+that point, ooh, it slides itself out.
+
+100
+00:08:15,676 --> 00:08:22,930
+Why? Because we have set it to be default
+0 and then when you have a max-width of
+
+101
+00:08:22,930 --> 00:08:28,166
+500, it's going to transition, which is
+right here, you could set that to be 5px,
+
+102
+00:08:28,166 --> 00:08:33,897
+if you really like. And over five
+seconds, it's going to animate itself in
+
+103
+00:08:33,897 --> 00:08:37,878
+and animate itself out. Now quick
+question, this is a bit of an aside
+
+104
+00:08:37,878 --> 00:08:43,490
+nothing to do with JavaScript, why
+didn't I do width and width: auto?
+
+105
+00:08:43,490 --> 00:08:49,897
+That's because you cannot animate
+the width of something to be from zero
+
+106
+00:08:49,897 --> 00:08:56,502
+to auto. You do have to use a max-width
+in order to get that transition to kick in
+
+107
+00:08:56,502 --> 00:09:01,247
+here. So nothing brings itself in,
+obviously, let's do over half a second
+
+108
+00:09:01,247 --> 00:09:06,886
+instead. Brings itself in. And then
+one last thing that I did is if you look
+
+109
+00:09:06,886 --> 00:09:14,273
+at this site wrap, you'll see I've given
+it a scale of 98%. We can do here is
+
+110
+00:09:14,400 --> 00:09:20,775
+when the body has a class of
+fixed-nav, this site-wrap is going to...
+
+111
+00:09:21,658 --> 00:09:25,262
+we're going to transform,
+we're going to scale it up to 1.
+
+112
+00:09:25,262 --> 00:09:29,219
+So it's just going to go from 98% to 1.
+You're going to get this little...
+
+113
+00:09:30,584 --> 00:09:33,732
+You see how it sort of brings
+itself in, a little bit effect.
+
+114
+00:09:33,732 --> 00:09:38,177
+I really like these things because all we
+did there is add one class to the body
+
+115
+00:09:38,177 --> 00:09:42,023
+and then everything else is just
+taken cared of in our CSS.
+
+116
+00:09:42,023 --> 00:09:46,375
+So hopefully you liked that, it's really
+interesting. There's not a lot of code
+
+117
+00:09:46,375 --> 00:09:51,855
+but understanding that you need to take
+care of that extra space when you fix it
+
+118
+00:09:51,855 --> 00:09:56,054
+is really the key to this one.
+Thanks a lot. I'll see you tomorrow.

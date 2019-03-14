@@ -1,0 +1,492 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,670 --> 00:00:04,852
+♪ [música] ♪
+
+3
+00:00:07,506 --> 00:00:11,129
+Hoy vamos a hablar todo sobre referencia de Javascript versus copia.
+
+4
+00:00:11,129 --> 00:00:15,190
+Y encontré que esto es un punto de conflicto y si bien no necesariamente va a ser
+
+5
+00:00:15,190 --> 00:00:17,730
+algo que vas a construir que va a ser dulce y tus clientes
+
+6
+00:00:17,730 --> 00:00:20,840
+vamos a verlo, pero esto es algo fundamental para entender cómo
+
+7
+00:00:20,840 --> 00:00:25,321
+Javascript funciona. Y la mayoría de las veces, esta es una fuente de muchos errores porque
+
+8
+00:00:25,321 --> 00:00:28,690
+La gente no entiende cuál es la diferencia entre una referencia y una copia.
+
+9
+00:00:28,690 --> 00:00:33,350
+Es especialmente cuando te metes en datos anidados. Así que echemos un vistazo a algunos
+
+10
+00:00:33,350 --> 00:00:38,040
+cuerdas, números y booleanos aquí. Si tengo una variable o utilicemos let
+
+11
+00:00:38,040 --> 00:00:43,370
+aquí, y la edad se establece en 100 y luego hago otra variable llamada edad 2 y la configuro
+
+12
+00:00:43,370 --> 00:00:46,970
+que a la edad, si consuelo la edad del registro y la edad 2, ¿qué vamos a obtener?
+
+13
+00:00:46,970 --> 00:00:51,106
+100 y 100, ¿verdad? Bueno, ¿qué pasa si la edad es igual a 200?
+
+14
+00:00:51,106 --> 00:00:54,490
+Y luego también consolar el registro de edad y 2 años, ¿qué vamos a obtener?
+
+15
+00:00:54,490 --> 00:01:01,112
+¿Vamos a conseguir 200, 200 o 200, 100? Bien bueno No tenemos 200, 100.
+
+16
+00:01:01,112 --> 00:01:06,511
+¿Por qué? Porque el valor de la edad entra en la variable al mismo tiempo.
+
+17
+00:01:06,511 --> 00:01:14,013
+Eso funciona de la misma manera con cuerdas. Si hago constar nombre o dejarlo,
+
+18
+00:01:14,013 --> 00:01:20,245
+Voy a reasignar estos, así que necesito usar Let y Let dos nombre es
+
+19
+00:01:20,245 --> 00:01:29,305
+igual a la piscina. No dejes que el nombre dos sea igual al nombre. Nombre de registro de la consola y nombre dos.
+
+20
+00:01:29,305 --> 00:01:34,760
+Probablemente verás a Wes Wes pero si el nombre es igual a Wesley,
+
+21
+00:01:34,760 --> 00:01:39,010
+y también consola de registro que, ¿qué vamos a obtener? Wesley Wes.
+
+22
+00:01:39,010 --> 00:01:43,582
+Bien bueno Por lo tanto, el valor de las cadenas, los números y los booleanos van en él y si
+
+23
+00:01:43,582 --> 00:01:48,346
+Cambias el original, está bien. No se va a actualizar el otro.
+
+24
+00:01:48,346 --> 00:01:52,229
+Tiene sentido. Ahora vamos a trabajar realmente con una matriz.
+
+25
+00:01:52,229 --> 00:01:57,511
+Digamos que tenemos algunos datos aquí y queremos hacer una copia de la matriz para que podamos
+
+26
+00:01:57,511 --> 00:02:01,555
+Por ejemplo, el equipo de const es igual a los jugadores. Y eso debería tener sentido.
+
+27
+00:02:01,555 --> 00:02:06,606
+Los jugadores y el equipo de registro de la consola, solo para asegurarnos de que los dos estamos aquí,
+
+28
+00:02:06,606 --> 00:02:10,616
+esta bien bien Esa es la misma matriz aquí. Así que podrías pensar que podríamos hacer algo.
+
+29
+00:02:10,616 --> 00:02:21,129
+así donde cambiamos el equipo tres es igual a los bloqueos. Ahora si miro al equipo,
+
+30
+00:02:21,129 --> 00:02:27,083
+verás que los bloqueos son los últimos, pero si miro el original, que es de jugadores,
+
+31
+00:02:27,083 --> 00:02:31,470
+¿Cuál debería ser el último? ¿Debería ser una amapola como era, o va a ser?
+
+32
+00:02:31,470 --> 00:02:37,076
+actualizado a las cerraduras? Es de nuevo las cerraduras. Entonces, ¿qué pasó allí?
+
+33
+00:02:37,076 --> 00:02:44,428
+Porque hemos actualizado el equipo pero el equipo no es la matriz. Equipo es solo una referencia a la
+
+34
+00:02:44,428 --> 00:02:49,506
+matriz original que es jugadores. Así que cuando editas esa matriz original o cuando
+
+35
+00:02:49,506 --> 00:02:54,729
+actualizar cualquiera de los arreglos, siempre va a volver a la referencia donde
+
+36
+00:02:54,729 --> 00:02:59,844
+fue lo que no es lo mismo que hicimos aquí con números, cadenas,
+
+37
+00:02:59,844 --> 00:03:04,069
+y booleanos. Así que eso es interesante. Si actualiza una matriz,
+
+38
+00:03:04,069 --> 00:03:07,537
+siempre será referencia de nuevo. Y eso es lo que encuentro que hace la gente.
+
+39
+00:03:07,537 --> 00:03:13,417
+diga: "Sólo quiero hacer una copia de la matriz y actualizarla". Entonces, ¿qué necesitamos?
+
+40
+00:03:13,417 --> 00:03:18,981
+hacer es hacer una copia en lugar de una referencia real. Y hay un par de maneras.
+
+41
+00:03:18,981 --> 00:03:26,236
+que puedes hacer una copia de un array. Diga const team dos iguales y puede tomar el
+
+42
+00:03:26,236 --> 00:03:32,599
+Los jugadores y simplemente llaman rebanada contra él. Y si llamas slice, players.slice
+
+43
+00:03:32,599 --> 00:03:36,495
+eso es sólo va a devolver todo el conjunto porque en general
+
+44
+00:03:36,495 --> 00:03:40,745
+¿Qué parte hace es pedir dos y tres y eso le dará una
+
+45
+00:03:40,745 --> 00:03:46,845
+de ellos mientras que la matriz original está intacta, ¿verdad? Pero que rebanada va a hacer
+
+46
+00:03:46,845 --> 00:03:50,927
+Si no pasa nada, tomará una copia de la matriz real aquí.
+
+47
+00:03:50,927 --> 00:03:54,733
+Permítanme simplemente comentar este cambio aquí. Así que echemos un vistazo.
+
+48
+00:03:54,733 --> 00:04:01,691
+Tenemos jugadores, y tenemos el equipo dos, y si tuviera que cambiar el equipo dos para
+
+49
+00:04:01,691 --> 00:04:09,954
+bloqueos, el equipo dos tiene bloqueos pero los jugadores aún tienen amapola porque hicimos un
+
+50
+00:04:09,954 --> 00:04:15,842
+Copia de ella con nuestra matriz. Otra forma en que puedes ver a la gente hacerlo es si hacemos un equipo.
+
+51
+00:04:15,842 --> 00:04:23,726
+tres, toma una matriz en blanco y puede concatenar en la matriz existente y eso
+
+52
+00:04:23,726 --> 00:04:27,231
+solo concatenará todos los elementos de la matriz de ese jugador en el
+
+53
+00:04:27,231 --> 00:04:31,236
+Vacío aquí mismo. Eso funcionará exactamente de la misma manera. Y luego finalmente
+
+54
+00:04:31,236 --> 00:04:36,606
+Lo que podemos hacer es la forma de propagación de ES6 que se ve así, equipo de const.
+
+55
+00:04:36,606 --> 00:04:44,328
+tres o cuatro iguales, creas una nueva matriz, y esparces en esa
+
+56
+00:04:44,328 --> 00:04:49,366
+Arreglo con los jugadores. Y lo que hará una propagación es que sacará cada artículo de
+
+57
+00:04:49,366 --> 00:04:55,752
+su iterable y ponerlo en, en este caso es la matriz que contiene aunque nosotros
+
+58
+00:04:55,752 --> 00:04:59,881
+También se ha utilizado la propagación para difundir en una función también. Así que eso tomará
+
+59
+00:04:59,881 --> 00:05:09,444
+una copia de la misma también. Equipo cuatro, el último igual a E y consola.
+
+60
+00:05:09,444 --> 00:05:16,148
+equipo de registro de cuatro. El último, pero si vuelvo a la matriz de mi jugador, está intacto.
+
+61
+00:05:16,148 --> 00:05:23,458
+Entonces, finalmente, se podría decir que el equipo cinco de const es igual a array.from y luego
+
+62
+00:05:23,458 --> 00:05:29,360
+lo pasas, la matriz de tu jugador. Y si tuviéramos que mirar al equipo cinco,
+
+63
+00:05:29,360 --> 00:05:32,440
+Esa es nuestra matriz, y íbamos a cambiar una de ellas,
+
+64
+00:05:36,306 --> 00:05:42,390
+luego el arsenal del jugador intacto mientras que el equipo cinco se ha actualizado.
+
+65
+00:05:42,390 --> 00:05:46,908
+Así que un montón de maneras diferentes. Array.from y la propagación es probablemente mi
+
+66
+00:05:46,908 --> 00:05:52,014
+forma favorita, pero cualquiera de estas formas funcionará bien. Ahora lo mismo
+
+67
+00:05:52,014 --> 00:05:57,976
+Sucede también para los objetos. Si tengo un objeto personal aquí y quiero hacer un
+
+68
+00:05:57,976 --> 00:06:03,221
+Copia de la misma, no puede hacer esto. Capitán igual a persona porque
+
+69
+00:06:03,221 --> 00:06:13,339
+Si cambia el número del capitán a 99, entonces la persona ahora es 99 aunque la persona
+
+70
+00:06:13,339 --> 00:06:21,411
+debe ser 80, solo actualizamos el número a 99, hicimos una referencia al original
+
+71
+00:06:21,411 --> 00:06:25,146
+uno. Entonces, ¿cómo tomar una copia en su lugar, eso es con algo que se llama
+
+72
+00:06:25,146 --> 00:06:30,099
+object.assigns. Object.assign, la forma en que funciona, es comenzar con un espacio en blanco
+
+73
+00:06:30,099 --> 00:06:35,717
+objeto. Le pasas el objeto del que deseas copiar todas las propiedades.
+
+74
+00:06:35,717 --> 00:06:42,466
+que es una persona, y luego se pliega en las nuevas propiedades que desea
+
+75
+00:06:42,466 --> 00:06:47,050
+sobreescribe el número que va a ser 99. Y luego pegas todo eso
+
+76
+00:06:47,050 --> 00:06:53,536
+en su propio límite de const dos iguales, péguelo en su propia variable.
+
+77
+00:06:53,536 --> 00:06:59,644
+Ahora, cuando consiga la tapa del registro dos, verá que tenemos ... Tengo que comentar estos
+
+78
+00:06:59,644 --> 00:07:07,924
+unos aquí, 99. Sin embargo, si vuelvo a la persona, el número no ha sido
+
+79
+00:07:07,924 --> 00:07:12,041
+añadido a eso en absoluto. Así que si los añadimos ... lo mismo ocurre si quisiera
+
+80
+00:07:12,041 --> 00:07:20,047
+tiene un número de 99 en la edad de 12 años. El capitán ahora tiene 12 años, pero la persona tiene 80 años.
+
+81
+00:07:20,047 --> 00:07:24,947
+Entonces, ¿qué sucedió allí? Tomaríamos un objeto en blanco, sobrescribimos o de alguna forma
+
+82
+00:07:24,947 --> 00:07:29,531
+plegamos todas las propiedades y valores de nuestro objeto, y luego usamos el tercero
+
+83
+00:07:29,531 --> 00:07:34,447
+Argumento a plegar en los nuestros. Vamos a estar recibiendo o
+
+84
+00:07:34,447 --> 00:07:40,134
+Esperemos que aún no esté confirmado, pero obtendremos un límite de tres, que es
+
+85
+00:07:40,134 --> 00:07:44,825
+Llamado un objeto extendido. Y puedes estar acostumbrado a esto si alguna vez has reaccionado.
+
+86
+00:07:44,825 --> 00:07:49,922
+antes y es dot dot dot person. Y eso funciona exactamente de la misma manera que nosotros.
+
+87
+00:07:49,922 --> 00:07:55,335
+propagación en una matriz, pero se puede propagar en un objeto. Ahora una cosa que hacemos
+
+88
+00:07:55,335 --> 00:08:00,451
+lo que hay que saber es que esto es muy superficial, lo que significa que solo irá uno
+
+89
+00:08:00,451 --> 00:08:04,827
+nivel profundo Así que si creamos un nuevo objeto aquí, const
+
+90
+00:08:04,827 --> 00:08:13,639
+Wes equivale a nombre es Wes, la edad es 100, y tal vez dirá social y Twitter
+
+91
+00:08:13,639 --> 00:08:24,104
+es igual a @wesbos, Facebook es igual a Wesbos ... bueno, bueno, entonces tengo esto
+
+92
+00:08:24,104 --> 00:08:32,118
+Objeto aquí, Wes. Pop una consola rápida.clear encima de ella para que
+
+93
+00:08:32,118 --> 00:08:36,331
+Se borrará lo que está aquí. Obviamente esto no va a funcionar.
+
+94
+00:08:36,331 --> 00:08:40,305
+punto punto ¿por qué? Debido a que la propagación del objeto no está en Javascript todavía, entonces tenemos que
+
+95
+00:08:40,305 --> 00:08:43,615
+comentar que fuera Aquí vamos. Así que tenemos este objeto aquí. Esa es la persona.
+
+96
+00:08:43,615 --> 00:08:49,082
+Te abres social y ahí tenemos el objeto. Ahora si quiero hacer una copia de
+
+97
+00:08:49,082 --> 00:08:58,046
+Wes, diríamos que const div es igual a un objeto asignado. Tomamos un objeto en blanco y tu
+
+98
+00:08:58,046 --> 00:09:02,510
+Pase en Wes tenemos aquí. Bueno. Así que ahora tengo div, eso es bueno,
+
+99
+00:09:02,510 --> 00:09:12,581
+div.name es igual a Wesley. Ahora Wes sigue siendo Wes y el dev es Wesley.
+
+100
+00:09:12,581 --> 00:09:16,861
+Así que ya ves cómo tomamos una copia de ese objeto y cuando lo actualizamos,
+
+101
+00:09:16,861 --> 00:09:20,313
+No va a actualizar el original por lo que no es una referencia.
+
+102
+00:09:20,313 --> 00:09:29,306
+Sin embargo, si hacemos esto, div.social.twitter es igual a
+
+103
+00:09:29,306 --> 00:09:37,803
+@poolman. Ahora div.social, el Twitter está ahí, pero ¿y si miro?
+
+104
+00:09:37,803 --> 00:09:45,190
+Wes.social ahora? Mierda. Mira lo que pasa. Porque cuando usas object.assign,
+
+105
+00:09:45,190 --> 00:09:52,292
+solo hace un nivel de profundidad. Si necesitas hacer un clon, tienes que sacar un
+
+106
+00:09:52,292 --> 00:09:57,102
+Funciona y entra en línea y encuéntralo donde se llama clonación profunda y eso clonará
+
+107
+00:09:57,102 --> 00:10:00,195
+Cada nivel tan profundo como quieras. Aunque antes de hacer eso, deberías
+
+108
+00:10:00,195 --> 00:10:04,384
+pregúntese: "¿Realmente necesito hacer esto? Tal vez podría hacerlo en una
+
+109
+00:10:04,384 --> 00:10:08,235
+mejor lugar porque muy rara vez realmente necesita clonar un objeto que
+
+110
+00:10:08,235 --> 00:10:12,194
+profundo ". Así que tenemos eso. Y luego otra forma de trampa,
+
+111
+00:10:12,194 --> 00:10:16,543
+el clon profundo del pobre, y no lo recomiendo, pero se podría decir const
+
+112
+00:10:16,543 --> 00:10:24,996
+div dos es igual a Jason.parse, Jason.stringify luego lo pasas tu
+
+113
+00:10:24,996 --> 00:10:35,507
+persona. Ahora tenemos div dos y luego decimos divtwo.social.twitter igual a
+
+114
+00:10:35,507 --> 00:10:43,485
+@poolman. Y ahora si miramos a Wes.social, no se ha tocado.
+
+115
+00:10:43,485 --> 00:10:50,928
+¿Por qué? Porque lo que puedes hacer es tomar Jason.stringify y pasarlo
+
+116
+00:10:50,928 --> 00:10:55,113
+Objeto, y que te devolverá una cadena. Eso ya no es un objeto.
+
+117
+00:10:55,113 --> 00:10:59,392
+Y luego, inmediatamente Jason.parse para convertirlo de nuevo en un objeto,
+
+118
+00:10:59,392 --> 00:11:04,382
+y luego obtiene una copia completa de la misma en lugar de agitar todo el
+
+119
+00:11:04,382 --> 00:11:07,631
+referencias No tengo idea sobre el rendimiento con eso. Tu podrías querer
+
+120
+00:11:07,631 --> 00:11:12,325
+búsquelo antes de usarlo, pero a menudo se lo denomina profundo del pobre
+
+121
+00:11:12,325 --> 00:11:17,593
+clon. Aparte de eso, espero que hayas aprendido una o dos cosas sobre el objeto
+
+122
+00:11:17,593 --> 00:11:22,205
+Referencias y referencias de matriz frente a realmente copiarlas. Te veo mañana.
+
+123
+00:11:22,599 --> 00:11:25,756
+♪ [música] ♪
+

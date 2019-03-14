@@ -1,0 +1,664 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,304 --> 00:00:04,451
+♪ [música] ♪
+
+3
+00:00:07,810 --> 00:00:11,730
+Aquí estamos el día 30, y para divertirnos un poco hoy vamos,
+
+4
+00:00:11,730 --> 00:00:15,120
+Bueno como si no te hubieras divertido todo el tiempo. Pero vamos a estar construyendo un
+
+5
+00:00:15,120 --> 00:00:18,310
+juego para que puedas divertirte y jugar y pasar un buen rato.
+
+6
+00:00:18,310 --> 00:00:25,330
+Entonces, lo que estamos construyendo es Whack-a-mole, y lo que sucede es cuando ejecutas el juego
+
+7
+00:00:25,330 --> 00:00:30,620
+vas a obtener estos pequeños bichos apareciendo en agujeros al azar para al azar
+
+8
+00:00:30,620 --> 00:00:34,410
+cantidades de tiempo Y luego cuando haces clic en ellos obtienes un punto,
+
+9
+00:00:34,410 --> 00:00:39,190
+Tienes que seguirlo junto con tu ratón. Así que hay un par de cosas que
+
+10
+00:00:39,190 --> 00:00:42,700
+necesito saber aquí, el juego en sí va a durar 10 segundos,
+
+11
+00:00:42,700 --> 00:00:49,440
+pero en qué agujero aparece el topo y por cuánto tiempo ese topo asoma la cabeza hacia arriba desde
+
+12
+00:00:49,440 --> 00:00:54,090
+El terreno es totalmente aleatorio, todo va a estar entre 200 milisegundos.
+
+13
+00:00:54,090 --> 00:00:59,020
+y un par de segundos, y luego la colina del topo que va a aparecer es
+
+14
+00:00:59,020 --> 00:01:04,350
+También va a ser totalmente aleatorio también. Así que he ido aquí y he seguido adelante y
+
+15
+00:01:04,350 --> 00:01:08,420
+Seleccioné todos los hoyos, seguí adelante y seleccioné el marcador, que es el
+
+16
+00:01:08,420 --> 00:01:12,400
+Siete aquí, y seguí adelante y seleccioné a todos los topos.
+
+17
+00:01:12,400 --> 00:01:15,990
+Así que mire nuestro HTML aquí, tiene sus agujeros, tiene sus lunares en su
+
+18
+00:01:15,990 --> 00:01:22,400
+agujeros, y estaban listos para rodar con nuestros topos en nuestros agujeros. Así que primero necesitamos un
+
+19
+00:01:22,400 --> 00:01:27,330
+función que nos va a dar una cantidad aleatoria de tiempo entre el hover mínimo y
+
+20
+00:01:27,330 --> 00:01:32,610
+máximo. Así que vamos a decir, "function randTime" y eso va a tomar un
+
+21
+00:01:32,610 --> 00:01:40,600
+Mínimo y máximo. Y eso devolverá un "Math.random () * (max-min) +
+
+22
+00:01:40,600 --> 00:01:44,670
+min; "Y hemos hecho todo esto un par de veces,
+
+23
+00:01:44,670 --> 00:01:48,440
+Ahora no lo voy a explicar de nuevo. Eso debería darnos una función que si nosotros
+
+24
+00:01:48,440 --> 00:01:54,950
+Abre en nuestro navegador aquí y ejecutamos "randTime" y si vamos entre 20
+
+25
+00:01:54,950 --> 00:01:59,400
+milisegundos y 2 segundos, solo nos dará una cantidad aleatoria de
+
+26
+00:01:59,400 --> 00:02:05,130
+milisegundo. Probablemente también podríamos colocar un "Math.round" alrededor de eso solo para que podamos
+
+27
+00:02:05,130 --> 00:02:11,370
+obtener un buen y limpio número de milisegundos de vuelta. Allá vamos, ahora vamos a llegar.
+
+28
+00:02:11,370 --> 00:02:14,890
+una cantidad aleatoria de tiempo que va a aparecer.
+
+29
+00:02:14,890 --> 00:02:18,560
+Así que esa es una función, es una especie de utilidad. Luego necesitamos otra
+
+30
+00:02:18,560 --> 00:02:23,580
+función que va a seleccionar un agujero aleatorio para que salga el lunar.
+
+31
+00:02:23,580 --> 00:02:31,670
+Entonces, "function randomHole ()" y eso va a tomar en una lista de agujeros,
+
+32
+00:02:31,670 --> 00:02:36,770
+que va a ser, en nuestro caso, serán los agujeros que tenemos aquí,
+
+33
+00:02:36,770 --> 00:02:40,880
+Sin embargo, esto podría ser cualquier lista de elementos DOM. Esencialmente, esto es sólo un conseguir
+
+34
+00:02:40,880 --> 00:02:47,080
+Yo una función aleatoria del elemento DOM allí. Y lo que vamos a hacer aquí es,
+
+35
+00:02:47,080 --> 00:02:51,750
+solo consolamos agujeros de registro. Ahora si tuviera que ejecutar "randHole ()" y pasar nuestro
+
+36
+00:02:51,750 --> 00:02:57,160
+variable "agujeros", vamos a obtener seis, ¿por qué? Porque los agujeros son una lista de nodos que
+
+37
+00:02:57,160 --> 00:03:03,490
+contiene los seis de nuestros agujeros. Ok bueno Así que tenemos que encontrar un índice aleatorio entre
+
+38
+00:03:03,490 --> 00:03:07,907
+cero y cinco que nos va a dar ese, así que decimos "const idx =
+
+39
+00:03:07,907 --> 00:03:19,992
+Math.floor (Math.random () * holes.length; const hole = holes [idx]; "¿por qué?
+
+40
+00:03:19,992 --> 00:03:23,113
+Porque va a ser como el agujero cero, uno, dos, tres, cuatro,
+
+41
+00:03:23,113 --> 00:03:28,008
+todo el camino hasta las cinco. Así que idx, entonces solo consigamos el agujero en la consola.
+
+42
+00:03:28,008 --> 00:03:36,640
+Así que ahora, si ejecutamos esa función pasándole nuestros agujeros, son cinco.
+
+43
+00:03:36,640 --> 00:03:40,510
+Oh, cinco otra vez, eso va a ser un problema para nosotros. Uno uno,
+
+44
+00:03:40,510 --> 00:03:43,380
+Oh, una vez más, eso va a ser un problema para nosotros. Una vez más,
+
+45
+00:03:43,380 --> 00:03:48,590
+cuales son las posibilidades Supongo que uno de cada seis. Hoyo, tres, hoyo dos.
+
+46
+00:03:48,590 --> 00:03:53,150
+Ya ves cómo nos está dando uno al azar. Pero el problema que estamos encontrando es
+
+47
+00:03:53,150 --> 00:03:57,520
+que a veces tenemos el mismo, es una oportunidad de uno y seis,
+
+48
+00:03:57,520 --> 00:04:01,990
+así que va a ser bastante común, y no querrás que aparezca el mismo lunar.
+
+49
+00:04:01,990 --> 00:04:05,130
+Entonces, lo que vamos a hacer es crear una variable aquí arriba,
+
+50
+00:04:05,130 --> 00:04:10,670
+vamos a decir "vamos al último agujero"; y eso solo va a crear una variable.
+
+51
+00:04:10,670 --> 00:04:15,480
+Y luego, aquí abajo, vamos a decir, en el extremo inferior, poner una línea entre
+
+52
+00:04:15,480 --> 00:04:21,150
+eso, diremos "lastHole = hole;" y lo que esto hará es salvar la
+
+53
+00:04:21,150 --> 00:04:26,590
+referencia a lo que se apareció la última vez que se llamó a esta función para que en
+
+54
+00:04:26,590 --> 00:04:32,950
+aquí, qué podemos hacer, diremos "if (hole = lastHole)" como si fuera lo mismo
+
+55
+00:04:32,950 --> 00:04:40,000
+uno que apareció la última vez, solo tendremos un registro de consola "Ah, nah, ese es el mismo
+
+56
+00:04:40,000 --> 00:04:47,796
+Bud. "Y luego simplemente ejecutaremos esta función" randomHole () "de nuevo al pasar
+
+57
+00:04:47,890 --> 00:04:53,110
+"agujeros". Ahora esta función es solo el registro de la consola, pero eso no es realmente lo que queremos
+
+58
+00:04:53,110 --> 00:04:57,740
+porque no podemos obtener la referencia al nodo DOM si solo lo consolidamos.
+
+59
+00:04:57,740 --> 00:05:03,100
+Entonces, lo que tenemos que hacer aquí es devolver el agujero que es lo que tenemos,
+
+60
+00:05:03,100 --> 00:05:08,420
+y luego aquí arriba, si fuera el mismo, simplemente devolveremos esa función.
+
+61
+00:05:08,420 --> 00:05:12,680
+que a su vez será llamado. Así que tienes un poco de recursión aquí volviendo
+
+62
+00:05:12,680 --> 00:05:18,000
+el agujero. Ahora si volvemos a ejecutar que nunca deberíamos obtener el mismo dos veces seguidas.
+
+63
+00:05:18,000 --> 00:05:21,770
+Entonces, oh, tenemos dos cosas sucediendo aquí, ¿por qué lo hacemos? Oh porque somos
+
+64
+00:05:21,770 --> 00:05:24,630
+ejecutándolo y estamos en la consola registrándolo, y eso es ... así que este,
+
+65
+00:05:24,630 --> 00:05:27,490
+esta pequeña cosa dice que se ha devuelto y estamos iniciando sesión en la consola,
+
+66
+00:05:27,490 --> 00:05:32,370
+para que podamos sacar la consola y ejecutarla, tenemos uno, dos,
+
+67
+00:05:32,370 --> 00:05:37,540
+tres, dos, seis, tres Ahí vamos, nunca consiguiendo el mismo,
+
+68
+00:05:37,540 --> 00:05:40,980
+de vez en cuando estamos recibiendo, "ahora es el mismo, amigo". ¿Por qué?
+
+69
+00:05:40,980 --> 00:05:44,740
+Porque es, es, en este caso fue uno y luego volvió a encontrar uno,
+
+70
+00:05:44,740 --> 00:05:49,190
+pero en lugar de devolverlo, simplemente devolvió la función que llamará
+
+71
+00:05:49,190 --> 00:05:53,340
+a sí misma de nuevo. Si lo llama un par de veces más, puede tener la oportunidad de hacerlo.
+
+72
+00:05:53,340 --> 00:05:58,830
+ejecutarlo más de una vez. Ajá, ahí vamos, mira, lo corrió una vez, tenía uno,
+
+73
+00:05:58,830 --> 00:06:03,840
+corrí otra vez y obtuve una, corrí otra vez y obtuve una, y luego corrí otra vez y obtuve
+
+74
+00:06:03,840 --> 00:06:06,820
+Tres. Así que los tenemos corriendo ahora. Así que tenemos un tiempo aleatorio,
+
+75
+00:06:06,820 --> 00:06:10,780
+tenemos un agujero aleatorio, tal vez deberíamos cambiarle el nombre a "randomTime",
+
+76
+00:06:10,780 --> 00:06:16,390
+mantener eso coherente, aleatorio y "randomHole". Lo siguiente que tenemos que hacer es
+
+77
+00:06:16,390 --> 00:06:22,330
+en realidad conseguir los topos apareciendo. Así que iremos aquí y haremos una función.
+
+78
+00:06:22,330 --> 00:06:26,290
+se llama "peep ()" que es, van a ir aro, van a aparecer desde
+
+79
+00:06:26,290 --> 00:06:30,600
+sus agujeros Y tendremos algo de tiempo, que es un tiempo aleatorio,
+
+80
+00:06:30,600 --> 00:06:36,540
+va a ser entre 200 milisegundos y un segundo, y vamos a obtener un
+
+81
+00:06:36,540 --> 00:06:44,190
+agujero aleatorio que debería darnos "randomHole ()" lo pasamos "agujeros". Y ahora
+
+82
+00:06:44,190 --> 00:06:53,030
+Solo consolamos el tiempo de registro y el agujero para ver lo que tenemos aquí. Ahora cuando acabo de ejecutar "peep" nos
+
+83
+00:06:53,030 --> 00:07:01,660
+obtén 450 milisegundos, el hoyo 5 debería aparecer, el hoyo 4 debería aparecer durante 821 milisegundos,
+
+84
+00:07:01,660 --> 00:07:06,740
+agujero3 debe ser un poco menos de un segundo. Así que ya ves cómo estamos obteniendo un agujero al azar
+
+85
+00:07:06,740 --> 00:07:11,900
+y una cantidad aleatoria de tiempo? Entonces, lo que haremos aquí es tomar ese agujero,
+
+86
+00:07:11,900 --> 00:07:21,970
+le agregaremos una clase de "up" y eso va a hacer que nuestro CSS sea "top: 0;"
+
+87
+00:07:21,970 --> 00:07:25,910
+y eso solo va a animarse en sí mismo porque por defecto los he puesto
+
+88
+00:07:25,910 --> 00:07:32,380
+"Top 100%;" y puse una transición de 0.4 segundos para aparecer en él.
+
+89
+00:07:32,380 --> 00:07:39,990
+Así que ahí vamos, intentemos esto aquí. Oye, ahí está. Lo haré de nuevo,
+
+90
+00:07:39,990 --> 00:07:44,520
+Hey, y otra vez, y otra vez, y otra vez, y otra vez, y ves que son todos
+
+91
+00:07:44,520 --> 00:07:49,880
+apareciendo lentamente. Sin embargo, nosotros no ... no se van, y lo que
+
+92
+00:07:49,880 --> 00:07:55,670
+Lo que hay que hacer ahora es después de esta cantidad aleatoria de tiempo que necesitamos para eliminar la clase de
+
+93
+00:07:55,670 --> 00:08:02,760
+"arriba" de este agujero aleatorio. Así que "setTimeout ()" que está después de cuántos
+
+94
+00:08:02,760 --> 00:08:10,140
+segundos tiempo? Y cuando eso suceda, vamos a tomar nuestro agujero y vamos a
+
+95
+00:08:10,140 --> 00:08:17,953
+Eliminar la clase de "arriba". No, no eliminar clase, solo quitar ... removeClass es
+
+96
+00:08:17,953 --> 00:08:22,860
+jQuery Así que aquí vamos, y diré pío y luego baja,
+
+97
+00:08:22,860 --> 00:08:27,990
+Mirar de nuevo y luego baja, mira de nuevo, ¡wohoo! Divirtiendome aqui
+
+98
+00:08:27,990 --> 00:08:36,480
+increíble. Entonces, lo que tenemos que hacer es que, a menos que el juego haya terminado, solo necesitamos
+
+99
+00:08:36,480 --> 00:08:40,890
+ejecútalo de nuevo, cuando haya terminado, ejecutaremos "peep ()". Así que si fueras a empezar
+
+100
+00:08:40,890 --> 00:08:48,170
+Mirando así, solo va a correr indefinidamente porque no hay manera de
+
+101
+00:08:48,170 --> 00:08:53,550
+En realidad, deja eso. Entonces, lo que haremos aquí es subir a nuestra cima.
+
+102
+00:08:53,550 --> 00:08:59,530
+y crearemos una variable llamada "timeUp" y la estableceremos en "falso"
+
+103
+00:08:59,530 --> 00:09:05,800
+y bajaremos aquí y diremos que si no ha llegado el momento, correremos
+
+104
+00:09:05,800 --> 00:09:13,420
+"mirar furtivamente()." Entonces, si existe la variable "timeUp" alguna vez se establece en "true", entonces
+
+105
+00:09:13,420 --> 00:09:18,130
+se detendrá. Así que aquí vamos, ejecutaremos "peep ()", va a funcionar para siempre, pero
+
+106
+00:09:18,130 --> 00:09:22,820
+entonces vamos a tomar esta variable "timeUp", se establece en "false", podemos establecer
+
+107
+00:09:22,820 --> 00:09:28,790
+es "verdadero" y nunca vuelve a empezar porque simplemente ... bueno,
+
+108
+00:09:28,790 --> 00:09:33,400
+"peep ()" se llamará a sí mismo y luego se llamará a sí mismo por última vez porque esto
+
+109
+00:09:33,400 --> 00:09:40,460
+no correrá Está bien, eso tiene sentido hasta ahora. Entonces lo que tenemos que hacer es hacer una
+
+110
+00:09:40,460 --> 00:09:44,937
+función llamada "startGame". Así que diremos "function startGame ()". Y la primera
+
+111
+00:09:44,937 --> 00:09:48,570
+Lo que tenemos que hacer es restablecer el marcador aquí, en caso de que estemos
+
+112
+00:09:48,570 --> 00:09:56,104
+jugando de nuevo Así que diremos "scoreboard.textContent = 0;" pues
+
+113
+00:09:56,104 --> 00:10:00,816
+di "timeUp = false"; De nuevo, lo configuramos en la carga de la página, lo sé, pero si tuviera que
+
+114
+00:10:00,816 --> 00:10:04,920
+ejecuta "startGame ()" otra vez, como si quisieras jugar dos veces, entonces podrías hacerlo.
+
+115
+00:10:04,920 --> 00:10:09,860
+Entonces queremos lanzar "peep ()" allí que lo ejecutamos, así que veamos aquí,
+
+116
+00:10:09,860 --> 00:10:16,920
+startGame (), entonces están corriendo como locos. Pero lo que también queremos hacer es
+
+117
+00:10:16,920 --> 00:10:21,800
+después de 10 segundos queremos configurar esa variable que cronometramos,
+
+118
+00:10:21,800 --> 00:10:28,820
+Queremos establecerlo en verdadero. Así que "setTimeout ()" después de que suceda vamos a
+
+119
+00:10:28,820 --> 00:10:37,420
+diga "timeUp = true" y se ejecutará después de 10 segundos, 10,000 milisegundos.
+
+120
+00:10:37,420 --> 00:10:42,170
+Bueno, hagámoslo después de dos segundos para ver si funciona.
+
+121
+00:10:42,170 --> 00:10:49,300
+Así que lo ejecutaremos, han transcurrido dos segundos y ya no se está ejecutando.
+
+122
+00:10:49,300 --> 00:10:53,410
+Bien, así que volveremos a establecer eso en 10 segundos. Así que tenemos nuestro "startGame ()"
+
+123
+00:10:53,410 --> 00:11:00,000
+tenemos nuestro "peep ()" y podemos hacer un botón ahora que al hacer clic tal vez podamos
+
+124
+00:11:00,000 --> 00:11:07,550
+ponga un botón aquí que diga "onClick =" startGame () "" hay "Start!"
+
+125
+00:11:07,550 --> 00:11:11,480
+y luego, al hacer clic en él, comenzará a jugar el juego por ti.
+
+126
+00:11:11,480 --> 00:11:16,020
+Wohoo La última pieza que necesitamos es cuando haces clic en un lunar,
+
+127
+00:11:16,020 --> 00:11:21,030
+Necesitamos darles un golpe en la cabeza. Así que vamos a hacer una función llamada "bonk".
+
+128
+00:11:21,030 --> 00:11:24,770
+eso va a tomar en el evento, solo la consola registrará el evento.
+
+129
+00:11:24,770 --> 00:11:31,740
+Luego tomaremos todos nuestros lunares y escucharemos un clic en cada uno de los lunares,
+
+130
+00:11:31,740 --> 00:11:39,270
+entonces correremos "bonk". Bonk, así. Así que ahora tenemos que ponernos un poco astutos.
+
+131
+00:11:39,270 --> 00:11:44,780
+con nuestro clic. Entonces, comience, haga clic. Oh, tengo el primero.
+
+132
+00:11:44,780 --> 00:11:50,040
+De acuerdo, echemos un vistazo a esto. "MouseEvent", todo tipo de información en
+
+133
+00:11:50,040 --> 00:11:53,230
+aquí. Lo primero que quiero que hagas es, podrías decir como,
+
+134
+00:11:53,230 --> 00:11:58,830
+"Oh, Wes, pero puedo falsificar un clic con JavaScript", buenas coincidencias como hacer eso
+
+135
+00:11:58,830 --> 00:12:04,170
+y gana todo el juego. Bueno, en todos tus eventos tienes esta cosa llamada
+
+136
+00:12:04,170 --> 00:12:10,880
+"Es Confiado" y dirá "verdadero". Si fallas haciendo click en algo con JavaScript.
+
+137
+00:12:10,880 --> 00:12:15,060
+eso va a ser falso porque puede simular un clic que es útil en algunos
+
+138
+00:12:15,060 --> 00:12:19,860
+casos, pero necesitamos que sea cierto que esto realmente provino de la entrada del mouse del usuario.
+
+139
+00:12:19,860 --> 00:12:25,200
+Entonces, lo primero que vamos a hacer es decir "si (! E.isTrusted)
+
+140
+00:12:25,200 --> 00:12:31,200
+regresa; "y eso será ... solo diremos" tramposo! "Así que alguien está
+
+141
+00:12:31,200 --> 00:12:36,830
+Tratando de falsificar el clic sin su ratón. Ok bueno Entonces lo que queremos hacer.
+
+142
+00:12:36,830 --> 00:12:41,950
+Aquí es cuando alguien hace clic en algo que tenemos que darles algún tipo de puntuación.
+
+143
+00:12:41,950 --> 00:12:49,140
+Así que subamos a la parte superior aquí y diremos "dejar puntuación = 0" y cuando comencemos el
+
+144
+00:12:49,140 --> 00:12:55,700
+El juego establecerá el puntaje en cero también, así que si lo reiniciamos podemos hacerlo.
+
+145
+00:12:55,700 --> 00:13:01,290
+Y luego bajaremos aquí y simplemente diremos "score ++;" y nos mudaremos
+
+146
+00:13:01,290 --> 00:13:06,400
+ese pequeño chico abajo, así que "this.classList.remove ('up');" porque si
+
+147
+00:13:06,400 --> 00:13:11,240
+los abofeteas deben moverse hacia abajo incluso si tienen como un segundo o menos a la izquierda en
+
+148
+00:13:11,240 --> 00:13:14,910
+el reloj. Y luego tomamos nuestro "scoreBoard", ¿qué hemos seleccionado?
+
+149
+00:13:14,910 --> 00:13:20,424
+Sí, sí, tenemos "document.querySelctor" y estableceremos el contenido del texto como
+
+150
+00:13:20,424 --> 00:13:26,280
+[inaudible]. Tengo ocho, luego haces clic en Inicio, se ejecutará de nuevo y tú
+
+151
+00:13:26,280 --> 00:13:31,630
+Puedes seguir jugando con todos tus valores allí. Así que ese es nuestro juego Whack-a-mole,
+
+152
+00:13:31,630 --> 00:13:34,790
+Hay mucho más que podrías hacer. En primer lugar, lo que sería realmente genial sería si
+
+153
+00:13:34,790 --> 00:13:39,440
+tenía como un marcador de todos los tiempos y tenías que guardarlo en el almacenamiento local, así que si
+
+154
+00:13:39,440 --> 00:13:43,580
+Alguien volvería y podrías recargar la puntuación más alta.
+
+155
+00:13:43,580 --> 00:13:47,630
+Y los guardas en el almacenamiento local. También sería genial si tuvieras niveles como,
+
+156
+00:13:47,630 --> 00:13:53,820
+así es como un buen clic, pero si tuviera que decir como nivel experto,
+
+157
+00:13:53,820 --> 00:14:00,000
+y luego ibas a cambiar este tiempo aleatorio para recibir entre 50 milisegundos y
+
+158
+00:14:00,000 --> 00:14:04,060
+300 milisegundos y luego será súper duro como woo, woo,
+
+159
+00:14:04,060 --> 00:14:07,250
+woo, woo, woo Como algunas personas serían realmente buenas en eso, no yo,
+
+160
+00:14:07,250 --> 00:14:12,940
+Pero oh tengo uno, dulce. Así que podrías hacer el modo experto y solo puedes crear extra.
+
+161
+00:14:12,940 --> 00:14:16,420
+todo tipo de controles diferentes hasta aquí junto con el tablero de mandos y me gustaría
+
+162
+00:14:16,420 --> 00:14:22,680
+Me encanta ver a dónde llevas éste. Ojalá lo hayas disfrutado y no lo veré.
+
+163
+00:14:22,680 --> 00:14:26,190
+Tú mañana porque eso es todo. Ojalá lo hayas disfrutado y lo tendré un poquito.
+
+164
+00:14:26,190 --> 00:14:29,350
+de un video outro para ti también. Muchas gracias.
+
+165
+00:14:29,350 --> 00:14:32,650
+♪ [música] ♪
+
+166
+00:14:34,000 --> 00:14:35,000
+.
+

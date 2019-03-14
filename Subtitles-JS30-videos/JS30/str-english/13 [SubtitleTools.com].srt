@@ -1,0 +1,730 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:01,513 --> 00:00:04,709
+♪ [music] ♪
+
+3
+00:00:06,938 --> 00:00:11,530
+Today we are going to learn how
+to build a slide in on scroll,
+
+4
+00:00:11,530 --> 00:00:13,950
+when you slide down the images,
+the images will sort of slide
+
+5
+00:00:13,950 --> 00:00:17,180
+themselves in from the left or from the
+right, and you can do whatever other
+
+6
+00:00:17,180 --> 00:00:21,640
+animations you like to do. I've actually
+got this request from a lot of people over
+
+7
+00:00:21,640 --> 00:00:26,108
+the years and I'm always hesitant to do it
+because I really don't like the effect all
+
+8
+00:00:26,108 --> 00:00:29,080
+that much. I think it's kind of
+annoying to have to wait for it.
+
+9
+00:00:29,080 --> 00:00:33,360
+Use this with your discretion. However,
+that said, I think that you can learn a
+
+10
+00:00:33,360 --> 00:00:37,580
+lot about window events, and then we're
+also going to talk about debouncing,
+
+11
+00:00:37,580 --> 00:00:41,510
+which is going to make sure that this is
+not just hammering on scroll.
+
+12
+00:00:41,510 --> 00:00:47,060
+Let's go down to our script tags here, and
+you'll notice that I've already given you
+
+13
+00:00:47,060 --> 00:00:50,580
+a debounce function here, and we're going
+to talk about that in a second.
+
+14
+00:00:50,580 --> 00:00:55,140
+But imagine it's not there, it's gone.
+Okay, now what we want to do is first
+
+15
+00:00:55,140 --> 00:00:59,600
+thing is we need to do is select all of
+the images that we are going to be
+
+16
+00:00:59,600 --> 00:01:05,926
+listening for, and if I open this up in
+the browser here, you'll see that all the
+
+17
+00:01:05,926 --> 00:01:11,080
+images by default are being hidden. If you
+inspect them, you'll see that I've just
+
+18
+00:01:11,080 --> 00:01:15,710
+translated them off-screen just a little
+bit as well as the opacity here.
+
+19
+00:01:15,710 --> 00:01:22,120
+See, that's really where they are, and
+then I've exed them off-screen.
+
+20
+00:01:22,120 --> 00:01:25,320
+You could really do them all the way
+off-screen if you prefer and then I've
+
+21
+00:01:25,320 --> 00:01:30,900
+scaled them at 95% so it just gets a
+little bit of nice little fade-in effect
+
+22
+00:01:30,900 --> 00:01:35,260
+here. By default they are going to be
+hidden, and when they scroll into view or
+
+23
+00:01:35,260 --> 00:01:39,080
+when they are half-scrolled into view,
+what we are going to do is we're going to
+
+24
+00:01:39,080 --> 00:01:43,854
+apply a class called active, which is
+right here, and that is going to bring the
+
+25
+00:01:43,854 --> 00:01:48,860
+opacity to one and translate the X to zero
+putting it where it was and scaling it
+
+26
+00:01:48,860 --> 00:01:55,170
+back up from 95% to 1 or 100%. We need to
+select all the images that we're going to
+
+27
+00:01:55,170 --> 00:02:02,180
+be working with here, so we will say,
+const slider images equals
+
+28
+00:02:02,180 --> 00:02:07,020
+document.queryselector all and we're going
+to select every single image that we want
+
+29
+00:02:07,020 --> 00:02:12,670
+to slide in and they all have a class of
+slide-in. Good. Now what we want to do is
+
+30
+00:02:12,670 --> 00:02:17,130
+create a function called check-slide
+that will run every time the person
+
+31
+00:02:17,130 --> 00:02:24,740
+scrolls. So function, check-slide, and
+let's just pass ourselves the event and
+
+32
+00:02:24,740 --> 00:02:34,180
+console log the event and then when the
+window is scrolled, we are going to run
+
+33
+00:02:34,180 --> 00:02:38,320
+the function check-slide. Let's take a
+look at what we got here.
+
+34
+00:02:38,320 --> 00:02:44,100
+Open up you devTools, watch this.
+Whoa, look at this, I just logged like,
+
+35
+00:02:44,100 --> 00:02:48,660
+hundreds and hundreds of events when I've
+gone. And this can be a little bit of a
+
+36
+00:02:48,660 --> 00:02:53,260
+performance issue because the amount of
+times that it's actually running,
+
+37
+00:02:53,260 --> 00:02:57,350
+here, let's do console.count. How many
+times are we going to count this event
+
+38
+00:02:57,350 --> 00:03:03,040
+here? I scrolled from top to bottom
+and it logged it 50 times in like,
+
+39
+00:03:03,040 --> 00:03:07,500
+a second. Another 50 times. If I just like
+flick my finger, we're gonna run that
+
+40
+00:03:07,500 --> 00:03:13,170
+function 50 times, and that is too much.
+What we want to do is debounce it,
+
+41
+00:03:13,170 --> 00:03:18,410
+which essentially means that we will only
+run this function at most,
+
+42
+00:03:18,410 --> 00:03:23,600
+however many seconds. What we've done here
+is we have this debounce function and
+
+43
+00:03:23,600 --> 00:03:26,950
+there is a debounce in Lodash, there's
+functions all over the place.
+
+44
+00:03:26,950 --> 00:03:30,710
+However, this is a framework-free
+tutorial, so I've just grabbed a debounce
+
+45
+00:03:30,710 --> 00:03:35,070
+function off the internet here.
+Essentially what you do is you pass at a
+
+46
+00:03:35,070 --> 00:03:40,550
+function and it will run debounce
+all the time when we scroll,
+
+47
+00:03:40,550 --> 00:03:46,340
+but it will actually only run the function
+check-slide once every 20 milliseconds or
+
+48
+00:03:46,340 --> 00:03:50,220
+once every 100 milliseconds, which is
+going to give you a little bit more
+
+49
+00:03:50,220 --> 00:03:54,820
+control and it's not going to give you
+that hurt in performance.
+
+50
+00:03:54,820 --> 00:04:00,000
+We're going to wrap that in debounce
+here, and now when I scroll,
+
+51
+00:04:00,000 --> 00:04:05,290
+look, it's scrolling from top to bottom
+it's only running 7 times versus 50 times
+
+52
+00:04:05,290 --> 00:04:09,640
+when I want to scroll up and down. Of
+course, you can change that wait from 20
+
+53
+00:04:09,640 --> 00:04:14,900
+seconds or 20 milliseconds if you wanted
+to do only it once every half a second,
+
+54
+00:04:14,900 --> 00:04:22,670
+you wanted to check for something like
+this. You see it's very seldomly being
+
+55
+00:04:22,670 --> 00:04:27,300
+called. That's what debouncing is. Anytime
+you're doing something on scroll,
+
+56
+00:04:27,300 --> 00:04:31,730
+you'll probably want to stop and you might
+think like, "Oh, it's fine." But later
+
+57
+00:04:31,730 --> 00:04:35,560
+down the road you might have animation
+jank and a whole bunch of other stuff
+
+58
+00:04:35,560 --> 00:04:39,980
+that's happening, so make sure that
+you debounce your scroll functions.
+
+59
+00:04:39,980 --> 00:04:43,590
+Good, now we're going to do all of our
+work inside of this check-slide here,
+
+60
+00:04:43,590 --> 00:04:47,750
+and we're going to talk about what's going
+on here. The first thing that we need to
+
+61
+00:04:47,750 --> 00:04:54,700
+do is loop over every single image and
+figure out where the image needs to then
+
+62
+00:04:54,700 --> 00:05:01,780
+be shown. The idea here is that once the
+image is, I like to call this peaking.
+
+63
+00:05:01,780 --> 00:05:05,130
+Because like at this point, the image is
+fully shown. At this point the image is
+
+64
+00:05:05,130 --> 00:05:10,100
+fully hidden, but at about this point the
+image is just peaking out about 50%.
+
+65
+00:05:10,100 --> 00:05:16,880
+That's the point where when the image
+should be on the page at least 50% of its
+
+66
+00:05:16,880 --> 00:05:23,240
+height, then we want to animate that on
+in. We're going to take our slider images,
+
+67
+00:05:23,240 --> 00:05:28,170
+we're going to loop over each one with a
+for each, that's going to give us a slider
+
+68
+00:05:28,170 --> 00:05:35,590
+image. And for each of those, we're going
+to have to do a whole bunch of math to
+
+69
+00:05:35,590 --> 00:05:43,710
+decide whether it's on page or not. We're
+going to say const slidein at equals.
+
+70
+00:05:43,710 --> 00:05:49,480
+Now, we need to get a couple of things
+here. We need to figure out how far is the
+
+71
+00:05:49,480 --> 00:05:55,800
+page being scrolled down, and that's with
+something called window.scrollY.
+
+72
+00:05:55,800 --> 00:06:03,140
+If I were to go here and just console log
+window.scrollY, and open this sucker up,
+
+73
+00:06:03,140 --> 00:06:11,990
+if I just scroll a little bit,
+window.scrollY. If I just scroll a little
+
+74
+00:06:11,990 --> 00:06:17,950
+bit at this point, you see like I'm 67
+pixels scrolled down. I'm 100 pixels
+
+75
+00:06:17,950 --> 00:06:22,670
+scrolled down. I'm 151 pixels scrolled
+down. That will tell us how much you are
+
+76
+00:06:22,670 --> 00:06:26,770
+scrolled down, but that tells us how much
+we are scrolled down at the very top of
+
+77
+00:06:26,770 --> 00:06:31,840
+our browser. We want to know where
+we are at the very bottom of our window,
+
+78
+00:06:31,840 --> 00:06:38,690
+the viewport that we have here. What we
+can do is we take window.scrollY and then
+
+79
+00:06:38,690 --> 00:06:46,377
+we add the window.innerheight and that's
+going to give us the pixel level for where
+
+80
+00:06:46,377 --> 00:06:51,460
+you currently are at the bottom of that.
+And if we console log slidein at,
+
+81
+00:06:53,960 --> 00:06:59,710
+you'll now see 600, see even at the top of
+the page, I'm at 663 pixels and then as I
+
+82
+00:06:59,710 --> 00:07:05,980
+scroll down, it's going to be telling me
+how far down we are scrolled.
+
+83
+00:07:05,980 --> 00:07:09,950
+Good, but we need to figure out, we don't
+want to slidein just at the bottom right
+
+84
+00:07:09,950 --> 00:07:15,010
+here, we want to slidein at halfway
+through the image here. We're going to
+
+85
+00:07:15,010 --> 00:07:20,710
+minus the slider image which is each
+individual image. The height of that,
+
+86
+00:07:20,710 --> 00:07:27,330
+and that will allow us to slide in the
+image at the very bottom but we want to
+
+87
+00:07:27,330 --> 00:07:32,173
+slide it in when it's at the middle.
+If we take that and divide it by two,
+
+88
+00:07:32,173 --> 00:07:38,180
+that will give us the pixel level of when
+each of the images should be slid in at.
+
+89
+00:07:38,180 --> 00:07:43,130
+Let's take a look here. Now you see each
+of the images are being a little bit
+
+90
+00:07:43,130 --> 00:07:46,540
+different because it's going to
+be giving you that information.
+
+91
+00:07:46,540 --> 00:07:49,690
+The reason why we recalculate this every
+single time is because if something
+
+92
+00:07:49,690 --> 00:07:53,880
+changes on the page, like, if you were to
+put like a share this button and it bumped
+
+93
+00:07:53,880 --> 00:07:57,110
+your content down, or someone
+in order to resize their window,
+
+94
+00:07:57,110 --> 00:08:01,150
+then we would need to recalculate
+where the images lie on the page.
+
+95
+00:08:01,150 --> 00:08:06,010
+Okay, good. Now we need to figure out
+where's the bottom of the image because we
+
+96
+00:08:06,010 --> 00:08:10,730
+also want to know if we scrolled past the
+image, it should slide itself back out
+
+97
+00:08:10,730 --> 00:08:15,020
+because we don't just want to scroll from
+the top down. Sometimes if you scroll back
+
+98
+00:08:15,020 --> 00:08:22,230
+up, you want to have that same animation.
+Say, const image bottom equals slider
+
+99
+00:08:22,230 --> 00:08:29,120
+image, that's the each individual image
+.offsettop. OffsetTop is going to tell us
+
+100
+00:08:29,120 --> 00:08:36,160
+take this image, it's going to tell us the
+top of this image is how far from the top
+
+101
+00:08:36,160 --> 00:08:41,890
+of the actual window here. It's going to
+give us a pixel level of how far down it
+
+102
+00:08:41,890 --> 00:08:47,250
+actually is. Then we want to know not
+where the top of the image is,
+
+103
+00:08:47,250 --> 00:08:51,710
+we want to know where's the bottom of the
+image. We just have to add the
+
+104
+00:08:51,710 --> 00:08:59,600
+sliderimage.height. That'll give
+us the actual height of the image.
+
+105
+00:08:59,600 --> 00:09:03,060
+Okay, good. We have the slidein at,
+which is halfway through the image.
+
+106
+00:09:03,060 --> 00:09:10,530
+Maybe we should write some comments here.
+Halfway through the image,
+
+107
+00:09:10,530 --> 00:09:17,930
+and this is the bottom of the image. Now,
+we need to figure out first,
+
+108
+00:09:17,930 --> 00:09:24,670
+is the image half shown? And second,
+if we're not scrolled past it.
+
+109
+00:09:24,670 --> 00:09:32,200
+Let's do the first one here. Const is half
+shown, these are going to go into an
+
+110
+00:09:32,200 --> 00:09:37,340
+if statement, but I always like to put my
+variables that make sense for me to read
+
+111
+00:09:37,340 --> 00:09:39,920
+them, rather than just to stick
+everything in an if statement,
+
+112
+00:09:39,920 --> 00:09:46,330
+come back a week later not sure what's
+going on. Is half shown is equal to
+
+113
+00:09:46,330 --> 00:09:55,710
+slidein at is greater than the
+sliderimage.offsettop and that will make
+
+114
+00:09:55,710 --> 00:10:02,089
+sure that our slidein at value is greater
+than the top of where the actual image is,
+
+115
+00:10:02,089 --> 00:10:08,230
+so that's good. Then we will make
+a is not scrolled past variable,
+
+116
+00:10:08,230 --> 00:10:12,860
+I realize that's a really long variable,
+but it will help you in a second when we
+
+117
+00:10:12,860 --> 00:10:20,330
+do our if statements. Say window.scrollY
+is less than image bottom.
+
+118
+00:10:20,330 --> 00:10:28,030
+We want to make sure that we are not
+scrolled all the way past the image
+
+119
+00:10:28,030 --> 00:10:31,910
+because if we are, then we need to slide
+it out again. And that's what this
+
+120
+00:10:31,910 --> 00:10:37,110
+variable is going to check, if that image,
+if we're not scrolled past it.
+
+121
+00:10:37,110 --> 00:10:41,730
+Then finally, we have our if statement,
+and that'll say if is half shown,
+
+122
+00:10:41,730 --> 00:10:48,030
+and is not scrolled past, so if it is half
+shown on the page, and we are not scrolled
+
+123
+00:10:48,030 --> 00:10:53,640
+past it, then we are going to take that
+image and we are going to grab the class
+
+124
+00:10:53,640 --> 00:11:02,400
+list and we are going to add active, else,
+we are going to simply just remove that.
+
+125
+00:11:02,400 --> 00:11:08,190
+Because that means we have either scrolled
+past it or have not got to it yet.
+
+126
+00:11:08,190 --> 00:11:12,320
+I've got a bit of red going on on my
+editor it's telling me that that variable
+
+127
+00:11:12,320 --> 00:11:19,000
+has not been created because it is slider
+image, there we go. Make sure you fix that
+
+128
+00:11:19,000 --> 00:11:23,600
+one as well. Looks like we're in good
+shape. Now, if you're having trouble
+
+129
+00:11:23,600 --> 00:11:28,730
+understanding what these positions are, I
+understand that scroll and position on the
+
+130
+00:11:28,730 --> 00:11:32,710
+page can be a little bit hard, just go
+ahead and console log these values to
+
+131
+00:11:32,710 --> 00:11:37,170
+understand where they are. It sometimes
+takes a little bit to get what's going on
+
+132
+00:11:37,170 --> 00:11:42,970
+here. But if this has worked, we should be
+able to add a class of active to each of
+
+133
+00:11:42,970 --> 00:11:48,660
+our items here. Here we go. Oh, we got an
+error, go to our console cannot read
+
+134
+00:11:48,660 --> 00:11:56,440
+property remove of undefined
+classlist.remove. Class list. I'm sure
+
+135
+00:11:56,440 --> 00:12:03,630
+you're screaming at me, there we go. Now,
+you can see as soon as we hit that halfway
+
+136
+00:12:03,630 --> 00:12:10,490
+point for the image, let's scroll all the
+way out here, about to hit halfway,
+
+137
+00:12:10,490 --> 00:12:14,770
+and there we go, the image will add a
+class of active and then as you go away,
+
+138
+00:12:14,770 --> 00:12:18,860
+as soon as you hit this value right here,
+you can't see it, but as soon as it goes
+
+139
+00:12:18,860 --> 00:12:25,140
+off-screen, it's going to move itself on
+out, and when we scroll back to it it will
+
+140
+00:12:25,140 --> 00:12:29,790
+show it again. Same with these ones
+and this one as we scroll on down.
+
+141
+00:12:29,790 --> 00:12:33,910
+That's really it, there's not a whole lot
+of code. It is a bit to understand all of
+
+142
+00:12:33,910 --> 00:12:38,080
+these scrollX and scrollY, especially if
+you don't really like doing a bunch of
+
+143
+00:12:38,080 --> 00:12:42,240
+math at the same time. But again, what I
+like to do is stick them into their own
+
+144
+00:12:42,240 --> 00:12:46,051
+variables before you do your if statement,
+and console log these variables to
+
+145
+00:12:46,051 --> 00:12:49,610
+understand exactly what is going on.
+Hopefully you enjoyed that,
+
+146
+00:12:49,610 --> 00:12:51,359
+and I will see you tomorrow.
+
+147
+00:12:51,957 --> 00:12:55,293
+♪ [music] ♪

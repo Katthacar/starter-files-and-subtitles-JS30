@@ -1,0 +1,904 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,927 --> 00:00:03,832
+♪ [música] ♪
+
+3
+00:00:08,000 --> 00:00:16,100
+- [Karen] Muy bien, hoy vamos a usar la API de síntesis de voz del navegador
+
+4
+00:00:16,100 --> 00:00:20,180
+para crear esta aplicación de una bomba diggity Voiceinator 5000. Listo?
+
+5
+00:00:20,180 --> 00:00:20,750
+Sonriendo pila de caca.
+
+6
+00:00:20,750 --> 00:00:24,810
+- [Hombre] Está bien. Espero que hayan disfrutado esa introducción. Lo que vamos a ser
+
+7
+00:00:24,810 --> 00:00:29,800
+Trabajar con hoy es la API de síntesis de voz que viene en la mayoría de las modernas
+
+8
+00:00:29,800 --> 00:00:34,870
+los navegadores Al igual que hicimos Voice to Text hace un par de días, ahora vamos a ser
+
+9
+00:00:34,870 --> 00:00:39,320
+haciendo texto a voz. Así que echemos un vistazo rápido a nuestro HTML que hemos configurado
+
+10
+00:00:39,320 --> 00:00:43,700
+aquí. Tenemos una selección que contendrá una lista de todos nuestros posibles
+
+11
+00:00:43,700 --> 00:00:46,370
+voces Si miramos la respuesta aquí, los verás aquí.
+
+12
+00:00:46,370 --> 00:00:50,010
+Hay mucho mas Actualmente estoy filtrando solo para los ingleses.
+
+13
+00:00:50,010 --> 00:00:54,800
+Entonces también tenemos una entrada con el nombre de la tasa que va a cambiar ...
+
+14
+00:00:54,800 --> 00:00:57,790
+- [Alex] Hola, me encanta JavaScript. Hola, me encanta JavaScript, pulgares arriba.
+
+15
+00:00:57,790 --> 00:00:59,120
+- ... qué tan rápido habla la persona.
+
+16
+00:00:59,120 --> 00:01:00,000
+- Hola.
+
+17
+00:01:00,000 --> 00:01:03,660
+- Tú entiendes. Y también tenemos tono.
+
+18
+00:01:03,660 --> 00:01:06,510
+- Hola.
+
+19
+00:01:06,510 --> 00:01:13,170
+- Ah, oh chico. Y, finalmente, tenemos un área de texto con el nombre del texto que es
+
+20
+00:01:13,170 --> 00:01:16,940
+va a contener lo que diga la persona, a la derecha, lo vamos a escribir allí.
+
+21
+00:01:16,940 --> 00:01:20,800
+Ahora, solo ... lo importante que necesitamos saber es que existe esa tasa,
+
+22
+00:01:20,800 --> 00:01:26,160
+tono, y texto, los nombres de todas estas entradas aquí, son importantes que
+
+23
+00:01:26,160 --> 00:01:31,380
+es porque el nombre de ellos se alineará con la propiedad en el
+
+24
+00:01:31,380 --> 00:01:34,590
+expresión que es esencialmente la voz que lo va a decir,
+
+25
+00:01:34,590 --> 00:01:38,910
+Así que esos son importantes. No cambies esos. Y tenemos que parar y hablar.
+
+26
+00:01:38,910 --> 00:01:42,870
+Botones para iniciarlo y pararlo. Ahora, bajemos aquí. Te tengo algo de ti
+
+27
+00:01:42,870 --> 00:01:48,670
+código de inicio aquí. Tenemos un mensaje que vamos a crear un nuevo discurso.
+
+28
+00:01:48,670 --> 00:01:52,950
+expresión sintética y eso significa esencialmente lo que la persona va a decir.
+
+29
+00:01:52,950 --> 00:01:57,350
+Y en esa declaración, contendrá información sobre qué tan rápido lo hacen.
+
+30
+00:01:57,350 --> 00:02:02,570
+Dígalo, cuál es el tono que lo dicen, cuál es la voz en que lo dicen,
+
+31
+00:02:02,570 --> 00:02:06,800
+y que van a decir. Así que todas estas cuatro cosas que tenemos aquí,
+
+32
+00:02:06,800 --> 00:02:11,970
+esos van a ser puestos en nuestra expresión. Así que estamos creando una nueva versión.
+
+33
+00:02:11,970 --> 00:02:13,300
+de eso en mensaje.
+
+34
+00:02:13,300 --> 00:02:17,890
+Tenemos una matriz vacía aquí donde nuestras voces serán volcadas.
+
+35
+00:02:17,890 --> 00:02:22,150
+Y luego simplemente seguí adelante y seleccioné el menú desplegable. Seleccioné la tasa,
+
+36
+00:02:22,150 --> 00:02:27,490
+El tono, y el área de texto de una sola vez. Llamo a esas opciones.
+
+37
+00:02:27,490 --> 00:02:32,360
+Tenemos el botón de hablar aquí que lo va a iniciar y luego el otro
+
+38
+00:02:32,360 --> 00:02:37,320
+Eso lo va a detener. Bueno. Entonces, lo que tenemos que hacer ahora es en la carga de la página,
+
+39
+00:02:37,320 --> 00:02:40,980
+lo que sea que esté en esta área de texto, quiero establecer que sea el valor predeterminado.
+
+40
+00:02:40,980 --> 00:02:45,770
+Entonces, lo que haremos aquí es decir igual a message.text. Y normalmente
+
+41
+00:02:45,770 --> 00:02:50,780
+para saludar, probando aquí. Lo que queremos hacer es seleccionar esta casilla.
+
+42
+00:02:50,780 --> 00:02:56,050
+Aquí mismo y configurarlo para que sea lo que está allí. Así lo diremos document.querySelector
+
+43
+00:02:56,050 --> 00:03:00,810
+donde el nombre es igual al texto y llamaremos el valor directamente desde allí.
+
+44
+00:03:00,810 --> 00:03:06,270
+Déle un guardado y una actualización, abra su DevTools aquí. Y si escribes
+
+45
+00:03:06,270 --> 00:03:11,980
+MSG, debería ver que tenemos nuestra expresión de síntesis de voz y el texto es
+
+46
+00:03:11,980 --> 00:03:16,887
+ahora igual a "Hola, me encanta JavaScript", sin embargo, no se está configurando la voz
+
+47
+00:03:17,550 --> 00:03:23,111
+todavía. Así que vamos a seguir adelante y poblar todas las diferentes voces. Entonces qué hacemos
+
+48
+00:03:23,111 --> 00:03:27,706
+es que tomamos una variable global ... si esta es una expresión de síntesis de voz,
+
+49
+00:03:27,706 --> 00:03:30,377
+eso es algo así como lo que una persona podría decir,
+
+50
+00:03:30,377 --> 00:03:35,073
+También tenemos otra variable global llamada síntesis de voz.
+
+51
+00:03:35,073 --> 00:03:42,550
+Y lo que hará la síntesis de voz es que puedes llamar.
+
+52
+00:03:42,550 --> 00:03:46,750
+Es una expresión que va a ser nuestro mensaje. Ahora, si tuviera que hacer eso bien
+
+53
+00:03:46,750 --> 00:03:51,930
+ahora e intente llamar a SpeechSynthesis.speak y páselo nuestro discurso porque el
+
+54
+00:03:51,930 --> 00:03:55,420
+La expresión es lo que decimos, no funciona todavía y eso es porque
+
+55
+00:03:55,420 --> 00:04:00,230
+no hay voz Pero podemos tomar esa variable global que es la síntesis de voz.
+
+56
+00:04:00,230 --> 00:04:04,850
+y podemos agregarle un Event Listener, así que agregue Event Listener.
+
+57
+00:04:04,850 --> 00:04:11,160
+Y hay un evento llamado voces cambiadas. Y cuando eso sucede,
+
+58
+00:04:11,160 --> 00:04:14,580
+Vamos a poblar nuestras voces. Así que vamos a hacer una función llamada
+
+59
+00:04:14,580 --> 00:04:18,751
+PopulateVoices y luego justo antes de eso, haremos esa función.
+
+60
+00:04:18,751 --> 00:04:26,420
+Entonces, lo que decimos es que tomaremos la matriz de voces que hemos declarado aquí.
+
+61
+00:04:26,420 --> 00:04:32,190
+y lo sobrescribiremos con esto, .getVoices. Y solo consola.log
+
+62
+00:04:32,190 --> 00:04:33,790
+Voces y mira lo que tenemos.
+
+63
+00:04:33,790 --> 00:04:38,520
+Entonces, cuando ... y esto simplemente no puede llamarse en la carga de la página porque cuando la síntesis de voz
+
+64
+00:04:38,520 --> 00:04:44,250
+cargas, tiene que disparar las voces cambiadas porque a veces tomará un segundo caliente
+
+65
+00:04:44,250 --> 00:04:47,990
+para que se cargue, debemos esperar hasta que ejecutemos las voces modificadas.
+
+66
+00:04:47,990 --> 00:04:53,000
+Así que ... mira esto. Y si está en una máquina con Windows, es posible que no vea como
+
+67
+00:04:53,000 --> 00:04:57,130
+muchos. El Mac viene con un montón de voces integradas, lo que es bastante divertido y
+
+68
+00:04:57,130 --> 00:05:03,870
+puedes abrirlo Cada uno de estos es una voz donde tienen un nombre como Alva y
+
+69
+00:05:03,870 --> 00:05:10,190
+un código de idioma en el que hablan. Entonces, lo que queremos hacer es recorrer todo
+
+70
+00:05:10,190 --> 00:05:15,610
+esas voces de voz y configurarlas como opciones en este desplegable.
+
+71
+00:05:15,610 --> 00:05:21,550
+Así que diremos, "const voiceOptions es igual a", tomaremos nuestras voces y mapearemos
+
+72
+00:05:21,550 --> 00:05:27,380
+Es porque me gusta mapear absolutamente todo. Pon eso en su propia línea aquí.
+
+73
+00:05:27,380 --> 00:05:31,630
+Y tenemos nuestra voz y desde la voz, solo vamos a devolver una opción donde
+
+74
+00:05:31,630 --> 00:05:37,210
+El valor va a ser la voz. Y luego allí, también vamos a poner
+
+75
+00:05:37,210 --> 00:05:42,410
+La voz.nombre, pero entre paréntesis. También quiero poner el voice.lang solo para que puedas
+
+76
+00:05:42,410 --> 00:05:45,710
+ver en qué idioma se supone que debe ser esa voz.
+
+77
+00:05:45,710 --> 00:05:49,150
+Y luego, una vez que hayas hecho eso, hacemos clic en unirnos y luego
+
+78
+00:05:49,150 --> 00:05:57,080
+tomaremos nuestras voces desplegables y estableceremos el innerHTML para que sea VoiceOptions.
+
+79
+00:05:57,080 --> 00:06:02,620
+O si lo desea, puede poner esto, [eliminado] de inmediato dentro de aquí y
+
+80
+00:06:02,620 --> 00:06:08,564
+entonces has eliminado esta línea adicional aquí. Así que vamos a tomar una actualización de eso
+
+81
+00:06:08,564 --> 00:06:13,290
+Actualice su página y verá que tan pronto como las voces se cargan,
+
+82
+00:06:13,290 --> 00:06:18,120
+Obtendrás un enorme menú desplegable de todas las voces posibles. Ahora de nuevo,
+
+83
+00:06:18,120 --> 00:06:22,190
+Es posible que no veas todas estas voces, pero parece que Google incluye algunas de
+
+84
+00:06:22,190 --> 00:06:26,770
+Sus propias voces también para Chrome. Ahora que esas voces están realmente cargadas en
+
+85
+00:06:26,770 --> 00:06:30,760
+En la página, podemos ver nuestro mensaje aquí y abrirlo.
+
+86
+00:06:30,760 --> 00:06:35,290
+Todavía no hay una voz en ella, pero esas voces se han cargado en el
+
+87
+00:06:35,290 --> 00:06:39,690
+En la página, solo quedará predeterminado para nuestro amigo Alex, que es el predeterminado.
+
+88
+00:06:39,690 --> 00:06:46,790
+Así que ahora podemos llamar a speechSynthesis.speak, pasarle nuestra declaración, que es tal
+
+89
+00:06:46,790 --> 00:06:49,730
+cosa hilarante Es un MSG. Y luego cuando lo llamas ...
+
+90
+00:06:49,730 --> 00:06:52,750
+- Hola, me encanta JavaScript, pulgares arriba.
+
+91
+00:06:52,750 --> 00:06:58,680
+- Ah, y luego decimos que message.text es igual a Wes es genial. Y entonces podríamos
+
+92
+00:06:58,680 --> 00:06:59,560
+ejecútalo de nuevo.
+
+93
+00:06:59,560 --> 00:07:00,640
+- Wes es genial.
+
+94
+00:07:00,640 --> 00:07:03,690
+- Entonces entiendes lo que está pasando aquí? Tenemos una expresión.
+
+95
+00:07:03,690 --> 00:07:07,840
+Tenemos una síntesis de voz que luego tomará esa expresión y luego hablará
+
+96
+00:07:07,840 --> 00:07:12,570
+lo que tengamos Pero queremos poder elegir uno de estos desde el menú desplegable
+
+97
+00:07:12,570 --> 00:07:16,490
+y eso no funciona todavía. Así que vamos a hacer otra función llamada
+
+98
+00:07:16,490 --> 00:07:22,660
+SetVoice y que se llamará console.log cambiar la voz.
+
+99
+00:07:22,660 --> 00:07:27,060
+Eso se va a llamar cuando cambiemos de este menú desplegable. Entonces, ¿qué es eso?
+
+100
+00:07:27,060 --> 00:07:32,320
+Tenemos nuestras voces desplegables. Vamos a agregar un detector de eventos para el cambio,
+
+101
+00:07:32,320 --> 00:07:38,558
+Y cuando eso suceda vamos a llamar a setVoice. Vamos a intentar eso.
+
+102
+00:07:41,663 --> 00:07:46,260
+Bueno. Así que cambiando la voz, cambiando la voz. Cada vez que cambiamos este desplegable,
+
+103
+00:07:46,260 --> 00:07:49,310
+En realidad lo está cambiando. Pero no solo queremos consola.log
+
+104
+00:07:49,310 --> 00:07:53,990
+lo que queremos hacer es que tenemos nuestra expresión que es msg y queremos establecer
+
+105
+00:07:53,990 --> 00:07:58,730
+la voz para ser ... y no podemos decir simplemente como Alex o algo así porque
+
+106
+00:07:58,730 --> 00:08:04,140
+no es una propiedad de voz válida. Entonces, lo que tenemos que hacer es encontrar la voz que las líneas
+
+107
+00:08:04,140 --> 00:08:10,020
+con el valor. Y la forma en que podemos hacerlo es si solo fueras console.log
+
+108
+00:08:10,020 --> 00:08:23,250
+Este.valor, Anna y Ellen y Luciana. Así que tenemos que encontrar no sólo el nombre de ella,
+
+109
+00:08:23,250 --> 00:08:28,510
+Pero si nos fijamos en nuestra matriz de voces, necesitamos encontrar el discurso correspondiente.
+
+110
+00:08:28,510 --> 00:08:35,330
+objeto de síntesis de voz. Así que la forma en que lo hicimos es que diremos que msg.voice es igual a
+
+111
+00:08:35,330 --> 00:08:42,150
+voces. Así que vamos a encontrar aquel en el que el nombre de voz es igual a
+
+112
+00:08:42,150 --> 00:08:43,710
+este valor.
+
+113
+00:08:43,710 --> 00:08:46,870
+Esencialmente, lo que está haciendo es ir por encima de cada uno de
+
+114
+00:08:46,870 --> 00:08:53,860
+estas voces en la matriz y va a encontrar la que tiene su nombre de atributo
+
+115
+00:08:53,860 --> 00:09:00,490
+es la misma que la opción que se seleccionó actualmente como Alva,
+
+116
+00:09:00,490 --> 00:09:05,270
+¿Correcto? Así que se repetirá hasta que encuentre un nombre de voz que sea igual a Alva
+
+117
+00:09:05,270 --> 00:09:10,630
+Y luego hemos ido adelante y lo hemos puesto. Así que intentemos eso ahora. Refrescar.
+
+118
+00:09:10,630 --> 00:09:17,982
+Adelante, seleccione Amelle y luego podemos llamar a speechSynthesis.speak, MSG manualmente.
+
+119
+00:09:17,982 --> 00:09:20,930
+- [Amelle] Hola. Me encanta JavaScript [Hablando en idioma extranjero 00:09:20]
+
+120
+00:09:20,930 --> 00:09:25,680
+- Oh, la la. Todo bien. Echemos un vistazo a Ellen de los Países Bajos.
+
+121
+00:09:25,680 --> 00:09:28,730
+- [Ellen] Hola. Me encanta JavaScript [Hablando en idioma extranjero 00:09:26]
+
+122
+00:09:28,730 --> 00:09:29,570
+- Y Fiona.
+
+123
+00:09:29,570 --> 00:09:32,270
+- [Fiona] Hola. Me encanta JavaScript, hasta los golpes.
+
+124
+00:09:32,270 --> 00:09:35,710
+- He encontrado que algunos de estos Google tardan un poco en cargarse.
+
+125
+00:09:35,710 --> 00:09:39,410
+Entonces, si lo seleccionas y no funciona, tal vez solo esperes un segundo.
+
+126
+00:09:39,410 --> 00:09:42,210
+No me he dado cuenta del todo. Ver.
+
+127
+00:09:42,210 --> 00:09:44,580
+- [Mujer] Hola. Me encanta JavaScript [Hablando en idioma extranjero 00:09:42]
+
+128
+00:09:44,580 --> 00:09:47,780
+- Ahí vamos, parece estar funcionando bien. Carmit
+
+129
+00:09:47,780 --> 00:09:51,580
+- [Carmit] Hola. Me encanta JavaScript [Hablando en idioma extranjero 00:09:50].
+
+130
+00:09:51,580 --> 00:09:55,710
+- Habla los emojis en el idioma nativo, pero luego solo hace palabras en inglés
+
+131
+00:09:55,710 --> 00:10:00,220
+en el acento de ese lenguaje que es algo gracioso. Así que tenemos eso.
+
+132
+00:10:00,220 --> 00:10:05,060
+Ahora, lo que quiero hacer es hacer una función que vaya a ... cada vez que cambio una
+
+133
+00:10:05,060 --> 00:10:08,630
+De estas cosas, quiero reiniciarlo. Así que esa va a ser una función llamada
+
+134
+00:10:08,630 --> 00:10:15,380
+palanca. Y lo que vamos a hacer es primero que vamos a cancelar cualquier cosa
+
+135
+00:10:15,380 --> 00:10:18,940
+Que tenemos que está hablando actualmente. Así que vamos a llamar
+
+136
+00:10:18,940 --> 00:10:25,560
+DiscursoSíntesis.Cancelar, y ver esto. Así que si corro algo,
+
+137
+00:10:25,560 --> 00:10:27,009
+Llama inmediatamente a alternar.
+
+138
+00:10:27,410 --> 00:10:32,170
+Lo cancelará allí mismo. Eso es lo que hace cancelar, dejar de hablar y
+
+139
+00:10:32,170 --> 00:10:37,170
+entonces simplemente reiniciaremos todo lo que es speechSynthesis.speak.
+
+140
+00:10:37,170 --> 00:10:42,220
+Luego volveremos a la voz establecida y solo llamaremos al final.
+
+141
+00:10:42,220 --> 00:10:44,920
+Así que ahora vamos a ir a Carmit.
+
+142
+00:10:44,920 --> 00:10:47,333
+- Hola. Me encanta JavaScript ...
+
+143
+00:10:47,333 --> 00:10:49,290
+- Así que cada vez que cambies ...
+
+144
+00:10:49,290 --> 00:10:52,490
+- [Mujer] Hola, me encanta JavaScript.
+
+145
+00:10:52,490 --> 00:10:54,590
+- Hola.
+
+146
+00:10:54,590 --> 00:10:58,630
+- ¿Entiendes el punto, verdad? Se va a detener y volver a empezar.
+
+147
+00:10:58,630 --> 00:11:02,643
+También puedes pasar una bandera aquí. Voy a llamar a startOver, porque a veces tu
+
+148
+00:11:02,643 --> 00:11:10,250
+Es posible que desee llamar a pass false para que no se reinicie y eso es lo que puede
+
+149
+00:11:10,250 --> 00:11:15,920
+pasar como falso Así que vamos a decir si startOver, y por defecto va a ser
+
+150
+00:11:15,920 --> 00:11:19,910
+Es cierto, por lo que no tiene que pasar nada a menos que explícitamente desee que no
+
+151
+00:11:19,910 --> 00:11:25,180
+comenzar de nuevo. Y luego lo ejecutamos así. Comprueba esto, sigue funcionando.
+
+152
+00:11:25,180 --> 00:11:28,590
+- Hola. Me encanta JavaScript.
+
+153
+00:11:28,590 --> 00:11:30,000
+- [Mujer] Me encanta JavaScript [Hablando en un idioma extranjero 00:11:30]
+
+154
+00:11:30,000 --> 00:11:37,210
+- Podría alternar entre falso y lo detendrá mientras que si lo hace
+
+155
+00:11:37,210 --> 00:11:41,640
+solo reinícialo y alternar falso lo detendrá todo. Eso es lo que hace esta declaración.
+
+156
+00:11:41,640 --> 00:11:46,890
+aquí. Bueno. A continuación, lo que queremos hacer es trabajar con nuestra tarifa,
+
+157
+00:11:46,890 --> 00:11:51,540
+Nuestro tono, así como nuestro mensaje. Así que vamos a bajar aquí y estamos
+
+158
+00:11:51,540 --> 00:11:55,290
+Voy a tomar todas nuestras opciones que ... Déjame echar un vistazo.
+
+159
+00:11:55,290 --> 00:12:01,120
+¿Cuáles son nuestras opciones? Las opciones son tres entradas, el control deslizante,
+
+160
+00:12:01,120 --> 00:12:05,720
+El segundo deslizador y el área de texto. Así que vamos a tomar todas nuestras opciones aquí.
+
+161
+00:12:05,720 --> 00:12:11,990
+La opción options.forEach, option.addEventListener y vamos a
+
+162
+00:12:11,990 --> 00:12:17,250
+Escucha el evento de cambio. Y cuando eso suceda, vamos a ejecutar una función.
+
+163
+00:12:17,250 --> 00:12:22,990
+opción llamada set que luego codificaremos aquí, función setOption.
+
+164
+00:12:22,990 --> 00:12:27,080
+Y dentro de esa función, podríamos ... hagamos esto console.log,
+
+165
+00:12:27,080 --> 00:12:33,950
+this.name y this.value Entonces cuando deslice esta tasa aquí, me dirá ...
+
+166
+00:12:33,950 --> 00:12:39,220
+Tengo que ir a todos ... la tasa ha cambiado a 0,3. El tono ha cambiado a 0.4.
+
+167
+00:12:39,220 --> 00:12:46,234
+El terreno de juego es a 1.9. Wes es genial Y luego hago clic en el área de texto.
+
+168
+00:12:46,234 --> 00:12:50,391
+La propiedad de texto, cambié a I love JavaScript, Wes es genial.
+
+169
+00:12:50,391 --> 00:12:56,688
+Así que ahora hemos enlazado todas estas opciones. Cuando cambian, sabemos qué propiedad.
+
+170
+00:12:56,688 --> 00:13:02,410
+cambiará cuál es este.nombre, y qué se cambió a cuál es este.valor.
+
+171
+00:13:02,410 --> 00:13:06,650
+Así que simplemente tenemos que tomar nuestro mensaje y establecer qué propiedad cambió,
+
+172
+00:13:06,650 --> 00:13:13,540
+this.name, a lo que cambió, this.value. Y luego podemos correr la cosa ... podemos
+
+173
+00:13:13,540 --> 00:13:18,543
+Detenlo y vuelve a empezar. Así que intentemos eso ahora.
+
+174
+00:13:18,543 --> 00:13:21,137
+Así que voy a cambiar la tasa hacia arriba.
+
+175
+00:13:25,630 --> 00:13:30,000
+- Hola. Me encanta JavaScript, pulgares arriba.
+
+176
+00:13:30,000 --> 00:13:34,170
+- Entonces dirá que Wes es genial, y ve a la pestaña o haz clic.
+
+177
+00:13:34,170 --> 00:13:35,030
+- Wes es genial.
+
+178
+00:13:35,030 --> 00:13:38,760
+- Y luego se volverá a ejecutar eso. ¿Por qué? Porque estas cosas han cambiado.
+
+179
+00:13:38,760 --> 00:13:40,250
+También estamos haciendo eso aquí.
+
+180
+00:13:40,250 --> 00:13:40,540
+- [Ellen] Wes es genial.
+
+181
+00:13:40,540 --> 00:13:45,750
+- Increíble. Entonces estos botones justo aquí, tenemos que escuchar un clic en ellos.
+
+182
+00:13:45,750 --> 00:13:51,790
+Así que tomaremos nuestro botón de hablar, que es el que está aquí,
+
+183
+00:13:51,790 --> 00:13:58,940
+speakButton.addEventListener, haga clic en. Cuando eso suceda, vamos a correr el
+
+184
+00:13:58,940 --> 00:14:01,530
+función de alternar y eso solo va a ejecutarlo manualmente.
+
+185
+00:14:05,399 --> 00:14:08,060
+- Hola. Me encanta JavaScript, pulgares arriba.
+
+186
+00:14:08,060 --> 00:14:09,516
+- Y puedes poner algunas cacas allí.
+
+187
+00:14:09,516 --> 00:14:11,254
+Es bastante gracioso cuando pones emojis ahí.
+
+188
+00:14:12,741 --> 00:14:15,580
+- Sonriendo pila de caca, ojos.
+
+189
+00:14:16,471 --> 00:14:19,350
+- [Mujer] [Hablando en Lengua Extranjera 00:14:17]
+
+190
+00:14:19,350 --> 00:14:24,190
+- Me gusta. Oh, recuérdame ... no me lo vas a recordar. Deberiamos filtrar esto
+
+191
+00:14:24,190 --> 00:14:28,710
+Lista solo para los ingleses si eso es lo que buscas. Pero tenemos que correr
+
+192
+00:14:28,710 --> 00:14:36,120
+nuestro botón de hablar y luego también debemos escuchar un clic en nuestro botón de parada.
+
+193
+00:14:36,120 --> 00:14:41,910
+Así que cuando se hace clic en el botón de parada, alternar falso. Oh como haces eso
+
+194
+00:14:41,910 --> 00:14:45,510
+gente ¿Cómo pasar un argumento a una función? Bueno, podrías pensar como
+
+195
+00:14:45,510 --> 00:14:50,575
+"Está bien, podría ... puedo hacer que funcione como esta y hay un interruptor falso".
+
+196
+00:14:50,575 --> 00:14:52,860
+Vamos a ver si eso funciona, así.
+
+197
+00:14:52,860 --> 00:14:53,910
+- Hola.
+
+198
+00:14:53,910 --> 00:14:57,467
+- Bueno. Eso funciona pero eso parece un poco grande. Hay otra manera
+
+199
+00:14:57,467 --> 00:15:00,976
+podríamos hacerlo? No puedes llamar al interruptor falso así porque
+
+200
+00:15:00,976 --> 00:15:03,021
+Eso solo va a correr en la carga de la página.
+
+201
+00:15:04,063 --> 00:15:07,240
+- Hola. Me encanta JavaScript, pulgares arriba.
+
+202
+00:15:07,240 --> 00:15:10,674
+- No hace nada porque esta función no devuelve una función.
+
+203
+00:15:10,674 --> 00:15:14,500
+Entonces, está bien. Huh Entonces, lo que podríamos hacer, hay un par de maneras diferentes en que
+
+204
+00:15:14,500 --> 00:15:18,330
+podría hacerlo. Puedes llamar a .bind, pasarle el valor de esto que será
+
+205
+00:15:18,330 --> 00:15:21,760
+Nada y luego pasalo tu primer argumento que va a ser falso.
+
+206
+00:15:21,760 --> 00:15:25,830
+Y eso es lo que hace el enlace es tomar una función y luego lo llamas en el
+
+207
+00:15:25,830 --> 00:15:30,000
+Contexto de esto y le pasamos un argumento, un falso.
+
+208
+00:15:30,000 --> 00:15:31,880
+- Hola. Me encanta...
+
+209
+00:15:31,880 --> 00:15:37,080
+- Funciona genial. O esto es algo popular en reaccionar ahora mismo.
+
+210
+00:15:37,080 --> 00:15:41,620
+Y usted podría simplemente hacer una función en línea, la función de flecha aquí.
+
+211
+00:15:41,620 --> 00:15:49,050
+Tú dices alternar falso. Así que lo malo de esto es que está creando otra función,
+
+212
+00:15:49,050 --> 00:15:53,300
+Lo mismo con bind y lo mismo con la función, pero esa es otra forma de hacerlo.
+
+213
+00:15:53,300 --> 00:15:55,310
+- Hola. Me encanta...
+
+214
+00:15:55,310 --> 00:15:58,950
+- Y realmente no es tan importante en este caso, a menos que estuviera creando un montón
+
+215
+00:15:58,950 --> 00:16:03,390
+y muchos y muchos de estos. Así que tenemos eso. Lo último que quería hacer es filtrar.
+
+216
+00:16:03,390 --> 00:16:08,960
+esta lista solo para los ingleses como nuestra amiga Karen de Australia.
+
+217
+00:16:08,960 --> 00:16:14,450
+Entonces, qué haremos antes de mapear, simplemente agregaremos un filtro rápido allí para el
+
+218
+00:16:14,450 --> 00:16:20,930
+Voz y decimos, "Si la voz.lang.incluye EN". Y eso deberia
+
+219
+00:16:20,930 --> 00:16:26,730
+simplemente recorte esa lista a las que incluyen EN antes de mapearla.
+
+220
+00:16:26,730 --> 00:16:31,442
+Y luego, cuando actualizo, solo ves un subconjunto más pequeño de la lista de los
+
+221
+00:16:31,442 --> 00:16:35,840
+que tenemos ahi Así que ese es el Voiceinator 5000. En realidad es bastante
+
+222
+00:16:35,840 --> 00:16:39,210
+Es fácil obtener todo este código en funcionamiento. Acabamos de crear una pareja.
+
+223
+00:16:39,210 --> 00:16:43,220
+Diferentes funciones que escucharán cuando se cambien los diferentes elementos.
+
+224
+00:16:43,220 --> 00:16:47,620
+Y luego lo dice por nosotros. Espero que hayas disfrutado eso. Me encanta ver lo que haces
+
+225
+00:16:47,620 --> 00:16:50,148
+De eso y te veré mañana.
+
+226
+00:16:50,148 --> 00:16:53,407
+♪ [música] ♪
+

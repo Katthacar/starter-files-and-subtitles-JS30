@@ -1,0 +1,588 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,513 --> 00:00:04,709
+♪ [música] ♪
+
+3
+00:00:06,938 --> 00:00:11,530
+Hoy vamos a aprender cómo construir una diapositiva en el desplazamiento,
+
+4
+00:00:11,530 --> 00:00:13,950
+Cuando deslice hacia abajo las imágenes, las imágenes se ordenarán
+
+5
+00:00:13,950 --> 00:00:17,180
+ellos mismos desde la izquierda o desde la derecha, y usted puede hacer lo que sea
+
+6
+00:00:17,180 --> 00:00:21,640
+animaciones que te gusta hacer. De hecho, he recibido esta solicitud de muchas personas mayores
+
+7
+00:00:21,640 --> 00:00:26,108
+los años y siempre tengo dudas de hacerlo porque realmente no me gusta el efecto de todo
+
+8
+00:00:26,108 --> 00:00:29,080
+que mucho Creo que es un poco molesto tener que esperar.
+
+9
+00:00:29,080 --> 00:00:33,360
+Usa esto con tu discreción. Sin embargo, dicho esto, creo que se puede aprender un
+
+10
+00:00:33,360 --> 00:00:37,580
+mucho sobre los eventos de la ventana, y luego también vamos a hablar sobre el debouncing,
+
+11
+00:00:37,580 --> 00:00:41,510
+lo que asegurará que esto no sea solo un martillo en el pergamino.
+
+12
+00:00:41,510 --> 00:00:47,060
+Vayamos a nuestras etiquetas de script aquí, y te darás cuenta de que ya te he dado
+
+13
+00:00:47,060 --> 00:00:50,580
+Una función de rebote aquí, y vamos a hablar de eso en un segundo.
+
+14
+00:00:50,580 --> 00:00:55,140
+Pero imagina que no está ahí, se ha ido. Bien, ahora lo que queremos hacer es primero
+
+15
+00:00:55,140 --> 00:00:59,600
+Lo que tenemos que hacer es seleccionar todas las imágenes que vamos a ser
+
+16
+00:00:59,600 --> 00:01:05,926
+escuchando, y si abro esto en el navegador aquí, verá que todos los
+
+17
+00:01:05,926 --> 00:01:11,080
+Las imágenes por defecto están siendo ocultadas. Si los inspeccionas, verás que acabo de
+
+18
+00:01:11,080 --> 00:01:15,710
+Los traduje fuera de la pantalla solo un poco, así como la opacidad aquí.
+
+19
+00:01:15,710 --> 00:01:22,120
+Mira, ahí es donde están realmente, y luego los he sacado de la pantalla.
+
+20
+00:01:22,120 --> 00:01:25,320
+Realmente podrías hacerlos todo fuera de la pantalla si lo prefieres y luego te
+
+21
+00:01:25,320 --> 00:01:30,900
+los escaló al 95%, por lo que solo obtiene un poco de efecto de fundido pequeño y agradable
+
+22
+00:01:30,900 --> 00:01:35,260
+aquí. Por defecto, se ocultarán, y cuando se desplacen a vista o
+
+23
+00:01:35,260 --> 00:01:39,080
+cuando estén a la mitad de la vista, lo que vamos a hacer es que vamos a
+
+24
+00:01:39,080 --> 00:01:43,854
+aplicar una clase llamada activa, que está aquí, y que va a traer el
+
+25
+00:01:43,854 --> 00:01:48,860
+opacidad a uno y traslada la X a cero colocándola donde estaba y ampliándola
+
+26
+00:01:48,860 --> 00:01:55,170
+Copia de seguridad del 95% al ​​1 o 100%. Tenemos que seleccionar todas las imágenes que vamos a
+
+27
+00:01:55,170 --> 00:02:02,180
+estar trabajando aquí, así que diremos, las imágenes del control deslizante const son iguales
+
+28
+00:02:02,180 --> 00:02:07,020
+document.queryselector todo y vamos a seleccionar cada imagen que queramos
+
+29
+00:02:07,020 --> 00:02:12,670
+para deslizarse y todos tienen una clase de deslizamiento. Bueno. Ahora lo que queremos hacer es
+
+30
+00:02:12,670 --> 00:02:17,130
+cree una función llamada check-slide que se ejecutará cada vez que la persona
+
+31
+00:02:17,130 --> 00:02:24,740
+pergaminos Así que funciona, comprueba, desliza y pasemos el evento y
+
+32
+00:02:24,740 --> 00:02:34,180
+La consola registra el evento y luego cuando la ventana se desplaza, vamos a ejecutar
+
+33
+00:02:34,180 --> 00:02:38,320
+La función check-slide. Echemos un vistazo a lo que tenemos aquí.
+
+34
+00:02:38,320 --> 00:02:44,100
+Abre tus herramientas de DevTools, mira esto. Whoa, mira esto, acabo de registrar como,
+
+35
+00:02:44,100 --> 00:02:48,660
+Cientos y cientos de eventos cuando me he ido. Y esto puede ser un poco de
+
+36
+00:02:48,660 --> 00:02:53,260
+problema de rendimiento porque la cantidad de veces que realmente se está ejecutando,
+
+37
+00:02:53,260 --> 00:02:57,350
+Aquí, vamos a hacer console.count. ¿Cuántas veces vamos a contar este evento?
+
+38
+00:02:57,350 --> 00:03:03,040
+¿aquí? Me desplazo de arriba a abajo y lo registró 50 veces en como,
+
+39
+00:03:03,040 --> 00:03:07,500
+un segundo. Otro 50 veces. Si solo me gusta mover mi dedo, vamos a correr ese
+
+40
+00:03:07,500 --> 00:03:13,170
+Funciona 50 veces, y eso es demasiado. Lo que queremos hacer es denunciarlo,
+
+41
+00:03:13,170 --> 00:03:18,410
+lo que esencialmente significa que solo ejecutaremos esta función como máximo,
+
+42
+00:03:18,410 --> 00:03:23,600
+sin embargo muchos segundos. Lo que hemos hecho aquí es que tenemos esta función de rebote y
+
+43
+00:03:23,600 --> 00:03:26,950
+Hay un debounce en Lodash, hay funciones por todas partes.
+
+44
+00:03:26,950 --> 00:03:30,710
+Sin embargo, este es un tutorial sin marco, así que acabo de agarrar un rebote
+
+45
+00:03:30,710 --> 00:03:35,070
+Funcionar fuera de internet aquí. Esencialmente lo que haces es pasar en una
+
+46
+00:03:35,070 --> 00:03:40,550
+función y se ejecutará rebote todo el tiempo cuando nos desplazamos,
+
+47
+00:03:40,550 --> 00:03:46,340
+pero en realidad solo ejecutará la función check-slide una vez cada 20 milisegundos o
+
+48
+00:03:46,340 --> 00:03:50,220
+Una vez cada 100 milisegundos, lo que te dará un poco más.
+
+49
+00:03:50,220 --> 00:03:54,820
+Control y no te va a dar ese daño en el rendimiento.
+
+50
+00:03:54,820 --> 00:04:00,000
+Vamos a envolver eso en rebote aquí, y ahora, cuando me desplace,
+
+51
+00:04:00,000 --> 00:04:05,290
+Mira, se desplaza de arriba a abajo, solo se ejecuta 7 veces contra 50 veces.
+
+52
+00:04:05,290 --> 00:04:09,640
+Cuando quiero desplazarme hacia arriba y hacia abajo. Por supuesto, puedes cambiar esa espera desde 20.
+
+53
+00:04:09,640 --> 00:04:14,900
+segundos o 20 milisegundos si quisiera hacerlo solo una vez cada medio segundo,
+
+54
+00:04:14,900 --> 00:04:22,670
+querías comprobar algo como esto Usted ve que es muy rara vez
+
+55
+00:04:22,670 --> 00:04:27,300
+llamado. Eso es lo que es el debouncing. Cada vez que estás haciendo algo en el pergamino,
+
+56
+00:04:27,300 --> 00:04:31,730
+probablemente querrá detenerse y podría pensar: "Oh, está bien". Pero despues
+
+57
+00:04:31,730 --> 00:04:35,560
+en el camino podría tener jank de animación y un montón de otras cosas
+
+58
+00:04:35,560 --> 00:04:39,980
+Eso está sucediendo, así que asegúrate de rebotar las funciones de desplazamiento.
+
+59
+00:04:39,980 --> 00:04:43,590
+Bien, ahora vamos a hacer todo nuestro trabajo dentro de esta diapositiva de verificación,
+
+60
+00:04:43,590 --> 00:04:47,750
+y vamos a hablar de lo que está pasando aquí. Lo primero que necesitamos
+
+61
+00:04:47,750 --> 00:04:54,700
+hacer un bucle sobre cada imagen y descubrir dónde se necesita la imagen, entonces
+
+62
+00:04:54,700 --> 00:05:01,780
+ser mostrado. La idea aquí es que una vez que la imagen es, me gusta llamar a esto pico.
+
+63
+00:05:01,780 --> 00:05:05,130
+Porque al igual que en este punto, la imagen se muestra completamente. En este punto la imagen es
+
+64
+00:05:05,130 --> 00:05:10,100
+completamente oculta, pero en este punto la imagen está alcanzando un máximo de aproximadamente el 50%.
+
+65
+00:05:10,100 --> 00:05:16,880
+Ese es el punto donde, cuando la imagen debe estar en la página, al menos el 50% de su
+
+66
+00:05:16,880 --> 00:05:23,240
+altura, entonces queremos animar eso en. Vamos a tomar nuestras imágenes deslizantes,
+
+67
+00:05:23,240 --> 00:05:28,170
+Vamos a recorrer cada una con una para cada una, eso nos dará un control deslizante
+
+68
+00:05:28,170 --> 00:05:35,590
+imagen. Y para cada uno de ellos, vamos a tener que hacer un montón de matemáticas para
+
+69
+00:05:35,590 --> 00:05:43,710
+decide si está en la página o no. Vamos a decir const slidein en iguales.
+
+70
+00:05:43,710 --> 00:05:49,480
+Ahora, necesitamos conseguir un par de cosas aquí. Tenemos que averiguar qué tan lejos está el
+
+71
+00:05:49,480 --> 00:05:55,800
+La página se desplaza hacia abajo, y eso es algo llamado window.scrollY.
+
+72
+00:05:55,800 --> 00:06:03,140
+Si fuera a ir aquí y solo a la consola registrar window.scrollY, y abrir este tonto,
+
+73
+00:06:03,140 --> 00:06:11,990
+Si me desplazo un poco, window.scrollY. Si me desplazo un poco
+
+74
+00:06:11,990 --> 00:06:17,950
+poco en este punto, ves como estoy 67 píxeles desplazados hacia abajo. Tengo 100 pixeles
+
+75
+00:06:17,950 --> 00:06:22,670
+desplazado hacia abajo. Tengo 151 píxeles desplazados hacia abajo. Eso nos dirá cuánto estás.
+
+76
+00:06:22,670 --> 00:06:26,770
+desplazado hacia abajo, pero eso nos dice cuánto nos desplazamos hacia abajo en la parte superior de
+
+77
+00:06:26,770 --> 00:06:31,840
+nuestro navegador Queremos saber dónde estamos en el fondo de nuestra ventana,
+
+78
+00:06:31,840 --> 00:06:38,690
+La vista que tenemos aquí. Lo que podemos hacer es tomar window.scrollY y luego
+
+79
+00:06:38,690 --> 00:06:46,377
+Añadimos el window.innerheight y eso nos dará el nivel de píxel para donde
+
+80
+00:06:46,377 --> 00:06:51,460
+Actualmente estás en el fondo de eso. Y si la consola inicia sesión en slide,
+
+81
+00:06:53,960 --> 00:06:59,710
+Ahora verá 600, vea incluso en la parte superior de la página, tengo 663 píxeles y luego como
+
+82
+00:06:59,710 --> 00:07:05,980
+desplácese hacia abajo, me dirá qué tan abajo estamos desplazados.
+
+83
+00:07:05,980 --> 00:07:09,950
+Bien, pero tenemos que descubrirlo, no queremos deslizarnos justo en la parte inferior derecha
+
+84
+00:07:09,950 --> 00:07:15,010
+Aquí, queremos deslizarnos a la mitad de la imagen aquí. Iban a
+
+85
+00:07:15,010 --> 00:07:20,710
+menos la imagen deslizante que es cada imagen individual. La altura de eso,
+
+86
+00:07:20,710 --> 00:07:27,330
+y eso nos permitirá deslizar la imagen en la parte inferior, pero queremos
+
+87
+00:07:27,330 --> 00:07:32,173
+deslízalo hacia adentro cuando esté en el medio. Si tomamos eso y lo dividimos por dos,
+
+88
+00:07:32,173 --> 00:07:38,180
+eso nos dará el nivel de píxel de cuándo cada una de las imágenes debe deslizarse hacia adentro.
+
+89
+00:07:38,180 --> 00:07:43,130
+Echemos un vistazo aquí. Ahora ves que cada una de las imágenes está siendo un poquito.
+
+90
+00:07:43,130 --> 00:07:46,540
+Diferente porque te va a dar esa información.
+
+91
+00:07:46,540 --> 00:07:49,690
+La razón por la que volvemos a calcular esto cada vez es porque si algo
+
+92
+00:07:49,690 --> 00:07:53,880
+cambios en la página, como, si tuvieras que compartir como un botón de este botón y pulsara
+
+93
+00:07:53,880 --> 00:07:57,110
+su contenido hacia abajo, o alguien con el fin de cambiar el tamaño de su ventana,
+
+94
+00:07:57,110 --> 00:08:01,150
+entonces tendríamos que volver a calcular dónde se encuentran las imágenes en la página.
+
+95
+00:08:01,150 --> 00:08:06,010
+Ok bueno Ahora tenemos que averiguar dónde está la parte inferior de la imagen porque nosotros
+
+96
+00:08:06,010 --> 00:08:10,730
+También quiero saber si nos desplazamos más allá de la imagen, debería deslizarse hacia afuera
+
+97
+00:08:10,730 --> 00:08:15,020
+porque no solo queremos desplazarnos de arriba hacia abajo. A veces si retrocedes
+
+98
+00:08:15,020 --> 00:08:22,230
+arriba, quieres tener esa misma animación. Diga, la parte inferior de la imagen constante es igual al control deslizante
+
+99
+00:08:22,230 --> 00:08:29,120
+Imagen, esa es la imagen individual .offsettop. OffsetTop nos va a decir
+
+100
+00:08:29,120 --> 00:08:36,160
+toma esta imagen, nos dirá que la parte superior de esta imagen es lo lejos que está de la parte superior
+
+101
+00:08:36,160 --> 00:08:41,890
+de la ventana real aquí. Nos va a dar un nivel de píxel de qué tan abajo
+
+102
+00:08:41,890 --> 00:08:47,250
+en realidad es. Entonces no queremos saber dónde está la parte superior de la imagen,
+
+103
+00:08:47,250 --> 00:08:51,710
+Queremos saber dónde está el fondo de la imagen. Solo tenemos que añadir el
+
+104
+00:08:51,710 --> 00:08:59,600
+sliderimage.height. Eso nos dará la altura real de la imagen.
+
+105
+00:08:59,600 --> 00:09:03,060
+Ok bueno Tenemos la diapositiva en, que está a mitad de la imagen.
+
+106
+00:09:03,060 --> 00:09:10,530
+Tal vez deberíamos escribir algunos comentarios aquí. A mitad de la imagen,
+
+107
+00:09:10,530 --> 00:09:17,930
+Y esta es la parte inferior de la imagen. Ahora, tenemos que averiguar primero,
+
+108
+00:09:17,930 --> 00:09:24,670
+¿Se muestra la mitad de la imagen? Y segundo, si no estamos desplazados más allá.
+
+109
+00:09:24,670 --> 00:09:32,200
+Hagamos el primero aquí. Const se muestra a la mitad, estos van a entrar en un
+
+110
+00:09:32,200 --> 00:09:37,340
+declaración, pero siempre me gusta poner mis variables que tengan sentido para mí leer
+
+111
+00:09:37,340 --> 00:09:39,920
+ellos, en lugar de limitarse a pegar todo en una declaración if,
+
+112
+00:09:39,920 --> 00:09:46,330
+Regresa una semana después, no estoy seguro de lo que está pasando. Se muestra la mitad es igual a
+
+113
+00:09:46,330 --> 00:09:55,710
+slidein es mayor que el sliderimage.offsettop y eso hará que
+
+114
+00:09:55,710 --> 00:10:02,089
+Asegúrese de que nuestro valor deslizable en el valor es mayor que la parte superior de donde está la imagen real,
+
+115
+00:10:02,089 --> 00:10:08,230
+así que eso es bueno Entonces haremos que no se desplace una variable pasada,
+
+116
+00:10:08,230 --> 00:10:12,860
+Me doy cuenta de que es una variable muy larga, pero te ayudará en un segundo cuando nosotros
+
+117
+00:10:12,860 --> 00:10:20,330
+hacer nuestras declaraciones if. Digamos que window.scrollY es menor que la parte inferior de la imagen.
+
+118
+00:10:20,330 --> 00:10:28,030
+Queremos asegurarnos de que no estamos desplazados hasta el final de la imagen
+
+119
+00:10:28,030 --> 00:10:31,910
+porque si lo somos, entonces tenemos que sacarlo de nuevo. Y eso es lo que esto
+
+120
+00:10:31,910 --> 00:10:37,110
+La variable va a verificar, si esa imagen, si no estamos desplazados más allá de ella.
+
+121
+00:10:37,110 --> 00:10:41,730
+Entonces, finalmente, tenemos nuestra declaración if, y eso dirá si se muestra la mitad,
+
+122
+00:10:41,730 --> 00:10:48,030
+y no se desplaza hacia el pasado, por lo que si se muestra la mitad en la página y no nos desplazamos
+
+123
+00:10:48,030 --> 00:10:53,640
+Más allá, entonces vamos a tomar esa imagen y vamos a tomar la clase.
+
+124
+00:10:53,640 --> 00:11:02,400
+Lista y vamos a agregar activo, de lo contrario, simplemente eliminaremos eso.
+
+125
+00:11:02,400 --> 00:11:08,190
+Porque eso significa que ya sea que hayamos pasado o no lo hayamos llegado todavía.
+
+126
+00:11:08,190 --> 00:11:12,320
+Tengo un poco de rojo en mi editor me está diciendo que esa variable
+
+127
+00:11:12,320 --> 00:11:19,000
+No se ha creado porque es una imagen deslizante, ahí vamos. Asegúrate de arreglar eso
+
+128
+00:11:19,000 --> 00:11:23,600
+uno también Parece que estamos en buena forma. Ahora, si estas teniendo problemas
+
+129
+00:11:23,600 --> 00:11:28,730
+entendiendo cuáles son estas posiciones, entiendo que el desplazamiento y la posición en el
+
+130
+00:11:28,730 --> 00:11:32,710
+La página puede ser un poco difícil, simplemente siga adelante y la consola registra estos valores para
+
+131
+00:11:32,710 --> 00:11:37,170
+entender donde estan A veces toma un poco para obtener lo que está pasando
+
+132
+00:11:37,170 --> 00:11:42,970
+aquí. Pero si esto ha funcionado, deberíamos poder agregar una clase de activos a cada uno de
+
+133
+00:11:42,970 --> 00:11:48,660
+nuestros artículos aquí Aquí vamos. Oh, tenemos un error, ve a nuestra consola no puede leer
+
+134
+00:11:48,660 --> 00:11:56,440
+propiedad eliminada de classlist.remove indefinido. Lista de clase. Estoy seguro
+
+135
+00:11:56,440 --> 00:12:03,630
+Me estás gritando, ahí vamos. Ahora, puedes ver tan pronto como lleguemos a la mitad del camino.
+
+136
+00:12:03,630 --> 00:12:10,490
+punto para la imagen, vamos a desplazarnos hasta aquí, a punto de golpear a mitad de camino,
+
+137
+00:12:10,490 --> 00:12:14,770
+y ahí vamos, la imagen agregará una clase de activo y luego a medida que se vaya,
+
+138
+00:12:14,770 --> 00:12:18,860
+Tan pronto como alcanzas este valor aquí, no puedes verlo, pero tan pronto como pasa
+
+139
+00:12:18,860 --> 00:12:25,140
+fuera de la pantalla, se va a mover hacia fuera, y cuando nos movemos hacia atrás, lo hará
+
+140
+00:12:25,140 --> 00:12:29,790
+mostrarlo de nuevo Lo mismo con estos y este mientras nos desplazamos hacia abajo.
+
+141
+00:12:29,790 --> 00:12:33,910
+Eso es realmente, no hay mucho código. Es un poco entender todo de
+
+142
+00:12:33,910 --> 00:12:38,080
+estos scrollX y scrollY, especialmente si realmente no te gusta hacer un montón de
+
+143
+00:12:38,080 --> 00:12:42,240
+Matemáticas al mismo tiempo. Pero una vez más, lo que me gusta hacer es meterlos en su propia
+
+144
+00:12:42,240 --> 00:12:46,051
+variables antes de hacer su sentencia if, y la consola registra estas variables para
+
+145
+00:12:46,051 --> 00:12:49,610
+Entender exactamente lo que está pasando. Espero que hayas disfrutado eso,
+
+146
+00:12:49,610 --> 00:12:51,359
+y te veré mañana.
+
+147
+00:12:51,957 --> 00:12:55,293
+♪ [música] ♪
+

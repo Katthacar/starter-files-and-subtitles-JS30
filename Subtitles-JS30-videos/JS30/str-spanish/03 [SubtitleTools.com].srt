@@ -1,0 +1,644 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:01,146 --> 00:00:04,506
+♪ [música] ♪
+
+3
+00:00:07,080 --> 00:00:09,141
+En el ejercicio de hoy, vamos a ser
+
+4
+00:00:09,141 --> 00:00:15,070
+hablando de algo que es una marca nueva para CSS y que es CSS
+
+5
+00:00:15,070 --> 00:00:19,303
+variables Y ahora, sé lo que estás diciendo: "Wes, hemos tenido variables en SAS
+
+6
+00:00:19,303 --> 00:00:25,183
+para siempre y esto no es nuevo ". Pero es nuevo, inteligente Alec, porque CSS
+
+7
+00:00:25,183 --> 00:00:29,340
+Las variables se pueden actualizar con JavaScript, lo que significa que cuando actualiza una variable
+
+8
+00:00:29,340 --> 00:00:34,143
+en CSS, en todas partes de la página a la que se hace referencia a esa variable se actualizará.
+
+9
+00:00:34,143 --> 00:00:38,664
+Con SAS, los define en tiempo de compilación y luego se compila y no puede
+
+10
+00:00:38,664 --> 00:00:44,110
+cambialo. Así que echemos un vistazo aquí. Tengo tres variables, espaciado, desenfoque,
+
+11
+00:00:44,110 --> 00:00:49,580
+y color base. Y cuando cambie uno de esos, como el espaciado, simplemente
+
+12
+00:00:49,580 --> 00:00:53,450
+Actualice inmediatamente donde se cambie esa variable en la página,
+
+13
+00:00:53,450 --> 00:00:58,400
+lo mismo con el desenfoque. Sólo estoy usando eso en esta imagen aquí. Pero a medida que lo cambio,
+
+14
+00:00:58,400 --> 00:00:59,310
+se va a actualizar
+
+15
+00:00:59,310 --> 00:01:03,330
+Y luego, finalmente, el color base, lo estoy usando para el fondo de esta imagen también
+
+16
+00:01:03,330 --> 00:01:07,630
+como el color de este JS resaltar aquí. Así que cuando cambio ese color,
+
+17
+00:01:07,630 --> 00:01:12,350
+se actualiza en todos los lugares a los que se hace referencia en la página actual. Así que vamos a saltar.
+
+18
+00:01:12,350 --> 00:01:17,870
+Echemos un vistazo rápido a nuestro HTML aquí. Tengo h2 que tiene un lapso con una clase
+
+19
+00:01:17,870 --> 00:01:24,850
+de resaltar o hl alrededor de JS. Y luego tengo una etiqueta y entrada para el
+
+20
+00:01:24,850 --> 00:01:31,360
+espacio que tiene un mínimo de 10, un máximo de 200. Y tenemos un rango que hace nuestro
+
+21
+00:01:31,360 --> 00:01:36,290
+difuminar. Y tenemos un tipo de color de entrada que te da ese tipo de color fresco
+
+22
+00:01:36,290 --> 00:01:39,120
+recogedor. Usted está obteniendo un poco de un selector de color diferente de su propio
+
+23
+00:01:39,120 --> 00:01:44,040
+Windows o algo así, pero siempre se abrirá cualquiera que sea el color predeterminado
+
+24
+00:01:44,040 --> 00:01:48,210
+El selector está en su sistema. Luego tenemos la imagen y estamos diseñando.
+
+25
+00:01:48,210 --> 00:01:51,420
+Ahora, saltemos a ... abriendo esto en nuestro navegador.
+
+26
+00:01:51,420 --> 00:01:55,150
+Saltemos primero a algunas variables CSS porque necesitamos entender cómo
+
+27
+00:01:55,150 --> 00:01:59,100
+Trabaja antes de que podamos escribir cualquiera de nuestros JavaScript para actualizarlos.
+
+28
+00:01:59,100 --> 00:02:03,830
+Así que la forma en que funcionan las variables CSS es que las declara en algún tipo de elemento
+
+29
+00:02:03,830 --> 00:02:07,910
+En nuestro caso, lo vamos a declarar en la raíz, que es el nivel más alto.
+
+30
+00:02:07,910 --> 00:02:11,570
+que puede obtener, muy similar a declararlo en el elemento HTML.
+
+31
+00:02:11,570 --> 00:02:15,200
+Y aquí es donde vamos a establecer nuestros valores predeterminados para esas variables.
+
+32
+00:02:15,200 --> 00:02:19,700
+Así que vamos a tener una variable base que se establecerá en la base de Wes
+
+33
+00:02:19,700 --> 00:02:24,000
+color amarillo. Vamos a tener una variable de espaciado que va a ser
+
+34
+00:02:24,000 --> 00:02:29,410
+por defecto a 10 píxeles y vamos a darnos una variable borrosa que es
+
+35
+00:02:29,410 --> 00:02:33,650
+También va a estar por defecto a 10 píxeles. Ahora, hemos definido estas variables,
+
+36
+00:02:33,650 --> 00:02:35,530
+Y podemos seguir adelante y empezar a utilizarlos.
+
+37
+00:02:35,530 --> 00:02:40,210
+Así que vamos a tomar nuestra imagen que está en la página aquí y le damos un relleno de ... y ahora
+
+38
+00:02:40,210 --> 00:02:45,910
+cuando quieres usar una variable en CSS, dices "var" y le pasas el espacio.
+
+39
+00:02:45,910 --> 00:02:48,590
+Ahora, este tablero de instrumentos, sé que estás como, "¿Qué demonios estás haciendo,
+
+40
+00:02:48,590 --> 00:02:52,930
+¿Wes? "Ese es el estándar en CSS, así es como lo haces. Normalmente es como el dólar.
+
+41
+00:02:52,930 --> 00:02:57,050
+en SAS o algo por el estilo. Pero en CSS, es dash-dash. No me grites
+
+42
+00:02:57,050 --> 00:03:01,310
+así es como decidieron hacerlo para que fuera compatible con versiones anteriores
+
+43
+00:03:01,310 --> 00:03:07,427
+Todos los CSS que eran anteriores de los navegadores. Y mira, el relleno se basa en el
+
+44
+00:03:07,427 --> 00:03:12,720
+el espacio y nos está dando algo ... puedes ver el verde allí. Está bien, eso funciona.
+
+45
+00:03:12,720 --> 00:03:19,140
+Entonces queremos trabajar en el fondo que va a ser nuestra base variable que es
+
+46
+00:03:19,140 --> 00:03:23,510
+Va a ser ese color amarillo. Está bien, se ve bien. La imagen está tomando un segundo.
+
+47
+00:03:23,510 --> 00:03:28,970
+cargar. Luego, si tuviera que cambiar este espaciado a 50 píxeles, actualizar,
+
+48
+00:03:28,970 --> 00:03:34,360
+ves que es mucho más grande Ponlo de nuevo en 10 va a tomar esa variable
+
+49
+00:03:34,360 --> 00:03:36,440
+De espaciado y no necesito volver a declararlo.
+
+50
+00:03:36,440 --> 00:03:41,780
+Y finalmente, vamos a darle un filtro que es un borrón y queremos
+
+51
+00:03:41,780 --> 00:03:49,195
+Usa la variable "desenfoque". Bueno. Ahora queremos trabajar con este destacado de JS aquí.
+
+52
+00:03:49,195 --> 00:03:56,040
+Así que diremos que cualquier cosa con la clase de resaltado tendrá el color de
+
+53
+00:03:56,040 --> 00:04:03,180
+base variable Genial. Así que en cualquier lugar ahora estamos haciendo referencia a este color aquí
+
+54
+00:04:03,180 --> 00:04:07,390
+y aquí mismo, va a ser cambiado si fuera solo para cambiar esto a tal vez
+
+55
+00:04:07,390 --> 00:04:11,160
+como el rojo, en todas partes de la página se pone ... tú entiendes el punto, ¿verdad?
+
+56
+00:04:11,160 --> 00:04:13,450
+Es una variable y usted hace referencia a ella y la va a utilizar.
+
+57
+00:04:13,450 --> 00:04:19,220
+Ahora, ¿cómo escribimos algunos JavaScript para actualizarlos? Bueno, sigamos adelante y hagamos
+
+58
+00:04:19,220 --> 00:04:23,160
+ese. Lo primero que debemos hacer es seleccionar las tres entradas
+
+59
+00:04:23,160 --> 00:04:28,450
+aquí para que cuando cambien, podamos actualizar las variables CSS que
+
+60
+00:04:28,450 --> 00:04:33,360
+a su vez actualizará los colores en la pantalla, así que nos desplazaremos hacia abajo a nuestro script
+
+61
+00:04:33,360 --> 00:04:37,860
+etiquetas aquí y seleccionaremos todas nuestras entradas en la página, por lo tanto constas entradas
+
+62
+00:04:37,860 --> 00:04:45,308
+es igual, y voy a usar document.querySelectorAll. Y nuestro
+
+63
+00:04:45,308 --> 00:04:50,600
+El selector aquí será la entrada de .controls, así que eso va a seleccionar todas las
+
+64
+00:04:50,600 --> 00:04:51,730
+Entradas en la página.
+
+65
+00:04:51,730 --> 00:04:57,130
+Aparte del tema, en el último video, dije que el querySelector le dará
+
+66
+00:04:57,130 --> 00:05:00,140
+una matriz. Y lo que realmente quise decir es que te da algo llamado NodeList.
+
+67
+00:05:00,140 --> 00:05:04,580
+Si ejecuto esto en mi consola aquí, vuelve a ti lo que realmente parece
+
+68
+00:05:04,580 --> 00:05:08,380
+una matriz. Tiene corchetes. Tiene elementos de índice. Tiene una longitud.
+
+69
+00:05:08,380 --> 00:05:12,890
+Pero no es una matriz. Y la diferencia entre un NodeList y una matriz es que un
+
+70
+00:05:12,890 --> 00:05:20,070
+array tiene todo tipo de métodos para tratar con un array como map y reduce y todo
+
+71
+00:05:20,070 --> 00:05:23,700
+los buenos Y si abres el prototipo para el NodeList,
+
+72
+00:05:23,700 --> 00:05:29,840
+ves, aquí solo tenemos un par de métodos, entradas para cada clave y valor y
+
+73
+00:05:29,840 --> 00:05:33,550
+Luego un par de otras pequeñas cosas aquí. Mientras que si tuviera una matriz,
+
+74
+00:05:33,550 --> 00:05:39,810
+como uno, dos, tres, RX es igual, y tengo X, y lo abro y miro
+
+75
+00:05:39,810 --> 00:05:43,100
+en el prototipo de eso. Oh, mira todas estas cosas buenas. Hay todo lo que
+
+76
+00:05:43,100 --> 00:05:44,280
+estas acostumbrado a
+
+77
+00:05:44,280 --> 00:05:49,840
+Así que a veces verás personas que convierten su NodeList en una matriz.
+
+78
+00:05:49,840 --> 00:05:54,100
+Y en algunos ejercicios futuros, tendremos que hacer eso. Pero en nuestro caso,
+
+79
+00:05:54,100 --> 00:05:58,920
+lo que vamos a utilizar para recorrer estas entradas es el método forEach que tiene
+
+80
+00:05:58,920 --> 00:06:04,430
+Recientemente se agregó a NodeList, por lo que no es necesario que lo convirtamos
+
+81
+00:06:04,430 --> 00:06:08,720
+a una matriz a menos que esté usando un navegador antiguo que no admite tener
+
+82
+00:06:08,720 --> 00:06:13,140
+por cada uno en él. Entonces, lo que queremos hacer ahora es crear nuestra función llamada
+
+83
+00:06:13,140 --> 00:06:20,930
+handleUpdate, function handleUpdate y solo tendremos console.log this.value para cada uno
+
+84
+00:06:20,930 --> 00:06:26,650
+de ellos. Y luego escucharemos un evento de cambio en cada una de las entradas.
+
+85
+00:06:26,650 --> 00:06:31,600
+Así que diremos inputs.forEach y luego queremos recorrer cada uno de ellos.
+
+86
+00:06:31,600 --> 00:06:35,630
+Tenemos una entrada, voy a usar una función de flecha solo para ser agradable y limpio
+
+87
+00:06:35,630 --> 00:06:41,930
+Aquí, el input.addEventListener. Queremos escuchar el cambio de evento.
+
+88
+00:06:41,930 --> 00:06:45,386
+Y cuando se llame así, llamaremos handleUpdate.
+
+89
+00:06:47,607 --> 00:06:55,332
+Bueno. Ahora cuando abrimos nuestra consola aquí y cambio una de estas y muevo y
+
+90
+00:06:55,332 --> 00:07:03,130
+suelta 75, 102, 167, ves que mi borroso cambiará también. Así que estoy viendo los valores.
+
+91
+00:07:03,130 --> 00:07:09,590
+cambiar siempre que cambie el valor de uno de estos. Pero una pequeña cosa eres tú
+
+92
+00:07:09,590 --> 00:07:12,580
+note que al arrastrarlo, en realidad no se activa un cambio.
+
+93
+00:07:12,580 --> 00:07:21,890
+Lo que podemos hacer es también escuchar la actualización de mousemove que cuando mueves
+
+94
+00:07:21,890 --> 00:07:26,160
+sobre parece que va a disparar cada vez. Hay unas banderas que
+
+95
+00:07:26,160 --> 00:07:30,430
+podría establecer dónde al hacer clic, establecerlo en verdadero, al desactivar,
+
+96
+00:07:30,430 --> 00:07:35,590
+ponlo en falso Vamos a mantenerlo realmente simple aquí cuando, cuando muevo el
+
+97
+00:07:35,590 --> 00:07:41,580
+valor, también va a desencadenar un cambio en lugar de solo cuando lo suelto.
+
+98
+00:07:41,580 --> 00:07:44,700
+Así que estamos escuchando el cambio y el movimiento del mouse y vamos a llamar handleUpdate
+
+99
+00:07:44,700 --> 00:07:46,900
+independientemente de cuál sucedió.
+
+100
+00:07:46,900 --> 00:07:51,760
+Ahora vayamos a este identificador de actualización aquí y trabajemos para obtener los valores
+
+101
+00:07:51,760 --> 00:07:57,240
+de eso Entonces, lo primero que necesitamos saber es cuál es el sufijo del valor que
+
+102
+00:07:57,240 --> 00:08:02,840
+estamos trabajando en Porque si subimos a nuestras variables aquí, esta base no tiene
+
+103
+00:08:02,840 --> 00:08:06,270
+un sufijo, es solo un código hexadecimal o un valor RGB que va a salir de la
+
+104
+00:08:06,270 --> 00:08:10,890
+entrada. Pero el espaciado y el desenfoque, nos darán valores como 10
+
+105
+00:08:10,890 --> 00:08:16,680
+pero tienen que ser 10px. Entonces, lo que he hecho es adjuntar información adicional.
+
+106
+00:08:16,680 --> 00:08:22,190
+a cada una de estas entradas aquí donde he creado un atributo de datos.
+
+107
+00:08:22,190 --> 00:08:25,820
+Una vez más, un atributo de datos es solo un atributo que has creado.
+
+108
+00:08:25,820 --> 00:08:30,780
+Hay que prefijarlo con datos-dash algo. Y he puesto un tamaño o una
+
+109
+00:08:30,780 --> 00:08:36,920
+sufijo de valor aquí llamado px. Y luego este, no lo he hecho. Entonces, ¿qué podemos hacer aquí?
+
+110
+00:08:36,920 --> 00:08:43,000
+es que podemos decir que el sufijo const es igual a este.dataset porque ...
+
+111
+00:08:43,000 --> 00:08:45,750
+¿Qué es esto.dataset? Echemos un vistazo rápido a eso un segundo.
+
+112
+00:08:45,750 --> 00:08:54,740
+Console.log this.dataset y si lo cambio ... ya ves, dataset es un objeto que
+
+113
+00:08:54,740 --> 00:08:58,950
+contendrá todos los atributos de datos de ese elemento específico.
+
+114
+00:08:58,950 --> 00:09:03,880
+En este caso, es sólo el tamaño. Pero si tuviera que subir a este primero aquí,
+
+115
+00:09:03,880 --> 00:09:12,820
+nombre de datos es igual a wes y el guión de datos es igual a frío, pondremos un impulso allí.
+
+116
+00:09:12,820 --> 00:09:17,100
+Ahora, veamos lo que tenemos. Tenemos una caca, seguro que tenemos una caca.
+
+117
+00:09:17,100 --> 00:09:20,020
+Aquí vamos. Ábrelo, tenemos un objeto de todas las cosas.
+
+118
+00:09:20,020 --> 00:09:23,340
+Así que el conjunto de datos es solo un objeto que está todo listo. No tienes que seleccionarlo.
+
+119
+00:09:23,340 --> 00:09:26,990
+No tienes que usar ningún selector de atributo de él. Sólo tomará
+
+120
+00:09:26,990 --> 00:09:31,320
+todo lo que tiene datos-dash en ese elemento y lo puso en una pequeña ordenada
+
+121
+00:09:31,320 --> 00:09:32,420
+objeto para ti
+
+122
+00:09:32,420 --> 00:09:37,200
+Así que queremos volver a esto. Diremos que el sufijo es igual a este.dataset.
+
+123
+00:09:37,200 --> 00:09:45,660
+Y como lo llamamos, dimensionamiento. Bueno. Y luego para algunos de ellos,
+
+124
+00:09:45,660 --> 00:09:50,900
+no tienen un tamaño como el de color, así que solo voy a decir "o nada"
+
+125
+00:09:50,900 --> 00:09:55,110
+porque si no lo dejo en eso, al final vamos a dar una vuelta indefinida y
+
+126
+00:09:55,110 --> 00:09:58,360
+Eso no es lo que queremos. Entonces es "o nada", simplemente va a retroceder.
+
+127
+00:09:58,360 --> 00:10:04,360
+Así que vamos a utilizar el sufijo console.log, veamos con qué estamos trabajando aquí.
+
+128
+00:10:04,360 --> 00:10:10,300
+Así que píxeles, bien. Píxeles para eso. Y luego, cuando me muevo sobre este,
+
+129
+00:10:10,300 --> 00:10:15,010
+no ves nada y eso es porque no hay sufijo para el código hexadecimal.
+
+130
+00:10:15,010 --> 00:10:20,322
+Ahora, lo que necesitamos hacer es actualizar la variable real. Entonces, ¿cómo selecciona un
+
+131
+00:10:20,322 --> 00:10:27,440
+¿variable? Y luego la forma en que funciona es que vamos a seleccionar nuestro
+
+132
+00:10:27,440 --> 00:10:35,130
+documento que es nuestra raíz aquí y vamos a establecer una propiedad de base,
+
+133
+00:10:35,130 --> 00:10:41,330
+espacio, o difuminado, y notará que usamos el nombre aquí, espacio entre nombres,
+
+134
+00:10:41,330 --> 00:10:51,970
+desenfoque de nombre, y base de nombre. Así que bajamos aquí y vamos a console.log this.name.
+
+135
+00:10:51,970 --> 00:11:03,154
+Desenfoque, espaciado, base, bueno. Nosotros decimos document.documentElement.style.setProperty
+
+136
+00:11:04,897 --> 00:11:12,187
+y vamos a establecer la propiedad de generalmente --base o - spacing pero aquellos
+
+137
+00:11:12,187 --> 00:11:15,723
+Las cosas van a ser variables, porque estamos usando el texto de vuelta aquí.
+
+138
+00:11:15,723 --> 00:11:23,181
+podemos colocar ese nombre de variable en este .name y luego se establecerá
+
+139
+00:11:23,181 --> 00:11:26,620
+a esto, .value. Ahora, eso no nos va a llevar hasta el final,
+
+140
+00:11:26,620 --> 00:11:28,470
+y te mostraré un segundo aquí.
+
+141
+00:11:28,470 --> 00:11:33,510
+Abramos nuestro panel de elementos y cambiemos nuestro desenfoque. Ves lo que pasa
+
+142
+00:11:33,510 --> 00:11:39,240
+¿aquí? El valor de desenfoque está cambiando, pero no hay ningún píxel al final.
+
+143
+00:11:39,240 --> 00:11:43,810
+Y esa es la razón por la que creamos esta variable de sufijo, de modo que podamos abordar el sufijo
+
+144
+00:11:43,810 --> 00:11:48,380
+Variable hacia el final. Y ahora, cuando actualice, cambiemos la imagen aquí.
+
+145
+00:11:48,380 --> 00:11:52,330
+porque el otro tiene problemas para cargar. Y cambio uno de estos,
+
+146
+00:11:52,330 --> 00:11:58,960
+verá que el valor se está actualizando 124px, borroso 10px. Como lo cambias
+
+147
+00:11:58,960 --> 00:12:02,320
+Se actualizará de inmediato. Vamos a comprobar que el color uno
+
+148
+00:12:02,320 --> 00:12:09,180
+funciona también Perfecto. Así que ese es el ejercicio de hoy. De nuevo, cuando usas un CSS
+
+149
+00:12:09,180 --> 00:12:14,910
+variable, luego puede actualizar esa variable en cualquier elemento y cualquier selector
+
+150
+00:12:14,910 --> 00:12:19,880
+que están dentro de ese elemento que hace referencia a esa variable lo estará usando.
+
+151
+00:12:19,880 --> 00:12:23,650
+Por lo tanto, otra cosa que podría hacer es que también podría usarlos para
+
+152
+00:12:23,650 --> 00:12:29,420
+div específicos Así que si tuviera que tomar este h2 y agregar un atributo de
+
+153
+00:12:29,420 --> 00:12:36,718
+style es igual y quiero cambiar la base variable para que sea un badass,
+
+154
+00:12:38,989 --> 00:12:40,359
+Oh, mira lo que pasó allí.
+
+155
+00:12:40,359 --> 00:12:46,710
+Entonces, aunque esta variable base está aquí, porque he especificado la variable
+
+156
+00:12:46,710 --> 00:12:51,720
+más abajo y dentro de eso, este punto culminante hace referencia a la variable,
+
+157
+00:12:51,720 --> 00:12:57,230
+éste gana sobre este. Al igual que la cascada CSS, cuanto más cerca lo hará
+
+158
+00:12:57,230 --> 00:13:00,140
+siempre ganar Y puedo seguir adelante y seguir cambiando este valor,
+
+159
+00:13:00,140 --> 00:13:06,810
+y este no va a cambiar porque lo he actualizado en un ámbito inferior.
+
+160
+00:13:06,810 --> 00:13:09,268
+Espero que hayas disfrutado eso. Nos vemos en la siguiente.
+
+161
+00:13:09,268 --> 00:13:12,174
+♪ [música] ♪
+

@@ -1,0 +1,1080 @@
+1
+00:00:00,000 --> 00:00:00,033
+Editado en https://subtitletools.com
+
+2
+00:00:00,346 --> 00:00:03,346
+♪ [música] ♪
+
+3
+00:00:08,055 --> 00:00:13,130
+Hoy, estamos construyendo en el reproductor de video HTML5. Si alguna vez has intentado
+
+4
+00:00:13,130 --> 00:00:17,350
+Reproductor de video predeterminado, sabrá que realmente no es tan posible.
+
+5
+00:00:17,350 --> 00:00:20,410
+Si miro cómo se ve el reproductor de video por defecto,
+
+6
+00:00:20,410 --> 00:00:24,070
+esto es actualmente lo que parece en Chrome. Pero eso cambia a veces,
+
+7
+00:00:24,070 --> 00:00:28,020
+así como es diferente de un navegador a otro. Así que esto es lo que parece.
+
+8
+00:00:28,020 --> 00:00:32,540
+Obtienes algunos controles básicos. Tienes la oportunidad de fregar el video.
+
+9
+00:00:32,540 --> 00:00:36,640
+Puede cambiar el volumen y la pantalla completa, así como un par de otras cosas que
+
+10
+00:00:36,640 --> 00:00:40,620
+ocurrir. Ahora, lo que queremos construir es esta interfaz totalmente personalizada,
+
+11
+00:00:40,620 --> 00:00:45,220
+donde vamos a ocultar los controles y vamos a construir nuestra propia interfaz
+
+12
+00:00:45,220 --> 00:00:51,610
+Con un botón para pausar y reproducirlo. Va a haber un botón que acaba de
+
+13
+00:00:51,610 --> 00:00:56,160
+hace el volumen, un control deslizante. Esto lo va a acelerar de manera que vaya mucho
+
+14
+00:00:56,160 --> 00:00:59,510
+Más rápido. Va a hacer que sea agradable y lento.
+
+15
+00:00:59,510 --> 00:01:02,720
+Así como vamos a tener estos pequeños botones de Saltar que te permiten saltar
+
+16
+00:01:02,720 --> 00:01:08,600
+avanzar 25 segundos, retroceder 10 segundos y, finalmente, al hacer clic en el video
+
+17
+00:01:08,600 --> 00:01:12,990
+En sí, hará una pausa y jugará. Así que hay mucho que hacer aquí,
+
+18
+00:01:12,990 --> 00:01:18,570
+y en cualquier momento durante este tutorial, lo que quiero que hagas es simplemente pausar el video
+
+19
+00:01:18,570 --> 00:01:24,760
+y tratar de arrancar tal vez simplemente haciendo los controles deslizantes, o simplemente haciendo el scrubber,
+
+20
+00:01:24,760 --> 00:01:28,940
+o simplemente haciendo los botones Omitir. Vea si puede obtener un par de características en su
+
+21
+00:01:28,940 --> 00:01:34,150
+propio, y luego vuelve y únete a mí para las partes con las que estás teniendo problemas.
+
+22
+00:01:34,150 --> 00:01:38,650
+Así que ya he hecho algunos CSS para ti. Realmente no hay mucho que hacer
+
+23
+00:01:38,650 --> 00:01:42,750
+aquí. Solo va a ser ... Tengo que tomar mi ... Si Throttle Play es
+
+24
+00:01:42,750 --> 00:01:49,450
+Te molesta, nos quitamos este pequeño. Whoa, como yo guardo. Bueno. He hecho algunos CSS.
+
+25
+00:01:49,450 --> 00:01:54,850
+Lo siento. Este conejito hilarante me está consiguiendo. El CSS se ha hecho para usted.
+
+26
+00:01:54,850 --> 00:01:57,530
+Pero realmente no hay mucho aquí. Hay solo un montón de divs,
+
+27
+00:01:57,530 --> 00:02:03,750
+y luego, cuando pasas el ratón sobre él, acabo de cambiar la posición de ese div arriba y
+
+28
+00:02:03,750 --> 00:02:08,470
+abajo, arriba y abajo, dependiendo de donde estemos. Lo que tenemos aquí es que tenemos una
+
+29
+00:02:08,470 --> 00:02:12,130
+div con una clase "jugador". Este es el elemento de video con el que estamos trabajando.
+
+30
+00:02:12,130 --> 00:02:16,540
+Entonces, todo lo que está debajo es solo HTML que hemos creado para los controles.
+
+31
+00:02:16,540 --> 00:02:20,430
+Así que tenemos una barra de progreso aquí. Dentro de eso, tenemos un campo.
+
+32
+00:02:20,430 --> 00:02:25,390
+Tengo un botón de jugador aquí que vamos a hacer una pausa y jugar.
+
+33
+00:02:25,390 --> 00:02:31,160
+Hay una entrada para el control deslizante, que tiene un mínimo, un máximo y un paso,
+
+34
+00:02:31,160 --> 00:02:34,890
+que es cuánto va a incrementar cada muesca en el control deslizante.
+
+35
+00:02:34,890 --> 00:02:39,190
+Lo mismo para la tasa de reproducción. Entonces, tengo estos botones de Saltar. Voy a hablar un poco
+
+36
+00:02:39,190 --> 00:02:44,870
+Un poco sobre por qué elegí usar el salto de datos en solo un segundo. Así que este es bastante grande,
+
+37
+00:02:44,870 --> 00:02:49,020
+así que no voy a pegarlo en una etiqueta de script aquí. En realidad vamos a
+
+38
+00:02:49,020 --> 00:02:54,880
+póngalo en un archivo scripts.js separado en el que vamos a trabajar aquí.
+
+39
+00:02:54,880 --> 00:02:59,560
+Así que vámonos. Lo primero que necesitamos saber es que va a haber
+
+40
+00:02:59,560 --> 00:03:05,460
+casi tres piezas de esto. Primero, vamos a obtener nuestros elementos,
+
+41
+00:03:05,460 --> 00:03:12,940
+Y luego vamos a construir nuestras funciones. Entonces, vamos a conectar
+
+42
+00:03:12,940 --> 00:03:17,910
+Los oyentes del evento. Así que vamos a empezar por poner nuestros elementos en la página.
+
+43
+00:03:17,910 --> 00:03:21,850
+Hay un montón que necesitamos aquí. Primero vamos a conseguir el jugador,
+
+44
+00:03:21,850 --> 00:03:29,800
+por lo que "const player = document.querySelector.player". Entonces,
+
+45
+00:03:29,800 --> 00:03:34,060
+dentro de ese jugador, porque es algo así como el papá div aquí,
+
+46
+00:03:34,060 --> 00:03:38,430
+dentro de eso vamos a agarrar todo lo demás. Así que necesitamos el video.
+
+47
+00:03:38,430 --> 00:03:44,690
+en sí, y vamos a llamar "player.querySelector", y dentro de eso
+
+48
+00:03:44,690 --> 00:03:50,720
+buscaremos el ".viewer", porque esa es la clase que ese video tiene derecho
+
+49
+00:03:50,720 --> 00:03:57,110
+ahí. Está bien, trabajando bien hasta ahora. Otras cosas que necesitamos es la barra de progreso,
+
+50
+00:03:57,110 --> 00:04:02,060
+el campo de progreso, el conmutador, los botones Omitir y el control deslizante del reproductor.
+
+51
+00:04:02,060 --> 00:04:07,320
+Así que voy a volar esto muy rápido. De lo contrario, solo puedes agarrarlos
+
+52
+00:04:07,320 --> 00:04:10,370
+de la respuesta. Estoy seguro de que entiendes lo que está pasando aquí.
+
+53
+00:04:10,370 --> 00:04:14,440
+Solo estamos seleccionando elementos de la página. Si quieres verme escribeme,
+
+54
+00:04:14,440 --> 00:04:19,500
+Lo siento. Pero los tenemos aquí. Así que tenemos nuestra barra de progreso,
+
+55
+00:04:19,500 --> 00:04:23,380
+y voy a explicar exactamente lo que son todos estos. A continuación, lo que queremos hacer,
+
+56
+00:04:23,380 --> 00:04:27,140
+Comencemos con facilidad y trabajemos con Toggle Play. Así que vamos a tener una
+
+57
+00:04:27,140 --> 00:04:35,710
+Función llamada "togglePlay". Cuando se llame así, vamos a llamar a
+
+58
+00:04:35,710 --> 00:04:42,850
+".play" en el video, o ".pause". Entonces, lo que podemos hacer es decir "si
+
+59
+00:04:42,850 --> 00:04:47,950
+video.pause ", porque pause es una propiedad que vive en el video ...
+
+60
+00:04:47,950 --> 00:04:52,560
+No hay propiedad de juego. Sólo hay una propiedad de pausa. Bien dicho
+
+61
+00:04:52,560 --> 00:05:02,460
+"video.play else video.pause". Bueno. Así que ahora, si abrimos nuestras herramientas de desarrollo aquí y
+
+62
+00:05:02,460 --> 00:05:09,000
+Llama "togglePlay", verás que empieza a jugar. Si lo vuelvo a llamar,
+
+63
+00:05:09,000 --> 00:05:13,750
+va a pausarlo Una pequeña cosa que podrías hacer aquí es decir.
+
+64
+00:05:13,750 --> 00:05:22,010
+"método const =" y uso un operador [turnery], no sé cómo decir las cosas,
+
+65
+00:05:22,010 --> 00:05:30,910
+"jugar de otro modo pausar". Entonces, como el nombre del método está en una cadena aquí, puedes
+
+66
+00:05:30,910 --> 00:05:39,190
+simplemente llame "video", acceda al nombre del método e inmediatamente llámelo.
+
+67
+00:05:39,190 --> 00:05:41,930
+A algunas personas no les gusta eso, porque les resulta difícil leer.
+
+68
+00:05:41,930 --> 00:05:45,440
+No me envíes correo enojado. Simplemente no lo uses si no te gusta.
+
+69
+00:05:45,440 --> 00:05:51,760
+Pero eso es una especie de manera. Incluso podrías poner este lechón dentro de aquí,
+
+70
+00:05:51,760 --> 00:05:56,230
+Si quisieras volverte realmente loco. Pero no estamos bajando aquí.
+
+71
+00:05:56,230 --> 00:05:59,410
+Vamos a verificar que esto todavía funciona. Trabajando bien para mi
+
+72
+00:05:59,410 --> 00:06:04,980
+Bueno. Así que esa es nuestra Toggle Play. Ahora, lo que tenemos que hacer es conectarlo tanto cuando
+
+73
+00:06:04,980 --> 00:06:09,250
+hace clic en el video, así como cuando hace clic en este botón. Así que primero
+
+74
+00:06:09,250 --> 00:06:13,150
+Vamos a bajar para conectar a nuestros oyentes del evento. Bien dicho
+
+75
+00:06:13,150 --> 00:06:20,480
+"video.addEventListener ('clic',". Cuando eso ocurra, vamos a ejecutar
+
+76
+00:06:20,480 --> 00:06:27,750
+"togglePlay". Bueno. Ahora, vamos a probarlo. Haga clic, se va. Está yendo.
+
+77
+00:06:27,750 --> 00:06:31,700
+Haz clic de nuevo. Se detiene y se apaga, se enciende y apaga. Bueno. A continuación, queremos conectar
+
+78
+00:06:31,700 --> 00:06:35,840
+este botón justo aquí Entonces, ¿cómo llamamos a ese botón. Ese es el Toggle
+
+79
+00:06:35,840 --> 00:06:40,440
+botón. Puedes decir "video". O podemos simplemente duplicar esa línea y
+
+80
+00:06:40,440 --> 00:06:43,330
+cambie el "toggle", "addEventListener ('click', togglePlay".
+
+81
+00:06:43,330 --> 00:06:49,000
+Aquí vamos. Está trabajando para nosotros. Notarás que este botón aquí no es
+
+82
+00:06:49,000 --> 00:06:56,650
+cambiando, y para eso necesitamos actualizar el texto real de este botón dentro de
+
+83
+00:06:56,650 --> 00:06:59,710
+aquí. Entonces, una forma en que podemos hacer eso y usted podría pensar, "Está bien.
+
+84
+00:06:59,710 --> 00:07:06,070
+Lo haremos aquí, donde obtendremos el botón y diremos '.textContent =' y
+
+85
+00:07:06,070 --> 00:07:09,840
+descifra lo que sea el botón Reproducir. "Pero la mejor manera de hacerlo,
+
+86
+00:07:09,840 --> 00:07:13,970
+porque hay otras formas en que puede pausar un video que no sea hacer clic en
+
+87
+00:07:13,970 --> 00:07:17,730
+El video y alternarlo, a veces la gente tiene complementos. A veces personas
+
+88
+00:07:17,730 --> 00:07:21,250
+tengo, como quizás quieras pausar el video si se abre una ventana emergente.
+
+89
+00:07:21,250 --> 00:07:26,250
+Así que en lugar de enganchar a esta función "togglePlay", lo que queremos hacer es escuchar
+
+90
+00:07:26,250 --> 00:07:33,010
+El video para cada vez que se pause. Así que todo lo que hace que se detenga,
+
+91
+00:07:33,010 --> 00:07:42,300
+Entonces podemos actualizar los botones actuales aquí. Entonces, lo que podríamos hacer es
+
+92
+00:07:42,300 --> 00:07:46,330
+ve a nuestro video y los agruparé, "video.addEventListener",
+
+93
+00:07:46,330 --> 00:07:54,250
+Y vamos a escuchar para jugar. Cuando eso funcione, vamos a hacer una función.
+
+94
+00:07:54,250 --> 00:08:03,040
+llamado "updateButton", y console.log "actualiza el botón", solo lo diremos.
+
+95
+00:08:03,040 --> 00:08:10,170
+Tome ese botón de actualización. Cuando se reproduce el video, ejecute "updateButton",
+
+96
+00:08:10,170 --> 00:08:16,400
+y cuando el video está pausado o pausado es el evento, algo así como un clic,
+
+97
+00:08:16,400 --> 00:08:23,850
+también se ejecutará. Así que ahora, si hago clic en él, ¿veo qué está pasando aquí?
+
+98
+00:08:23,850 --> 00:08:29,190
+Cada vez que hago clic en él, se activará una reproducción o un evento de pausa,
+
+99
+00:08:29,190 --> 00:08:34,040
+que a su vez ejecutará nuestra función "updateButton". Así que si entramos en nuestro
+
+100
+00:08:34,040 --> 00:08:41,320
+Función "updateButton", diremos "const icon =" y simplemente diremos
+
+101
+00:08:41,320 --> 00:08:49,220
+"esta.pause". ¿Por qué podemos usar "esto" en este caso? Porque esta ligado al video.
+
+102
+00:08:49,220 --> 00:08:57,000
+sí mismo. "This.pause" si eso es cierto, entonces pondremos el botón Play allí.
+
+103
+00:08:57,000 --> 00:09:02,370
+De lo contrario, pondremos el icono de pausa. Si necesitas agarrar estos iconos,
+
+104
+00:09:02,370 --> 00:09:08,860
+puede simplemente tomarlos desde el archivo de respuesta. Entonces, tomamos ese icono y decimos
+
+105
+00:09:08,860 --> 00:09:18,060
+"palanca". ¿Qué es alternar? Bueno, si subimos aquí, nuestro botón para alternar es
+
+106
+00:09:18,060 --> 00:09:22,460
+que es este botón aquí tiene una clase de "alternar". Bueno.
+
+107
+00:09:22,460 --> 00:09:29,640
+Así que diremos "toggle.textContent = icon". O bien, sí, podrías tomar esto,
+
+108
+00:09:29,640 --> 00:09:35,660
+Y solo abofetealo justo dentro de allí. Solo lo voy a hacer en dos pasos,
+
+109
+00:09:35,660 --> 00:09:42,610
+Y eso debería ser. UH oh. Error, "online 17". Que hice
+
+110
+00:09:42,610 --> 00:09:49,840
+Tengo dos signos de interrogación. Qué tontería hacer. Aquí vamos.
+
+111
+00:09:49,840 --> 00:09:54,620
+Oh. No parece estar funcionando. Vamos a depurar esto muy rápido.
+
+112
+00:09:54,620 --> 00:10:05,312
+Console.log, se ejecutó. Bueno. Está corriendo. Ahora, vamos a console.log el icono.
+
+113
+00:10:10,870 --> 00:10:16,460
+Oh, ¿sabes qué? No hay propiedad llamada "pausa". Es "pausado".
+
+114
+00:10:16,460 --> 00:10:21,140
+Aquí vamos. Ahora está en marcha. Está funcionando, y luego si hago clic en este
+
+115
+00:10:21,140 --> 00:10:24,940
+botón en sí también lo hará ... Pero si también lo llamo desde la consola
+
+116
+00:10:24,940 --> 00:10:31,420
+"video" ... ¿O es "espectador"? No. Creo que es "video", que es el video.
+
+117
+00:10:31,420 --> 00:10:35,700
+Si solo llamo "video.play" en él, comenzará a reproducirse.
+
+118
+00:10:35,700 --> 00:10:41,190
+Pero mira. Jaja. Ha funcionado Si lo vuelvo a llamar o llamo ".pause",
+
+119
+00:10:41,190 --> 00:10:46,570
+Se actualiza el botón para nosotros. Así que ya ves como no teníamos que engancharnos a esto
+
+120
+00:10:46,570 --> 00:10:51,370
+¿función? Simplemente escuchamos el evento. Bueno. ¿Qué deberíamos hacer a continuación aquí?
+
+121
+00:10:51,370 --> 00:10:55,610
+Tenemos el botón Play funcionando. Hagamos estos botones de Saltar aquí.
+
+122
+00:10:55,610 --> 00:11:02,580
+Así que vamos a hacer una función llamada "saltar", y lo que necesitamos hacer es
+
+123
+00:11:02,580 --> 00:11:07,900
+Entender cuánto se va a omitir. La forma en que me gusta definir cómo.
+
+124
+00:11:07,900 --> 00:11:12,020
+gran parte del video que se va a omitir es ir al elemento DOM real,
+
+125
+00:11:12,020 --> 00:11:18,290
+y veamos estos botones de Saltar que tenemos aquí. Tienen un "salto de datos" -10,
+
+126
+00:11:18,290 --> 00:11:22,600
+lo que significa que va a retroceder 10 segundos, y un salto de datos de 25,
+
+127
+00:11:22,600 --> 00:11:27,300
+lo que significa que va a avanzar 25 segundos. Me gusta mucho este enfoque,
+
+128
+00:11:27,300 --> 00:11:30,640
+porque eso significa que puedo poner un "salto de datos" en absolutamente cualquier cosa.
+
+129
+00:11:30,640 --> 00:11:34,800
+Podría ser una foto de mí mismo, y cuando hagas clic en mi cara saltará hasta el final,
+
+130
+00:11:34,800 --> 00:11:39,510
+Porque no quieres verlo en absoluto. Así que podemos poner un "salto de datos" en absolutamente
+
+131
+00:11:39,510 --> 00:11:43,640
+Cualquier cosa, y así es como va a funcionar. Así que antes de ejecutar este salto,
+
+132
+00:11:43,640 --> 00:11:46,320
+solo consola.log "¡Saltar!". [Inaudible 00:11:45] aquí abajo,
+
+133
+00:11:46,320 --> 00:11:51,240
+y escucharemos un clic en cualquier cosa que tenga un "salto de datos".
+
+134
+00:11:51,240 --> 00:11:56,770
+Ahora, veamos la parte superior aquí. Omitir botones es igual a cualquier cosa que tenga un
+
+135
+00:11:56,770 --> 00:12:01,570
+Atributo de "omisión de datos", por lo que dije que se podía poner un "omisión de datos" en absolutamente
+
+136
+00:12:01,570 --> 00:12:09,050
+cualquier elemento Así que diremos "skipButtons.forEach (button =>
+
+137
+00:12:09,050 --> 00:12:16,220
+button.addEventListener ", y vamos a escuchar un clic.
+
+138
+00:12:16,220 --> 00:12:20,290
+Cuando eso suceda, vamos a ejecutar la función "saltar". Bueno.
+
+139
+00:12:20,290 --> 00:12:25,200
+Vamos a probarlo. Saltando, saltando, saltando. Ahora, lo bueno de eso es
+
+140
+00:12:25,200 --> 00:12:30,070
+en lugar del registro de la consola "Saltar", vamos a console.log "this.dataSet" y veamos
+
+141
+00:12:30,070 --> 00:12:35,490
+lo que tenemos allí es que obtenemos un objeto que tiene ese valor de salto.
+
+142
+00:12:35,490 --> 00:12:39,940
+Así que podemos tomar ese "this.dataSet.skip", y decimos
+
+143
+00:12:39,940 --> 00:12:49,720
+"video.currentTime + = this.dataSet.skip". Ahora, eso es una cadena, por lo que debemos envolver
+
+144
+00:12:49,720 --> 00:12:56,090
+que en un volumen inflado, y que lo convertirá en un número verdadero.
+
+145
+00:12:56,090 --> 00:13:02,100
+Ahora, si lo jugamos, y hacemos clic en nuestro botón Saltar, saltará hacia adelante y hacia atrás,
+
+146
+00:13:02,100 --> 00:13:06,140
+atrás y adelante. A continuación, vamos a trabajar con estos controles deslizantes de rango aquí.
+
+147
+00:13:06,140 --> 00:13:10,340
+Si echas un vistazo, tenemos un tipo de entrada de "rango". El nombre es "volumen".
+
+148
+00:13:10,340 --> 00:13:15,090
+Luego, tenemos otro donde el nombre es "tasa de reproducción". He hecho a propósito
+
+149
+00:13:15,090 --> 00:13:19,030
+eso con "volumen" y "tasa de reproducción", solo para que se alineen con el
+
+150
+00:13:19,030 --> 00:13:23,890
+Propiedades en el video real. Entonces, lo que vamos a hacer es, en primer lugar,
+
+151
+00:13:23,890 --> 00:13:29,970
+Vamos a escuchar un cambio en esos controles deslizantes específicos. Así que vamos a
+
+152
+00:13:29,970 --> 00:13:33,410
+Hacer una función llamada "handleRangeUpdate". Solo voy a
+
+153
+00:13:33,410 --> 00:13:41,370
+console.log "este.valor". Entonces, vamos a bajar aquí y escuchar un
+
+154
+00:13:41,370 --> 00:13:47,570
+Evento de cambio en cada uno de esos rangos. [inaudible 00:13:46]
+
+155
+00:13:47,570 --> 00:13:56,430
+"range.forEachRange", y luego el "range.addEventListener ('clic'," va
+
+156
+00:13:56,430 --> 00:14:05,300
+para ejecutar la función "handleRangeUpdate". Oh, no "click", "changeEvent".
+
+157
+00:14:05,300 --> 00:14:10,920
+Dale una actualización. Ahora, si cambio uno de estos, .035, cambio uno de estos,
+
+158
+00:14:10,920 --> 00:14:16,710
+1.75, 1.5, 1.3. Otra cosa que podríamos hacer es duplicar esto y escuchar
+
+159
+00:14:16,710 --> 00:14:26,370
+para un evento de movimiento del ratón. Esto se disparará independientemente de si está haciendo clic o no.
+
+160
+00:14:26,370 --> 00:14:29,360
+Pero lo que puedas, si quieres tener un poco más de práctica,
+
+161
+00:14:29,360 --> 00:14:34,000
+es retroceder y establecer una bandera para que cuando haga clic hacia abajo y la mueva,
+
+162
+00:14:34,000 --> 00:14:38,820
+al igual que hicimos con el lienzo, y al hacer clic arriba, solo estás actualizando el
+
+163
+00:14:38,820 --> 00:14:43,640
+propiedad cuando se hace clic hacia abajo. Pero para eso, lo tenemos actualizado en.
+
+164
+00:14:43,640 --> 00:14:50,040
+En tiempo real, en lugar de solo cuando soltamos el botón. Así que tenemos este valor de paso,
+
+165
+00:14:50,040 --> 00:15:00,600
+y podríamos también console.log "this.name". Casualmente, el volumen y la tasa de reproducción
+
+166
+00:15:00,600 --> 00:15:04,630
+Son las dos propiedades en el video que necesitamos actualizar. Así que simplemente necesitamos
+
+167
+00:15:04,630 --> 00:15:10,090
+para decir "video", y la propiedad que desea actualizar se llama "this.name",
+
+168
+00:15:10,090 --> 00:15:18,090
+que va a ser "volumen" o "tasa de reproducción". Así que diremos "this.name =
+
+169
+00:15:18,090 --> 00:15:23,050
+this.value ", porque ese es el valor que ya se está canalizando.
+
+170
+00:15:23,050 --> 00:15:28,710
+Así que ahora, si seguimos adelante y jugamos, el volumen está abajo,
+
+171
+00:15:28,710 --> 00:15:36,110
+todo el camino, [correr] súper rápido, súper lento. Tú entiendes,
+
+172
+00:15:36,110 --> 00:15:38,430
+¿Correcto? Ese es bastante simple. Voy a [inaudible 00:15:37] esos
+
+173
+00:15:38,430 --> 00:15:42,790
+Los registros de la consola, así como este registro de la consola aquí. A continuación, vamos a tratar con el gran
+
+174
+00:15:42,790 --> 00:15:48,840
+Una, que es esta barra de progreso aquí. Así que primero que todo, cuando juegas el video,
+
+175
+00:15:48,840 --> 00:15:52,830
+La barra de progreso debe actualizarse en tiempo real. Vamos a hacer eso primero.
+
+176
+00:15:52,830 --> 00:15:59,190
+Luego, en segundo lugar, al hacer clic en él y arrastrarlo, debería actualizar el video a
+
+177
+00:15:59,190 --> 00:16:02,950
+Corresponde con ese encaje. Así que primero, vamos a hacer una función llamada
+
+178
+00:16:02,950 --> 00:16:09,360
+"handleProgress", y vamos a hacer un porcentaje. Porque esencialmente,
+
+179
+00:16:09,360 --> 00:16:12,620
+cómo va a funcionar es que vamos a entrar allí, y vamos a inspeccionar
+
+180
+00:16:12,620 --> 00:16:16,220
+Este campo de progreso aquí. ¿Ves cómo tenemos un valor de base flexible?
+
+181
+00:16:16,220 --> 00:16:21,230
+Solo vamos a actualizar ese valor de base flexible, algo así como actualizar el
+
+182
+00:16:21,230 --> 00:16:26,580
+Ancho, de la barra de progreso. Sólo va a corresponder con lo largo que es.
+
+183
+00:16:26,580 --> 00:16:31,870
+Entonces, si tenemos un 0% no iniciado, el 100% está totalmente terminado,
+
+184
+00:16:31,870 --> 00:16:35,840
+simplemente necesitamos calcular ese conocimiento, "¿Cuánto dura el video y cómo
+
+185
+00:16:35,840 --> 00:16:45,650
+¿Hasta dónde estamos ahora? "Así que" const percent = "say" video.currentTime /
+
+186
+00:16:45,650 --> 00:16:51,230
+video.duration ". La hora actual y la duración son solo propiedades de ese video,
+
+187
+00:16:51,230 --> 00:16:55,810
+y lo multiplicamos por 100. Así que estamos obteniendo no 0.5, sino 50%.
+
+188
+00:16:55,810 --> 00:17:01,800
+Luego, simplemente tomamos la barra de progreso, que hemos seleccionado en la parte superior aquí,
+
+189
+00:17:01,800 --> 00:17:11,190
+"progressBar", y añadimos los estilos. ".style.flexBasis =" y simplemente ingresamos
+
+190
+00:17:11,190 --> 00:17:18,730
+La variable de porcentaje y poner un signo de porcentaje en el extremo allí. Así que eso no
+
+191
+00:17:18,730 --> 00:17:22,730
+Trabaja todavía, ¿y por qué no? Es porque hemos creado el progreso.
+
+192
+00:17:22,730 --> 00:17:29,110
+y si tuviera que ejecutarlo manualmente se actualizaría. Pero queremos que se ejecute cada
+
+193
+00:17:29,110 --> 00:17:33,860
+tan a menudo. Así que debemos poner eso en un tiempo de espera o un intervalo y ejecutarlo cada
+
+194
+00:17:33,860 --> 00:17:40,490
+¿segundo? No. Lo que haremos es, nuevamente, escuchar el video para emitir un evento
+
+195
+00:17:40,490 --> 00:17:44,990
+llamado "timeupdate", y cuando eso suceda, ejecutaremos "handleProgress".
+
+196
+00:17:44,990 --> 00:17:48,730
+Así que simplemente duplique uno de estos, "video.addEventListener". Iban a
+
+197
+00:17:48,730 --> 00:17:55,440
+escuche el evento "timeupdate", y vamos a ejecutar "handleProgress" cuando
+
+198
+00:17:55,440 --> 00:18:00,210
+eso pasa. También hay un evento llamado "progreso" y no sé la diferencia.
+
+199
+00:18:00,210 --> 00:18:04,360
+entre los dos. He mirado y realmente no entiendo. Pero por lo que he
+
+200
+00:18:04,360 --> 00:18:08,860
+probado, "progreso" y "actualización de tiempo" solo se activarán cuando el video sea
+
+201
+00:18:08,860 --> 00:18:13,010
+actualizar su código de tiempo, y luego, si está en pausa, no será innecesariamente
+
+202
+00:18:13,010 --> 00:18:19,490
+ejecutando esa función. Así que ahora, vamos a darle una jugada y parece estar funcionando solo
+
+203
+00:18:19,490 --> 00:18:23,350
+multa. Si uso estos botones para omitir, te darás cuenta de que se actualiza.
+
+204
+00:18:23,350 --> 00:18:32,110
+bien también. Finalmente, el grande que queremos aquí es el matorral.
+
+205
+00:18:32,110 --> 00:18:38,440
+¿Cómo va a funcionar esto? Vamos a escuchar un clic en esta barra de video.
+
+206
+00:18:38,440 --> 00:18:42,720
+aquí. Dondequiera que haya hecho clic, digamos que hago clic aquí, va a ...
+
+207
+00:18:42,720 --> 00:18:46,920
+Diga, como ha hecho clic ... ¿Qué tan ancha es esta barra aquí? Seiscientos cuarenta
+
+208
+00:18:46,920 --> 00:18:54,600
+píxeles Así que digamos que hago clic en 320 píxeles. Sabemos que 320 píxeles están a mitad de camino de
+
+209
+00:18:54,600 --> 00:19:00,520
+640. Así que debería fregar el video 50% o 50% de su duración. Así que vamos a
+
+210
+00:19:00,520 --> 00:19:05,730
+haga una función llamada "scrub" aquí, y cuando eso suceda, vamos a obtener el
+
+211
+00:19:05,730 --> 00:19:10,450
+evento. Solo consolaremos el evento aquí, y bajaremos al final
+
+212
+00:19:10,450 --> 00:19:16,600
+Aquí, y obtendremos nuestra barra de progreso. Vamos a escuchar un click,
+
+213
+00:19:16,600 --> 00:19:21,030
+y cuando eso suceda vamos a ejecutar "scrub". Así que veamos como estamos
+
+214
+00:19:21,030 --> 00:19:27,590
+aquí. Abre tu consola. Juegalo. Ahora, haga clic en alguna parte en él.
+
+215
+00:19:27,590 --> 00:19:31,550
+Voy a hacer clic a mitad de camino. Bueno. Ahora, tenemos este evento del ratón,
+
+216
+00:19:31,550 --> 00:19:38,330
+y dentro del evento del mouse vamos a ver que tenemos "e.offsetX",
+
+217
+00:19:38,330 --> 00:19:42,480
+que es exactamente lo que usamos en el tutorial de lienzo. Asi que aqui esta.
+
+218
+00:19:42,480 --> 00:19:49,940
+Me dice que hice clic en 283 píxeles en esta barra, porque esa barra está posicionada
+
+219
+00:19:49,940 --> 00:19:56,500
+relativo. Entonces, dado ese conocimiento, podemos hacer un poco de matemáticas.
+
+220
+00:19:56,500 --> 00:20:03,520
+Así que voy a decir "const scrub time = e.offsetX". Voy a hacer una pausa en estos
+
+221
+00:20:03,520 --> 00:20:10,930
+conejitos aqui Espere. "/" y ahora tenemos que averiguar cuál es el ancho de este
+
+222
+00:20:10,930 --> 00:20:16,470
+barra de progreso completo? Bueno, ya lo hemos seleccionado en una variable llamada
+
+223
+00:20:16,470 --> 00:20:20,920
+"progreso", y podemos agarrar el ancho con "offsetWidth".
+
+224
+00:20:20,920 --> 00:20:26,000
+Eso nos dará todo el ancho de la barra. Eso nos da un porcentaje como 50.5.
+
+225
+00:20:26,000 --> 00:20:33,840
+o 0.6 por 60%, y simplemente multiplicamos eso por la duración del video.
+
+226
+00:20:33,840 --> 00:20:37,610
+Así que si es un clip de 60 segundos, estás a mitad de camino, nos dirá
+
+227
+00:20:37,610 --> 00:20:41,870
+que debes fregar hasta 30 segundos. Entonces, simplemente actualizamos el video,
+
+228
+00:20:41,870 --> 00:20:49,960
+"video.currentTime = scrubTime". Vamos a ver dónde estamos ahora.
+
+229
+00:20:49,960 --> 00:20:59,710
+Así que si lo juego y hago clic a mitad de camino, salta exactamente a donde lo he intentado.
+
+230
+00:20:59,710 --> 00:21:07,090
+para hacer clic en él. Bueno. Ahora, vamos a trabajar en el arrastrar y soltar real de ella.
+
+231
+00:21:07,090 --> 00:21:11,920
+Porque no solo quieres escuchar cuando alguien lo mueve.
+
+232
+00:21:11,920 --> 00:21:15,190
+Quieres escuchar cuando alguien hace clic y lo mueve todo.
+
+233
+00:21:15,190 --> 00:21:19,510
+Así que hagámoslo donde el mouse se mueva sobre él. Así que vamos a tomar
+
+234
+00:21:19,510 --> 00:21:27,440
+"progress.addEventListener", y vamos a escuchar el movimiento del mouse.
+
+235
+00:21:27,440 --> 00:21:32,070
+Solo lo vamos a limpiar allí sin pensar en hacer clic todavía.
+
+236
+00:21:32,070 --> 00:21:37,710
+Juegalo. Reloj. Mientras muevo mi ... Es un poco brusco, porque solo está disparando
+
+237
+00:21:37,710 --> 00:21:43,130
+Como un millón de veces y el video realmente no puede continuar. Pero cuando muevo mi cursor
+
+238
+00:21:43,130 --> 00:21:48,520
+En cualquier lugar, simplemente se pone al día. Ahora, eso no es realmente tan genial,
+
+239
+00:21:48,520 --> 00:21:53,190
+Porque quiero estar haciendo clic hacia abajo. ¿Qué hicimos en el ejemplo del lienzo?
+
+240
+00:21:53,190 --> 00:21:58,400
+Creamos una variable de marca, la establecimos en "falso" y luego, cuando hiciste clic, configuramos
+
+241
+00:21:58,400 --> 00:22:04,970
+a "verdad". Así que esto es lo que hacemos. Nosotros decimos "baje el mouse = falso".
+
+242
+00:22:04,970 --> 00:22:08,700
+¿Está la persona haciendo clic actualmente, o tiene el mouse hacia abajo? No.
+
+243
+00:22:08,700 --> 00:22:12,830
+Eso es falso. Entonces, cuando alguien caiga, lo pondremos en "verdadero".
+
+244
+00:22:12,830 --> 00:22:16,970
+Diremos "progress.addEventListener ('mousedown',"
+
+245
+00:22:16,970 --> 00:22:26,410
+y cuando eso suceda, ejecutaremos "mousedown = true". Entonces, cuando alguien
+
+246
+00:22:26,410 --> 00:22:33,210
+moviendo hacia arriba, haremos que el mouse sea igual a "falso". Entonces,
+
+247
+00:22:33,210 --> 00:22:38,060
+El scrub, cuando alguien mueve su mouse, lo que queremos hacer esencialmente es que lo haríamos.
+
+248
+00:22:38,060 --> 00:22:46,580
+ejecuta una función aquí que dice "si el mouse está hacia abajo, entonces queremos limpiar".
+
+249
+00:22:46,580 --> 00:22:50,030
+¿Derecha? Sin embargo, podemos hacerlo un poco más fácil, y te mostraré un pequeño truco
+
+250
+00:22:50,030 --> 00:22:58,870
+aquí. Ejecutaremos una función justo en línea aquí, y diremos "mousedown & amp; & amp; scrub",
+
+251
+00:22:58,870 --> 00:23:03,230
+Y le pasaremos el evento. Así que tenemos que pasar el evento aquí.
+
+252
+00:23:03,230 --> 00:23:10,660
+Ahora, whoa. Espere. ¿Qué acabamos de hacer aquí? Cuando alguien mueve su ratón,
+
+253
+00:23:10,660 --> 00:23:16,510
+decimos "mousedown & amp; & amp; scrub", y esto hace que primero verifique esta variable.
+
+254
+00:23:16,510 --> 00:23:22,700
+Si esta variable es "verdadera", pasa a esto. Si esta variable es "falsa",
+
+255
+00:23:22,700 --> 00:23:25,410
+solo va a devolver "falso" y no va a hacer nada.
+
+256
+00:23:25,410 --> 00:23:31,240
+Así que estamos secuestrando el hecho de que podemos usar "& amp; & amp;" y si esto es "cierto"
+
+257
+00:23:31,240 --> 00:23:35,920
+se moverá a ejecutar el matorral. Si esto es "falso", no va a ejecutar el
+
+258
+00:23:35,920 --> 00:23:41,400
+fregar. Entonces, debido a que nuestra función "scrub" requiere el evento inicial de cuando esto
+
+259
+00:23:41,400 --> 00:23:44,810
+sucedió en el movimiento del mouse, necesitamos pasarlo en esta función de error,
+
+260
+00:23:44,810 --> 00:23:49,720
+y luego simplemente como una especie de patata caliente sobre nuestra función de "fregado" aquí.
+
+261
+00:23:49,720 --> 00:23:55,710
+Así que ahora, si lo jugamos y vemos que muevo mi cursor sobre la parte superior, no hay problema,
+
+262
+00:23:55,710 --> 00:24:01,840
+pero si hago clic y arrastro verás que se está actualizando todo ese tiempo.
+
+263
+00:24:01,840 --> 00:24:05,690
+Luciendo bien. Increíble. Así que eso es lo más básico de un reproductor de video.
+
+264
+00:24:05,690 --> 00:24:09,670
+En realidad no es tan básico. Tenemos mucho aquí. Lo único que no hicimos.
+
+265
+00:24:09,670 --> 00:24:13,910
+hacer, y este es mi desafío para ti, es tratar de averiguar cómo hacer que el
+
+266
+00:24:13,910 --> 00:24:18,550
+Botón de pantalla completa funciona. Así que agrega otro botón aquí, y deberían funcionar bien.
+
+267
+00:24:18,550 --> 00:24:21,930
+afuera. He usado flex box aquí, así que si agrega otro botón, simplemente se activará.
+
+268
+00:24:21,930 --> 00:24:26,170
+terminado. Cuando haces clic en ese botón, haz que el video pase a pantalla completa.
+
+269
+00:24:26,170 --> 00:24:27,973
+Muchas gracias. Te veo mañana.
+
+270
+00:24:27,973 --> 00:24:29,973
+♪ [música] ♪
+

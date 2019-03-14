@@ -1,0 +1,758 @@
+﻿1
+00:00:00,000 --> 00:00:00,033
+Edited at https://subtitletools.com
+
+2
+00:00:01,723 --> 00:00:04,700
+♪ [music] ♪
+
+3
+00:00:07,270 --> 00:00:11,924
+Today we are going to learn all about
+speech recognition in the browser.
+
+4
+00:00:12,604 --> 00:00:16,450
+While it's not perfect, it's actually
+really impressive that you can do this
+
+5
+00:00:16,450 --> 00:00:21,830
+without any libraries or external APIs,
+just do it straight in the browser.
+
+6
+00:00:21,830 --> 00:00:30,540
+So let's open up our index - start and
+Phyllis open. All right,
+
+7
+00:00:30,540 --> 00:00:33,930
+I'm just going to get this sucker running
+while I'll explain what we got going on.
+
+8
+00:00:33,930 --> 00:00:36,370
+Some hilarious results here.
+
+9
+00:00:36,370 --> 00:00:41,240
+So we've got speech recognition. It's a
+global variable that lives in the browser
+
+10
+00:00:41,240 --> 00:00:45,850
+and that lives on top of the window. Now
+in Chrome it lives at Webkit speech
+
+11
+00:00:45,850 --> 00:00:50,900
+recognition and currently it's only
+available in Firefox.
+
+12
+00:00:50,900 --> 00:00:55,760
+So right here what we're doing is we're
+just setting it to be speech recognition
+
+13
+00:00:55,760 --> 00:00:59,470
+even if it is Webkit speech recognition.
+Then what we need to do is go ahead and
+
+14
+00:00:59,470 --> 00:01:02,575
+create a new instance of speech
+recognition. Let's see,
+
+15
+00:01:02,575 --> 00:01:04,240
+this guy's still going, yes.
+
+16
+00:01:04,240 --> 00:01:18,510
+So we will say const recognition equals
+new speech recognition and then we need to
+
+17
+00:01:18,510 --> 00:01:24,710
+take that recognition variable and set
+something called the interim results.
+
+18
+00:01:24,710 --> 00:01:28,670
+And that has to be true. And what that's
+going to do is as you are speaking,
+
+19
+00:01:28,670 --> 00:01:32,500
+you can see right here...as I'm speaking
+it's sort of populating it.
+
+20
+00:01:32,500 --> 00:01:37,250
+And if you don't do that, you need to stop
+speaking before it will give you anything.
+
+21
+00:01:37,250 --> 00:01:40,603
+That's a bit frustrating. So we want to be
+able to see what we're saying
+
+22
+00:01:40,603 --> 00:01:42,025
+as we are speaking.
+
+23
+00:01:42,720 --> 00:01:47,910
+So we got our interim results here. Then
+what we need to do is create a paragraph.
+
+24
+00:01:47,910 --> 00:01:53,590
+And if I inspect this right here, you'll
+see what's happening is that I'm updating
+
+25
+00:01:53,590 --> 00:02:00,000
+the last paragraph in here. And then when
+I stop speaking, it creates a new
+
+26
+00:02:00,000 --> 00:02:04,830
+paragraph as if we were saying a new
+sentence. And then when I stop speaking
+
+27
+00:02:04,830 --> 00:02:10,140
+again, is going to create a new paragraph.
+And the browser is going to tell us when
+
+28
+00:02:10,140 --> 00:02:16,230
+it's finished processing what I'm...
+the brams. This is the best one ever.
+
+29
+00:02:16,230 --> 00:02:20,760
+All right. So we've got that recognition.
+We need to create a paragraph.
+
+30
+00:02:20,760 --> 00:02:24,132
+So let's say, let P equals... And I'll
+tell you why I'm using "let" there
+
+31
+00:02:24,132 --> 00:02:25,076
+in just a second.
+
+32
+00:02:25,076 --> 00:02:30,050
+We'll say a document.create element
+and that's going to be a paragraph.
+
+33
+00:02:30,050 --> 00:02:37,290
+And then we also need to get this words
+right here. They've other class of words.
+
+34
+00:02:37,290 --> 00:02:45,180
+So we say const words equals
+document.query selector.words.
+
+35
+00:02:45,180 --> 00:02:51,500
+And then we'll take that words and we'll
+append the child P, which is going to be
+
+36
+00:02:51,500 --> 00:02:53,626
+our first one because we're
+going to put it in the DOM
+
+37
+00:02:53,626 --> 00:02:55,611
+just as we are working with it.
+
+38
+00:02:56,080 --> 00:02:59,700
+Next this work is just the same as
+listening for clicks. So we take our
+
+39
+00:02:59,700 --> 00:03:03,900
+recognition and we add an event listener
+but we don't listen for click but we
+
+40
+00:03:03,900 --> 00:03:09,160
+listen for a result. And when the results
+comes back, were going to get an event
+
+41
+00:03:09,160 --> 00:03:13,230
+which... Let's just take a look at what
+that actual event gives us here.
+
+42
+00:03:13,230 --> 00:03:20,720
+Console log E. So give that a save. Now
+you do have to run this through a server.
+
+43
+00:03:20,720 --> 00:03:24,140
+Just like we did with the WebCam, you
+can't just run it on a file.
+
+44
+00:03:24,140 --> 00:03:27,840
+It has to be localhost or something like
+that. So take your index file and run it
+
+45
+00:03:27,840 --> 00:03:32,285
+through some sort of server. If you're not
+sure, I've created a quick...
+
+46
+00:03:32,285 --> 00:03:35,101
+Where is it here?
+
+47
+00:03:39,302 --> 00:03:43,470
+I've created a quick little server for you
+here in the speech detection folder.
+
+48
+00:03:43,470 --> 00:03:46,710
+All you need to do is type MPM install and
+then when that's installed,
+
+49
+00:03:46,710 --> 00:03:50,630
+you type MPM start and what that will do
+is it's just going to open up a little
+
+50
+00:03:50,630 --> 00:03:55,780
+server for you and then we open up the
+index - start. Now that will probably pop
+
+51
+00:03:55,780 --> 00:04:00,780
+open a little dialog box that will say
+can this access your microphone and you'll
+
+52
+00:04:00,780 --> 00:04:05,900
+say yes or no. But as we start speaking,
+actually we don't see anything just yet
+
+53
+00:04:05,900 --> 00:04:08,830
+and that's because we haven't started
+this. Take your recognition and call
+
+54
+00:04:08,830 --> 00:04:13,561
+recognition.start as you don't want to
+unnecessarily run it on page load
+
+55
+00:04:13,561 --> 00:04:17,660
+because you might want to prompt the
+user that "Hey we're going to ask for your
+
+56
+00:04:17,660 --> 00:04:20,330
+microphone, don't turn it down otherwise
+we won't be able to see this."
+
+57
+00:04:20,330 --> 00:04:25,540
+So there we go. Now it should be running.
+So we see our paragraph tag being put into
+
+58
+00:04:25,540 --> 00:04:31,750
+here. We've started it. We have an all add
+or add event listener result singular not
+
+59
+00:04:31,750 --> 00:04:36,270
+results. Now when you speak into the
+microphone, you should be seeing something
+
+60
+00:04:36,270 --> 00:04:44,780
+popping up in your console. Now when
+you speak into the microphone,
+
+61
+00:04:44,780 --> 00:04:48,361
+you should be seeing some speech
+recognition events pop up
+
+62
+00:04:48,361 --> 00:04:50,364
+into your console.
+
+63
+00:04:53,268 --> 00:04:58,030
+Now when you speak into your microphone,
+you should see some speech recognition
+
+64
+00:04:58,030 --> 00:05:03,320
+event results just flooding into your
+console. Now if you don't see anything,
+
+65
+00:05:03,320 --> 00:05:06,660
+make sure that it don't have like the
+answer or anything else that's jacking
+
+66
+00:05:06,660 --> 00:05:11,420
+your microphone up opened in another tab.
+That's something I spent way too much time
+
+67
+00:05:11,420 --> 00:05:15,975
+debugging and you just have to realize
+sometimes the microphone would be used
+
+68
+00:05:15,975 --> 00:05:17,478
+on another tab.
+
+69
+00:05:17,478 --> 00:05:21,440
+So we have this event and let's just find
+a random one right here.
+
+70
+00:05:21,440 --> 00:05:27,770
+Open up that event and go to the results.
+Inside of the results...let's just console
+
+71
+00:05:27,770 --> 00:05:36,820
+E.results. That is going to be a list of
+results and I say list because it's not an
+
+72
+00:05:36,820 --> 00:05:40,990
+array. It looks like an array, but if you
+open up the prototype and see what's in
+
+73
+00:05:40,990 --> 00:05:44,330
+there, you'll see that there is no Map or
+for each or anything like that.
+
+74
+00:05:44,330 --> 00:05:48,670
+That's going to be a bit of an issue for
+us so we can convert that to an array or
+
+75
+00:05:48,670 --> 00:05:52,890
+use ES 64 ave to iterate over it.
+
+76
+00:05:52,890 --> 00:05:58,110
+So here we've got a list and if you open
+each of those up, you'll see there's
+
+77
+00:05:58,110 --> 00:06:02,860
+another thing inside of it. This data is
+so nested. Opened it up once more time,
+
+78
+00:06:02,860 --> 00:06:07,390
+and then you see that is going to be. And
+then the second one we'll say,
+
+79
+00:06:07,390 --> 00:06:12,340
+open it up again, it keeps jumping around.
+That is going to be a list of.
+
+80
+00:06:12,340 --> 00:06:17,360
+And it tells you what the person said
+and then as well as its confidence.
+
+81
+00:06:17,360 --> 00:06:21,640
+Like this one is 89% confidence. That's
+what I said. And here it's like less than
+
+82
+00:06:21,640 --> 00:06:26,280
+a percent confident and it builds up
+confidence over time as it gets to
+
+83
+00:06:26,280 --> 00:06:30,410
+analyze it a few more times. And then
+finally, there is an is final build-in
+
+84
+00:06:30,410 --> 00:06:34,650
+here which tells us is the person done
+speaking that sentence.
+
+85
+00:06:34,650 --> 00:06:40,590
+So what we really need to do here is to
+take this sort of mess of nested stuff and
+
+86
+00:06:40,590 --> 00:06:48,900
+convert it into just a plain old string
+that we can see. So let's go into here and
+
+87
+00:06:48,900 --> 00:06:55,140
+we'll say const transcript equals
+array.from and we need to convert it to an
+
+88
+00:06:55,140 --> 00:07:00,620
+arrayE.results because it's not an
+array by default. And then we're going to
+
+89
+00:07:00,620 --> 00:07:04,260
+just map over each of them and then just
+turn it from one thing to another.
+
+90
+00:07:04,260 --> 00:07:10,360
+So first thing I want to do is just grab
+the first thing from each of them because
+
+91
+00:07:10,360 --> 00:07:15,880
+this is the list and we need to grab the
+first thing from each of them.
+
+92
+00:07:15,880 --> 00:07:18,140
+So we could actually just take.
+
+93
+00:07:28,229 --> 00:07:32,790
+So we are going to map over it and take
+the first thing that we have there.
+
+94
+00:07:32,790 --> 00:07:36,200
+So even if it's on it's own line and we're
+going to Map the results is going to
+
+95
+00:07:36,200 --> 00:07:41,550
+return the result [0] because that's the
+first thing that is there. And then if we
+
+96
+00:07:41,550 --> 00:07:49,110
+console log the transcript, let's see what
+we've got. "Hello, I love to pet dogs."
+
+97
+00:07:49,110 --> 00:07:52,570
+Let's see. Open it up. Some of them are
+going to be two things.
+
+98
+00:07:52,570 --> 00:07:57,650
+Like this one will tell me that, "Hello, I
+love." And the second thing that it gives
+
+99
+00:07:57,650 --> 00:08:02,677
+us is so nested, "The pet dog." And then
+I'm sure that it would correct it
+
+100
+00:08:02,677 --> 00:08:03,703
+as we go along.
+
+101
+00:08:03,703 --> 00:08:11,260
+So good. Now we need to map over
+that once more and return the
+
+102
+00:08:11,260 --> 00:08:21,506
+results.transcript. "Hello, I love to pet
+dogs." There we go. Look at what we've
+
+103
+00:08:21,610 --> 00:08:25,430
+got  here. We've got arrays coming in.
+All right one more time,
+
+104
+00:08:25,430 --> 00:08:32,490
+"Hello, I love..." There we go. Sometimes,
+LOL... How did it know that I
+
+105
+00:08:32,490 --> 00:08:36,650
+was actually laughing out loud?
+That's amazing.
+
+106
+00:08:36,650 --> 00:08:40,040
+I've got an array of the different
+pieces that it thinks I said.
+
+107
+00:08:40,040 --> 00:08:44,740
+So what we need to do finally is join
+those two pieces together because we don't
+
+108
+00:08:44,740 --> 00:08:49,820
+want two strings or three strings or one
+string. We want one big string.
+
+109
+00:08:49,820 --> 00:08:54,191
+So join at the end. I'm going to take
+this console log out. Now when I say
+
+110
+00:08:54,191 --> 00:09:02,460
+something... Now when I say something,
+it tells me exactly what I have.
+
+111
+00:09:02,460 --> 00:09:06,540
+You will notice that if you stopped
+speaking and then start speaking again,
+
+112
+00:09:06,540 --> 00:09:11,370
+it doesn't work. And why is that? And that
+is because we're listening for the result
+
+113
+00:09:11,370 --> 00:09:15,950
+but then once the result is finished it
+doesn't, like it unbinds itself, it's no
+
+114
+00:09:15,950 --> 00:09:23,430
+longer listening. So what we need to do is
+add a second event listener for the end
+
+115
+00:09:23,430 --> 00:09:29,570
+event. And when that ends, we simply just
+call the function. We can just tell it.
+
+116
+00:09:29,570 --> 00:09:33,840
+When it ends, run the function for us
+recognition.start. We don't run it here
+
+117
+00:09:33,840 --> 00:09:37,860
+because that would run a page load but we
+just supply the name of the function that
+
+118
+00:09:37,860 --> 00:09:42,680
+it will then call. So if we give that a
+save. Now when I start talking...
+
+119
+00:09:45,349 --> 00:09:51,688
+and after a break, it will start up again.
+And that's because this end event
+
+120
+00:09:51,688 --> 00:09:54,778
+is firing which in turn is going to
+add the event listener.
+
+121
+00:09:54,778 --> 00:09:57,289
+It's going to start listening
+for it again.
+
+122
+00:09:57,289 --> 00:10:03,210
+Good. Now what we need to do is create a
+paragraph tag where we can put these
+
+123
+00:10:03,210 --> 00:10:06,450
+paragraphs. Actually we already have a
+paragraph tag. So right down here we
+
+124
+00:10:06,450 --> 00:10:15,930
+simply have to say P.text content is equal
+to transcript. Now when I start talking,
+
+125
+00:10:15,930 --> 00:10:26,050
+we should see it in the DOM, but when I
+start talking again, it overwrites it.
+
+126
+00:10:26,050 --> 00:10:32,160
+What's going on here? Well, what's
+happening is that if I'm done with that
+
+127
+00:10:32,160 --> 00:10:36,910
+sentence, this is going to run again and
+replace it. So what we need to do is check
+
+128
+00:10:36,910 --> 00:10:44,670
+if the result is final. So let's say, if
+E.results, the first one,
+
+129
+00:10:44,670 --> 00:10:49,880
+dot is final, then we need to create a new
+paragraph. We are going to overwrite this
+
+130
+00:10:49,880 --> 00:10:54,660
+paragraph we created on page load. So
+we just say P equals...nope don't put a
+
+131
+00:10:54,660 --> 00:10:58,020
+vowel letter in front of it. We're going
+to overwrite this existing one here.
+
+132
+00:10:58,020 --> 00:11:09,370
+P equals document.create element P and I
+will stick that sucker in the words.append
+
+133
+00:11:09,370 --> 00:11:11,932
+child P.
+
+134
+00:11:16,146 --> 00:11:21,450
+Now when we talk, it should add a
+paragraph and when I talk again,
+
+135
+00:11:21,450 --> 00:11:28,820
+it should add a second paragraph and a
+third, exclamation mark.
+
+136
+00:11:28,820 --> 00:11:30,667
+Do you get the point?
+
+137
+00:11:32,249 --> 00:11:37,050
+Sweet, seems to be working. So
+that is the very basics of speech
+
+138
+00:11:37,050 --> 00:11:40,673
+recognition that we have here it's
+actually not a lot of code. What you could
+
+139
+00:11:40,803 --> 00:11:45,090
+do with this now is that now that we have
+this transcript, you could say like if
+
+140
+00:11:45,090 --> 00:11:56,912
+transcript. as it contains unicorn, then
+console log unicorn. Whoa.
+
+141
+00:12:00,982 --> 00:12:07,546
+"I love dogs." oh, it's not contains
+it's includes,
+
+142
+00:12:08,680 --> 00:12:15,990
+"I Love dogs. I love unicorns." And when
+you say the word unicorn,
+
+143
+00:12:15,990 --> 00:12:20,420
+it triggers it and goes off. So what
+you could do is you could listen if
+
+144
+00:12:20,420 --> 00:12:28,320
+includes like, "Get the weather" And then
+it would run a function that would also
+
+145
+00:12:28,320 --> 00:12:39,660
+log getting the weather. "Siri, go get the
+weather." And then it will run this
+
+146
+00:12:39,660 --> 00:12:42,230
+getting the weather function. Obviously
+you'd have to debounce that or
+
+147
+00:12:42,230 --> 00:12:45,460
+only run it once every so often because it
+will run it multiple times,
+
+148
+00:12:45,460 --> 00:12:50,000
+but you get the point here. I've seen
+people hook this up to external weather
+
+149
+00:12:50,000 --> 00:12:55,170
+APIs or to other functions and you can
+basically have a hands-off application
+
+150
+00:12:55,170 --> 00:12:59,490
+that listens for what you're saying behind
+the scenes and when it sees those words
+
+151
+00:12:59,490 --> 00:13:03,370
+that you want, it will trigger some sort
+of other function. Hopefully you
+
+152
+00:13:03,370 --> 00:13:07,490
+enjoyed that. I would love to see what you
+build with this. There is just a whole
+
+153
+00:13:07,490 --> 00:13:11,800
+world that opens up when you have speech
+recognition. So please let me know what
+
+154
+00:13:11,800 --> 00:13:14,558
+you create. Thanks and
+I'll see you tomorrow.
+
+155
+00:13:15,038 --> 00:13:18,496
+♪ [music] ♪
